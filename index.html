@@ -16,71 +16,44 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);overflow-x:hidden;cursor:none;background:#0D0D0D}
 a,button,input,select,textarea{cursor:none}
+img{display:block;max-width:100%}
 
-/* ===================== QUILL CURSOR ===================== */
-#quill-cursor{
-  position:fixed;pointer-events:none;z-index:99999;
-  width:32px;height:32px;transform:translate(-4px,-28px);
-  transition:transform 0.08s var(--ease);
-  will-change:transform;
-}
-#quill-cursor svg{
-  width:100%;height:100%;
-  filter:drop-shadow(0 0 4px rgba(194,160,90,0.5));
-  transform:rotate(-35deg);
-  transition:transform 0.25s var(--ease),filter 0.25s;
-}
-#quill-cursor.hover svg{
-  transform:rotate(-20deg) scale(1.15);
-  filter:drop-shadow(0 0 10px rgba(194,160,90,0.9)) drop-shadow(0 0 20px rgba(194,160,90,0.4));
-}
-#quill-cursor.clicking svg{
-  transform:rotate(-10deg) scale(0.9);
-  filter:drop-shadow(0 0 16px rgba(194,160,90,1));
-}
-.ink-ripple{
-  position:fixed;pointer-events:none;z-index:99998;
-  width:0;height:0;border-radius:50%;
-  border:1.5px solid rgba(194,160,90,0.6);
-  transform:translate(-50%,-50%);
-  animation:inkSpread 0.7s var(--ease) forwards;
-}
-@keyframes inkSpread{
-  0%{width:0;height:0;opacity:0.8}
-  60%{opacity:0.4}
-  100%{width:80px;height:80px;opacity:0}
-}
-#quill-trail{
-  position:fixed;pointer-events:none;z-index:99997;
-  width:6px;height:6px;border-radius:50%;
-  background:radial-gradient(circle,rgba(194,160,90,0.4),transparent);
-  transform:translate(-50%,-50%);
-  transition:left 0.18s var(--ease),top 0.18s var(--ease);
-}
+/* ── QUILL CURSOR ── */
+#quill-cursor{position:fixed;pointer-events:none;z-index:99999;width:32px;height:32px;transform:translate(-4px,-28px);transition:transform .08s var(--ease);will-change:transform}
+#quill-cursor svg{width:100%;height:100%;filter:drop-shadow(0 0 4px rgba(194,160,90,.5));transform:rotate(-35deg);transition:transform .25s var(--ease),filter .25s}
+#quill-cursor.hover svg{transform:rotate(-20deg) scale(1.15);filter:drop-shadow(0 0 10px rgba(194,160,90,.9)) drop-shadow(0 0 20px rgba(194,160,90,.4))}
+#quill-cursor.clicking svg{transform:rotate(-10deg) scale(.9);filter:drop-shadow(0 0 16px rgba(194,160,90,1))}
+.ink-ripple{position:fixed;pointer-events:none;z-index:99998;width:0;height:0;border-radius:50%;border:1.5px solid rgba(194,160,90,.6);transform:translate(-50%,-50%);animation:inkSpread .7s var(--ease) forwards}
+@keyframes inkSpread{0%{width:0;height:0;opacity:.8}60%{opacity:.4}100%{width:80px;height:80px;opacity:0}}
+#quill-trail{position:fixed;pointer-events:none;z-index:99997;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle,rgba(194,160,90,.4),transparent);transform:translate(-50%,-50%);transition:left .18s var(--ease),top .18s var(--ease)}
 
-/* ===================== PROGRESS BAR ===================== */
-#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#9C6B3F,#C2A05A,#E8D5A0);z-index:1000;width:0%;pointer-events:none;transition:width .08s}
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#9C6B3F,#C2A05A,#E8D5A0);z-index:1001;width:0%;pointer-events:none;transition:width .08s}
 
-/* ===================== LOADER ===================== */
+/* ── LOADER ── */
 #loader{position:fixed;inset:0;background:#050505;z-index:9990;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s}
 #loader.gone{opacity:0;pointer-events:none}
 .loader-quote{font-family:var(--serif);color:#F5F0E8;font-size:clamp(1rem,2.2vw,1.5rem);font-style:italic;text-align:center;max-width:500px;line-height:1.9;opacity:0;animation:fadeUp 1s .5s forwards;padding:0 2rem}
 .loader-line{width:50px;height:1px;background:#C2A05A;margin:1.8rem auto 0;transform:scaleX(0);animation:expandLine 1.2s .4s var(--ease) forwards}
 .loader-name{font-family:var(--sans);color:rgba(245,240,232,.3);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;margin-top:1.8rem;opacity:0;animation:fadeUp 1s 1.1s forwards}
 
-/* ===================== PARTICLES ===================== */
+/* ── PARTICLES ── */
 #particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
 .particle{position:absolute;border-radius:50%;background:#C2A05A;opacity:0;animation:floatUp var(--d,9s) var(--dl,0s) infinite}
 @keyframes floatUp{0%{opacity:0;transform:translateY(100vh)}20%{opacity:.1}80%{opacity:.05}100%{opacity:0;transform:translateY(-10px)}}
 
-/* ===================== NAV ===================== */
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.3rem 5vw;display:flex;align-items:center;justify-content:space-between;transition:background .5s,padding .4s,box-shadow .4s,top .4s}
 nav.with-motw{top:36px}
-nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9rem 5vw;box-shadow:0 1px 0 rgba(194,160,90,.12)}
+nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem 5vw;box-shadow:0 1px 0 rgba(194,160,90,.12)}
+/* Books page forces dark nav regardless */
+.bk-nav-backdrop{position:fixed;top:0;left:0;right:0;height:68px;background:rgba(6,6,6,.95);backdrop-filter:blur(18px);z-index:498;pointer-events:none;display:none}
+#books-page.active~.bk-nav-backdrop,.page.active#books-page~*{display:none}
 .nav-logo{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:#F5F0E8;text-decoration:none;letter-spacing:.03em;display:flex;flex-direction:column;line-height:1.1}
-.nav-logo span{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;font-family:var(--sans);font-weight:400;margin-top:4px}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;transition:color .3s;position:relative}
+.nav-logo-name{margin-bottom:4px}
+.nav-logo-sub{font-size:.45rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;font-family:var(--sans);font-weight:400;margin-top:3px}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;transition:color .3s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:#C2A05A;transition:width .3s var(--ease)}
 .nav-links a:hover,.nav-links a.active{color:#F5F0E8}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
@@ -93,7 +66,7 @@ nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9re
 .mob-menu a:hover{color:#C2A05A}
 @keyframes mobIn{to{opacity:1;transform:none}}
 
-/* ===================== PAGES ===================== */
+/* ── PAGES ── */
 .page{display:none;min-height:100vh}
 .page.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
@@ -105,7 +78,7 @@ nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9re
 .reveal-r{opacity:0;transform:translateX(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal-r.visible{opacity:1;transform:none}
 
-/* ===================== BUTTONS ===================== */
+/* ── BUTTONS ── */
 .btn-gold{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:#C2A05A;color:#0D0D0D;font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:none;transition:all .3s;position:relative;overflow:hidden}
 .btn-gold::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%);transition:transform .4s var(--ease)}
 .btn-gold:hover::before{transform:translateX(0)}
@@ -113,34 +86,34 @@ nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9re
 .btn-ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:transparent;font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:rgba(245,240,232,.7);transition:all .3s}
 .btn-ghost:hover{border-color:#C2A05A;color:#C2A05A}
 
-/* ===================== MOTW — HOME ONLY, HIDES ON SCROLL ===================== */
-#motw{
-  background:#C2A05A;padding:.8rem 5vw;
-  display:flex;align-items:center;gap:1.5rem;
-  position:relative;z-index:499;
-  transition:transform .4s var(--ease),opacity .4s;
-}
+/* ── MOTW (HOME ONLY, HIDES ON SCROLL) ── */
+#motw{background:#C2A05A;padding:.8rem 5vw;display:flex;align-items:center;gap:1.5rem;position:relative;z-index:499;transition:transform .4s var(--ease),opacity .4s}
 #motw.hidden-motw{transform:translateY(-100%);opacity:0;pointer-events:none}
 .motw-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#0D0D0D;font-weight:700;white-space:nowrap}
 .motw-text{font-family:var(--serif);font-size:.88rem;color:#0D0D0D;flex:1}
 .motw-link{font-family:var(--sans);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#0D0D0D;text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(0,0,0,.3);padding-bottom:1px}
 
-/* ===================== HOME — OBSIDIAN + GOLD ===================== */
-#home{background:#0D0D0D}
+/* ── REFLECTION CARD ── */
+#rc{position:fixed;bottom:2rem;right:2rem;background:#0B1629;border:1px solid rgba(194,160,90,.22);padding:1.4rem;max-width:250px;z-index:400;transform:translateX(300px);transition:transform .5s var(--ease);box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#rc.show{transform:none}
+.rc-x{position:absolute;top:.6rem;right:.8rem;font-size:.9rem;color:rgba(245,240,232,.22);background:none;border:none;transition:color .3s}
+.rc-x:hover{color:#C2A05A}
+.rc-label{font-family:var(--sans);font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:#C2A05A;margin-bottom:.7rem}
+.rc-q{font-family:var(--serif);font-size:.88rem;font-style:italic;color:rgba(245,240,232,.68);line-height:1.7}
 
-/* HERO */
+/* ════════════════════════════════════════
+   HOME — OBSIDIAN + GOLD
+════════════════════════════════════════ */
+#home{background:#0D0D0D}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#060606}
-/* founder-hero.jpg — Sundeep Verma portrait */
-.hero-portrait{
-  position:absolute;right:0;top:0;bottom:0;width:55%;
-  background:url('founder-hero.jpg') center top/cover no-repeat;
-  opacity:.45
-}
+/* founder-hero.jpg */
+.hero-portrait{position:absolute;right:0;top:0;bottom:0;width:55%;background:url('founder-hero.jpg') center top/cover no-repeat;opacity:.45}
 .hero-portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#060606 18%,rgba(6,6,6,.55) 55%,rgba(6,6,6,.05) 100%)}
 .hero-texture{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C2A05A' fill-opacity='0.025'%3E%3Cpath d='M40 40v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/svg%3E")}
 .hero-gold-line{position:absolute;left:5vw;bottom:0;top:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(194,160,90,.35),transparent)}
 .hero-content{position:relative;z-index:2;padding:0 5vw;max-width:750px}
-.hero-eyebrow{font-family:var(--sans);font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:#C2A05A;opacity:0;animation:fadeUp .8s .5s forwards;margin-bottom:1.8rem}
+.hero-eyebrow{font-family:var(--sans);font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:#C2A05A;opacity:0;animation:fadeUp .8s .5s forwards;margin-bottom:2.2rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:#C2A05A}
 .hero-h1{font-family:var(--serif);font-size:clamp(3rem,7.5vw,7rem);line-height:1.02;font-weight:300;color:#F5F0E8;opacity:0;animation:fadeUp .9s .7s forwards;margin-bottom:1.6rem}
 .hero-h1 em{font-style:italic;color:#C2A05A}
 .hero-sub{font-family:var(--sans);font-size:clamp(.8rem,1.3vw,.95rem);color:rgba(245,240,232,.48);line-height:2;max-width:400px;opacity:0;animation:fadeUp .9s .9s forwards;font-weight:300}
@@ -148,15 +121,16 @@ nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9re
 .hero-scroll-line{width:40px;height:1px;background:#C2A05A}
 .hero-scroll span{font-family:var(--sans);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,.3)}
 
-/* ABOUT STRIP */
+/* ABOUT STRIP HOME */
 .h-about-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:540px;background:#0D0D0D}
 .h-about-img{position:relative;overflow:hidden}
-/* workshop-01.jpg — editorial speaking/workshop shot */
+/* workshop-01.jpg */
 .h-about-img img{width:100%;height:100%;min-height:540px;object-fit:cover;object-position:center;display:block;filter:grayscale(25%) brightness(.85);transition:transform 8s var(--ease)}
 .h-about-img:hover img{transform:scale(1.04)}
 .h-about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 65%,#0D0D0D)}
 .h-about-text{padding:4rem 5vw;display:flex;flex-direction:column;justify-content:center}
-.h-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem}
+.h-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.h-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .h-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:300;line-height:1.2;color:#F5F0E8;margin-bottom:1.5rem}
 .h-title em{font-style:italic;color:#C2A05A}
 .h-divider{width:50px;height:1px;background:#C2A05A;margin:1.2rem 0}
@@ -172,49 +146,32 @@ nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9re
 .big-quote{font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,2.3rem);font-weight:300;font-style:italic;color:rgba(245,240,232,.78);line-height:1.7;max-width:740px;margin:0 auto}
 .quote-attr{font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-top:1.8rem}
 
-/* ── FEATURED WRITING: editorial intro + cards ── */
+/* FEATURED WRITING */
 .h-section{padding:clamp(4rem,7vw,7rem) 5vw;background:#0D0D0D}
 
-/* Editorial introduction paragraph — premium magazine style */
+/* ── EDITORIAL INTRO ── premium magazine paragraph */
 .writing-editorial-intro{
-  position:relative;
-  max-width:820px;
-  margin-bottom:3.5rem;
-  padding-left:1.8rem;
+  position:relative;max-width:840px;
+  margin-bottom:4rem;
+  padding:2.5rem 2.5rem 2.5rem 3rem;
   border-left:2px solid rgba(194,160,90,.35);
+  background:rgba(194,160,90,.03);
 }
 .writing-editorial-intro::before{
-  content:'❧';
-  position:absolute;
-  top:-.3rem;
-  left:-1rem;
-  font-size:1.4rem;
-  color:rgba(194,160,90,.45);
-  line-height:1;
+  content:'❧';position:absolute;top:2.2rem;left:-1.05rem;
+  font-size:1.5rem;color:rgba(194,160,90,.5);line-height:1;
+  background:#0D0D0D;padding:.1rem 0;
 }
 .wei-text{
   font-family:var(--serif);
-  font-size:clamp(1.1rem,2vw,1.45rem);
-  font-style:italic;
-  color:rgba(245,240,232,.65);
-  line-height:1.85;
-  font-weight:300;
-  letter-spacing:.01em;
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  font-style:italic;color:rgba(245,240,232,.68);
+  line-height:1.9;font-weight:300;letter-spacing:.01em;
+  margin-bottom:0;
 }
-.wei-rule{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  margin-top:1.4rem;
-}
-.wei-rule-line{width:40px;height:1px;background:rgba(194,160,90,.4)}
-.wei-rule-label{
-  font-family:var(--sans);
-  font-size:.52rem;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:rgba(194,160,90,.55);
-}
+.wei-footer{display:flex;align-items:center;gap:1rem;margin-top:1.6rem}
+.wei-line{width:36px;height:1px;background:rgba(194,160,90,.4)}
+.wei-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(194,160,90,.55)}
 
 .h-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:rgba(194,160,90,.08);margin-top:0}
 .h-card{background:#0D0D0D;padding:2rem 1.8rem;transition:background .35s;position:relative;overflow:hidden}
@@ -231,37 +188,23 @@ nav.scrolled{background:rgba(8,8,8,0.95);backdrop-filter:blur(16px);padding:.9re
 
 /* BOOK STRIP */
 .h-book-strip{display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:center;background:#080808;padding:5rem 5vw;border-top:1px solid rgba(194,160,90,.08)}
-/* ahalya-cover.jpg — book cover */
-.h-book-cover{
-  width:190px;height:268px;flex-shrink:0;
-  background:url('ahalya-cover.jpg') center/cover;
-  box-shadow:16px 16px 50px rgba(0,0,0,.8),-4px 0 0 rgba(0,0,0,.5);
-  border-radius:0 3px 3px 0;
-  transition:transform .5s var(--ease),box-shadow .5s
-}
+/* ahalya-cover.jpg */
+.h-book-cover{width:190px;height:268px;flex-shrink:0;background:url('ahalya-cover.jpg') center/cover;box-shadow:16px 16px 50px rgba(0,0,0,.8),-4px 0 0 rgba(0,0,0,.5);border-radius:0 3px 3px 0;transition:transform .5s var(--ease),box-shadow .5s}
 .h-book-cover:hover{transform:translateY(-6px) rotate(1deg);box-shadow:24px 24px 60px rgba(0,0,0,.9),-4px 0 0 rgba(0,0,0,.5)}
 .h-book-text p{font-family:var(--sans);color:rgba(245,240,232,.38);line-height:1.9;font-size:.85rem;margin:1.2rem 0 1.8rem;font-weight:300}
-
-/* SPEAKING STRIP */
-.h-speak-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px}
-.h-speak-img{position:relative;overflow:hidden}
-/* speaking-hero.jpg — large keynote/stage photo */
-.h-speak-img img{width:100%;height:100%;min-height:500px;object-fit:cover;filter:brightness(.65) saturate(.65);display:block;transition:transform 8s var(--ease)}
-.h-speak-img:hover img{transform:scale(1.04)}
-.h-speak-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(13,13,13,.05),rgba(13,13,13,.02))}
-.h-speak-content{background:#0D0D0D;padding:4rem 4vw;display:flex;flex-direction:column;justify-content:center}
-.speak-list{list-style:none;margin-top:1.5rem}
-.speak-list li{font-family:var(--serif);font-size:1.05rem;padding:.85rem 0;border-bottom:1px solid rgba(194,160,90,.08);color:rgba(245,240,232,.5);font-weight:300;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
-.speak-list li:hover{color:#C2A05A;padding-left:.5rem}
-.speak-list li span{transition:transform .3s;font-size:.9rem}
-.speak-list li:hover span{transform:translateX(5px)}
 
 /* PRESS */
 .h-press{padding:2.5rem 5vw;background:#080808;text-align:center;border-top:1px solid rgba(194,160,90,.07)}
 .h-press-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,232,.18);margin-bottom:1.8rem}
-.h-press-logos{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:center;align-items:center}
-.h-press-logo{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:rgba(245,240,232,.15);letter-spacing:.04em;transition:color .3s}
-.h-press-logo:hover{color:rgba(194,160,90,.6)}
+/* marquee */
+.mq-wrap{overflow:hidden;position:relative}
+.mq-wrap::before,.mq-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:1;pointer-events:none}
+.mq-wrap::before{left:0;background:linear-gradient(to right,#080808,transparent)}
+.mq-wrap::after{right:0;background:linear-gradient(to left,#080808,transparent)}
+.mq-track{display:flex;gap:3.5rem;width:max-content;animation:mqa 26s linear infinite}
+@keyframes mqa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:rgba(245,240,232,.15);letter-spacing:.04em;white-space:nowrap;transition:color .3s}
+.mq-item:hover{color:rgba(194,160,90,.6)}
 
 /* NEWSLETTER */
 .h-newsletter{background:#0D0D0D;padding:5rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.08)}
@@ -287,32 +230,29 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .f-reflect{font-family:var(--serif);font-size:.82rem;font-style:italic;color:rgba(245,240,232,.18)}
 .f-copy{font-family:var(--sans);font-size:.58rem;color:rgba(245,240,232,.16);letter-spacing:.1em}
 
-/* REFLECTION CARD */
-#rc{position:fixed;bottom:2rem;right:2rem;background:#0B1629;border:1px solid rgba(194,160,90,.22);padding:1.4rem;max-width:250px;z-index:400;transform:translateX(300px);transition:transform .5s var(--ease);box-shadow:0 8px 32px rgba(0,0,0,.6)}
-#rc.show{transform:none}
-.rc-x{position:absolute;top:.6rem;right:.8rem;font-size:.9rem;color:rgba(245,240,232,.22);background:none;border:none;transition:color .3s}
-.rc-x:hover{color:#C2A05A}
-.rc-label{font-family:var(--sans);font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:#C2A05A;margin-bottom:.7rem}
-.rc-q{font-family:var(--serif);font-size:.88rem;font-style:italic;color:rgba(245,240,232,.68);line-height:1.7}
-
-/* ===================== ABOUT — DARK (matching home) ===================== */
+/* ════════════════════════════════════════
+   ABOUT — DARK (Home palette)
+════════════════════════════════════════ */
 #about-page{background:#0D0D0D}
-.ab-hero{min-height:72vh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
-.ab-hero-img-wrap{position:absolute;inset:0}
-/* founder-portrait.jpg — editorial author portrait */
-.ab-hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(12%) brightness(.85);opacity:.52}
-.ab-hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.98) 20%,rgba(13,13,13,.6) 60%,rgba(13,13,13,.15) 100%)}
+/* Full cinematic hero */
+.ab-hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606}
+/* founder-portrait.jpg */
+.ab-hero-bg{position:absolute;inset:0}
+.ab-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.48;filter:grayscale(12%) brightness(.88)}
+.ab-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.98) 18%,rgba(6,6,6,.6) 60%,rgba(6,6,6,.15) 100%)}
 .ab-hero-cnt{position:relative;z-index:2;padding:0 5vw 5rem;max-width:800px}
 .ab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .ab-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .ab-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#F5F0E8;line-height:1.05}
 .ab-title em{font-style:italic;color:#C2A05A}
 .ab-sub{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.4);line-height:1.95;font-weight:300;margin-top:1.5rem;max-width:500px}
-/* About photo strip */
+/* photo strip */
 .ab-photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:270px}
-.aps-img{overflow:hidden;position:relative}
-.aps-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(.75);transition:all .6s var(--ease)}
-.aps-img:hover img{filter:grayscale(0) brightness(.88);transform:scale(1.05)}
+.aps-slot{overflow:hidden;position:relative}
+/* about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg */
+.aps-slot img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(.75);transition:all .6s var(--ease)}
+.aps-slot:hover img{filter:grayscale(0) brightness(.88);transform:scale(1.05)}
+/* timeline */
 .tl-wrap{padding:5rem 5vw;background:#0D0D0D}
 .tl-h{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;color:#F5F0E8;margin-bottom:3rem}
 .tl-h em{font-style:italic;color:#C2A05A}
@@ -324,7 +264,8 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .tl-year{font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:.4rem}
 .tl-role{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:#F5F0E8;margin-bottom:.4rem}
 .tl-desc{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.4);line-height:1.85;font-weight:300}
-.tl-pull{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(194,160,90,.6);margin-top:.8rem;padding-left:.8rem;border-left:2px solid rgba(194,160,90,.25)}
+/* inline pull quote within bio */
+.tl-pull{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(194,160,90,.65);margin-top:.9rem;padding-left:.8rem;border-left:2px solid rgba(194,160,90,.3)}
 .phil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(194,160,90,.1);margin-top:2rem}
 .phil-card{background:#0D0D0D;padding:2.5rem 1.8rem;transition:background .3s}
 .phil-card:hover{background:#111}
@@ -333,30 +274,51 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .phil-card:hover .phil-t{color:#C2A05A}
 .phil-d{font-family:var(--sans);font-size:.78rem;color:rgba(245,240,232,.36);line-height:1.85;font-weight:300}
 
-/* ===================== MYTHOLOGY LAB — INDIGO + SILVER ===================== */
+/* ════════════════════════════════════════
+   MYTHOLOGY LAB — INDIGO + SILVER + GOLD
+════════════════════════════════════════ */
 #lab-page{background:#1A1E35}
 .lab-hero{background:#111728;padding:8rem 5vw 4rem;position:relative;overflow:hidden}
-.lab-hero::before{content:'ΜΥΘΟΣ';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18rem;color:rgba(168,180,200,.03);line-height:1;pointer-events:none}
-.lab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#A8B4C8;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
-.lab-label::before{content:'';width:16px;height:1px;background:#A8B4C8}
+.lab-hero::before{content:'ΜΥΘΟΣ';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18rem;color:rgba(194,160,90,.04);line-height:1;pointer-events:none}
+.lab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.lab-label::before{content:'';width:16px;height:1px;background:#C2A05A}
 .lab-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#E8EAF0;line-height:1.05}
 .lab-title em{font-style:italic;color:#C2A05A}
 .lab-sub{font-family:var(--sans);font-size:.88rem;color:rgba(232,234,240,.42);line-height:1.85;max-width:500px;margin-top:1rem;font-weight:300}
 .search-wrap{position:relative;margin-top:2rem;max-width:640px}
-.search-inp{width:100%;padding:1rem 3.5rem 1rem 1.4rem;background:rgba(232,234,240,.04);border:1px solid rgba(168,180,200,.15);color:#E8EAF0;font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .3s}
+.search-inp{width:100%;padding:1rem 3.5rem 1rem 1.4rem;background:rgba(232,234,240,.04);border:1px solid rgba(194,160,90,.25);color:#E8EAF0;font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .3s}
 .search-inp:focus{border-color:#C2A05A}
 .search-inp::placeholder{color:rgba(232,234,240,.22)}
-.search-ico{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);color:#A8B4C8;font-size:1.1rem}
+.search-ico{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);color:#C2A05A;font-size:1.1rem}
+/* WGCH */
+.wgch{background:#0D1020}
+.wgch-banner{position:relative;min-height:420px;display:flex;align-items:flex-end;overflow:hidden}
+/* wgch-hero.jpg */
+.wgch-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;transform:scale(1.03);animation:sk 18s ease infinite alternate}
+@keyframes sk{from{transform:scale(1.03)}to{transform:scale(1.09)}}
+.wgch-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,10,22,.98) 18%,rgba(8,10,22,.6) 62%,rgba(8,10,22,.2) 100%)}
+.wgch-cnt{position:relative;z-index:2;padding:3rem 5vw;max-width:760px}
+.wgch-label{font-family:var(--sans);font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.wgch-label::before{content:'';width:16px;height:1px;background:#C2A05A}
+.wgch-h{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#E8EAF0;margin-bottom:.8rem}
+.wgch-h em{font-style:italic;color:#C2A05A}
+.wgch-p{font-family:var(--sans);font-size:.82rem;color:rgba(232,234,240,.4);line-height:2;font-weight:300;max-width:550px;margin-bottom:1.8rem}
+.wgch-gal{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;height:150px}
+/* wgch-01.jpg … wgch-05.jpg */
+.wg{overflow:hidden}
+.wg img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.55);transition:all .5s}
+.wg:hover img{filter:brightness(.85) saturate(.85);transform:scale(1.06)}
+/* compass */
 .compass-sec{padding:4rem 5vw;background:#1A1E35;text-align:center}
 .compass-h{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:#E8EAF0;margin-bottom:2rem}
 .compass-h em{font-style:italic;color:#C2A05A}
 .cmp-wrap{position:relative;width:300px;height:300px;margin:0 auto}
-.cmp-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:240px;height:240px;border-radius:50%;border:1px solid rgba(168,180,200,.15);animation:rot 30s linear infinite}
+.cmp-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:240px;height:240px;border-radius:50%;border:1px solid rgba(194,160,90,.2);animation:rot 30s linear infinite}
 @keyframes rot{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.cmp-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(168,180,200,.08);border:1px solid rgba(168,180,200,.18);display:flex;align-items:center;justify-content:center;z-index:2}
+.cmp-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(194,160,90,.07);border:1px solid rgba(194,160,90,.25);display:flex;align-items:center;justify-content:center;z-index:2}
 .cmp-center span{font-family:var(--serif);font-size:.62rem;color:#C2A05A;letter-spacing:.08em;font-style:italic}
-.cmp-pt{position:absolute;width:66px;height:66px;border-radius:50%;background:rgba(17,23,40,.9);border:1px solid rgba(168,180,200,.12);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.68rem;color:rgba(232,234,240,.6);transition:all .3s;text-align:center;line-height:1.2}
-.cmp-pt:hover{background:rgba(168,180,200,.14);color:#E8EAF0;border-color:#C2A05A;transform:scale(1.1)}
+.cmp-pt{position:absolute;width:66px;height:66px;border-radius:50%;background:rgba(17,23,40,.9);border:1px solid rgba(194,160,90,.18);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.68rem;color:rgba(232,234,240,.65);transition:all .3s;text-align:center;line-height:1.2}
+.cmp-pt:hover{background:rgba(194,160,90,.15);color:#F5F0E8;border-color:#C2A05A;transform:scale(1.1)}
 .cp-t{top:-33px;left:50%;transform:translateX(-50%)}
 .cp-t:hover{transform:translateX(-50%) scale(1.1)}
 .cp-r{right:-33px;top:50%;transform:translateY(-50%)}
@@ -368,45 +330,49 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .cp-tr{top:2px;right:8px}.cp-tl{top:2px;left:8px}.cp-br{bottom:2px;right:8px}.cp-bl{bottom:2px;left:8px}
 .lab-sec{padding:2.5rem 5vw;background:#1A1E35}
 .lab-sec-t{font-family:var(--sans);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
-.lab-sec-t::after{content:'';flex:1;height:1px;background:rgba(168,180,200,.1)}
+.lab-sec-t::after{content:'';flex:1;height:1px;background:rgba(194,160,90,.18)}
 .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.8rem}
-.pill{padding:.55rem 1.3rem;border:1px solid rgba(168,180,200,.13);font-family:var(--sans);font-size:.65rem;letter-spacing:.08em;color:rgba(232,234,240,.45);transition:all .3s;background:transparent}
-.pill:hover,.pill.act{background:rgba(194,160,90,.1);color:#E8EAF0;border-color:rgba(194,160,90,.4)}
-.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:rgba(168,180,200,.07)}
+.pill{padding:.55rem 1.3rem;border:1px solid rgba(194,160,90,.2);font-family:var(--sans);font-size:.65rem;letter-spacing:.08em;color:rgba(232,234,240,.5);transition:all .3s;background:transparent}
+.pill:hover,.pill.act{background:rgba(194,160,90,.1);color:#F5F0E8;border-color:rgba(194,160,90,.5)}
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:rgba(194,160,90,.1)}
 .art-card{background:#1A1E35;padding:1.8rem;transition:background .3s;position:relative;overflow:hidden}
 .art-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:#C2A05A;transform:scaleY(0);transition:transform .35s var(--ease);transform-origin:bottom}
 .art-card:hover{background:#1e2440}
 .art-card:hover::before{transform:scaleY(1)}
-.art-tag{display:inline-block;font-family:var(--sans);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:#A8B4C8;border:1px solid rgba(168,180,200,.13);padding:.22rem .7rem;margin-bottom:.9rem}
+.art-tag{display:inline-block;font-family:var(--sans);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;border:1px solid rgba(194,160,90,.25);padding:.22rem .7rem;margin-bottom:.9rem}
 .art-title{font-family:var(--serif);font-size:1.2rem;line-height:1.4;color:#E8EAF0;margin-bottom:.6rem;transition:color .3s}
 .art-card:hover .art-title{color:#C2A05A}
-.art-ex{font-family:var(--sans);font-size:.76rem;color:rgba(232,234,240,.4);line-height:1.85;font-weight:300}
-.art-meta{font-family:var(--sans);font-size:.58rem;color:rgba(232,234,240,.2);letter-spacing:.1em;display:flex;justify-content:space-between;margin-top:1rem;padding-top:.8rem;border-top:1px solid rgba(168,180,200,.07)}
-.char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:1px;background:rgba(168,180,200,.07)}
+.art-ex{font-family:var(--sans);font-size:.76rem;color:rgba(232,234,240,.42);line-height:1.85;font-weight:300}
+.art-meta{font-family:var(--sans);font-size:.58rem;color:rgba(232,234,240,.2);letter-spacing:.1em;display:flex;justify-content:space-between;margin-top:1rem;padding-top:.8rem;border-top:1px solid rgba(194,160,90,.1)}
+.char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:1px;background:rgba(194,160,90,.1)}
 .char-card{background:#1A1E35;padding:1.6rem 1rem;text-align:center;transition:background .3s;position:relative;overflow:hidden}
 .char-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#C2A05A;transform:scaleX(0);transition:transform .3s}
 .char-card:hover{background:#1e2440}
 .char-card:hover::before{transform:scaleX(1)}
-.char-initial{width:48px;height:48px;border-radius:50%;background:rgba(168,180,200,.07);border:1px solid rgba(168,180,200,.16);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:var(--serif);font-size:1.2rem;color:#C2A05A;font-style:italic}
+.char-initial{width:48px;height:48px;border-radius:50%;background:rgba(194,160,90,.07);border:1px solid rgba(194,160,90,.22);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:var(--serif);font-size:1.2rem;color:#C2A05A;font-style:italic;transition:all .3s}
+.char-card:hover .char-initial{background:rgba(194,160,90,.15);border-color:#C2A05A}
 .char-name{font-family:var(--serif);font-size:1rem;color:#E8EAF0;margin-bottom:.25rem}
-.char-role{font-family:var(--sans);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,234,240,.28)}
+.char-role{font-family:var(--sans);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,234,240,.3)}
 
-/* ===================== HALL OF QUESTIONS (NEW PAGE) ===================== */
+/* ════════════════════════════════════════
+   HALL OF QUESTIONS (NEW PAGE)
+════════════════════════════════════════ */
 #questions-page{background:#0D0D0D}
-.qp-hero{min-height:55vh;display:flex;align-items:flex-end;background:#060606;padding:5rem 5vw;position:relative;overflow:hidden}
+.qp-hero{position:relative;min-height:58vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606;padding:0 5vw 5rem}
 .qp-hero-bg{position:absolute;inset:0}
+/* questions-hero.jpg */
 .qp-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.22}
-.qp-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#060606 30%,rgba(6,6,6,.65) 70%,rgba(6,6,6,.2))}
+.qp-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#060606 28%,rgba(6,6,6,.65) 70%,rgba(6,6,6,.2))}
 .qp-cnt{position:relative;z-index:2;max-width:700px}
-.qp-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
-.qp-label::before{content:'';width:18px;height:1px;background:#C2A05A}
+.qp-ey{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.qp-ey::before{content:'';width:18px;height:1px;background:#C2A05A}
 .qp-h1{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#F5F0E8;line-height:1.05}
 .qp-h1 em{font-style:italic;color:#C2A05A}
 .qp-sub{font-family:var(--sans);font-size:.84rem;color:rgba(245,240,232,.38);line-height:2;max-width:480px;margin-top:1.2rem;font-weight:300}
-.qp-cats-wrap{padding:2.5rem 5vw;background:#0D0D0D}
+.qp-cats-wrap{padding:2.5rem 5vw;background:#0D0D0D;border-bottom:1px solid rgba(194,160,90,.08)}
 .qp-cats{display:flex;flex-wrap:wrap;gap:.5rem}
 .qp-cat{padding:.52rem 1.25rem;border:1px solid rgba(194,160,90,.18);font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);transition:all .3s}
-.qp-cat:hover,.qp-cat.act{background:rgba(194,160,90,.1);color:#C2A05A;border-color:rgba(194,160,90,.4)}
+.qp-cat:hover,.qp-cat.act{background:rgba(194,160,90,.1);color:#C2A05A;border-color:rgba(194,160,90,.45)}
 .q-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:rgba(194,160,90,.07);padding:0 5vw 5rem}
 .q-card{background:#0D0D0D;padding:2rem 1.8rem;transition:background .35s;position:relative;overflow:hidden}
 .q-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(194,160,90,.3),transparent);transform:scaleX(0);transition:transform .5s}
@@ -419,100 +385,46 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .q-card-arr{font-size:.85rem;color:rgba(194,160,90,.35);transition:transform .3s}
 .q-card:hover .q-card-arr{transform:translate(4px,-4px);color:#C2A05A}
 
-/* ===================== SPEAKING — FOREST GREEN + VIDEO HERO ===================== */
+/* ════════════════════════════════════════
+   SPEAKING — FOREST GREEN + VIDEO HERO
+════════════════════════════════════════ */
 #speaking-page{background:#1C2E22}
 
 /* ── CINEMATIC VIDEO HERO ── */
-.spk-video-hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  background:#0c1510;
-}
-.spk-video-wrap{
-  position:absolute;inset:0;
-  overflow:hidden;
-}
-/* Placeholder video (royalty-free cinematic lecture) */
-.spk-video-wrap video{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;
-  opacity:.42;
-  filter:saturate(.55) brightness(.7);
-}
-/* Fallback image if video fails */
-.spk-video-wrap .spk-video-fallback{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;
-  opacity:.38;
-  filter:saturate(.55) brightness(.7);
-}
-.spk-video-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(12,21,16,.98) 22%,rgba(12,21,16,.6) 60%,rgba(12,21,16,.25) 100%);
-}
-/* Subtle vignette sides */
-.spk-video-vignette{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,transparent 50%,rgba(12,21,16,.7) 100%);
-  pointer-events:none;
-}
-.spk-video-cnt{
-  position:relative;z-index:2;
-  padding:0 5vw 6rem;
-  max-width:820px;
-  opacity:0;
-  animation:fadeUp .9s 1s forwards;
-}
-.spk-video-label{
-  font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;
-  color:#D4C99A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem;
-}
-.spk-video-label::before{content:'';width:18px;height:1px;background:#D4C99A}
-.spk-video-h1{
-  font-family:var(--serif);
-  font-size:clamp(2.8rem,7vw,6.5rem);
-  font-weight:300;
-  color:#F5F2EA;
-  line-height:1.02;
-  margin-bottom:1.5rem;
-}
-.spk-video-h1 em{font-style:italic;color:#D4C99A}
-.spk-video-sub{
-  font-family:var(--sans);font-size:clamp(.78rem,1.2vw,.92rem);
-  color:rgba(245,242,234,.42);line-height:2.1;max-width:480px;
-  font-weight:300;margin-bottom:2.5rem;
-}
-/* Scroll indicator */
-.spk-scroll-indicator{
-  display:flex;align-items:center;gap:1rem;
-  opacity:0;animation:fadeUp .8s 1.4s forwards;
-}
-.spk-scroll-line{width:40px;height:1px;background:#D4C99A;animation:ssi 2s 2s infinite}
-@keyframes ssi{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:.4;transform:scaleX(1.5)}}
-.spk-scroll-label{font-family:var(--sans);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,234,.28)}
+.spk-video-hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:#0c1510}
+.spk-video-wrap{position:absolute;inset:0;overflow:hidden}
+/* Replace <source> with actual speaking video file */
+.spk-video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.55) brightness(.7)}
+/* speaking-stage.jpg: Fallback poster / if video fails */
+.spk-video-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;filter:saturate(.55) brightness(.7)}
+.spk-video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,21,16,.98) 22%,rgba(12,21,16,.6) 62%,rgba(12,21,16,.22) 100%)}
+.spk-video-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(12,21,16,.7) 100%);pointer-events:none}
+.spk-video-cnt{position:relative;z-index:2;padding:0 5vw 6rem;max-width:820px;opacity:0;animation:fadeUp .9s 1s forwards}
+.spk-vid-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#D4C99A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.spk-vid-label::before{content:'';width:18px;height:1px;background:#D4C99A}
+.spk-vid-h1{font-family:var(--serif);font-size:clamp(2.8rem,7vw,6.5rem);font-weight:300;color:#F5F2EA;line-height:1.02;margin-bottom:1.5rem}
+.spk-vid-h1 em{font-style:italic;color:#D4C99A}
+.spk-vid-sub{font-family:var(--sans);font-size:clamp(.78rem,1.2vw,.92rem);color:rgba(245,242,234,.42);line-height:2.1;max-width:480px;font-weight:300;margin-bottom:2.5rem}
+.spk-scroll{display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .8s 1.5s forwards}
+.spk-scroll-line{width:40px;height:1px;background:#D4C99A;animation:ssp 2.2s 2s infinite}
+@keyframes ssp{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:.4;transform:scaleX(1.5)}}
+.spk-scroll span{font-family:var(--sans);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,234,.3)}
 
-/* rest of speaking page */
-.spk-hero{min-height:72vh;background:#141f17;display:flex;align-items:flex-end;padding:5rem 5vw;position:relative;overflow:hidden}
-.spk-hero-img{position:absolute;inset:0}
-/* speaking-stage.jpg — wide stage/audience shot */
-.spk-hero-img img{width:100%;height:100%;object-fit:cover;opacity:.32;filter:saturate(.55) brightness(.65);display:block}
-.spk-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#141f17 28%,rgba(20,31,23,.65) 68%,rgba(20,31,23,.35))}
-.spk-content{position:relative;z-index:1}
-.spk-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#D4C99A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
-.spk-label::before{content:'';width:16px;height:1px;background:#D4C99A}
-.spk-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#F5F2EA;line-height:1.05}
-.spk-title em{font-style:italic;color:#D4C99A}
-.spk-sub{font-family:var(--sans);font-size:.85rem;color:rgba(245,242,234,.42);line-height:1.9;max-width:480px;margin-top:1rem;font-weight:300}
+/* SPEAKING REST */
 .spk-section{padding:4rem 5vw;background:#1C2E22}
 .spk-s-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#D4C99A;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
 .spk-s-label::before{content:'';width:16px;height:1px;background:#D4C99A}
 .spk-s-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#F5F2EA;margin-bottom:1.5rem}
 .spk-s-title em{font-style:italic;color:#D4C99A}
+/* split image+text */
+.spk-split{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:460px;background:rgba(212,201,154,.04)}
+.spk-split-img{overflow:hidden;position:relative}
+/* speaking-hero.jpg or workshop images */
+.spk-split-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.6);transition:transform 8s var(--ease)}
+.spk-split-img:hover img{transform:scale(1.04)}
+.spk-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(20,31,23,.05),rgba(20,31,23,.02))}
+.spk-split-text{padding:4rem 4vw;display:flex;flex-direction:column;justify-content:center;background:#141f17}
+.spk-split-text p{font-family:var(--sans);font-size:.82rem;color:rgba(245,242,234,.4);line-height:2;font-weight:300}
 .prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(212,201,154,.08);margin-top:2rem}
 .prog-card{background:#1C2E22;padding:2.8rem 2rem;transition:all .3s;border-top:2px solid transparent}
 .prog-card:hover{background:#1f3324;border-top-color:#D4C99A}
@@ -522,39 +434,57 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .prog-desc{font-family:var(--sans);font-size:.8rem;color:rgba(245,242,234,.42);line-height:1.9;font-weight:300}
 .prog-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
 .prog-tag{font-family:var(--sans);font-size:.58rem;letter-spacing:.08em;padding:.25rem .7rem;border:1px solid rgba(212,201,154,.16);color:rgba(212,201,154,.4);transition:all .3s}
-.prog-card:hover .prog-tag{border-color:rgba(212,201,154,.28);color:#D4C99A}
-.spk-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:rgba(212,201,154,.08)}
-.sg-img{overflow:hidden;height:260px;position:relative}
-.sg-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(.65);transition:all .5s var(--ease)}
-.sg-img:hover img{filter:saturate(.85) brightness(.8);transform:scale(1.05)}
+.prog-card:hover .prog-tag{border-color:rgba(212,201,154,.3);color:#D4C99A}
+/* masonry gallery */
+.spk-gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:3px;background:rgba(212,201,154,.06)}
+.gi{overflow:hidden;position:relative}
+.gi.tall{grid-row:span 2}
+.gi.wide{grid-column:span 2}
+/* workshop-01…07.jpg */
+.gi img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.55);transition:all .6s var(--ease)}
+.gi:hover img{filter:brightness(.82) saturate(.8);transform:scale(1.05)}
+.gi-label{position:absolute;bottom:.8rem;left:.8rem;font-family:var(--sans);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,234,.5);background:rgba(0,0,0,.5);padding:.22rem .6rem;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s}
+.gi:hover .gi-label{opacity:1}
+/* testimonials */
 .spk-testi{background:#141f17;padding:4rem 5vw;border-top:1px solid rgba(212,201,154,.07)}
 .spk-t-title{font-family:var(--serif);font-size:2rem;font-weight:300;color:#F5F2EA;margin-bottom:2rem}
 .spk-t-title em{font-style:italic;color:#D4C99A}
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:rgba(212,201,154,.07)}
 .testi-card{background:#141f17;padding:2.2rem 1.8rem;border:1px solid rgba(212,201,154,.05);transition:border-color .3s}
-.testi-card:hover{border-color:rgba(212,201,154,.18)}
+.testi-card:hover{border-color:rgba(212,201,154,.2)}
 .testi-q{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(245,242,234,.58);line-height:1.85;margin-bottom:1.2rem}
 .testi-a{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#D4C99A}
 .testi-o{font-family:var(--sans);font-size:.6rem;color:rgba(245,242,234,.26);margin-top:.2rem}
+/* video cards */
+.spk-vids{padding:4rem 5vw;background:#1C2E22}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:2rem}
+.vid-card{background:#141f17;overflow:hidden;transition:transform .3s}
+.vid-card:hover{transform:translateY(-4px)}
+.vid-thumb{position:relative;height:180px;overflow:hidden}
+/* talk-01.jpg, talk-02.jpg, talk-03.jpg */
+.vid-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.6);transition:all .5s}
+.vid-card:hover .vid-thumb img{filter:brightness(.82) saturate(.8);transform:scale(1.04)}
+.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(212,201,154,.85);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#141f17;transition:transform .3s;padding-left:3px}
+.vid-card:hover .vid-play{transform:translate(-50%,-50%) scale(1.15)}
+.vid-info{padding:1rem 1.2rem}
+.vid-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#D4C99A;margin-bottom:.4rem}
+.vid-title{font-family:var(--serif);font-size:.98rem;color:#F5F2EA;line-height:1.4}
 
-/* ===================== BOOKS — WARM CREAM + COPPER ===================== */
+/* ════════════════════════════════════════
+   BOOKS — WARM CREAM + COPPER
+   NAV: forced dark backdrop
+════════════════════════════════════════ */
 #books-page{background:#F7F0E3}
-/* Nav fix for light page */
-#books-page .bk-nav-fix{position:fixed;top:0;left:0;right:0;height:68px;background:rgba(8,8,8,.92);backdrop-filter:blur(16px);z-index:498;pointer-events:none}
+/* dark nav backdrop for cream page */
+#books-page .bk-nav-fix{position:fixed;top:0;left:0;right:0;height:68px;background:rgba(6,6,6,.94);backdrop-filter:blur(18px);z-index:498;pointer-events:none}
 .bk-hero{background:#EDE4D3;padding:8rem 5vw 4rem;display:grid;grid-template-columns:1fr 260px;gap:6rem;align-items:center}
 .bk-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#9C6B3F;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .bk-label::before{content:'';width:16px;height:1px;background:#9C6B3F}
 .bk-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.2rem);font-weight:300;color:#2A1F14;line-height:1.05}
 .bk-title em{font-style:italic;color:#9C6B3F}
 .bk-sub{font-family:var(--sans);font-size:.88rem;color:rgba(42,31,20,.5);line-height:1.9;font-weight:300;margin:1.5rem 0}
-/* ahalya-cover.jpg — actual book cover */
-.bk-cover{
-  width:220px;height:310px;
-  background:url('ahalya-cover.jpg') center/cover;
-  box-shadow:18px 18px 55px rgba(42,31,20,.3),-4px 0 0 rgba(42,31,20,.18);
-  border-radius:0 3px 3px 0;display:block;
-  transition:transform .5s var(--ease),box-shadow .5s
-}
+/* ahalya-cover.jpg */
+.bk-cover{width:220px;height:310px;background:url('ahalya-cover.jpg') center/cover;box-shadow:18px 18px 55px rgba(42,31,20,.3),-4px 0 0 rgba(42,31,20,.18);border-radius:0 3px 3px 0;display:block;transition:transform .5s var(--ease),box-shadow .5s}
 .bk-cover:hover{transform:translateY(-6px) rotate(1deg);box-shadow:24px 24px 65px rgba(42,31,20,.4),-4px 0 0 rgba(42,31,20,.18)}
 .bk-badge{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#9C6B3F;text-align:center;margin-top:1rem}
 .bk-details{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(42,31,20,.06)}
@@ -569,7 +499,9 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .bk-rev-t{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(42,31,20,.62);line-height:1.8;margin-bottom:.7rem}
 .bk-rev-s{font-family:var(--sans);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#9C6B3F}
 
-/* ===================== MEDIA — GRAPHITE + WHITE ===================== */
+/* ════════════════════════════════════════
+   MEDIA — GRAPHITE + WHITE
+════════════════════════════════════════ */
 #media-page{background:#2A2A2A}
 .med-hero{background:#1a1a1a;padding:8rem 5vw 3.5rem}
 .med-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,240,240,.35);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
@@ -581,22 +513,27 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .med-tab.act,.med-tab:hover{color:#F0F0F0;border-bottom-color:#fff}
 .med-content{padding:3rem 5vw;background:#2A2A2A}
 /* Articles editorial layout */
-.articles-editorial{display:grid;gap:1px;background:rgba(255,255,255,.04)}
-.ae-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:360px;margin-bottom:1px}
-.ae-img{overflow:hidden;position:relative}
-.ae-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(.2);transition:all .6s}
-.ae-img:hover img{filter:brightness(.8) grayscale(0);transform:scale(1.03)}
-.ae-text{background:#1a1a1a;padding:3rem 3vw;display:flex;flex-direction:column;justify-content:flex-end}
-.ae-pub{font-family:var(--sans);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,240,240,.35);display:block;margin-bottom:.7rem}
+.ae-wrap{display:flex;flex-direction:column;gap:1px}
+.ae-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:380px;background:rgba(255,255,255,.04)}
+.ae-feat-img{overflow:hidden;position:relative}
+/* media-vogue.jpg */
+.ae-feat-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(.2);transition:all .6s}
+.ae-feat-img:hover img{filter:brightness(.82) grayscale(0);transform:scale(1.03)}
+.ae-feat-text{background:#1a1a1a;padding:3rem 3vw;display:flex;flex-direction:column;justify-content:flex-end}
+.ae-pub{font-family:var(--sans);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,240,240,.38);margin-bottom:.7rem;display:block}
 .ae-head{font-family:var(--serif);font-size:1.5rem;color:#F0F0F0;line-height:1.4;margin-bottom:.7rem}
-.ae-ex{font-family:var(--sans);font-size:.76rem;color:rgba(240,240,240,.4);line-height:1.85;font-weight:300;margin-bottom:1.2rem}
-.ae-cards-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:rgba(255,255,255,.04)}
+.ae-ex{font-family:var(--sans);font-size:.76rem;color:rgba(240,240,240,.42);line-height:1.85;font-weight:300;margin-bottom:1.2rem}
+.ae-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1px;background:rgba(255,255,255,.04)}
 .ae-card{background:#1a1a1a;overflow:hidden;transition:background .3s}
-.ae-card:hover{background:#222}
-.ae-card-img{height:150px;overflow:hidden}
+.ae-card:hover{background:#252525}
+.ae-card-img{height:145px;overflow:hidden}
+/* media-article-01.jpg … media-article-05.jpg */
 .ae-card-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(.2);transition:all .5s}
-.ae-card:hover .ae-card-img img{filter:brightness(.8) grayscale(0);transform:scale(1.04)}
-.ae-card-body{padding:1.4rem 1.5rem}
+.ae-card:hover .ae-card-img img{filter:brightness(.82) grayscale(0);transform:scale(1.04)}
+.ae-card-body{padding:1.3rem 1.4rem}
+.ae-card-link{font-family:var(--sans);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,240,240,.45);text-decoration:none;border-bottom:1px solid rgba(240,240,240,.18);padding-bottom:1px;transition:color .3s}
+.ae-card-link:hover{color:#fff}
+/* press grid */
 .press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,.04)}
 .press-card{background:#2A2A2A;padding:2rem 1.8rem;border:1px solid rgba(255,255,255,.04);transition:border-color .3s}
 .press-card:hover{border-color:rgba(255,255,255,.16)}
@@ -604,7 +541,9 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .pc-head{font-family:var(--serif);font-size:1.12rem;color:#F0F0F0;line-height:1.5;margin-bottom:.7rem}
 .pc-date{font-family:var(--sans);font-size:.6rem;color:rgba(240,240,240,.2);letter-spacing:.1em}
 
-/* ===================== CONTACT — MIDNIGHT BLUE + GOLD ===================== */
+/* ════════════════════════════════════════
+   CONTACT — MIDNIGHT BLUE + GOLD
+════════════════════════════════════════ */
 #contact-page{background:#0B1629}
 .con-hero{background:#08101e;padding:8rem 5vw 4rem;position:relative}
 .con-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(194,160,90,.1)}
@@ -634,30 +573,30 @@ select.f-inp option{background:#0B1629}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .h-about-strip,.h-speak-strip,.bk-hero,.bk-details,.con-grid,.footer-grid,.ae-featured{grid-template-columns:1fr}
+  .h-about-strip,.h-speak-strip,.bk-hero,.bk-details,.con-grid,.footer-grid,.ae-featured,.spk-split{grid-template-columns:1fr}
   .h-book-strip{grid-template-columns:1fr;text-align:center}
   .h-book-cover{margin:0 auto}
-  .spk-gallery{grid-template-columns:repeat(2,1fr)}
-  .sg-img{height:180px}
+  .spk-gal{grid-template-columns:repeat(2,1fr)}
+  .gi.wide{grid-column:span 1}
   .bk-hero{padding:6rem 5vw 3rem}
   .footer-grid{grid-template-columns:1fr 1fr}
   .f-row{grid-template-columns:1fr}
   .hero-portrait{width:100%;opacity:.28}
   .ab-photo-strip{grid-template-columns:repeat(2,1fr)}
+  .wgch-gal{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:640px){
   .nav-links{display:none}
   .hamburger{display:flex}
   .h-stats{grid-template-columns:1fr}
-  .spk-gallery{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr}
   .cmp-wrap{width:260px;height:260px}
   .ab-photo-strip{grid-template-columns:repeat(2,1fr)}
+  .spk-gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .gi.tall{grid-row:span 1}
+  .wgch-gal{grid-template-columns:repeat(2,1fr)}
 }
-@media(pointer:coarse){
-  #quill-cursor,#quill-trail{display:none}
-  *{cursor:auto!important}
-}
+@media(pointer:coarse){#quill-cursor,#quill-trail{display:none}*{cursor:auto!important}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -666,24 +605,19 @@ select.f-inp option{background:#0B1629}
 <!-- QUILL CURSOR -->
 <div id="quill-cursor">
   <svg viewBox="0 0 32 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 2 C26 8, 30 18, 24 32 C20 40, 16 44, 16 46 C16 44, 12 40, 8 32 C2 18, 6 8, 16 2Z" fill="url(#quillGrad)" opacity=".95"/>
-    <path d="M16 2 C16 10, 18 22, 20 32 C18 38, 16 44, 16 46 C16 44, 14 38, 12 32 C14 22, 16 10, 16 2Z" fill="rgba(194,160,90,0.3)"/>
+    <path d="M16 2 C26 8,30 18,24 32 C20 40,16 44,16 46 C16 44,12 40,8 32 C2 18,6 8,16 2Z" fill="url(#qg)" opacity=".95"/>
+    <path d="M16 2 C16 10,18 22,20 32 C18 38,16 44,16 46 C16 44,14 38,12 32 C14 22,16 10,16 2Z" fill="rgba(194,160,90,0.3)"/>
     <path d="M16 32 L14 48" stroke="#C2A05A" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
-    <path d="M16 10 C12 12, 7 16, 6 22" stroke="rgba(194,160,90,0.5)" stroke-width=".8" stroke-linecap="round" fill="none"/>
-    <path d="M16 16 C11 18, 6 22, 5 28" stroke="rgba(194,160,90,0.4)" stroke-width=".8" stroke-linecap="round" fill="none"/>
-    <path d="M16 10 C20 12, 25 16, 26 22" stroke="rgba(194,160,90,0.5)" stroke-width=".8" stroke-linecap="round" fill="none"/>
-    <path d="M16 16 C21 18, 26 22, 27 28" stroke="rgba(194,160,90,0.4)" stroke-width=".8" stroke-linecap="round" fill="none"/>
-    <defs>
-      <linearGradient id="quillGrad" x1="16" y1="2" x2="16" y2="46" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#E8D5A0"/>
-        <stop offset="50%" stop-color="#C2A05A"/>
-        <stop offset="100%" stop-color="#7A5C2E"/>
-      </linearGradient>
-    </defs>
+    <path d="M16 10 C12 12,7 16,6 22" stroke="rgba(194,160,90,.5)" stroke-width=".8" stroke-linecap="round"/>
+    <path d="M16 16 C11 18,6 22,5 28" stroke="rgba(194,160,90,.4)" stroke-width=".8" stroke-linecap="round"/>
+    <path d="M16 10 C20 12,25 16,26 22" stroke="rgba(194,160,90,.5)" stroke-width=".8" stroke-linecap="round"/>
+    <path d="M16 16 C21 18,26 22,27 28" stroke="rgba(194,160,90,.4)" stroke-width=".8" stroke-linecap="round"/>
+    <defs><linearGradient id="qg" x1="16" y1="2" x2="16" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E8D5A0"/><stop offset="50%" stop-color="#C2A05A"/><stop offset="100%" stop-color="#7A5C2E"/>
+    </linearGradient></defs>
   </svg>
 </div>
 <div id="quill-trail"></div>
-
 <div id="progress-bar"></div>
 <div id="particles"></div>
 
@@ -701,7 +635,7 @@ select.f-inp option{background:#0B1629}
   <div class="rc-q" id="rc-text"></div>
 </div>
 
-<!-- MOTW — shows only on home, hides on scroll -->
+<!-- MOTW: home only, hides on scroll -->
 <div id="motw">
   <span class="motw-label">Myth of the Week</span>
   <span class="motw-text">This week: <em>The Churning of the Ocean</em> — What rises when you are tested to your core?</span>
@@ -710,7 +644,10 @@ select.f-inp option{background:#0B1629}
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a>
+  <a href="#" class="nav-logo" onclick="return go('home')">
+    <span class="nav-logo-name">Myths By Sundeep</span>
+    <span class="nav-logo-sub">Mythologist · Author · Storyteller</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#" onclick="return go('home')" data-pg="home">Home</a></li>
     <li><a href="#" onclick="return go('about')" data-pg="about">About</a></li>
@@ -734,7 +671,7 @@ select.f-inp option{background:#0B1629}
   <a href="#" onclick="go('contact');toggleMob()" style="--i:7">Contact</a>
 </div>
 
-<!-- ============ HOME ============ -->
+<!-- ════ HOME ════ -->
 <div class="page active" id="home">
   <section class="hero">
     <!-- founder-hero.jpg: Replace with Sundeep's actual portrait -->
@@ -773,21 +710,21 @@ select.f-inp option{background:#0B1629}
     <p class="quote-attr reveal">— Sundeep Verma</p>
   </section>
 
-  <!-- ── FEATURED WRITING: editorial intro + existing cards ── -->
+  <!-- FEATURED WRITING: editorial intro + existing cards -->
   <section class="h-section">
     <p class="h-label reveal">Stories in Motion</p>
     <h2 class="h-title reveal">Featured <em>Writing</em></h2>
 
-    <!-- EDITORIAL INTRODUCTION — premium magazine paragraph -->
+    <!-- ── EDITORIAL INTRO PARAGRAPH ── -->
     <div class="writing-editorial-intro reveal">
-      <p class="wei-text">Ancient stories are not relics preserved in temples — they are living maps of identity, ambition, love, grief and transformation. Every essay here explores mythology not as history or religion, but as a mirror through which modern life becomes more understandable. These writings invite readers to discover timeless archetypes hidden within everyday choices, and to recognise, in the oldest stories ever told, something that feels unmistakably personal.</p>
-      <div class="wei-rule">
-        <div class="wei-rule-line"></div>
-        <span class="wei-rule-label">Mythology · Psychology · Modern Life</span>
+      <p class="wei-text">Ancient stories are not relics preserved in temples — they are living maps of identity, ambition, love, grief and transformation. Every essay here explores mythology not as history or religion, but as a mirror through which modern life becomes more understandable. These writings invite you to discover the timeless archetypes hidden inside everyday choices — and to recognise, in the oldest stories ever told, something that feels unmistakably, uncomfortably personal.</p>
+      <div class="wei-footer">
+        <div class="wei-line"></div>
+        <span class="wei-tag">Mythology · Psychology · Modern Life</span>
       </div>
     </div>
 
-    <!-- Existing article cards — unchanged -->
+    <!-- Existing cards — untouched -->
     <div class="h-cards">
       <div class="h-card reveal">
         <p class="h-card-tag">Identity · Psychology</p>
@@ -814,7 +751,7 @@ select.f-inp option{background:#0B1629}
     <!-- ahalya-cover.jpg: Replace with actual book cover scan -->
     <div class="h-book-cover"></div>
     <div class="h-book-text">
-      <p class="h-label reveal" style="color:#C2A05A">Published Work</p>
+      <p class="h-label reveal">Published Work</p>
       <h2 class="h-title reveal">Ahalya —<br><em>The Unploughed</em></h2>
       <div class="h-divider reveal"></div>
       <p class="reveal">A retelling of one of mythology's most misread women — exploring unrequited love, insatiable passion, and the eternal conflict between mind and heart. Written in visceral poetic form, with mesmerizing illustrations.</p>
@@ -822,37 +759,21 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <section class="h-speak-strip">
-    <!-- speaking-hero.jpg: Replace with actual speaking/stage photo -->
-    <div class="h-speak-img">
-      <img src="speaking-hero.jpg" alt="speaking-hero — keynote stage"/>
-    </div>
-    <div class="h-speak-content">
-      <p class="h-label reveal">Speaking & Programmes</p>
-      <h2 class="h-title reveal">Step into <em>myth, story</em> and reflection</h2>
-      <div class="h-divider reveal"></div>
-      <ul class="speak-list">
-        <li class="reveal">Workshops <span>→</span></li>
-        <li class="reveal">Keynote Lectures <span>→</span></li>
-        <li class="reveal">University Programmes <span>→</span></li>
-        <li class="reveal">Corporate Sessions <span>→</span></li>
-        <li class="reveal">Museum Experiences <span>→</span></li>
-        <li class="reveal">Festival Conversations <span>→</span></li>
-      </ul>
-      <a href="#" class="btn-gold reveal" onclick="return go('speaking')" style="display:inline-flex;margin-top:2rem">Invite Sundeep to Speak</a>
-    </div>
-  </section>
-
   <div class="h-press">
     <p class="h-press-label">As featured in</p>
-    <div class="h-press-logos">
-      <span class="h-press-logo">The Hindu</span>
-      <span class="h-press-logo">Hindustan Times</span>
-      <span class="h-press-logo">Scroll</span>
-      <span class="h-press-logo">The Wire</span>
-      <span class="h-press-logo">Firstpost</span>
-      <span class="h-press-logo">Outlook</span>
-      <span class="h-press-logo">Indian Express</span>
+    <div class="mq-wrap">
+      <div class="mq-track">
+        <span class="mq-item">The Hindu</span><span class="mq-item">Hindustan Times</span>
+        <span class="mq-item">Scroll</span><span class="mq-item">The Wire</span>
+        <span class="mq-item">Firstpost</span><span class="mq-item">Outlook</span>
+        <span class="mq-item">Indian Express</span><span class="mq-item">GQ India</span>
+        <span class="mq-item">Vogue India</span><span class="mq-item">India Today</span>
+        <span class="mq-item">The Hindu</span><span class="mq-item">Hindustan Times</span>
+        <span class="mq-item">Scroll</span><span class="mq-item">The Wire</span>
+        <span class="mq-item">Firstpost</span><span class="mq-item">Outlook</span>
+        <span class="mq-item">Indian Express</span><span class="mq-item">GQ India</span>
+        <span class="mq-item">Vogue India</span><span class="mq-item">India Today</span>
+      </div>
     </div>
   </div>
 
@@ -866,7 +787,7 @@ select.f-inp option{background:#0B1629}
   <footer>
     <div class="footer-grid">
       <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a>
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
         <p>Mythology is not history. It is psychology. It is the story of who you are, running inside you right now.</p>
         <div class="f-social">
           <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
@@ -890,7 +811,7 @@ select.f-inp option{background:#0B1629}
       <div class="f-col"><h4>Foundation</h4><ul>
         <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
         <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Past Programs</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
       </ul></div>
     </div>
     <div class="f-bottom">
@@ -900,11 +821,11 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ============ ABOUT ============ -->
+<!-- ════ ABOUT — DARK PALETTE ════ -->
 <div class="page" id="about-page">
   <div class="ab-hero">
-    <!-- founder-portrait.jpg: Replace with Sundeep's editorial portrait -->
-    <div class="ab-hero-img-wrap">
+    <div class="ab-hero-bg">
+      <!-- founder-portrait.jpg: Replace with Sundeep's editorial portrait -->
       <img src="founder-portrait.jpg" alt="founder-portrait — Sundeep Verma"/>
     </div>
     <div class="ab-hero-cnt">
@@ -914,13 +835,12 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
-  <!-- About photo strip -->
-  <div class="ab-photo-strip">
-    <!-- about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg -->
-    <div class="aps-img"><img src="about-reading.jpg" alt="about-reading.jpg"/></div>
-    <div class="aps-img"><img src="about-speaking.jpg" alt="about-speaking.jpg"/></div>
-    <div class="aps-img"><img src="about-library.jpg" alt="about-library.jpg"/></div>
-    <div class="aps-img"><img src="about-audience.jpg" alt="about-audience.jpg"/></div>
+  <!-- Photo strip: about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg -->
+  <div class="ab-photo-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:270px">
+    <div class="aps-slot"><img src="about-reading.jpg" alt="about-reading.jpg"/></div>
+    <div class="aps-slot"><img src="about-speaking.jpg" alt="about-speaking.jpg"/></div>
+    <div class="aps-slot"><img src="about-library.jpg" alt="about-library.jpg"/></div>
+    <div class="aps-slot"><img src="about-audience.jpg" alt="about-audience.jpg"/></div>
   </div>
 
   <div class="tl-wrap">
@@ -934,7 +854,8 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
-  <section style="background:#060606;padding:5rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.08);border-bottom:1px solid rgba(194,160,90,.08)">
+  <!-- Quote integrated into biography (no standalone section) -->
+  <section style="background:#060606;padding:5.5rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.08);border-bottom:1px solid rgba(194,160,90,.08)">
     <blockquote style="font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,2.2rem);font-weight:300;font-style:italic;color:rgba(245,240,232,.73);line-height:1.7;max-width:720px;margin:0 auto" class="reveal">"Mythology is not religion. It is not superstition. It is the most sophisticated psychology ever created — disguised as story."</blockquote>
     <p style="font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-top:1.8rem" class="reveal">— Sundeep Verma</p>
   </section>
@@ -949,10 +870,9 @@ select.f-inp option{background:#0B1629}
       <div class="phil-card reveal"><p class="phil-num">IV.</p><h3 class="phil-t">Ancient. Timeless. Now.</h3><p class="phil-d">The Ramayana, the Mahabharata, the Puranas — they were not written for another age. They were written for this moment, for you, in your specific struggle.</p></div>
     </div>
   </section>
-
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
+      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
@@ -960,7 +880,7 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ============ MYTHOLOGY LAB ============ -->
+<!-- ════ MYTHOLOGY LAB ════ -->
 <div class="page" id="lab-page">
   <div class="lab-hero">
     <p class="lab-label">A Digital Museum of Myth</p>
@@ -971,6 +891,29 @@ select.f-inp option{background:#0B1629}
       <span class="search-ico">⌕</span>
     </div>
   </div>
+
+  <!-- WHEN GODS CAME HOME -->
+  <section class="wgch">
+    <div class="wgch-banner">
+      <!-- wgch-hero.jpg: Replace with actual WGCH banner -->
+      <img src="wgch-hero.jpg" alt="wgch-hero — When Gods Came Home"/>
+      <div class="wgch-cnt">
+        <p class="wgch-label">Flagship Project · Cobalt Blue Foundation</p>
+        <h2 class="wgch-h">When Gods <em>Came Home</em></h2>
+        <p class="wgch-p">An immersive mythology experience where ancient deities are encountered not in temples, but in everyday life — homes, kitchens, conversations, and crossroads. A living installation of myth and meaning.</p>
+        <a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/" class="btn-gold" target="_blank">Visit the Experience →</a>
+      </div>
+    </div>
+    <!-- wgch-01.jpg … wgch-05.jpg -->
+    <div class="wgch-gal">
+      <div class="wg"><img src="wgch-01.jpg" alt="wgch-01.jpg"/></div>
+      <div class="wg"><img src="wgch-02.jpg" alt="wgch-02.jpg"/></div>
+      <div class="wg"><img src="wgch-03.jpg" alt="wgch-03.jpg"/></div>
+      <div class="wg"><img src="wgch-04.jpg" alt="wgch-04.jpg"/></div>
+      <div class="wg"><img src="wgch-05.jpg" alt="wgch-05.jpg"/></div>
+    </div>
+  </section>
+
   <section class="compass-sec">
     <p class="lab-label" style="justify-content:center">Navigate by Theme</p>
     <h2 class="compass-h">The <em>Myth Compass</em></h2>
@@ -1008,7 +951,7 @@ select.f-inp option{background:#0B1629}
   </section>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
+      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
@@ -1016,49 +959,57 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ============ SPEAKING ============ -->
+<!-- ════ SPEAKING — VIDEO HERO ════ -->
 <div class="page" id="speaking-page">
 
-  <!-- ── CINEMATIC VIDEO HERO (FULL VIEWPORT) ── -->
+  <!-- CINEMATIC VIDEO HERO — full viewport, autoplay, muted, loop, playsinline -->
   <section class="spk-video-hero">
     <div class="spk-video-wrap">
       <!--
-        SPEAKING HERO VIDEO
-        Replace src with actual speaking/workshop footage.
-        Placeholder: royalty-free Pexels cinematic conference video.
-        Attributes: autoplay muted loop playsinline — required for inline autoplay.
+        SPEAKING VIDEO HERO
+        Replace the <source> with the actual speaking/workshop video file.
+        Poster = speaking-stage.jpg as fallback.
+        Using a public royalty-free embed placeholder:
+        Pexels video of conference/presentation.
       -->
       <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
+        autoplay muted loop playsinline preload="auto"
         poster="speaking-stage.jpg"
       >
-        <source src="https://www.pexels.com/download/video/3195394/" type="video/mp4"/>
-        <!-- Fallback image if video fails to load -->
-        <img
-          class="spk-video-fallback"
-          src="speaking-stage.jpg"
-          alt="speaking-stage — keynote hall"
-        />
+        <!-- speaking-video.mp4: Replace with actual speaking footage -->
+        <source src="speaking-video.mp4" type="video/mp4"/>
+        <!-- Fallback if no video file found -->
+        <img class="spk-video-fallback" src="speaking-stage.jpg" alt="speaking-stage — keynote hall"/>
       </video>
     </div>
     <div class="spk-video-overlay"></div>
     <div class="spk-video-vignette"></div>
     <div class="spk-video-cnt">
-      <p class="spk-video-label">Speaking & Conversations</p>
-      <h1 class="spk-video-h1">Myth brought<br>into the room<br><em>with you.</em></h1>
-      <p class="spk-video-sub">From intimate workshop circles to keynote halls, festival stages to university lecture theatres — every session is designed to make mythology personal, emotionally resonant, and immediately relevant to the lives in the room.</p>
-      <div class="spk-scroll-indicator">
+      <p class="spk-vid-label">Speaking & Conversations</p>
+      <h1 class="spk-vid-h1">Myth brought<br>into the room<br><em>with you.</em></h1>
+      <p class="spk-vid-sub">From intimate workshop circles to keynote halls, festival stages to university lecture theatres — every session is designed to make mythology personal, emotionally resonant, and immediately relevant to the lives in the room.</p>
+      <div class="spk-scroll">
         <div class="spk-scroll-line"></div>
-        <span class="spk-scroll-label">Scroll to explore</span>
+        <span>Scroll to explore</span>
       </div>
     </div>
   </section>
 
-  <!-- Programmes section -->
+  <!-- SPLIT: approach text + image -->
+  <div class="spk-split">
+    <!-- speaking-hero.jpg: approach/intimate shot -->
+    <div class="spk-split-img">
+      <img src="speaking-hero.jpg" alt="speaking-hero — storytelling moment"/>
+    </div>
+    <div class="spk-split-text">
+      <p class="spk-s-label reveal">The Approach</p>
+      <h2 class="spk-s-title reveal">Not a lecture.<br><em>A living dialogue.</em></h2>
+      <div style="width:40px;height:1px;background:#D4C99A;margin:1.2rem 0" class="reveal"></div>
+      <p class="reveal">Sundeep's sessions are not informational. They are experiential. Every workshop is built around a specific human question — and mythology becomes the language through which participants explore their own answers.</p>
+      <p class="reveal" style="margin-top:1rem">The mythology is not the destination. The participant is.</p>
+    </div>
+  </div>
+
   <section class="spk-section">
     <p class="spk-s-label reveal">What Sundeep Offers</p>
     <h2 class="spk-s-title reveal">Three kinds of <em>immersion</em></h2>
@@ -1069,13 +1020,29 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- speaking gallery — workshop-01 through workshop-04: replace with actual session photos -->
-  <div class="spk-gallery">
-    <div class="sg-img"><img src="workshop-01.jpg" alt="workshop-01 — session photograph"/></div>
-    <div class="sg-img"><img src="workshop-02.jpg" alt="workshop-02 — audience interaction"/></div>
-    <div class="sg-img"><img src="workshop-03.jpg" alt="workshop-03 — keynote moment"/></div>
-    <div class="sg-img"><img src="workshop-04.jpg" alt="workshop-04 — storytelling circle"/></div>
+  <!-- MASONRY GALLERY -->
+  <!-- workshop-01.jpg … workshop-07.jpg -->
+  <div class="spk-gal">
+    <div class="gi tall"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Jaipur Literature Festival</span></div>
+    <div class="gi"><img src="workshop-02.jpg" alt="workshop-02.jpg"/><span class="gi-label">University Lecture</span></div>
+    <div class="gi"><img src="workshop-03.jpg" alt="workshop-03.jpg"/><span class="gi-label">Corporate Session</span></div>
+    <div class="gi wide"><img src="workshop-04.jpg" alt="workshop-04.jpg"/><span class="gi-label">Museum Experience</span></div>
+    <div class="gi"><img src="workshop-05.jpg" alt="workshop-05.jpg"/><span class="gi-label">Festival Stage</span></div>
+    <div class="gi"><img src="workshop-06.jpg" alt="workshop-06.jpg"/><span class="gi-label">Discussion Circle</span></div>
+    <div class="gi"><img src="workshop-07.jpg" alt="workshop-07.jpg"/><span class="gi-label">Audience Interaction</span></div>
   </div>
+
+  <!-- VIDEO CARDS -->
+  <section class="spk-vids">
+    <p class="spk-s-label reveal">Featured Talks</p>
+    <h2 class="spk-s-title reveal">Sundeep <em>in conversation</em></h2>
+    <div class="vid-grid">
+      <!-- talk-01.jpg, talk-02.jpg, talk-03.jpg -->
+      <div class="vid-card reveal"><div class="vid-thumb"><img src="talk-01.jpg" alt="talk-01.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">Keynote · JLF 2024</p><p class="vid-title">Mythology as a Mirror for the Modern Self</p></div></div>
+      <div class="vid-card reveal"><div class="vid-thumb"><img src="talk-02.jpg" alt="talk-02.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">University Lecture · 2024</p><p class="vid-title">The Mahabharata and the Psychology of Conflict</p></div></div>
+      <div class="vid-card reveal"><div class="vid-thumb"><img src="talk-03.jpg" alt="talk-03.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">Workshop · Mumbai 2023</p><p class="vid-title">12 Mythical Women — And What They Demand of Us</p></div></div>
+    </div>
+  </section>
 
   <section class="spk-testi">
     <h2 class="spk-t-title reveal">Words from the <em>room</em></h2>
@@ -1085,10 +1052,9 @@ select.f-inp option{background:#0B1629}
       <div class="testi-card reveal"><p class="testi-q">"I have attended dozens of mythology lectures. I have never seen an audience as still and as moved as they were during Sundeep's session. He has a gift."</p><p class="testi-a">Curator</p><p class="testi-o">CSMVS, Mumbai</p></div>
     </div>
   </section>
-
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
+      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
@@ -1096,9 +1062,9 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ============ BOOKS ============ -->
+<!-- ════ BOOKS — dark nav fix ════ -->
 <div class="page" id="books-page">
-  <!-- Dark nav overlay to fix visibility on cream page -->
+  <!-- Dark nav backdrop so nav remains readable on cream page -->
   <div class="bk-nav-fix"></div>
   <section class="bk-hero">
     <div>
@@ -1119,8 +1085,7 @@ select.f-inp option{background:#0B1629}
   </section>
   <div class="bk-details">
     <div class="bk-info">
-      <h3>About the Book</h3>
-      <p class="bk-st">Mythology · Poetry · Feminine Archetypes</p>
+      <h3>About the Book</h3><p class="bk-st">Mythology · Poetry · Feminine Archetypes</p>
       <p>Ahalya is one of the Panchakanya — the five sacred women of Indian mythology. Traditionally remembered for a curse, Sundeep Verma's retelling asks a different question: what if she wasn't a victim of another's story, but the author of her own desire?</p>
       <p>Written in flowing, sensory verse, the book moves through longing, transgression, silence, and emergence. Each illustration is not decoration — it is interpretation. Together, text and image make a case for reading ancient women on their own terms.</p>
       <p>An ancient symbol for the contemporary woman's conflict between her mind and her heart.</p>
@@ -1140,15 +1105,15 @@ select.f-inp option{background:#0B1629}
   </section>
   <footer style="background:#EDE4D3;border-top:1px solid rgba(42,31,20,.1)">
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" style="color:#2A1F14" onclick="return go('home')">Myths By Sundeep<span style="color:#9C6B3F">Mythologist · Author · Storyteller</span></a><p style="color:rgba(42,31,20,.38)">Mythology is not history. It is psychology.</p></div>
-      <div class="f-col"><h4 style="color:#9C6B3F">Pages</h4><ul><li><a href="#" onclick="return go('home')" style="color:rgba(42,31,20,.42)">Home</a></li><li><a href="#" onclick="return go('lab')" style="color:rgba(42,31,20,.42)">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')" style="color:rgba(42,31,20,.42)">Speaking</a></li><li><a href="#" onclick="return go('contact')" style="color:rgba(42,31,20,.42)">Contact</a></li></ul></div>
+      <div class="f-brand"><a href="#" class="nav-logo" style="color:#2A1F14" onclick="return go('home')"><span class="nav-logo-name" style="color:#2A1F14">Myths By Sundeep</span><span class="nav-logo-sub" style="color:#9C6B3F">Mythologist · Author · Storyteller</span></a><p style="color:rgba(42,31,20,.4)">Mythology is not history. It is psychology.</p></div>
+      <div class="f-col"><h4 style="color:#9C6B3F">Pages</h4><ul><li><a href="#" onclick="return go('home')" style="color:rgba(42,31,20,.45)">Home</a></li><li><a href="#" onclick="return go('lab')" style="color:rgba(42,31,20,.45)">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')" style="color:rgba(42,31,20,.45)">Speaking</a></li><li><a href="#" onclick="return go('contact')" style="color:rgba(42,31,20,.45)">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
-    <div class="f-bottom" style="border-top-color:rgba(42,31,20,.08)"><p class="f-reflect" style="color:rgba(42,31,20,.28)"><em>"The myth that speaks to you is the one you most need to hear."</em></p><p class="f-copy" style="color:rgba(42,31,20,.22)">© 2025 Sundeep Verma · Cobalt Blue Foundation</p></div>
+    <div class="f-bottom" style="border-top-color:rgba(42,31,20,.08)"><p class="f-reflect" style="color:rgba(42,31,20,.3)"><em>"The myth that speaks to you is the one you most need to hear."</em></p><p class="f-copy" style="color:rgba(42,31,20,.22)">© 2025 Sundeep Verma · Cobalt Blue Foundation</p></div>
   </footer>
 </div>
 
-<!-- ============ MEDIA ============ -->
+<!-- ════ MEDIA ════ -->
 <div class="page" id="media-page">
   <section class="med-hero">
     <p class="med-label">Media & Press</p>
@@ -1158,6 +1123,7 @@ select.f-inp option{background:#0B1629}
   <div class="med-tabs">
     <div class="med-tab act" onclick="switchTab(this,'articles')">Articles</div>
     <div class="med-tab" onclick="switchTab(this,'press')">Press</div>
+    <div class="med-tab" onclick="switchTab(this,'interviews')">Interviews</div>
     <div class="med-tab" onclick="switchTab(this,'podcasts')">Podcasts</div>
     <div class="med-tab" onclick="switchTab(this,'writing')">Writing</div>
     <div class="med-tab" onclick="switchTab(this,'kit')">Media Kit</div>
@@ -1165,7 +1131,7 @@ select.f-inp option{background:#0B1629}
   <div class="med-content" id="medContent"></div>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
+      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
@@ -1173,7 +1139,7 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ============ HALL OF QUESTIONS ============ -->
+<!-- ════ HALL OF QUESTIONS (new page) ════ -->
 <div class="page" id="questions-page">
   <div class="qp-hero">
     <div class="qp-hero-bg">
@@ -1181,7 +1147,7 @@ select.f-inp option{background:#0B1629}
       <img src="questions-hero.jpg" alt="questions-hero.jpg"/>
     </div>
     <div class="qp-cnt">
-      <p class="qp-label">An Open Archive of Inquiry</p>
+      <p class="qp-ey">An Open Archive of Inquiry</p>
       <h1 class="qp-h1">Hall of <em>Questions</em></h1>
       <p class="qp-sub">Not a FAQ. Not a forum. A curated space where mythology meets the questions that keep people awake at night — and suggests which ancient story might help.</p>
     </div>
@@ -1193,14 +1159,15 @@ select.f-inp option{background:#0B1629}
       <span class="qp-cat" onclick="filterQ('Relationships')">Relationships</span>
       <span class="qp-cat" onclick="filterQ('Leadership')">Leadership</span>
       <span class="qp-cat" onclick="filterQ('Purpose')">Purpose</span>
-      <span class="qp-cat" onclick="filterQ('Mythology')">Mythology</span>
+      <span class="qp-cat" onclick="filterQ('Mythology')">Mythology Questions</span>
       <span class="qp-cat" onclick="filterQ('Philosophy')">Philosophy</span>
+      <span class="qp-cat" onclick="filterQ('Story')">Story Requests</span>
     </div>
   </div>
   <div class="q-cards-grid" id="qGrid"></div>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
+      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
@@ -1208,7 +1175,7 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ============ CONTACT ============ -->
+<!-- ════ CONTACT ════ -->
 <div class="page" id="contact-page">
   <section class="con-hero">
     <p class="con-label">Get in Touch</p>
@@ -1225,9 +1192,7 @@ select.f-inp option{background:#0B1629}
       </div>
       <div class="f-group"><label class="f-lbl">Email</label><input class="f-inp" type="email" placeholder="your@email.com"/></div>
       <div class="f-group"><label class="f-lbl">Organisation</label><input class="f-inp" type="text" placeholder="University, Company, Festival…"/></div>
-      <div class="f-group"><label class="f-lbl">Enquiry Type</label>
-        <select class="f-inp"><option>Speaking / Keynote</option><option>Workshop / Programme</option><option>Media / Press</option><option>Book / Publisher</option><option>General</option></select>
-      </div>
+      <div class="f-group"><label class="f-lbl">Enquiry Type</label><select class="f-inp"><option>Speaking / Keynote</option><option>Workshop / Programme</option><option>Media / Press</option><option>Book / Publisher</option><option>General</option></select></div>
       <div class="f-group"><label class="f-lbl">Message</label><textarea class="f-inp" placeholder="Tell us what you're looking for…"></textarea></div>
       <button class="btn-gold" style="width:100%;justify-content:center;padding:1rem">Send Message</button>
     </div>
@@ -1247,7 +1212,7 @@ select.f-inp option{background:#0B1629}
   </div>
   <footer>
     <div class="footer-grid">
-      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')">Myths By Sundeep<span>Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
+      <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
@@ -1256,9 +1221,8 @@ select.f-inp option{background:#0B1629}
 </div>
 
 <script>
-// ============ DATA ============
+// DATA
 const refs=["Every myth is a mirror. The question is whether you are brave enough to look.","The story that disturbs you most is the one most useful to you.","Mythology is not religion. It is the most sophisticated psychology ever created — disguised as story.","Ancient epics are not stories about gods and demons. They are stories about the gods and demons inside every one of us.","The myth that speaks to you is the one you most need to hear."];
-
 const arts=[
   {title:"Why Ahalya is the Most Misread Woman in Indian Mythology",ex:"She was not cursed for desire. She was punished for having it — and that distinction changes everything about what the story means today.",theme:"Identity",date:"May 2025"},
   {title:"The Mahabharata as a Map of the Human Psyche",ex:"Arjuna's battlefield paralysis is not weakness. It is the paralysis of a person who has outgrown the story they were given to live.",theme:"Shadow",date:"April 2025"},
@@ -1273,7 +1237,6 @@ const arts=[
   {title:"Arjuna's Bow and the Courage to Begin Again",ex:"The moment Arjuna picks up his bow again is not triumphant. It is quiet. It is the hardest choice in the Mahabharata.",theme:"Purpose",date:"August 2024"},
   {title:"The Five Pandavas as Five Dimensions of the Self",ex:"The five brothers are not five characters. They are five qualities of consciousness — and every person contains all five in different measure.",theme:"Identity",date:"July 2024"}
 ];
-
 const chars=[
   {n:"Ahalya",r:"The Unploughed",i:"A"},{n:"Arjuna",r:"The Seeker",i:"Ar"},
   {n:"Karna",r:"The Wounded Hero",i:"K"},{n:"Krishna",r:"The Guide",i:"Kr"},
@@ -1282,7 +1245,6 @@ const chars=[
   {n:"Ravana",r:"The Shadow",i:"R"},{n:"Yudhishthira",r:"The Righteous",i:"Y"},
   {n:"Bhima",r:"The Force",i:"B"},{n:"Kunti",r:"The Mother",i:"Ku"}
 ];
-
 const pressD=[
   {out:"The Hindu",head:"Sundeep Verma is rewriting the rules of how we teach mythology",date:"April 2025"},
   {out:"Hindustan Times",head:"Mythology is not history — it is you, says India's most intriguing mythologist",date:"March 2025"},
@@ -1291,29 +1253,25 @@ const pressD=[
   {out:"The Wire",head:"Cobalt Blue Foundation is changing how India encounters its own mythology",date:"December 2024"},
   {out:"Outlook India",head:"Sundeep Verma on why Ravana might be the most important character for leaders today",date:"November 2024"}
 ];
-
 const podD=[
   {out:"The Seen & The Unseen",head:"Sundeep Verma on mythology as a psychological toolkit for modern India",date:"May 2025"},
   {out:"IVM Podcasts",head:"Why ancient stories are running your life right now",date:"March 2025"},
   {out:"Storytellers of India",head:"How mythology helps us understand our own shadows",date:"January 2025"}
 ];
-
 const wrtD=[
   {out:"Substack",head:"The personal mirror hidden in every epic",date:"May 2025"},
   {out:"Substack",head:"When ancient archetypes enter contemporary love",date:"April 2025"},
   {out:"Scroll.in",head:"Why we need Draupadi's question more than ever",date:"February 2025"},
   {out:"The Hindu",head:"The Mahabharata as a leadership manual for uncertain times",date:"November 2024"}
 ];
-
 const articlesD=[
-  {pub:"Vogue India",head:"The Ancient Female Archetypes Every Woman Should Know",ex:"Sundeep Verma decodes the mythology of Indian feminine power — and why it matters now.",featured:true},
-  {pub:"GQ India",head:"Why Every Leader Should Read the Mahabharata",ex:"Strategy, ethics, power — the epic has it all. Sundeep Verma explains why it's the ultimate leadership manual."},
-  {pub:"India Today",head:"Mythology is the New Psychology",ex:"The growing movement to reclaim ancient stories as tools for modern self-understanding."},
-  {pub:"The Hindu",head:"Cobalt Blue Foundation: Mythology for the Modern Age",ex:"How Sundeep Verma's foundation is building mythology into a cultural discipline."},
-  {pub:"Times of India",head:"The Author Who Wants India to Re-Read Its Own Stories",ex:"An interview with the author of Ahalya — The Unploughed."},
-  {pub:"Mid-Day",head:"12 Mythical Women You Should Know About",ex:"Sundeep Verma's popular lecture series brought to print."}
+  {pub:"Vogue India",head:"The Ancient Female Archetypes Every Woman Should Know",ex:"Sundeep Verma decodes the mythology of Indian feminine power — and why it matters now.",img:"media-vogue.jpg",featured:true},
+  {pub:"GQ India",head:"Why Every Leader Should Read the Mahabharata",ex:"Strategy, ethics, power — the epic has it all.",img:"media-article-01.jpg"},
+  {pub:"India Today",head:"Mythology is the New Psychology",ex:"The growing movement to reclaim ancient stories as tools for modern self-understanding.",img:"media-article-02.jpg"},
+  {pub:"The Hindu",head:"Cobalt Blue Foundation: Mythology for the Modern Age",ex:"How Sundeep Verma's foundation is building mythology into a cultural discipline.",img:"media-article-03.jpg"},
+  {pub:"Times of India",head:"The Author Who Wants India to Re-Read Its Own Stories",ex:"An interview with the author of Ahalya — The Unploughed.",img:"media-article-04.jpg"},
+  {pub:"Mid-Day",head:"12 Mythical Women You Should Know About",ex:"Sundeep Verma's popular lecture series brought to print.",img:"media-article-05.jpg"}
 ];
-
 const questionsD=[
   {cat:"Identity",q:"Who am I when no one is watching?"},
   {cat:"Identity",q:"Why do I keep presenting a self I don't recognise?"},
@@ -1329,59 +1287,45 @@ const questionsD=[
   {cat:"Purpose",q:"How do I know which archetype I am living?"},
   {cat:"Mythology",q:"Which myth should someone in grief read first?"},
   {cat:"Mythology",q:"Is the Mahabharata a story about war or about dharma?"},
+  {cat:"Mythology",q:"What does Shiva's destruction actually symbolise?"},
   {cat:"Philosophy",q:"Why do some stories feel like they were written for me?"},
-  {cat:"Philosophy",q:"Is there such a thing as a destined life?"}
+  {cat:"Philosophy",q:"Is there such a thing as a destined life?"},
+  {cat:"Philosophy",q:"What is the relationship between myth and truth?"},
+  {cat:"Story",q:"Can you tell the story of Draupadi's question in the court?"},
+  {cat:"Story",q:"What is the full story of Karna — and why does it matter?"}
 ];
 
-// ============ QUILL CURSOR ============
-const qEl=document.getElementById('quill-cursor');
-const qTrail=document.getElementById('quill-trail');
+// ── QUILL CURSOR ──
+const qEl=document.getElementById('quill-cursor'),qTr=document.getElementById('quill-trail');
 let qx=0,qy=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{
-  qx=e.clientX;qy=e.clientY;
-  qEl.style.left=qx+'px';qEl.style.top=qy+'px';
-});
-(function animTrail(){
-  tx+=(qx-tx)*.15;ty+=(qy-ty)*.15;
-  qTrail.style.left=tx+'px';qTrail.style.top=ty+'px';
-  requestAnimationFrame(animTrail);
-})();
+document.addEventListener('mousemove',e=>{qx=e.clientX;qy=e.clientY;qEl.style.left=qx+'px';qEl.style.top=qy+'px'});
+(function at(){tx+=(qx-tx)*.15;ty+=(qy-ty)*.15;qTr.style.left=tx+'px';qTr.style.top=ty+'px';requestAnimationFrame(at)})();
 document.addEventListener('mouseover',e=>{
-  if(e.target.closest('a,button,.pill,.char-card,.art-card,.prog-card,.h-card,.q-card,.cmp-pt,.testi-card,.press-card,.bk-cover,.h-book-cover,.speak-list li,.qp-cat,.ae-card')){
-    qEl.classList.add('hover');
-  } else {qEl.classList.remove('hover')}
+  if(e.target.closest('a,button,.pill,.char-card,.art-card,.prog-card,.h-card,.q-card,.cmp-pt,.testi-card,.press-card,.bk-cover,.h-book-cover,.speak-list,.qp-cat,.ae-card,.vid-card,.gi,.wg,.aps-slot')){qEl.classList.add('hover')}
+  else qEl.classList.remove('hover');
 });
 document.addEventListener('mousedown',e=>{
   qEl.classList.add('clicking');
-  const r=document.createElement('div');
-  r.className='ink-ripple';
+  const r=document.createElement('div');r.className='ink-ripple';
   r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
-  document.body.appendChild(r);
-  setTimeout(()=>r.remove(),800);
+  document.body.appendChild(r);setTimeout(()=>r.remove(),800);
 });
 document.addEventListener('mouseup',()=>qEl.classList.remove('clicking'));
 
-// ============ MOTW + NAV SCROLL LOGIC ============
+// ── MOTW + SCROLL ──
 let isHome=true;
 window.addEventListener('scroll',()=>{
   const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
   document.getElementById('progress-bar').style.width=(h>0?document.documentElement.scrollTop/h*100:0)+'%';
-  const nav=document.getElementById('navbar');
-  nav.classList.toggle('scrolled',window.scrollY>60);
-  // MOTW: hide after scrolling past top on home
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
   if(isHome){
-    const mw=document.getElementById('motw');
-    if(window.scrollY>48){
-      mw.classList.add('hidden-motw');
-      nav.classList.remove('with-motw');
-    } else {
-      mw.classList.remove('hidden-motw');
-      nav.classList.add('with-motw');
-    }
+    const mw=document.getElementById('motw'),nav=document.getElementById('navbar');
+    if(window.scrollY>44){mw.classList.add('hidden-motw');nav.classList.remove('with-motw')}
+    else{mw.classList.remove('hidden-motw');nav.classList.add('with-motw')}
   }
 });
 
-// ============ PARTICLES ============
+// ── PARTICLES ──
 const pc=document.getElementById('particles');
 for(let i=0;i<16;i++){
   const p=document.createElement('div');p.className='particle';
@@ -1390,34 +1334,23 @@ for(let i=0;i<16;i++){
   pc.appendChild(p);
 }
 
-// ============ PAGE NAVIGATION ============
-const pgMap={
-  home:'home',about:'about-page',lab:'lab-page',
-  speaking:'speaking-page',books:'books-page',
-  media:'media-page',questions:'questions-page',contact:'contact-page'
-};
+// ── PAGE NAV ──
+const pgMap={home:'home',about:'about-page',lab:'lab-page',speaking:'speaking-page',books:'books-page',media:'media-page',questions:'questions-page',contact:'contact-page'};
 function go(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const el=document.getElementById(pgMap[id]);
   if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.pg===id));
   isHome=(id==='home');
-  const mw=document.getElementById('motw');
-  const nav=document.getElementById('navbar');
-  if(isHome){
-    mw.classList.remove('hidden-motw');
-    nav.classList.add('with-motw');
-  } else {
-    mw.classList.add('hidden-motw');
-    nav.classList.remove('with-motw');
-  }
+  const mw=document.getElementById('motw'),nav=document.getElementById('navbar');
+  if(isHome){mw.classList.remove('hidden-motw');nav.classList.add('with-motw')}
+  else{mw.classList.add('hidden-motw');nav.classList.remove('with-motw')}
   if(id==='media')renderMedia('articles');
   if(id==='lab'){renderArts('All');renderChars()}
   if(id==='questions')renderQs('All');
   setTimeout(initReveal,120);
   return false;
 }
-
 function toggleMob(){
   const m=document.getElementById('mobMenu'),h=document.getElementById('hbg');
   const open=m.classList.toggle('open');
@@ -1426,7 +1359,7 @@ function toggleMob(){
   h.children[2].style.transform=open?'rotate(-45deg) translate(4px,-4px)':'';
 }
 
-// ============ RENDER FUNCTIONS ============
+// ── RENDER ──
 function renderArts(theme){
   const g=document.getElementById('artGrid');if(!g)return;
   const d=theme==='All'?arts:arts.filter(a=>a.theme===theme);
@@ -1448,67 +1381,57 @@ function filterLab(v){
   const g=document.getElementById('artGrid');
   if(g)g.innerHTML=d.map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
 }
-
 function renderQs(cat){
   const g=document.getElementById('qGrid');if(!g)return;
   const d=cat==='All'?questionsD:questionsD.filter(q=>q.cat===cat);
-  g.innerHTML=d.map(q=>`<div class="q-card reveal"><p class="q-card-cat">${q.cat}</p><p class="q-card-txt">${q.q}</p><div class="q-card-foot"><span class="q-card-arr">↗</span></div></div>`).join('');
-  setTimeout(initReveal,80);
+  g.innerHTML=d.map(q=>`<div class="q-card"><p class="q-card-cat">${q.cat}</p><p class="q-card-txt">${q.q}</p><div class="q-card-foot"><span class="q-card-arr">↗</span></div></div>`).join('');
 }
 function filterQ(cat){
   document.querySelectorAll('.qp-cat').forEach(c=>c.classList.toggle('act',c.textContent===cat||(cat==='All'&&c.textContent==='All')));
   renderQs(cat);
 }
-
 function switchTab(el,type){
   document.querySelectorAll('.med-tab').forEach(t=>t.classList.remove('act'));
-  el.classList.add('act');
-  renderMedia(type);
+  el.classList.add('act');renderMedia(type);
 }
 function renderMedia(type){
   const c=document.getElementById('medContent');if(!c)return;
-  if(type==='kit'){
-    c.innerHTML=`<div style="max-width:480px;padding:3rem 5vw"><h2 style="font-family:var(--serif);font-size:2rem;font-weight:400;color:#F0F0F0;margin-bottom:1rem">Media Kit</h2><p style="font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.9;font-weight:300;margin-bottom:2rem">High-resolution photos, biography, press releases, and brand assets available on request. Contact press@cobaltbluefoundation.com</p><a href="#" class="btn-gold" onclick="return go('contact')">Request Media Kit</a></div>`;
-    return;
-  }
+  if(type==='kit'){c.innerHTML=`<div style="max-width:480px;padding:3rem 5vw"><h2 style="font-family:var(--serif);font-size:2rem;font-weight:400;color:#F0F0F0;margin-bottom:1rem">Media Kit</h2><p style="font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.9;font-weight:300;margin-bottom:2rem">High-resolution photos, biography, press releases, and brand assets available on request. Contact press@cobaltbluefoundation.com</p><a href="#" class="btn-gold" onclick="return go('contact')">Request Media Kit</a></div>`;return;}
   if(type==='articles'){
     const feat=articlesD.find(a=>a.featured);
     const rest=articlesD.filter(a=>!a.featured);
-    c.innerHTML=`<div class="articles-editorial">
+    c.innerHTML=`<div class="ae-wrap">
       <div class="ae-featured">
-        <div class="ae-img"><img src="media-vogue.jpg" alt="media-vogue.jpg"/></div>
-        <div class="ae-text">
+        <div class="ae-feat-img"><img src="${feat.img}" alt="${feat.img}"/></div>
+        <div class="ae-feat-text">
           <span class="ae-pub">${feat.pub}</span>
           <h3 class="ae-head">${feat.head}</h3>
           <p class="ae-ex">${feat.ex}</p>
-          <a href="#" class="btn-gold" style="width:fit-content">Read Article</a>
+          <a href="#" class="btn-gold" style="width:fit-content;font-size:.58rem;padding:.7rem 1.5rem">Read Article</a>
         </div>
       </div>
-      <div class="ae-cards-row">
-        ${rest.map((a,i)=>`<div class="ae-card">
-          <div class="ae-card-img"><img src="media-article-0${i+1}.jpg" alt="media-article-0${i+1}.jpg"/></div>
-          <div class="ae-card-body">
-            <span class="ae-pub">${a.pub}</span>
-            <h3 class="ae-head" style="font-size:1rem;margin-bottom:.5rem">${a.head}</h3>
-            <p class="ae-ex" style="font-size:.72rem;margin-bottom:.8rem">${a.ex}</p>
-            <a href="#" style="font-family:var(--sans);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,240,240,.5);text-decoration:none;border-bottom:1px solid rgba(240,240,240,.2);padding-bottom:1px">Read Article →</a>
-          </div>
-        </div>`).join('')}
-      </div>
-    </div>`;
-    return;
+      <div class="ae-cards">${rest.map(a=>`<div class="ae-card">
+        <div class="ae-card-img"><img src="${a.img}" alt="${a.img}"/></div>
+        <div class="ae-card-body">
+          <span class="ae-pub">${a.pub}</span>
+          <h3 class="ae-head" style="font-size:1rem;margin-bottom:.5rem">${a.head}</h3>
+          <p class="ae-ex" style="font-size:.72rem;margin-bottom:.9rem">${a.ex}</p>
+          <a href="#" class="ae-card-link">Read Article →</a>
+        </div>
+      </div>`).join('')}</div>
+    </div>`;return;
   }
   const items=type==='podcasts'?podD:type==='writing'?wrtD:pressD;
   c.innerHTML=`<div class="press-grid">${items.map(p=>`<div class="press-card"><p class="pc-out">${p.out}</p><h3 class="pc-head">${p.head}</h3><p class="pc-date">${p.date}</p></div>`).join('')}</div>`;
 }
 
-// ============ SCROLL REVEAL ============
+// ── SCROLL REVEAL ──
 function initReveal(){
   const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
   document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.tl-item').forEach(el=>obs.observe(el));
 }
 
-// ============ INIT ============
+// ── INIT ──
 window.addEventListener('load',()=>{
   setTimeout(()=>{
     document.getElementById('loader').classList.add('gone');
@@ -1517,7 +1440,6 @@ window.addEventListener('load',()=>{
       document.getElementById('rc').classList.add('show');
     },2400);
   },2600);
-  // Set initial MOTW/nav state
   document.getElementById('navbar').classList.add('with-motw');
   initReveal();
   renderArts('All');
