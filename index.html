@@ -469,6 +469,20 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .vid-info{padding:1rem 1.2rem}
 .vid-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#D4C99A;margin-bottom:.4rem}
 .vid-title{font-family:var(--serif);font-size:.98rem;color:#F5F2EA;line-height:1.4}
+ 
+.h-speak{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px}
+/* IMAGE: sundeep-speaking-stage.jpg */
+.h-speak-img{position:relative;overflow:hidden}
+.h-speak-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.65);transition:transform 8s var(--ease)}
+.h-speak-img:hover img{transform:scale(1.04)}
+.h-speak-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(13,13,13,.05),rgba(13,13,13,.02))}
+.h-speak-content{background:#0D0D0D;padding:4.5rem 4vw;display:flex;flex-direction:column;justify-content:center}
+.speak-list{list-style:none;margin-top:1.4rem}
+.speak-list li{font-family:var(--serif);font-size:1.02rem;padding:.82rem 0;border-bottom:1px solid rgba(194,160,90,.08);color:rgba(245,240,232,.5);font-weight:300;display:flex;justify-content:space-between;align-items:center;transition:color .3s,padding .3s}
+.speak-list li:hover{color:var(--gold);padding-left:.4rem}
+.speak-list li span{transition:transform .3s;font-size:.9rem;color:rgba(194,160,90,.4)}
+.speak-list li:hover span{transform:translateX(5px);color:var(--gold)}
+
 
 /* ════════════════════════════════════════
    BOOKS — WARM CREAM + COPPER
@@ -837,10 +851,10 @@ select.f-inp option{background:#0B1629}
 
   <!-- Photo strip: about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg -->
   <div class="ab-photo-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:270px">
-    <div class="aps-slot"><img src="about-reading.jpg" alt="about-reading.jpg"/></div>
-    <div class="aps-slot"><img src="about-speaking.jpg" alt="about-speaking.jpg"/></div>
-    <div class="aps-slot"><img src="about-library.jpg" alt="about-library.jpg"/></div>
-    <div class="aps-slot"><img src="about-audience.jpg" alt="about-audience.jpg"/></div>
+    <div class="aps-slot"><img src="workshop-01.jpg" alt="about-reading.jpg"/></div>
+    <div class="aps-slot"><img src="workshop-01.jpg" alt="about-speaking.jpg"/></div>
+    <div class="aps-slot"><img src="workshop-01.jpg" alt="about-library.jpg"/></div>
+    <div class="aps-slot"><img src="workshop-01.jpg" alt="about-audience.jpg"/></div>
   </div>
 
   <div class="tl-wrap">
@@ -854,11 +868,6 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
-  <!-- Quote integrated into biography (no standalone section) -->
-  <section style="background:#060606;padding:5.5rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.08);border-bottom:1px solid rgba(194,160,90,.08)">
-    <blockquote style="font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,2.2rem);font-weight:300;font-style:italic;color:rgba(245,240,232,.73);line-height:1.7;max-width:720px;margin:0 auto" class="reveal">"Mythology is not religion. It is not superstition. It is the most sophisticated psychology ever created — disguised as story."</blockquote>
-    <p style="font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-top:1.8rem" class="reveal">— Sundeep Verma</p>
-  </section>
 
   <section style="padding:4rem 5vw;background:#0D0D0D">
     <p class="ab-label reveal">Philosophy</p>
@@ -896,7 +905,7 @@ select.f-inp option{background:#0B1629}
   <section class="wgch">
     <div class="wgch-banner">
       <!-- wgch-hero.jpg: Replace with actual WGCH banner -->
-      <img src="wgch-hero.jpg" alt="wgch-hero — When Gods Came Home"/>
+      <img src="workshop-01.jpg" alt="wgch-hero — When Gods Came Home"/>
       <div class="wgch-cnt">
         <p class="wgch-label">Flagship Project · Cobalt Blue Foundation</p>
         <h2 class="wgch-h">When Gods <em>Came Home</em></h2>
@@ -906,11 +915,11 @@ select.f-inp option{background:#0B1629}
     </div>
     <!-- wgch-01.jpg … wgch-05.jpg -->
     <div class="wgch-gal">
-      <div class="wg"><img src="wgch-01.jpg" alt="wgch-01.jpg"/></div>
-      <div class="wg"><img src="wgch-02.jpg" alt="wgch-02.jpg"/></div>
-      <div class="wg"><img src="wgch-03.jpg" alt="wgch-03.jpg"/></div>
-      <div class="wg"><img src="wgch-04.jpg" alt="wgch-04.jpg"/></div>
-      <div class="wg"><img src="wgch-05.jpg" alt="wgch-05.jpg"/></div>
+      <div class="wg"><img src="workshop-01.jpg" alt="wgch-01.jpg"/></div>
+      <div class="wg"><img src="workshop-01.jpg" alt="wgch-02.jpg"/></div>
+      <div class="wg"><img src="workshop-01.jpg" alt="wgch-03.jpg"/></div>
+      <div class="wg"><img src="workshop-01.jpg" alt="wgch-04.jpg"/></div>
+      <div class="wg"><img src="workshop-01.jpg" alt="wgch-05.jpg"/></div>
     </div>
   </section>
 
@@ -1024,12 +1033,12 @@ select.f-inp option{background:#0B1629}
   <!-- workshop-01.jpg … workshop-07.jpg -->
   <div class="spk-gal">
     <div class="gi tall"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Jaipur Literature Festival</span></div>
-    <div class="gi"><img src="workshop-02.jpg" alt="workshop-02.jpg"/><span class="gi-label">University Lecture</span></div>
-    <div class="gi"><img src="workshop-03.jpg" alt="workshop-03.jpg"/><span class="gi-label">Corporate Session</span></div>
-    <div class="gi wide"><img src="workshop-04.jpg" alt="workshop-04.jpg"/><span class="gi-label">Museum Experience</span></div>
-    <div class="gi"><img src="workshop-05.jpg" alt="workshop-05.jpg"/><span class="gi-label">Festival Stage</span></div>
-    <div class="gi"><img src="workshop-06.jpg" alt="workshop-06.jpg"/><span class="gi-label">Discussion Circle</span></div>
-    <div class="gi"><img src="workshop-07.jpg" alt="workshop-07.jpg"/><span class="gi-label">Audience Interaction</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-02.jpg"/><span class="gi-label">University Lecture</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-03.jpg"/><span class="gi-label">Corporate Session</span></div>
+    <div class="gi wide"><img src="workshop-01.jpg" alt="workshop-04.jpg"/><span class="gi-label">Museum Experience</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-05.jpg"/><span class="gi-label">Festival Stage</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-06.jpg"/><span class="gi-label">Discussion Circle</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-07.jpg"/><span class="gi-label">Audience Interaction</span></div>
   </div>
 
   <!-- VIDEO CARDS -->
@@ -1038,9 +1047,9 @@ select.f-inp option{background:#0B1629}
     <h2 class="spk-s-title reveal">Sundeep <em>in conversation</em></h2>
     <div class="vid-grid">
       <!-- talk-01.jpg, talk-02.jpg, talk-03.jpg -->
-      <div class="vid-card reveal"><div class="vid-thumb"><img src="talk-01.jpg" alt="talk-01.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">Keynote · JLF 2024</p><p class="vid-title">Mythology as a Mirror for the Modern Self</p></div></div>
-      <div class="vid-card reveal"><div class="vid-thumb"><img src="talk-02.jpg" alt="talk-02.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">University Lecture · 2024</p><p class="vid-title">The Mahabharata and the Psychology of Conflict</p></div></div>
-      <div class="vid-card reveal"><div class="vid-thumb"><img src="talk-03.jpg" alt="talk-03.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">Workshop · Mumbai 2023</p><p class="vid-title">12 Mythical Women — And What They Demand of Us</p></div></div>
+      <div class="vid-card reveal"><div class="vid-thumb"><img src="workshop-01.jpg" alt="talk-01.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">Keynote · JLF 2024</p><p class="vid-title">Mythology as a Mirror for the Modern Self</p></div></div>
+      <div class="vid-card reveal"><div class="vid-thumb"><img src="workshop-01.jpg" alt="talk-02.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">University Lecture · 2024</p><p class="vid-title">The Mahabharata and the Psychology of Conflict</p></div></div>
+      <div class="vid-card reveal"><div class="vid-thumb"><img src="workshop-01.jpg" alt="talk-03.jpg"/><div class="vid-play">▶</div></div><div class="vid-info"><p class="vid-tag">Workshop · Mumbai 2023</p><p class="vid-title">12 Mythical Women — And What They Demand of Us</p></div></div>
     </div>
   </section>
 
@@ -1052,6 +1061,27 @@ select.f-inp option{background:#0B1629}
       <div class="testi-card reveal"><p class="testi-q">"I have attended dozens of mythology lectures. I have never seen an audience as still and as moved as they were during Sundeep's session. He has a gift."</p><p class="testi-a">Curator</p><p class="testi-o">CSMVS, Mumbai</p></div>
     </div>
   </section>
+  <section class="h-speak">
+    <div class="h-speak-img">
+      <!-- sundeep-speaking-stage.jpg: Replace with actual speaking photograph -->
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80&fit=crop" alt="Sundeep Verma speaking at an event"/>
+    </div>
+    <div class="h-speak-content">
+      <p class="sec-label reveal">Speaking & Programmes</p>
+      <h2 class="sec-title reveal">Step into <em>myth, story</em> and reflection</h2>
+      <div class="sec-divider reveal"></div>
+      <ul class="speak-list">
+        <li class="reveal">Workshops <span>→</span></li>
+        <li class="reveal">Keynote Lectures <span>→</span></li>
+        <li class="reveal">University Programmes <span>→</span></li>
+        <li class="reveal">Corporate Sessions <span>→</span></li>
+        <li class="reveal">Museum Experiences <span>→</span></li>
+        <li class="reveal">Festival Conversations <span>→</span></li>
+      </ul>
+      <a href="#" class="btn-gold reveal" onclick="return go('speaking')" style="display:inline-flex;margin-top:2rem"><span>Invite Sundeep to Speak</span></a>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-grid">
       <div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div>
@@ -1061,6 +1091,7 @@ select.f-inp option{background:#0B1629}
     <div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p></div>
   </footer>
 </div>
+  
 
 <!-- ════ BOOKS — dark nav fix ════ -->
 <div class="page" id="books-page">
@@ -1144,7 +1175,7 @@ select.f-inp option{background:#0B1629}
   <div class="qp-hero">
     <div class="qp-hero-bg">
       <!-- questions-hero.jpg: Replace with editorial library/contemplation photo -->
-      <img src="questions-hero.jpg" alt="questions-hero.jpg"/>
+      <img src="workshop-01.jpg" alt="questions-hero.jpg"/>
     </div>
     <div class="qp-cnt">
       <p class="qp-ey">An Open Archive of Inquiry</p>
