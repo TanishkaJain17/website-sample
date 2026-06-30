@@ -334,50 +334,64 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
    ABOUT — dark (home palette)
 ════════════════════════════════════════ */
 #about-page{background:#0D0D0D}
-.ab-hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606}
-.ab-hero-bg{position:absolute;inset:0}
-.ab-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.48;filter:grayscale(12%) brightness(.88)}
-.ab-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.98) 18%,rgba(6,6,6,.6) 60%,rgba(6,6,6,.15) 100%)}
-.ab-hero-cnt{position:relative;z-index:2;padding:0 5vw 5rem;max-width:800px}
+/* ── #1 ABOUT HERO: full uncropped portrait, left image / right text editorial layout ── */
+.ab-hero{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:0;
+  min-height:100vh;
+  background:#060606;
+  padding-top:90px;
+  overflow:hidden;
+}
+.ab-hero-img-col{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  padding:3rem 3vw 3rem 5vw;
+  background:#060606;
+}
+/* founder-portrait.jpg: shown completely, no cropping */
+.ab-hero-img-col img{
+  width:100%;
+  max-width:480px;
+  height:auto;
+  max-height:80vh;
+  object-fit:contain;
+  display:block;
+  filter:grayscale(8%) brightness(.96);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  border-radius:6px;
+}
+.ab-hero-cnt{
+  position:relative;
+  z-index:2;
+  padding:3rem 5vw 3rem 0;
+  max-width:560px;
+}
 .ab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .ab-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .ab-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#F5F0E8;line-height:1.05}
 .ab-title em{font-style:italic;color:#C2A05A}
 .ab-sub{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.4);line-height:1.95;font-weight:300;margin-top:1.5rem;max-width:500px}
 
-/* ── #5 ABOUT IMAGES: large featured + horizontal scroll gallery ── */
-.ab-featured-img-wrap{
-  padding:3rem 5vw 0;
-  background:#0D0D0D;
-}
-.ab-featured-img{
-  width:100%;
-  max-height:520px;
-  overflow:hidden;
-  border-radius:10px;
-  box-shadow:0 20px 60px rgba(0,0,0,.7);
-  position:relative;
-}
-/* about-reading.jpg: main feature image */
-.ab-featured-img img{
-  width:100%;
-  height:100%;
-  max-height:520px;
-  object-fit:cover;
-  object-position:center 30%;
-  display:block;
-  filter:grayscale(10%) brightness(.82);
-  transition:transform 8s var(--ease);
-}
-.ab-featured-img:hover img{transform:scale(1.03)}
-.ab-featured-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,rgba(13,13,13,.6),transparent);pointer-events:none}
-
+/* ── #5 ABOUT IMAGES: horizontal scroll gallery, moved below hero ── */
 /* Horizontal scroll gallery */
 .ab-gallery-scroll{
-  padding:2rem 5vw 3rem;
+  padding:5rem 5vw 4rem;
   background:#0D0D0D;
   overflow:hidden;
 }
+.ab-gallery-label{
+  font-family:var(--sans);font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;
+  margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;
+}
+.ab-gallery-label::before{content:'';width:18px;height:1px;background:#C2A05A}
+.ab-gallery-h{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:#F5F0E8;margin-bottom:2.5rem}
+.ab-gallery-h em{font-style:italic;color:#C2A05A}
 .ab-gallery-track{
   display:flex;
   gap:1.2rem;
@@ -433,26 +447,33 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
    MYTHOLOGY LAB
 ════════════════════════════════════════ */
 #lab-page{background:#1A1E35}
-/* ── #6 LAB HERO: larger, more visible ── */
+/* ── #2 LAB HERO: full uncropped image, taller section ── */
 .lab-hero{
   background:#111728;
-  padding:8rem 5vw 5rem;
+  padding:9rem 5vw 6rem;
   position:relative;
   overflow:hidden;
-  min-height:420px;
+  min-height:75vh;
+  display:flex;
+  align-items:center;
 }
 .lab-hero::before{content:'ΜΥΘΟΣ';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18rem;color:rgba(194,160,90,.04);line-height:1;pointer-events:none}
-/* #6: hero background image, full visible */
+/* #2: hero background image, full image visible via contain, no face cropping */
 .lab-hero-bg{
   position:absolute;inset:0;
-  /* lab-hero.jpg: Replace with actual mythology/temple image */
-  background:url('lab-hero.jpg') center center/cover no-repeat;
-  opacity:.18;
-  transform:scale(1.02);
-  animation:sk 20s ease infinite alternate;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111728;
 }
-@keyframes sk{from{transform:scale(1.02)}to{transform:scale(1.07)}}
-.lab-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,23,40,.5) 0%,rgba(17,23,40,.3) 50%,rgba(17,23,40,.8) 100%)}
+.lab-hero-bg img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  opacity:.32;
+}
+.lab-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,23,40,.55) 0%,rgba(17,23,40,.35) 45%,rgba(17,23,40,.85) 100%);pointer-events:none}
 .lab-hero-content{position:relative;z-index:2}
 .lab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
 .lab-label::before{content:'';width:16px;height:1px;background:#C2A05A}
@@ -1046,7 +1067,7 @@ select.f-inp option{background:#0B1629}
     <div class="footer-grid">
       <div class="f-brand">
         <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
+        <p>Mythology is not history. It is psychology. It is the story of who you are, running inside you right now.</p>
         <div class="f-social">
           <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
           <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
@@ -1073,7 +1094,7 @@ select.f-inp option{background:#0B1629}
       </ul></div>
     </div>
     <div class="f-bottom">
-     
+      <p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p>
       <div>
         <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
         <!-- #12: Terms & Privacy links -->
@@ -1088,8 +1109,11 @@ select.f-inp option{background:#0B1629}
 
 <!-- ════ ABOUT ════ -->
 <div class="page" id="about-page">
+  <!-- #1: Editorial hero, full uncropped portrait left, text right -->
   <div class="ab-hero">
-    <div class="ab-hero-bg"><img src="founder-portrait.jpg" alt="founder-portrait — Sundeep Verma"/></div>
+    <div class="ab-hero-img-col">
+      <img src="founder-portrait.jpg" alt="founder-portrait — Sundeep Verma"/>
+    </div>
     <div class="ab-hero-cnt">
       <p class="ab-label">The Man Behind the Myths</p>
       <h1 class="ab-title">Sundeep<br><em>Verma</em></h1>
@@ -1097,16 +1121,13 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
-  <!-- #5: Large featured image + horizontal scroll gallery -->
-  <div class="ab-featured-img-wrap">
-    <!-- about-reading.jpg: main large feature image -->
-    <div class="ab-featured-img">
-      <img src="about-reading.jpg" alt="about-reading.jpg — Sundeep Verma"/>
-    </div>
-  </div>
+  <!-- #5: Horizontal scroll gallery — moved below hero, with large spacing -->
   <div class="ab-gallery-scroll">
+    <p class="ab-gallery-label">Editorial Photography</p>
+    <h2 class="ab-gallery-h">Moments <em>in focus</em></h2>
     <div class="ab-gallery-track">
-      <!-- about-speaking.jpg, about-library.jpg, about-audience.jpg, workshop-01.jpg -->
+      <!-- about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg, workshop-01.jpg -->
+      <div class="ab-gallery-card"><img src="about-reading.jpg" alt="about-reading.jpg"/></div>
       <div class="ab-gallery-card"><img src="about-speaking.jpg" alt="about-speaking.jpg"/></div>
       <div class="ab-gallery-card"><img src="about-library.jpg" alt="about-library.jpg"/></div>
       <div class="ab-gallery-card"><img src="about-audience.jpg" alt="about-audience.jpg"/></div>
@@ -1141,55 +1162,14 @@ select.f-inp option{background:#0B1629}
       <div class="phil-card reveal"><p class="phil-num">IV.</p><h3 class="phil-t">Ancient. Timeless. Now.</h3><p class="phil-d">The Ramayana, the Mahabharata, the Puranas — they were not written for another age. They were written for this moment, for you, in your specific struggle.</p></div>
     </div>
   </section>
-    <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ MYTHOLOGY LAB ════ -->
 <div class="page" id="lab-page">
-  <!-- #6: larger hero with background image -->
+  <!-- #2: full uncropped hero image, taller section -->
   <div class="lab-hero">
-    <div class="lab-hero-bg"></div><!-- lab-hero.jpg -->
+    <div class="lab-hero-bg"><img src="lab-hero.jpg" alt="lab-hero — mythology imagery"/></div>
     <div class="lab-hero-content">
       <p class="lab-label">A Digital Museum of Myth</p>
       <h1 class="lab-title">The Mythology <em>Lab</em></h1>
@@ -1257,48 +1237,7 @@ select.f-inp option{background:#0B1629}
     <!-- #7: clickable character cards -->
     <div class="char-grid" id="charGrid"></div>
   </section>
- <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ CHARACTER PAGE ════ -->
@@ -1339,48 +1278,7 @@ select.f-inp option{background:#0B1629}
     <h2 class="h-title" style="margin-bottom:2rem">Explore <em>connected articles</em></h2>
     <div class="art-grid" id="charRelatedArts"></div>
   </div>
-   <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ SPEAKING ════ -->
@@ -1472,48 +1370,7 @@ select.f-inp option{background:#0B1629}
       <a href="#" class="btn-gold reveal" onclick="return go('contact')" style="display:inline-flex;margin-top:2rem">Enquire About a Session</a>
     </div>
   </section>
-  <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ BOOKS ════ -->
@@ -1550,35 +1407,8 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
-<!-- ════ MEDIA — #10 with carousel ════ -->
+<!-- ════ MEDIA ════ -->
 <div class="page" id="media-page">
-  <!-- Featured carousel -->
-  <div class="med-carousel" id="medCarousel">
-    <div class="med-slides" id="medSlides">
-      <div class="med-slide">
-        <div class="med-slide-img"><img src="media-vogue.jpg" alt="Vogue India feature"/></div>
-        <div class="med-slide-text"><p class="med-slide-type">Featured Article</p><h3 class="med-slide-head">The Ancient Female Archetypes Every Woman Should Know</h3><p class="med-slide-ex">Sundeep Verma decodes the mythology of Indian feminine power — and why it matters now.</p><a href="#" class="btn-gold" style="font-size:.58rem;padding:.7rem 1.4rem">Read in Vogue India</a></div>
-      </div>
-      <div class="med-slide">
-        <div class="med-slide-img"><img src="media-article-01.jpg" alt="GQ India interview"/></div>
-        <div class="med-slide-text"><p class="med-slide-type">Featured Interview</p><h3 class="med-slide-head">Why Every Leader Should Read the Mahabharata</h3><p class="med-slide-ex">Strategy, ethics, power — the epic has it all. Sundeep Verma explains why it's the ultimate leadership manual.</p><a href="#" class="btn-gold" style="font-size:.58rem;padding:.7rem 1.4rem">Read in GQ India</a></div>
-      </div>
-      <div class="med-slide">
-        <div class="med-slide-img"><img src="media-article-02.jpg" alt="India Today feature"/></div>
-        <div class="med-slide-text"><p class="med-slide-type">Featured Video</p><h3 class="med-slide-head">Mythology is the New Psychology</h3><p class="med-slide-ex">The growing movement to reclaim ancient stories as tools for modern self-understanding.</p><a href="#" class="btn-gold" style="font-size:.58rem;padding:.7rem 1.4rem">Watch Feature</a></div>
-      </div>
-      <div class="med-slide">
-        <div class="med-slide-img"><img src="media-article-03.jpg" alt="The Hindu publication"/></div>
-        <div class="med-slide-text"><p class="med-slide-type">Featured Publication</p><h3 class="med-slide-head">Cobalt Blue Foundation: Mythology for the Modern Age</h3><p class="med-slide-ex">How Sundeep Verma's foundation is building mythology into a cultural discipline for institutions across India.</p><a href="#" class="btn-gold" style="font-size:.58rem;padding:.7rem 1.4rem">Read in The Hindu</a></div>
-      </div>
-    </div>
-    <div class="med-nav">
-      <button class="med-nav-btn" onclick="medSlide(-1)">‹</button>
-      <button class="med-nav-btn" onclick="medSlide(1)">›</button>
-    </div>
-    <div class="med-dots" id="medDots"></div>
-  </div>
-
   <section class="med-hero">
     <p class="med-label">Media & Press</p>
     <h1 class="med-title">The Newsroom</h1>
@@ -1593,48 +1423,7 @@ select.f-inp option{background:#0B1629}
     <div class="med-tab" onclick="switchTab(this,'kit')">Media Kit</div>
   </div>
   <div class="med-content" id="medContent"></div>
-  <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ HUMAN QUESTIONS (#11: renamed) ════ -->
@@ -1661,48 +1450,7 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
   <div class="q-cards-grid" id="qGrid"></div>
- <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ CONTACT ════ -->
@@ -1733,48 +1481,7 @@ select.f-inp option{background:#0B1629}
       <div><p class="ci-lbl">The Foundation</p><p class="ci-val" style="font-size:.88rem"><a href="https://www.cobaltbluefoundation.com" style="color:#E8EEF8;text-decoration:none">cobaltbluefoundation.com</a></p><p class="ci-sub">Tickets, events, and upcoming programs</p></div>
     </div>
   </div>
- <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ TERMS (#12) ════ -->
@@ -1793,48 +1500,7 @@ select.f-inp option{background:#0B1629}
     <div class="legal-section"><h2>8. Governing Law</h2><p>These Terms and Conditions are governed by the laws of India. Any disputes arising from your use of this website shall be subject to the exclusive jurisdiction of the courts of Mumbai, Maharashtra, India.</p></div>
     <div class="legal-section"><h2>9. Contact</h2><p>For any questions regarding these Terms and Conditions, please contact: <a href="mailto:press@cobaltbluefoundation.com" style="color:#C2A05A">press@cobaltbluefoundation.com</a></p></div>
   </div>
- <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <!-- ════ PRIVACY (#12) ════ -->
@@ -1851,48 +1517,7 @@ select.f-inp option{background:#0B1629}
     <div class="legal-section"><h2>6. Your Rights</h2><p>You have the right to:</p><ul><li>Request access to the personal data we hold about you.</li><li>Request correction or deletion of your personal data.</li><li>Withdraw consent for any data processing at any time.</li><li>Unsubscribe from our newsletter at any time using the link included in each email.</li></ul></div>
     <div class="legal-section"><h2>7. Contact Us</h2><p>If you have any questions about this Privacy Policy or wish to exercise any of your rights, please contact us at: <a href="mailto:press@cobaltbluefoundation.com" style="color:#C2A05A">press@cobaltbluefoundation.com</a></p></div>
   </div>
- <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
- 
-        <div class="f-social">
-          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
-          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
-          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
-          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
-        </div>
-      </div>
-      <div class="f-col"><h4>Explore</h4><ul>
-        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
-        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
-        <li><a href="#" onclick="return go('books')">Books</a></li>
-        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Connect</h4><ul>
-        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
-        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
-        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
-        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
-      </ul></div>
-      <div class="f-col"><h4>Foundation</h4><ul>
-        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
-        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
-        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
-      </ul></div>
-    </div>
-    <div class="f-bottom">
-     
-      <div>
-        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
-        <div class="f-legal">
-          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
-          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
 <script>
@@ -2032,7 +1657,7 @@ function go(id){
   const mw=document.getElementById('motw'),nav=document.getElementById('navbar');
   if(isHome){mw.classList.remove('hidden-motw');nav.classList.add('with-motw')}
   else{mw.classList.add('hidden-motw');nav.classList.remove('with-motw')}
-  if(id==='media'){renderMedia('articles');initCarousel()}
+  if(id==='media'){renderMedia('articles')}
   if(id==='lab'){renderArts('All');renderChars()}
   if(id==='questions')renderQs('All');
   setTimeout(initReveal,120);
@@ -2146,22 +1771,21 @@ function initReveal(){
   document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.tl-item').forEach(el=>obs.observe(el));
 }
 
-// INIT
+// #4: LOADER timing reduced by ~1s
 window.addEventListener('load',()=>{
   setTimeout(()=>{
     document.getElementById('loader').classList.add('gone');
     setTimeout(()=>{
       document.getElementById('rc-text').textContent=refs[Math.floor(Math.random()*refs.length)];
       document.getElementById('rc').classList.add('show');
-    },2400);
-  },2600);
+    },1700);
+  },1700);
   document.getElementById('navbar').classList.add('with-motw');
   initReveal();
   renderArts('All');
   renderChars();
   renderMedia('articles');
   renderQs('All');
-  initCarousel();
 });
 </script>
 </body>
