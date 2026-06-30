@@ -378,14 +378,6 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .ab-title em{font-style:italic;color:#C2A05A}
 .ab-sub{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.4);line-height:1.95;font-weight:300;margin-top:1.5rem;max-width:500px}
 
-  * ABOUT STRIP */
-.h-about{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:540px}
-/* IMAGE: founder-workshop.jpg */
-.h-about-img{position:relative;overflow:hidden}
-.h-about-img img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(15%) brightness(.88);transition:transform 8s var(--ease)}
-.h-about-img:hover img{transform:scale(1.04)}
-.h-about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 65%,#0D0D0D)}
-.h-about-text{padding:4rem 5vw;display:flex;flex-direction:column;justify-content:center;background:#0D0D0D}
 /* ── #5 ABOUT IMAGES: horizontal scroll gallery, moved below hero ── */
 /* Horizontal scroll gallery */
 .ab-gallery-scroll{
@@ -1128,7 +1120,6 @@ select.f-inp option{background:#0B1629}
       <p class="ab-sub">Mythologist. Author. Storyteller. Founder of Cobalt Blue Foundation. A man who left advertising to spend his life decoding why ancient stories still run our lives today.</p>
     </div>
   </div>
-  <div class="page" id="about-page"> <div class="ab-hero"> <!-- founder-portrait.jpg: Replace with Sundeep's editorial portrait --> <div class="ab-hero-img"> <img src="founder-portrait.jpg" alt="founder-portrait — Sundeep Verma"/> </div> <div class="ab-hero-text"> <p class="ab-label">The Man Behind the Myths</p> <h1 class="ab-title">Sundeep<br><em>Verma</em></h1> <p class="ab-sub">Mythologist. Author. Storyteller. Founder of Cobalt Blue Foundation. A man who left advertising to spend his life decoding why ancient stories still run our lives today.</p> </div> </div>
 
   <!-- #5: Horizontal scroll gallery — moved below hero, with large spacing -->
   <div class="ab-gallery-scroll">
@@ -1136,10 +1127,10 @@ select.f-inp option{background:#0B1629}
     <h2 class="ab-gallery-h">Moments <em>in focus</em></h2>
     <div class="ab-gallery-track">
       <!-- about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg, workshop-01.jpg -->
-      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-reading.jpg"/></div>
-      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-speaking.jpg"/></div>
-      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-library.jpg"/></div>
-      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-audience.jpg"/></div>
+      <div class="ab-gallery-card"><img src="about-reading.jpg" alt="about-reading.jpg"/></div>
+      <div class="ab-gallery-card"><img src="about-speaking.jpg" alt="about-speaking.jpg"/></div>
+      <div class="ab-gallery-card"><img src="about-library.jpg" alt="about-library.jpg"/></div>
+      <div class="ab-gallery-card"><img src="about-audience.jpg" alt="about-audience.jpg"/></div>
       <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="workshop-01.jpg"/></div>
       <div class="ab-gallery-card"><img src="founder-portrait.jpg" alt="founder-portrait.jpg"/></div>
     </div>
@@ -1156,6 +1147,10 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
+  <section style="background:#060606;padding:5.5rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.08);border-bottom:1px solid rgba(194,160,90,.08)">
+    <blockquote style="font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,2.2rem);font-weight:300;font-style:italic;color:rgba(245,240,232,.73);line-height:1.7;max-width:720px;margin:0 auto" class="reveal">"Mythology is not religion. It is not superstition. It is the most sophisticated psychology ever created — disguised as story."</blockquote>
+    <p style="font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-top:1.8rem" class="reveal">— Sundeep Verma</p>
+  </section>
 
   <section style="padding:4rem 5vw;background:#0D0D0D">
     <p class="ab-label reveal">Philosophy</p>
@@ -1174,7 +1169,7 @@ select.f-inp option{background:#0B1629}
 <div class="page" id="lab-page">
   <!-- #2: full uncropped hero image, taller section -->
   <div class="lab-hero">
-    <div class="lab-hero-bg"><img src="speaking-stage.jpg" alt="lab-hero — mythology imagery"/></div>
+    <div class="lab-hero-bg"><img src="lab-hero.jpg" alt="lab-hero — mythology imagery"/></div>
     <div class="lab-hero-content">
       <p class="lab-label">A Digital Museum of Myth</p>
       <h1 class="lab-title">The Mythology <em>Lab</em></h1>
@@ -1426,25 +1421,6 @@ select.f-inp option{background:#0B1629}
     <div class="med-tab" onclick="switchTab(this,'podcasts')">Podcasts</div>
     <div class="med-tab" onclick="switchTab(this,'writing')">Writing</div>
     <div class="med-tab" onclick="switchTab(this,'kit')">Media Kit</div>
-  </div>
-  <!-- PRESS — #3: brighter, gold tint, hover glow -->
-  <div class="h-press">
-    <p class="h-press-label">As featured in</p>
-    <div class="h-press-divider"></div>
-    <div class="mq-wrap">
-      <div class="mq-track">
-        <span class="mq-item">The Hindu</span><span class="mq-item">Hindustan Times</span>
-        <span class="mq-item">Scroll</span><span class="mq-item">The Wire</span>
-        <span class="mq-item">Firstpost</span><span class="mq-item">Outlook</span>
-        <span class="mq-item">Indian Express</span><span class="mq-item">GQ India</span>
-        <span class="mq-item">Vogue India</span><span class="mq-item">India Today</span>
-        <span class="mq-item">The Hindu</span><span class="mq-item">Hindustan Times</span>
-        <span class="mq-item">Scroll</span><span class="mq-item">The Wire</span>
-        <span class="mq-item">Firstpost</span><span class="mq-item">Outlook</span>
-        <span class="mq-item">Indian Express</span><span class="mq-item">GQ India</span>
-        <span class="mq-item">Vogue India</span><span class="mq-item">India Today</span>
-      </div>
-    </div>
   </div>
   <div class="med-content" id="medContent"></div>
   <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
