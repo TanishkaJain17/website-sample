@@ -47,10 +47,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.3rem 5vw;display:f
 nav.with-motw{top:36px}
 nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem 5vw;box-shadow:0 1px 0 rgba(194,160,90,.12)}
 
-/* ── NAV LOGO — #2 IMPROVED TYPOGRAPHY ── */
 .nav-logo{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:#F5F0E8;text-decoration:none;letter-spacing:.03em;display:flex;flex-direction:column;line-height:1}
 .nav-logo-name{margin-bottom:6px;font-size:1.08rem;letter-spacing:.04em}
-/* #2: Subtitle 25% larger, more letter-spacing, more gap from name */
 .nav-logo-sub{
   font-size:.58rem;
   letter-spacing:.38em;
@@ -154,80 +152,21 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 .big-quote{font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,2.3rem);font-weight:300;font-style:italic;color:rgba(245,240,232,.78);line-height:1.7;max-width:740px;margin:0 auto}
 .quote-attr{font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-top:1.8rem}
 
-/* ── FEATURED WRITING — #1: TWO-COLUMN EDITORIAL LAYOUT ── */
+/* FEATURED WRITING */
 .h-section{padding:clamp(4rem,7vw,7rem) 5vw;background:#0D0D0D}
-
-.fw-editorial{
-  display:grid;
-  grid-template-columns:38% 1fr;
-  gap:3.5rem;
-  align-items:start;
-  margin-bottom:4rem;
-  padding-bottom:4rem;
-  border-bottom:1px solid rgba(194,160,90,.1);
-}
-/* Left: large editorial image */
+.fw-editorial{display:grid;grid-template-columns:38% 1fr;gap:3.5rem;align-items:start;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(194,160,90,.1)}
 .fw-img-wrap{position:relative;overflow:hidden;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.7),0 4px 16px rgba(0,0,0,.5)}
-/* featured-writing.jpg: Replace with mythology/storytelling editorial image */
-.fw-img-wrap img{
-  width:100%;
-  aspect-ratio:3/4;
-  object-fit:cover;
-  filter:grayscale(10%) brightness(.82);
-  transition:transform .8s var(--ease),filter .5s;
-  display:block;
-  border-radius:8px;
-}
+.fw-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(10%) brightness(.82);transition:transform .8s var(--ease),filter .5s;display:block;border-radius:8px}
 .fw-img-wrap:hover img{transform:scale(1.04);filter:grayscale(0) brightness(.88)}
-/* Right: paragraph + button */
 .fw-text-wrap{display:flex;flex-direction:column;justify-content:center;padding-top:.5rem}
-.fw-text-wrap .wei-text{
-  font-family:var(--serif);
-  font-size:clamp(1.1rem,2vw,1.5rem);
-  font-style:italic;
-  color:rgba(245,240,232,.68);
-  line-height:1.9;
-  font-weight:300;
-  letter-spacing:.01em;
-  margin-bottom:0;
-}
+.fw-text-wrap .wei-text{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:rgba(245,240,232,.68);line-height:1.9;font-weight:300;letter-spacing:.01em;margin-bottom:0}
 .fw-text-wrap .wei-footer{display:flex;align-items:center;gap:1rem;margin-top:1.6rem;margin-bottom:2.2rem}
 .fw-text-wrap .wei-line{width:36px;height:1px;background:rgba(194,160,90,.4)}
 .fw-text-wrap .wei-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(194,160,90,.55)}
-/* #1: Gold Read More button with glow on hover */
-.btn-read-more{
-  display:inline-flex;align-items:center;gap:.8rem;
-  padding:.9rem 2.2rem;
-  background:transparent;
-  border:1px solid rgba(194,160,90,.5);
-  color:#C2A05A;
-  font-family:var(--sans);
-  font-size:.62rem;
-  font-weight:600;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  text-decoration:none;
-  transition:all .4s var(--ease);
-  position:relative;
-  overflow:hidden;
-  width:fit-content;
-}
-.btn-read-more::before{
-  content:'';
-  position:absolute;inset:0;
-  background:rgba(194,160,90,.08);
-  transform:translateX(-101%);
-  transition:transform .4s var(--ease);
-}
+.btn-read-more{display:inline-flex;align-items:center;gap:.8rem;padding:.9rem 2.2rem;background:transparent;border:1px solid rgba(194,160,90,.5);color:#C2A05A;font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:all .4s var(--ease);position:relative;overflow:hidden;width:fit-content}
+.btn-read-more::before{content:'';position:absolute;inset:0;background:rgba(194,160,90,.08);transform:translateX(-101%);transition:transform .4s var(--ease)}
 .btn-read-more:hover::before{transform:none}
-.btn-read-more:hover{
-  border-color:#C2A05A;
-  color:#F5F0E8;
-  background:rgba(194,160,90,.05);
-  transform:translateY(-2px);
-  box-shadow:0 0 24px rgba(194,160,90,.22),0 8px 20px rgba(0,0,0,.4);
-}
-
+.btn-read-more:hover{border-color:#C2A05A;color:#F5F0E8;background:rgba(194,160,90,.05);transform:translateY(-2px);box-shadow:0 0 24px rgba(194,160,90,.22),0 8px 20px rgba(0,0,0,.4)}
 .h-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:rgba(194,160,90,.08);margin-top:0}
 .h-card{background:#0D0D0D;padding:2rem 1.8rem;transition:background .35s;position:relative;overflow:hidden}
 .h-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(194,160,90,.3),transparent);transform:scaleX(0);transition:transform .4s}
@@ -241,37 +180,16 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 .h-card-date{font-family:var(--sans);font-size:.6rem;color:rgba(245,240,232,.22);letter-spacing:.1em}
 .h-card-arrow{font-size:.9rem;color:rgba(194,160,90,.4);transition:transform .3s var(--ease),color .3s}
 
-/* ── BOOK STRIP — #4: 25% larger, floating animation, stronger shadow ── */
+/* BOOK STRIP */
 .h-book-strip{display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:center;background:#080808;padding:5rem 5vw;border-top:1px solid rgba(194,160,90,.08)}
-/* ahalya-cover.jpg */
-.h-book-cover{
-  width:238px;height:335px;flex-shrink:0;
-  background:url('ahalya-cover.jpg') center/cover;
-  box-shadow:20px 20px 60px rgba(0,0,0,.85),-5px 0 0 rgba(0,0,0,.6),0 0 40px rgba(194,160,90,.08);
-  border-radius:0 4px 4px 0;
-  animation:bookFloat 4s ease-in-out infinite;
-  transition:box-shadow .5s;
-}
-@keyframes bookFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-.h-book-cover:hover{
-  box-shadow:28px 28px 70px rgba(0,0,0,.9),-5px 0 0 rgba(0,0,0,.65),0 0 50px rgba(194,160,90,.18);
-  animation-play-state:paused;
-}
+.h-book-cover{width:238px;height:335px;flex-shrink:0;background:url('ahalya-cover.jpg') center/cover;box-shadow:20px 20px 60px rgba(0,0,0,.85),-5px 0 0 rgba(0,0,0,.6),0 0 40px rgba(194,160,90,.08);border-radius:0 4px 4px 0;animation:bookFloat 4s ease-in-out infinite;transition:box-shadow .5s}
+@keyframes bookFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.h-book-cover:hover{box-shadow:28px 28px 70px rgba(0,0,0,.9),-5px 0 0 rgba(0,0,0,.65),0 0 50px rgba(194,160,90,.18);animation-play-state:paused}
 .h-book-text p{font-family:var(--sans);color:rgba(245,240,232,.38);line-height:1.9;font-size:.85rem;margin:1.2rem 0 1.8rem;font-weight:300}
 
-/* ── PRESS SECTION — #3: brighter, gold tint, better hover ── */
+/* PRESS */
 .h-press{padding:3rem 5vw;background:#080808;text-align:center;border-top:1px solid rgba(194,160,90,.1)}
-.h-press-label{
-  font-family:var(--sans);font-size:.6rem;
-  letter-spacing:.32em;text-transform:uppercase;
-  /* #3: brighter, gold-tinted */
-  color:rgba(194,160,90,.55);
-  margin-bottom:1.2rem;
-  text-shadow:0 0 20px rgba(194,160,90,.2);
-}
+.h-press-label{font-family:var(--sans);font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(194,160,90,.55);margin-bottom:1.2rem;text-shadow:0 0 20px rgba(194,160,90,.2)}
 .h-press-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(194,160,90,.4),transparent);margin:0 auto 2rem}
 .mq-wrap{overflow:hidden;position:relative}
 .mq-wrap::before,.mq-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:1;pointer-events:none}
@@ -279,17 +197,8 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 .mq-wrap::after{right:0;background:linear-gradient(to left,#080808,transparent)}
 .mq-track{display:flex;gap:3.5rem;width:max-content;animation:mqa 26s linear infinite}
 @keyframes mqa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-/* #3: logos more visible, gold hover glow */
-.mq-item{
-  font-family:var(--serif);font-size:1.1rem;font-weight:500;
-  color:rgba(245,240,232,.28);
-  letter-spacing:.04em;white-space:nowrap;
-  transition:color .35s,text-shadow .35s;
-}
-.mq-item:hover{
-  color:rgba(194,160,90,.8);
-  text-shadow:0 0 16px rgba(194,160,90,.3);
-}
+.mq-item{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:rgba(245,240,232,.28);letter-spacing:.04em;white-space:nowrap;transition:color .35s,text-shadow .35s}
+.mq-item:hover{color:rgba(194,160,90,.8);text-shadow:0 0 16px rgba(194,160,90,.3)}
 
 /* NEWSLETTER */
 .h-newsletter{background:#0D0D0D;padding:5rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.08)}
@@ -300,7 +209,7 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 .h-nl-form button{padding:.85rem 1.4rem;background:#C2A05A;color:#0D0D0D;font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border:none;transition:background .3s}
 .h-nl-form button:hover{background:#E8D5A0}
 
-/* ── FOOTER — global, identical on every page ── */
+/* FOOTER */
 footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,160,90,.1)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .f-brand p{font-family:var(--sans);font-size:.75rem;color:rgba(245,240,232,.25);line-height:1.85;font-weight:300;max-width:220px;margin-top:1rem}
@@ -314,12 +223,10 @@ footer{background:#040404;padding:4rem 5vw 2rem;border-top:1px solid rgba(194,16
 .f-bottom{border-top:1px solid rgba(194,160,90,.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .f-reflect{font-family:var(--serif);font-size:.82rem;font-style:italic;color:rgba(245,240,232,.18)}
 .f-copy{font-family:var(--sans);font-size:.58rem;color:rgba(245,240,232,.16);letter-spacing:.1em}
-/* footer legal links */
 .f-legal{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:.6rem}
 .f-legal a{font-family:var(--sans);font-size:.58rem;color:rgba(245,240,232,.2);text-decoration:none;letter-spacing:.08em;transition:color .3s}
 .f-legal a:hover{color:rgba(194,160,90,.6)}
 
-/* SHARED FOOTER for light (books) page */
 footer.footer-light{background:#EDE4D3;border-top-color:rgba(42,31,20,.1)}
 footer.footer-light .f-col h4{color:#9C6B3F}
 footer.footer-light .f-col ul li a{color:rgba(42,31,20,.45)}
@@ -331,98 +238,30 @@ footer.footer-light .f-legal a{color:rgba(42,31,20,.28)}
 footer.footer-light .f-legal a:hover{color:#9C6B3F}
 
 /* ════════════════════════════════════════
-   ABOUT — dark (home palette)
+   ABOUT
 ════════════════════════════════════════ */
 #about-page{background:#0D0D0D}
-/* ── #1 ABOUT HERO: full uncropped portrait, left image / right text editorial layout ── */
-.ab-hero{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:0;
-  min-height:100vh;
-  background:#060606;
-  padding-top:90px;
-  overflow:hidden;
-}
-.ab-hero-img-col{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-  padding:3rem 3vw 3rem 5vw;
-  background:#060606;
-}
-/* founder-portrait.jpg: shown completely, no cropping */
-.ab-hero-img-col img{
-  width:100%;
-  max-width:480px;
-  height:auto;
-  max-height:80vh;
-  object-fit:contain;
-  display:block;
-  filter:grayscale(8%) brightness(.96);
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
-  border-radius:6px;
-}
-.ab-hero-cnt{
-  position:relative;
-  z-index:2;
-  padding:3rem 5vw 3rem 0;
-  max-width:560px;
-}
+.ab-hero{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;min-height:100vh;background:#060606;padding-top:90px;overflow:hidden}
+.ab-hero-img-col{display:flex;align-items:center;justify-content:center;height:100%;padding:3rem 3vw 3rem 5vw;background:#060606}
+.ab-hero-img-col img{width:100%;max-width:480px;height:auto;max-height:80vh;object-fit:contain;display:block;filter:grayscale(8%) brightness(.96);box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:6px}
+.ab-hero-cnt{position:relative;z-index:2;padding:3rem 5vw 3rem 0;max-width:560px}
 .ab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .ab-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .ab-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#F5F0E8;line-height:1.05}
 .ab-title em{font-style:italic;color:#C2A05A}
 .ab-sub{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.4);line-height:1.95;font-weight:300;margin-top:1.5rem;max-width:500px}
-
-/* ── #5 ABOUT IMAGES: horizontal scroll gallery, moved below hero ── */
-/* Horizontal scroll gallery */
-.ab-gallery-scroll{
-  padding:5rem 5vw 4rem;
-  background:#0D0D0D;
-  overflow:hidden;
-}
-.ab-gallery-label{
-  font-family:var(--sans);font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;
-  margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;
-}
+.ab-gallery-scroll{padding:5rem 5vw 4rem;background:#0D0D0D;overflow:hidden}
+.ab-gallery-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
 .ab-gallery-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .ab-gallery-h{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:#F5F0E8;margin-bottom:2.5rem}
 .ab-gallery-h em{font-style:italic;color:#C2A05A}
-.ab-gallery-track{
-  display:flex;
-  gap:1.2rem;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  padding-bottom:.5rem;
-}
+.ab-gallery-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem}
 .ab-gallery-track::-webkit-scrollbar{display:none}
-.ab-gallery-card{
-  flex:0 0 320px;
-  height:240px;
-  overflow:hidden;
-  border-radius:6px;
-  scroll-snap-align:start;
-  position:relative;
-  box-shadow:0 8px 24px rgba(0,0,0,.5);
-  transition:box-shadow .4s;
-}
+.ab-gallery-card{flex:0 0 320px;height:240px;overflow:hidden;border-radius:6px;scroll-snap-align:start;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:box-shadow .4s}
 .ab-gallery-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.7)}
-/* about-speaking.jpg, about-library.jpg, about-audience.jpg */
-.ab-gallery-card img{
-  width:100%;height:100%;
-  object-fit:cover;
-  filter:grayscale(18%) brightness(.75);
-  transition:transform .6s var(--ease),filter .5s;
-}
+.ab-gallery-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(18%) brightness(.75);transition:transform .6s var(--ease),filter .5s}
 .ab-gallery-card:hover img{transform:scale(1.07);filter:grayscale(0) brightness(.88)}
 
-/* timeline */
 .tl-wrap{padding:5rem 5vw;background:#0D0D0D}
 .tl-h{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;color:#F5F0E8;margin-bottom:3rem}
 .tl-h em{font-style:italic;color:#C2A05A}
@@ -447,32 +286,10 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
    MYTHOLOGY LAB
 ════════════════════════════════════════ */
 #lab-page{background:#1A1E35}
-/* ── #2 LAB HERO: full uncropped image, taller section ── */
-.lab-hero{
-  background:#111728;
-  padding:9rem 5vw 6rem;
-  position:relative;
-  overflow:hidden;
-  min-height:75vh;
-  display:flex;
-  align-items:center;
-}
+.lab-hero{background:#111728;padding:9rem 5vw 6rem;position:relative;overflow:hidden;min-height:75vh;display:flex;align-items:center}
 .lab-hero::before{content:'ΜΥΘΟΣ';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18rem;color:rgba(194,160,90,.04);line-height:1;pointer-events:none}
-/* #2: hero background image, full image visible via contain, no face cropping */
-.lab-hero-bg{
-  position:absolute;inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#111728;
-}
-.lab-hero-bg img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center;
-  opacity:.32;
-}
+.lab-hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#111728}
+.lab-hero-bg img{width:100%;height:100%;object-fit:contain;object-position:center;opacity:.32}
 .lab-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,23,40,.55) 0%,rgba(17,23,40,.35) 45%,rgba(17,23,40,.85) 100%);pointer-events:none}
 .lab-hero-content{position:relative;z-index:2}
 .lab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
@@ -480,25 +297,12 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .lab-title{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;color:#E8EAF0;line-height:1.02}
 .lab-title em{font-style:italic;color:#C2A05A}
 .lab-sub{font-family:var(--sans);font-size:.9rem;color:rgba(232,234,240,.48);line-height:1.95;max-width:520px;margin-top:1.2rem;font-weight:300}
-/* ── #8 search bar: matches dark background, no white box ── */
 .search-wrap{position:relative;margin-top:2.5rem;max-width:640px}
-.search-inp{
-  width:100%;
-  padding:1rem 3.5rem 1rem 1.4rem;
-  background:rgba(17,23,40,.8);
-  border:1px solid rgba(194,160,90,.3);
-  color:#E8EAF0;
-  font-family:var(--sans);
-  font-size:.88rem;
-  outline:none;
-  transition:border-color .3s,background .3s;
-  -webkit-appearance:none;
-}
+.search-inp{width:100%;padding:1rem 3.5rem 1rem 1.4rem;background:rgba(17,23,40,.8);border:1px solid rgba(194,160,90,.3);color:#E8EAF0;font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .3s,background .3s;-webkit-appearance:none}
 .search-inp:focus{border-color:#C2A05A;background:rgba(17,23,40,.95)}
 .search-inp::placeholder{color:rgba(232,234,240,.3)}
 .search-ico{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);color:#C2A05A;font-size:1.1rem}
 
-/* WGCH */
 .wgch{background:#0D1020}
 .wgch-banner{position:relative;min-height:420px;display:flex;align-items:flex-end;overflow:hidden}
 .wgch-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;transform:scale(1.03);animation:sk 18s ease infinite alternate}
@@ -514,7 +318,6 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .wg img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.55);transition:all .5s}
 .wg:hover img{filter:brightness(.85) saturate(.85);transform:scale(1.06)}
 
-/* compass */
 .compass-sec{padding:4rem 5vw;background:#1A1E35;text-align:center}
 .compass-h{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:#E8EAF0;margin-bottom:2rem}
 .compass-h em{font-style:italic;color:#C2A05A}
@@ -551,14 +354,8 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .art-ex{font-family:var(--sans);font-size:.76rem;color:rgba(232,234,240,.42);line-height:1.85;font-weight:300}
 .art-meta{font-family:var(--sans);font-size:.58rem;color:rgba(232,234,240,.2);letter-spacing:.1em;display:flex;justify-content:space-between;margin-top:1rem;padding-top:.8rem;border-top:1px solid rgba(194,160,90,.1)}
 
-/* ── #7 CHARACTER CARDS: clickable, open character page ── */
 .char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:1px;background:rgba(194,160,90,.1)}
-.char-card{
-  background:#1A1E35;padding:1.6rem 1rem;text-align:center;
-  transition:background .3s,transform .3s;
-  position:relative;overflow:hidden;
-  cursor:none;
-}
+.char-card{background:#1A1E35;padding:1.6rem 1rem;text-align:center;transition:background .3s,transform .3s;position:relative;overflow:hidden;cursor:none}
 .char-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#C2A05A;transform:scaleX(0);transition:transform .3s}
 .char-card:hover{background:#1e2440;transform:translateY(-3px)}
 .char-card:hover::before{transform:scaleX(1)}
@@ -569,7 +366,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .char-arrow{font-size:.7rem;color:rgba(194,160,90,.3);margin-top:.6rem;transition:transform .3s,color .3s}
 .char-card:hover .char-arrow{transform:translate(3px,-3px);color:#C2A05A}
 
-/* ── CHARACTER PAGE ── */
+/* CHARACTER PAGE */
 .char-page{background:#0D0D0D}
 .char-page-hero{position:relative;min-height:65vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606}
 .char-page-hero-bg{position:absolute;inset:0}
@@ -594,7 +391,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .char-related-arts{padding:3rem 5vw;background:#080808}
 
 /* ════════════════════════════════════════
-   HUMAN QUESTIONS (renamed from Hall of Questions)
+   HUMAN QUESTIONS
 ════════════════════════════════════════ */
 #questions-page{background:#0D0D0D}
 .qp-hero{position:relative;min-height:58vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606;padding:0 5vw 5rem}
@@ -696,7 +493,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .vid-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#D4C99A;margin-bottom:.4rem}
 .vid-title{font-family:var(--serif);font-size:.98rem;color:#F5F2EA;line-height:1.4}
 
-/* ── #9 SPEAKING "INVITE" section — Home palette ── */
+/* INVITE SUNDEEP — premium interactive cards */
 .h-speak{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px;background:#0D0D0D}
 .h-speak-img{position:relative;overflow:hidden}
 .h-speak-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.65);transition:transform 8s var(--ease)}
@@ -708,11 +505,86 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .sec-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#F5F0E8;margin-bottom:1.2rem}
 .sec-title em{font-style:italic;color:#C2A05A}
 .sec-divider{width:40px;height:1px;background:#C2A05A;margin:1rem 0}
-.speak-list{list-style:none;margin-top:1.4rem}
-.speak-list li{font-family:var(--serif);font-size:1.02rem;padding:.82rem 0;border-bottom:1px solid rgba(194,160,90,.08);color:rgba(245,240,232,.5);font-weight:300;display:flex;justify-content:space-between;align-items:center;transition:color .3s,padding-left .3s}
-.speak-list li:hover{color:#C2A05A;padding-left:.4rem}
-.speak-list li span{transition:transform .3s;font-size:.9rem;color:rgba(194,160,90,.4)}
-.speak-list li:hover span{transform:translateX(5px);color:#C2A05A}
+.invite-grid{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem}
+.invite-card{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(245,240,232,.02);
+  border:1px solid rgba(194,160,90,.12);
+  padding:1.1rem 1.4rem;
+  text-decoration:none;
+  transition:all .35s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.invite-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:#C2A05A;transform:scaleY(0);transition:transform .35s var(--ease);transform-origin:bottom}
+.invite-card:hover{
+  background:rgba(194,160,90,.06);
+  border-color:rgba(194,160,90,.55);
+  transform:translateX(6px) translateY(-2px);
+  box-shadow:0 10px 28px rgba(0,0,0,.35),0 0 18px rgba(194,160,90,.1);
+}
+.invite-card:hover::before{transform:scaleY(1)}
+.invite-card-name{font-family:var(--serif);font-size:1.05rem;color:rgba(245,240,232,.62);font-weight:300;transition:color .3s}
+.invite-card:hover .invite-card-name{color:#F5F0E8}
+.invite-card-arrow{font-size:.95rem;color:rgba(194,160,90,.4);transition:transform .35s var(--ease),color .35s}
+.invite-card:hover .invite-card-arrow{transform:translateX(6px);color:#C2A05A}
+
+/* ════════════════════════════════════════
+   PROGRAM (INVITE) DETAIL PAGES — shared template
+════════════════════════════════════════ */
+.program-page{background:#0D0D0D}
+.pr-hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606;padding:0 5vw 5rem}
+.pr-hero-bg{position:absolute;inset:0}
+.pr-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.4;filter:grayscale(12%) brightness(.78)}
+.pr-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.98) 18%,rgba(6,6,6,.55) 65%,rgba(6,6,6,.12) 100%)}
+.pr-hero-cnt{position:relative;z-index:2;max-width:760px}
+.pr-eyebrow{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.pr-eyebrow::before{content:'';width:18px;height:1px;background:#C2A05A}
+.pr-title{font-family:var(--serif);font-size:clamp(2.6rem,6vw,5.5rem);font-weight:300;color:#F5F0E8;line-height:1.03}
+.pr-title em{font-style:italic;color:#C2A05A}
+.pr-sub{font-family:var(--sans);font-size:.88rem;color:rgba(245,240,232,.42);line-height:2;max-width:540px;margin-top:1.2rem;font-weight:300}
+.pr-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(194,160,90,.6);text-decoration:none;border:none;background:none;margin-bottom:2rem;transition:color .3s}
+.pr-back:hover{color:#C2A05A}
+
+.pr-section{padding:4.5rem 5vw;background:#0D0D0D}
+.pr-section.alt{background:#080808}
+.pr-s-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.pr-s-label::before{content:'';width:16px;height:1px;background:#C2A05A}
+.pr-s-title{font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:300;color:#F5F0E8;margin-bottom:1.5rem}
+.pr-s-title em{font-style:italic;color:#C2A05A}
+.pr-overview p{font-family:var(--sans);font-size:.86rem;color:rgba(245,240,232,.42);line-height:2;font-weight:300;max-width:760px;margin-bottom:1.1rem}
+
+.pr-icon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(194,160,90,.1);margin-top:2rem}
+.pr-icon-card{background:#0D0D0D;padding:2rem 1.5rem;text-align:center;transition:background .3s}
+.pr-icon-card:hover{background:#131313}
+.pr-icon{width:42px;height:42px;border-radius:50%;background:rgba(194,160,90,.08);border:1px solid rgba(194,160,90,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#C2A05A;font-family:var(--serif);font-size:1rem;font-style:italic}
+.pr-icon-txt{font-family:var(--sans);font-size:.78rem;color:rgba(245,240,232,.55);letter-spacing:.02em}
+
+.pr-audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:rgba(194,160,90,.1);margin-top:2rem}
+.pr-audience-card{background:#080808;padding:1.8rem 1.4rem;transition:all .3s;border-top:2px solid transparent}
+.pr-audience-card:hover{background:#101010;border-top-color:#C2A05A}
+.pr-audience-card span{font-family:var(--serif);font-size:1.05rem;color:rgba(245,240,232,.65);transition:color .3s}
+.pr-audience-card:hover span{color:#C2A05A}
+
+.pr-gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:3px;background:rgba(194,160,90,.08);margin-top:2rem}
+.pr-gallery .gi{overflow:hidden;position:relative}
+.pr-gallery .gi.tall{grid-row:span 2}
+.pr-gallery .gi.wide{grid-column:span 2}
+.pr-gallery .gi img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.68);transition:transform .6s var(--ease),filter .5s}
+.pr-gallery .gi:hover img{transform:scale(1.06);filter:grayscale(0) brightness(.85)}
+
+.pr-testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:rgba(194,160,90,.08);margin-top:2rem}
+.pr-testi-card{background:#0D0D0D;padding:2.2rem 1.8rem;border:1px solid rgba(194,160,90,.05);transition:border-color .3s}
+.pr-testi-card:hover{border-color:rgba(194,160,90,.25)}
+.pr-testi-q{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(245,240,232,.62);line-height:1.85;margin-bottom:1.2rem}
+.pr-testi-a{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A}
+.pr-testi-o{font-family:var(--sans);font-size:.6rem;color:rgba(245,240,232,.26);margin-top:.2rem}
+
+.pr-cta{background:#080808;padding:6rem 5vw;text-align:center;border-top:1px solid rgba(194,160,90,.1)}
+.pr-cta h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#F5F0E8;max-width:620px;margin:0 auto 2rem;line-height:1.4}
+.pr-cta h2 em{font-style:italic;color:#C2A05A}
+
+@media(max-width:900px){.pr-gallery{grid-template-columns:repeat(2,1fr)}.pr-gallery .gi.wide{grid-column:span 1}}
 
 /* ════════════════════════════════════════
    BOOKS
@@ -744,30 +616,6 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
    MEDIA
 ════════════════════════════════════════ */
 #media-page{background:#2A2A2A}
-/* ── #10 FEATURED CAROUSEL ── */
-.med-carousel{position:relative;overflow:hidden;background:#111;min-height:420px}
-.med-slides{display:flex;transition:transform .6s var(--ease)}
-.med-slide{
-  flex:0 0 100%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:420px;
-}
-.med-slide-img{position:relative;overflow:hidden}
-.med-slide-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) grayscale(.15);transition:filter .5s}
-.med-slide:hover .med-slide-img img{filter:brightness(.8) grayscale(0)}
-.med-slide-text{background:#111;padding:3.5rem 3vw;display:flex;flex-direction:column;justify-content:center}
-.med-slide-type{font-family:var(--sans);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,240,240,.35);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem}
-.med-slide-type::before{content:'';width:14px;height:1px;background:rgba(240,240,240,.35)}
-.med-slide-head{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);color:#F0F0F0;line-height:1.3;margin-bottom:.8rem}
-.med-slide-ex{font-family:var(--sans);font-size:.76rem;color:rgba(240,240,240,.42);line-height:1.85;font-weight:300;margin-bottom:1.4rem}
-.med-nav{position:absolute;bottom:1.5rem;right:2rem;display:flex;gap:.6rem;z-index:10}
-.med-nav-btn{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.4);color:rgba(255,255,255,.6);font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(4px)}
-.med-nav-btn:hover{border-color:#fff;color:#fff}
-.med-dots{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:10}
-.med-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s}
-.med-dot.act{background:#C2A05A}
-
 .med-hero{background:#1a1a1a;padding:8rem 5vw 3.5rem}
 .med-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,240,240,.35);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
 .med-label::before{content:'';width:16px;height:1px;background:rgba(240,240,240,.35)}
@@ -849,7 +697,7 @@ select.f-inp option{background:#0B1629}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .h-about-strip,.h-speak,.bk-hero,.bk-details,.con-grid,.footer-grid,.ae-featured,.spk-split,.med-slide{grid-template-columns:1fr}
+  .h-about-strip,.h-speak,.bk-hero,.bk-details,.con-grid,.footer-grid,.ae-featured,.spk-split{grid-template-columns:1fr}
   .h-book-strip{grid-template-columns:1fr;text-align:center}
   .h-book-cover{margin:0 auto}
   .spk-gal{grid-template-columns:repeat(2,1fr)}
@@ -927,7 +775,6 @@ select.f-inp option{background:#0B1629}
     <li><a href="#" onclick="return go('speaking')" data-pg="speaking">Speaking</a></li>
     <li><a href="#" onclick="return go('books')" data-pg="books">Books</a></li>
     <li><a href="#" onclick="return go('media')" data-pg="media">Media</a></li>
-    <!-- #11: renamed to Human Questions -->
     <li><a href="#" onclick="return go('questions')" data-pg="questions">Human Questions</a></li>
     <li><a href="#" onclick="return go('contact')" data-pg="contact">Contact</a></li>
   </ul>
@@ -947,7 +794,7 @@ select.f-inp option{background:#0B1629}
 <!-- ════ HOME ════ -->
 <div class="page active" id="home">
   <section class="hero">
-    <div class="hero-portrait"></div><!-- founder-hero.jpg -->
+    <div class="hero-portrait"></div>
     <div class="hero-texture"></div>
     <div class="hero-gold-line"></div>
     <div class="hero-content">
@@ -979,18 +826,14 @@ select.f-inp option{background:#0B1629}
     <p class="quote-attr reveal">— Sundeep Verma</p>
   </section>
 
-  <!-- FEATURED WRITING — #1: two-column editorial layout -->
   <section class="h-section">
     <p class="h-label reveal">Stories in Motion</p>
     <h2 class="h-title reveal">Featured <em>Writing</em></h2>
 
     <div class="fw-editorial reveal">
-      <!-- LEFT: editorial image -->
-      <!-- featured-writing.jpg: Replace with actual mythology/storytelling editorial image -->
       <div class="fw-img-wrap">
-        <img src="featured-writing.jpg" alt="featured-writing.jpg — mythology editorial"/>
+        <img src="featured-writing.jpg" alt="founder-portrait.jpg — mythology editorial"/>
       </div>
-      <!-- RIGHT: paragraph + button -->
       <div class="fw-text-wrap">
         <p class="wei-text">Ancient stories are not relics preserved in temples — they are living maps of identity, ambition, love, grief and transformation. Every essay here explores mythology not as history or religion, but as a mirror through which modern life becomes more understandable. These writings invite you to discover the timeless archetypes hidden inside everyday choices — and to recognise, in the oldest stories ever told, something that feels unmistakably, uncomfortably personal.</p>
         <div class="wei-footer">
@@ -1001,7 +844,6 @@ select.f-inp option{background:#0B1629}
       </div>
     </div>
 
-    <!-- Existing cards — untouched -->
     <div class="h-cards">
       <div class="h-card reveal">
         <p class="h-card-tag">Identity · Psychology</p>
@@ -1024,9 +866,8 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- BOOK STRIP — #4: larger + floating -->
   <section class="h-book-strip">
-    <div class="h-book-cover"></div><!-- ahalya-cover.jpg -->
+    <div class="h-book-cover"></div>
     <div class="h-book-text">
       <p class="h-label reveal">Published Work</p>
       <h2 class="h-title reveal">Ahalya —<br><em>The Unploughed</em></h2>
@@ -1036,7 +877,6 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- PRESS — #3: brighter, gold tint, hover glow -->
   <div class="h-press">
     <p class="h-press-label">As featured in</p>
     <div class="h-press-divider"></div>
@@ -1067,7 +907,7 @@ select.f-inp option{background:#0B1629}
     <div class="footer-grid">
       <div class="f-brand">
         <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
-        <p>Mythology is not history. It is psychology. It is the story of who you are, running inside you right now.</p>
+       
         <div class="f-social">
           <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
           <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
@@ -1094,10 +934,9 @@ select.f-inp option{background:#0B1629}
       </ul></div>
     </div>
     <div class="f-bottom">
-      <p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p>
+      <p class="f-reflect"><em>" "</em></p>
       <div>
         <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
-        <!-- #12: Terms & Privacy links -->
         <div class="f-legal">
           <a href="#" onclick="return go('terms')">Terms & Conditions</a>
           <a href="#" onclick="return go('privacy')">Privacy Policy</a>
@@ -1109,7 +948,6 @@ select.f-inp option{background:#0B1629}
 
 <!-- ════ ABOUT ════ -->
 <div class="page" id="about-page">
-  <!-- #1: Editorial hero, full uncropped portrait left, text right -->
   <div class="ab-hero">
     <div class="ab-hero-img-col">
       <img src="founder-portrait.jpg" alt="founder-portrait — Sundeep Verma"/>
@@ -1121,16 +959,14 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
-  <!-- #5: Horizontal scroll gallery — moved below hero, with large spacing -->
   <div class="ab-gallery-scroll">
     <p class="ab-gallery-label">Editorial Photography</p>
     <h2 class="ab-gallery-h">Moments <em>in focus</em></h2>
     <div class="ab-gallery-track">
-      <!-- about-reading.jpg, about-speaking.jpg, about-library.jpg, about-audience.jpg, workshop-01.jpg -->
-      <div class="ab-gallery-card"><img src="about-reading.jpg" alt="about-reading.jpg"/></div>
-      <div class="ab-gallery-card"><img src="about-speaking.jpg" alt="about-speaking.jpg"/></div>
-      <div class="ab-gallery-card"><img src="about-library.jpg" alt="about-library.jpg"/></div>
-      <div class="ab-gallery-card"><img src="about-audience.jpg" alt="about-audience.jpg"/></div>
+      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-reading.jpg"/></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-speaking.jpg"/></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-library.jpg"/></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-audience.jpg"/></div>
       <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="workshop-01.jpg"/></div>
       <div class="ab-gallery-card"><img src="founder-portrait.jpg" alt="founder-portrait.jpg"/></div>
     </div>
@@ -1147,8 +983,6 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
 
-  
-
   <section style="padding:4rem 5vw;background:#0D0D0D">
     <p class="ab-label reveal">Philosophy</p>
     <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:#F5F0E8;margin-bottom:2rem" class="reveal">Core <em style="font-style:italic;color:#C2A05A">Propositions</em></h2>
@@ -1159,19 +993,57 @@ select.f-inp option{background:#0B1629}
       <div class="phil-card reveal"><p class="phil-num">IV.</p><h3 class="phil-t">Ancient. Timeless. Now.</h3><p class="phil-d">The Ramayana, the Mahabharata, the Puranas — they were not written for another age. They were written for this moment, for you, in your specific struggle.</p></div>
     </div>
   </section>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
+ <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <!-- ════ MYTHOLOGY LAB ════ -->
 <div class="page" id="lab-page">
-  <!-- #2: full uncropped hero image, taller section -->
   <div class="lab-hero">
-    <div class="lab-hero-bg"><img src="lab-hero.jpg" alt="lab-hero — mythology imagery"/></div>
+    <div class="lab-hero-bg"><img src="speaking-stage.jpg" alt="lab-hero — mythology imagery"/></div>
     <div class="lab-hero-content">
       <p class="lab-label">A Digital Museum of Myth</p>
       <h1 class="lab-title">The Mythology <em>Lab</em></h1>
       <p class="lab-sub">Not a blog. Not a library. A living institution — where ancient stories are decoded as tools for modern understanding.</p>
-      <!-- #8: search bar matches dark bg -->
       <div class="search-wrap">
         <input class="search-inp" type="text" placeholder="Search myths, themes, archetypes, questions, characters…" oninput="filterLab(this.value)"/>
         <span class="search-ico">⌕</span>
@@ -1231,17 +1103,54 @@ select.f-inp option{background:#0B1629}
   </section>
   <section class="lab-sec">
     <p class="lab-sec-t">Explore by Character</p>
-    <!-- #7: clickable character cards -->
     <div class="char-grid" id="charGrid"></div>
   </section>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
-</div>
+ <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 <!-- ════ CHARACTER PAGE ════ -->
 <div class="page char-page" id="character-page">
   <div class="char-page-hero">
     <div class="char-page-hero-bg">
-      <!-- char-hero.jpg: dynamically set by JS -->
       <img id="charHeroImg" src="workshop-01.jpg" alt="character hero"/>
     </div>
     <div class="char-page-cnt">
@@ -1256,18 +1165,18 @@ select.f-inp option{background:#0B1629}
     <div class="char-section-card">
       <p class="char-section-label">Overview</p>
       <h3 class="char-section-title">Who is <span id="charNameInline">this character</span>?</h3>
-      <p class="char-section-text" id="charOverview">Placeholder overview text. Each character embodies a specific archetype — a crystallised pattern of human behaviour that recurs across cultures and centuries. Replace this with real content about the character's mythology, stories and significance.</p>
+      <p class="char-section-text" id="charOverview">Placeholder overview text.</p>
     </div>
     <div class="char-section-card">
       <p class="char-section-label">Themes</p>
       <h3 class="char-section-title">What this character teaches</h3>
       <div class="char-themes" id="charThemes"></div>
-      <p class="char-section-text" style="margin-top:1rem" id="charThemeText">Placeholder: the psychological and philosophical themes this character embodies in myth and in life.</p>
+      <p class="char-section-text" style="margin-top:1rem" id="charThemeText">Placeholder.</p>
     </div>
     <div class="char-section-card">
       <p class="char-section-label">Symbolism</p>
       <h3 class="char-section-title">What this character represents</h3>
-      <p class="char-section-text" id="charSymbol">Placeholder symbolism. The deeper meanings encoded in this mythic figure — what they represent in human psychology, relationships, and spiritual life.</p>
+      <p class="char-section-text" id="charSymbol">Placeholder symbolism.</p>
     </div>
   </div>
   <div class="char-related-arts">
@@ -1275,8 +1184,47 @@ select.f-inp option{background:#0B1629}
     <h2 class="h-title" style="margin-bottom:2rem">Explore <em>connected articles</em></h2>
     <div class="art-grid" id="charRelatedArts"></div>
   </div>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
-</div>
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 <!-- ════ SPEAKING ════ -->
 <div class="page" id="speaking-page">
@@ -1347,7 +1295,7 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- #9: Invite section — home palette -->
+  <!-- INVITE SUNDEEP — now interactive cards linking to dedicated pages -->
   <section class="h-speak">
     <div class="h-speak-img">
       <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80&fit=crop" alt="Sundeep Verma speaking at an event"/>
@@ -1356,18 +1304,148 @@ select.f-inp option{background:#0B1629}
       <p class="sec-label reveal">Invite Sundeep</p>
       <h2 class="sec-title reveal">Bring <em>mythology</em> into your space</h2>
       <div class="sec-divider reveal"></div>
-      <ul class="speak-list">
-        <li class="reveal">Workshops <span>→</span></li>
-        <li class="reveal">Keynote Lectures <span>→</span></li>
-        <li class="reveal">University Programmes <span>→</span></li>
-        <li class="reveal">Corporate Sessions <span>→</span></li>
-        <li class="reveal">Museum Experiences <span>→</span></li>
-        <li class="reveal">Festival Conversations <span>→</span></li>
-      </ul>
+      <div class="invite-grid">
+        <a href="#" class="invite-card reveal" onclick="return openProgram('workshops')"><span class="invite-card-name">Workshops</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('keynote')"><span class="invite-card-name">Keynote Lectures</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('university')"><span class="invite-card-name">University Programmes</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('corporate')"><span class="invite-card-name">Corporate Sessions</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('museum')"><span class="invite-card-name">Museum Experiences</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('festival')"><span class="invite-card-name">Festival Conversations</span><span class="invite-card-arrow">→</span></a>
+      </div>
       <a href="#" class="btn-gold reveal" onclick="return go('contact')" style="display:inline-flex;margin-top:2rem">Enquire About a Session</a>
     </div>
   </section>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
+ <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════ PROGRAM DETAIL PAGE (shared template, populated by JS for all 6 Invite Sundeep experiences) ════ -->
+<div class="page program-page" id="program-page">
+  <div class="pr-hero">
+    <div class="pr-hero-bg"><img id="prHeroImg" src="workshop-01.jpg" alt="program hero"/></div>
+    <div class="pr-hero-cnt">
+      <button class="pr-back" onclick="return go('speaking')">← Back to Speaking</button>
+      <p class="pr-eyebrow" id="prEyebrow">Invite Sundeep</p>
+      <h1 class="pr-title" id="prTitle">Workshops</h1>
+      <p class="pr-sub" id="prSub">Placeholder description.</p>
+    </div>
+  </div>
+
+  <section class="pr-section">
+    <p class="pr-s-label">Overview</p>
+    <h2 class="pr-s-title">About this <em>experience</em></h2>
+    <div class="pr-overview" id="prOverview"></div>
+  </section>
+
+  <section class="pr-section alt">
+    <p class="pr-s-label">What Participants Experience</p>
+    <h2 class="pr-s-title">Inside the <em>session</em></h2>
+    <div class="pr-icon-grid" id="prIconGrid"></div>
+  </section>
+
+  <section class="pr-section">
+    <p class="pr-s-label">Ideal Audience</p>
+    <h2 class="pr-s-title">Who this is <em>for</em></h2>
+    <div class="pr-audience-grid" id="prAudienceGrid"></div>
+  </section>
+
+  <section class="pr-section alt">
+    <p class="pr-s-label">Gallery</p>
+    <h2 class="pr-s-title">Moments from the <em>room</em></h2>
+    <div class="pr-gallery" id="prGallery"></div>
+  </section>
+
+  <section class="pr-section">
+    <p class="pr-s-label">Testimonials</p>
+    <h2 class="pr-s-title">Words from the <em>experience</em></h2>
+    <div class="pr-testi-grid" id="prTesti"></div>
+  </section>
+
+  <section class="pr-cta">
+    <h2>Interested in bringing this experience to your <em>organisation</em>?</h2>
+    <a href="#" class="btn-gold" onclick="return go('contact')">Enquire Now</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <!-- ════ BOOKS ════ -->
@@ -1385,7 +1463,7 @@ select.f-inp option{background:#0B1629}
       </div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem">
-      <div class="bk-cover"></div><!-- ahalya-cover.jpg -->
+      <div class="bk-cover"></div>
       <span class="bk-badge">Available Now</span>
     </div>
   </section>
@@ -1420,7 +1498,6 @@ select.f-inp option{background:#0B1629}
     <div class="med-tab" onclick="switchTab(this,'kit')">Media Kit</div>
   </div>
   <div class="med-content" id="medContent"></div>
-  <!-- PRESS — #3: brighter, gold tint, hover glow -->
   <div class="h-press">
     <p class="h-press-label">As featured in</p>
     <div class="h-press-divider"></div>
@@ -1439,16 +1516,55 @@ select.f-inp option{background:#0B1629}
       </div>
     </div>
   </div>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 
-<!-- ════ HUMAN QUESTIONS (#11: renamed) ════ -->
+<!-- ════ HUMAN QUESTIONS ════ -->
 <div class="page" id="questions-page">
   <div class="qp-hero">
-    <div class="qp-hero-bg"><img src="workshop-01.jpg" alt="questions-hero.jpg"/></div>
+    <div class="qp-hero-bg"><img src="speaking-stage.jpg" alt="questions-hero.jpg"/></div>
     <div class="qp-cnt">
       <p class="qp-ey">An Open Archive of Inquiry</p>
-      <!-- #11: renamed to Human Questions -->
       <h1 class="qp-h1">Human <em>Questions</em></h1>
       <p class="qp-sub">Not a FAQ. Not a forum. A curated space where mythology meets the questions that keep people awake at night — and suggests which ancient story might help.</p>
     </div>
@@ -1466,7 +1582,47 @@ select.f-inp option{background:#0B1629}
     </div>
   </div>
   <div class="q-cards-grid" id="qGrid"></div>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
+ <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <!-- ════ CONTACT ════ -->
@@ -1497,10 +1653,50 @@ select.f-inp option{background:#0B1629}
       <div><p class="ci-lbl">The Foundation</p><p class="ci-val" style="font-size:.88rem"><a href="https://www.cobaltbluefoundation.com" style="color:#E8EEF8;text-decoration:none">cobaltbluefoundation.com</a></p><p class="ci-sub">Tickets, events, and upcoming programs</p></div>
     </div>
   </div>
-  <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
+ <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+       
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 
-<!-- ════ TERMS (#12) ════ -->
+<!-- ════ TERMS ════ -->
 <div class="page" id="terms-page">
   <div class="legal-page">
     <p style="font-family:var(--sans);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem"><span style="display:block;width:18px;height:1px;background:#C2A05A"></span>Legal</p>
@@ -1519,7 +1715,7 @@ select.f-inp option{background:#0B1629}
   <footer><div class="footer-grid"><div class="f-brand"><a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a><p>Mythology is not history. It is psychology.</p></div><div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('about')">About</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div><div class="f-col"></div><div class="f-col"></div></div><div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div></footer>
 </div>
 
-<!-- ════ PRIVACY (#12) ════ -->
+<!-- ════ PRIVACY ════ -->
 <div class="page" id="privacy-page">
   <div class="legal-page">
     <p style="font-family:var(--sans);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem"><span style="display:block;width:18px;height:1px;background:#C2A05A"></span>Legal</p>
@@ -1617,13 +1813,101 @@ const questionsD=[
   {cat:"Story",q:"What is the full story of Karna — and why does it matter?"}
 ];
 
+// PROGRAM (Invite Sundeep) PAGE DATA
+const programs={
+  workshops:{
+    title:"Workshops",
+    desc:"Interactive mythology experiences designed to encourage self-reflection, dialogue and transformative learning through timeless stories.",
+    hero:"workshop-01.jpg",
+    overview:["Sundeep's workshops are intimate, interactive sessions where mythology becomes a tool for self-inquiry rather than a subject to be studied. Each session is shaped around the specific context of the group — its questions, its tensions, its moment.","Participants do not sit and listen. They engage, reflect, and discuss — using ancient characters and stories as mirrors for their own lives, choices, and challenges.","Designed for groups of any size, from intimate circles of fifteen to auditoriums of several hundred, every workshop is built to leave participants with something they carry long after the session ends."],
+    experience:["Interactive storytelling","Group discussion","Myth interpretation","Reflection exercises","Live Q&A","Personal takeaways"],
+    audience:["Universities","Schools","Leadership Teams","Cultural Organisations","Museums","Festivals","Corporate Teams"],
+    gallery:["workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg"],
+    testi:[
+      {q:"The workshop completely changed how our students think about ancient texts. They left asking better questions about themselves.",a:"Dean of Humanities",o:"Ashoka University"},
+      {q:"Sundeep has a rare gift for making 3,000-year-old stories feel like they were written about the room he is standing in.",a:"Programme Director",o:"India Foundation for the Arts"},
+      {q:"Our leadership team still references the Karna workshop, months later. That is the mark of something that actually worked.",a:"VP, People & Culture",o:"Tata Group"}
+    ]
+  },
+  keynote:{
+    title:"Keynote Lectures",
+    desc:"Structured, richly illustrated talks for institutions, festivals, leadership teams and literary events — mythology delivered with the craft of a master storyteller.",
+    hero:"speaking-stage.jpg",
+    overview:["Sundeep's keynote lectures bring decades of narrative craft to the stage. Each talk is deeply researched and visually rich, built to hold a large audience's attention while delivering genuine intellectual and emotional depth.","From literary festivals to corporate leadership summits, the keynotes translate mythology into language that is immediately relevant — strategy, ethics, identity, and the psychology of power.","Popular keynote topics include God's Workplace, 12 Mythical Women, and Power & Myth — each adaptable to the specific audience and occasion."],
+    experience:["Researched narrative arc","Visual storytelling","Audience Q&A","Adaptable runtime","Custom framing for your theme","Post-talk reflection prompts"],
+    audience:["Literary Festivals","Corporate Summits","Universities","Cultural Institutions","Leadership Conferences","Public Lecture Series"],
+    gallery:["workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg"],
+    testi:[
+      {q:"Sundeep doesn't lecture. He opens a door and you walk through it into something larger than you expected.",a:"Director of Programming",o:"Jaipur Literature Festival"},
+      {q:"The most memorable keynote of our entire summit. People were still discussing it at dinner.",a:"Head of Events",o:"CII Leadership Summit"},
+      {q:"A rare speaker who can hold a room of 800 people in complete silence — then leave them changed.",a:"Festival Curator",o:"Kumbh Mela Literary Circle"}
+    ]
+  },
+  university:{
+    title:"University Programmes",
+    desc:"Semester modules, guest lectures, and immersive learning programmes that bring mythology into the academic study of psychology, leadership, and the humanities.",
+    hero:"about-library.jpg",
+    overview:["Sundeep partners with universities to design programmes that sit at the intersection of mythology, psychology, and the humanities — from single guest lectures to multi-week elective modules.","Students engage with primary mythological texts not as religious history but as case studies in human behaviour, narrative structure, and ethical reasoning — sharpening both their critical thinking and their self-understanding.","Programmes are tailored to departmental needs, whether in literature, psychology, design, or leadership studies."],
+    experience:["Guest lectures","Seminar-style discussion","Reading companions","Assignment frameworks","Case-study analysis","Faculty collaboration"],
+    audience:["Liberal Arts Colleges","Business Schools","Design Schools","Psychology Departments","Literature Departments","Doctoral Seminars"],
+    gallery:["workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg"],
+    testi:[
+      {q:"Sundeep's module was the most requested elective on our campus two years running.",a:"Associate Dean",o:"Flame University"},
+      {q:"He treats mythology with academic rigour and emotional honesty in equal measure — rare combination.",a:"Professor of Literature",o:"Jadavpur University"},
+      {q:"Our psychology students now reference mythic archetypes in their clinical case discussions. That is real impact.",a:"Head of Department",o:"TISS Mumbai"}
+    ]
+  },
+  corporate:{
+    title:"Corporate Sessions",
+    desc:"Leadership and culture programmes that use mythology as a framework for understanding power, ethics, conflict, and team dynamics inside organisations.",
+    hero:"workshop-01.jpg",
+    overview:["For corporate teams, mythology offers something most leadership frameworks lack — a language that is emotionally honest and immediately memorable. Sundeep's corporate sessions translate epic narratives into frameworks for navigating ambition, conflict, and ethical complexity at work.","Sessions are designed for leadership offsites, culture-building programmes, and team retreats, always tailored to the specific dynamics and challenges facing the organisation.","Participants leave not with another framework to forget, but with a story they will keep returning to."],
+    experience:["Leadership case studies","Team reflection exercises","Conflict & ethics frameworks","Interactive discussion","Customised organisational framing","Take-home toolkit"],
+    audience:["Leadership Teams","HR & Culture Teams","Offsite Retreats","Startups","Large Enterprises","Cross-functional Teams"],
+    gallery:["workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg"],
+    testi:[
+      {q:"Our team left the session not just understanding mythology better — they understood themselves better.",a:"Head of People & Culture",o:"Mahindra Group"},
+      {q:"The most talked-about session at our annual offsite in five years.",a:"Chief People Officer",o:"Zomato"},
+      {q:"He made our leadership team confront things a typical training session never could.",a:"Director, Talent Development",o:"Godrej Group"}
+    ]
+  },
+  museum:{
+    title:"Museum Experiences",
+    desc:"Immersive narrative walks and curated installations that bring mythology to life inside galleries, exhibitions, and cultural institutions.",
+    hero:"workshop-01.jpg",
+    overview:["Sundeep collaborates with museums and cultural institutions to design narrative walks and immersive installations — turning static exhibits into living encounters with myth.","These experiences blur the line between exhibition and performance, guiding visitors through a curated emotional and intellectual arc rather than a simple chronological tour.","Past collaborations include museum walks, the '7 Objects of Desire' installation series, and the flagship When Gods Came Home experience."],
+    experience:["Guided narrative walks","Curated installations","Object-based storytelling","Multi-sensory design","Visitor reflection prompts","Custom exhibition tie-ins"],
+    audience:["Museums","Heritage Sites","Art Galleries","Cultural Institutions","Exhibition Curators","Public Cultural Programmes"],
+    gallery:["workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg"],
+    testi:[
+      {q:"I have attended dozens of mythology lectures. I have never seen an audience as still and as moved as during Sundeep's museum walk.",a:"Curator",o:"CSMVS, Mumbai"},
+      {q:"He turned our permanent collection into something visitors experienced as entirely new.",a:"Director of Programmes",o:"National Museum, Delhi"},
+      {q:"The installation walk sold out three weekends in a row. People came back twice.",a:"Head of Visitor Engagement",o:"Bhau Daji Lad Museum"}
+    ]
+  },
+  festival:{
+    title:"Festival Conversations",
+    desc:"Live, in-conversation sessions for literary and cultural festivals — exploring mythology, storytelling, and identity in dialogue with audiences and fellow speakers.",
+    hero:"workshop-01.jpg",
+    overview:["At festivals, Sundeep is most often found in conversation — paired with authors, journalists, and cultural figures to explore mythology's relationship to identity, politics, gender, and contemporary life.","These sessions are designed to be lively, unscripted, and audience-responsive, often including open floor discussion and spontaneous storytelling.","Sundeep has appeared at major festivals across India, consistently rated among the most attended and most discussed sessions on the programme."],
+    experience:["Moderated dialogue","Live audience Q&A","Cross-disciplinary conversation","Spontaneous storytelling","Book signings","Press & media availability"],
+    audience:["Literary Festivals","Cultural Festivals","Film & Arts Festivals","Public Discourse Platforms","Bookstores & Reading Circles","Media Events"],
+    gallery:["workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg","workshop-01.jpg"],
+    testi:[
+      {q:"One of the best-attended sessions across the entire festival — standing room only by the second row.",a:"Programming Lead",o:"Bangalore Literature Festival"},
+      {q:"His conversational style draws out ideas no one expected to hear at a mythology panel.",a:"Festival Director",o:"Kasauli Literary Festival"},
+      {q:"Audiences stayed for twenty minutes after the session ended just to keep talking to him.",a:"Curator",o:"Mumbai Festival of Ideas"}
+    ]
+  }
+};
+
 // QUILL CURSOR
 const qEl=document.getElementById('quill-cursor'),qTr=document.getElementById('quill-trail');
 let qx=0,qy=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{qx=e.clientX;qy=e.clientY;qEl.style.left=qx+'px';qEl.style.top=qy+'px'});
 (function at(){tx+=(qx-tx)*.15;ty+=(qy-ty)*.15;qTr.style.left=tx+'px';qTr.style.top=ty+'px';requestAnimationFrame(at)})();
 document.addEventListener('mouseover',e=>{
-  if(e.target.closest('a,button,.pill,.char-card,.art-card,.prog-card,.h-card,.q-card,.cmp-pt,.testi-card,.press-card,.bk-cover,.h-book-cover,.qp-cat,.ae-card,.vid-card,.gi,.wg,.aps-slot,.ab-gallery-card,.btn-read-more')){qEl.classList.add('hover')}
+  if(e.target.closest('a,button,.pill,.char-card,.art-card,.prog-card,.h-card,.q-card,.cmp-pt,.testi-card,.press-card,.bk-cover,.h-book-cover,.qp-cat,.ae-card,.vid-card,.gi,.wg,.aps-slot,.ab-gallery-card,.btn-read-more,.invite-card,.pr-icon-card,.pr-audience-card,.pr-testi-card')){qEl.classList.add('hover')}
   else qEl.classList.remove('hover');
 });
 document.addEventListener('mousedown',e=>{
@@ -1662,7 +1946,8 @@ const pgMap={
   speaking:'speaking-page',books:'books-page',
   media:'media-page',questions:'questions-page',
   contact:'contact-page',terms:'terms-page',
-  privacy:'privacy-page',character:'character-page'
+  privacy:'privacy-page',character:'character-page',
+  program:'program-page'
 };
 function go(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -1694,7 +1979,6 @@ function renderArts(theme){
   g.innerHTML=d.map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
 }
 
-// #7 RENDER CHARS — clickable, open character page
 function renderChars(){
   const g=document.getElementById('charGrid');if(!g)return;
   g.innerHTML=chars.map(c=>`<div class="char-card" onclick="openCharPage('${c.n}')">
@@ -1717,7 +2001,6 @@ function openCharPage(name){
   document.getElementById('charThemeText').textContent=`${ch.n} embodies ${ch.themes.join(', ')} — themes that resonate as deeply today as they did thousands of years ago.`;
   const th=document.getElementById('charThemes');
   th.innerHTML=ch.themes.map(t=>`<span class="char-theme-tag">${t}</span>`).join('');
-  // Related articles
   const ra=document.getElementById('charRelatedArts');
   const related=arts.filter(a=>a.title.toLowerCase().includes(name.toLowerCase()));
   const toShow=related.length>0?related:arts.slice(0,3);
@@ -1762,23 +2045,21 @@ function renderMedia(type){
   c.innerHTML=`<div class="press-grid">${items.map(p=>`<div class="press-card"><p class="pc-out">${p.out}</p><h3 class="pc-head">${p.head}</h3><p class="pc-date">${p.date}</p></div>`).join('')}</div>`;
 }
 
-// #10 MEDIA CAROUSEL
-let mIdx=0,mTotal=4,mTimer;
-function initCarousel(){
-  const dots=document.getElementById('medDots');if(!dots)return;
-  dots.innerHTML=Array.from({length:mTotal},(_,i)=>`<div class="med-dot${i===0?' act':''}" onclick="goSlide(${i})"></div>`).join('');
-  clearInterval(mTimer);
-  mTimer=setInterval(()=>medSlide(1),5000);
-}
-function medSlide(dir){
-  mIdx=(mIdx+dir+mTotal)%mTotal;
-  goSlide(mIdx);
-}
-function goSlide(i){
-  mIdx=i;
-  const s=document.getElementById('medSlides');
-  if(s)s.style.transform=`translateX(-${mIdx*100}%)`;
-  document.querySelectorAll('.med-dot').forEach((d,j)=>d.classList.toggle('act',j===mIdx));
+// OPEN PROGRAM (INVITE SUNDEEP) PAGE
+function openProgram(slug){
+  const p=programs[slug];if(!p)return false;
+  document.getElementById('prHeroImg').src=p.hero;
+  document.getElementById('prEyebrow').textContent='Invite Sundeep · '+p.title;
+  document.getElementById('prTitle').innerHTML=p.title;
+  document.getElementById('prSub').textContent=p.desc;
+  document.getElementById('prOverview').innerHTML=p.overview.map(t=>`<p>${t}</p>`).join('');
+  document.getElementById('prIconGrid').innerHTML=p.experience.map(e=>`<div class="pr-icon-card"><div class="pr-icon">✓</div><div class="pr-icon-txt">${e}</div></div>`).join('');
+  document.getElementById('prAudienceGrid').innerHTML=p.audience.map(a=>`<div class="pr-audience-card"><span>${a}</span></div>`).join('');
+  const tallIdx=0,wideIdx=3;
+  document.getElementById('prGallery').innerHTML=p.gallery.map((g,i)=>`<div class="gi${i===tallIdx?' tall':''}${i===wideIdx?' wide':''}"><img src="${g}" alt="${slug}-gallery-${i+1}.jpg"/></div>`).join('');
+  document.getElementById('prTesti').innerHTML=p.testi.map(t=>`<div class="pr-testi-card"><p class="pr-testi-q">"${t.q}"</p><p class="pr-testi-a">${t.a}</p><p class="pr-testi-o">${t.o}</p></div>`).join('');
+  go('program');
+  return false;
 }
 
 // SCROLL REVEAL
@@ -1787,7 +2068,6 @@ function initReveal(){
   document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.tl-item').forEach(el=>obs.observe(el));
 }
 
-// #4: LOADER timing reduced by ~1s
 window.addEventListener('load',()=>{
   setTimeout(()=>{
     document.getElementById('loader').classList.add('gone');
