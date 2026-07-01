@@ -695,6 +695,95 @@ select.f-inp option{background:#0B1629}
 .legal-section ul li{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.38);line-height:1.9;font-weight:300;padding:.3rem 0 .3rem 1.2rem;position:relative}
 .legal-section ul li::before{content:'·';position:absolute;left:0;color:#C2A05A}
 
+/* ════════════════════════════════════════
+   HUMAN QUESTION — DETAIL / JOURNEY PAGE
+════════════════════════════════════════ */
+.hq-page{background:#0D0D0D}
+
+/* 1. Question hero */
+.hq-hero{position:relative;min-height:82vh;display:flex;align-items:flex-end;overflow:hidden;background:#060606}
+.hq-hero-bg{position:absolute;inset:0}
+.hq-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.34;filter:grayscale(20%) brightness(.7)}
+.hq-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.99) 12%,rgba(6,6,6,.6) 55%,rgba(6,6,6,.18) 100%)}
+.hq-back{position:relative;z-index:3;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(194,160,90,.6);text-decoration:none;border:none;background:none;margin:6.5rem 5vw 0;transition:color .3s}
+.hq-back:hover{color:#C2A05A}
+.hq-hero-cnt{position:relative;z-index:2;padding:2.5rem 5vw 5.5rem;max-width:880px}
+.hq-ey{font-family:var(--sans);font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+.hq-ey::before{content:'';width:18px;height:1px;background:#C2A05A}
+.hq-question{font-family:var(--serif);font-size:clamp(2.2rem,5.2vw,4.4rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.18}
+.hq-tagline{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:rgba(245,240,232,.4);margin-top:1.4rem}
+
+/* shared section chrome */
+.hq-sec{padding:clamp(3.5rem,6vw,6rem) 5vw;background:#0D0D0D}
+.hq-sec.alt{background:#080808}
+.hq-num{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem}
+.hq-num::after{content:'';flex:0 0 40px;height:1px;background:rgba(194,160,90,.4)}
+.hq-sec-title{font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:300;color:#F5F0E8;margin-bottom:1.6rem}
+.hq-sec-title em{font-style:italic;color:#C2A05A}
+
+/* 2. Character */
+.hq-char{display:grid;grid-template-columns:300px 1fr;gap:3.5rem;align-items:center}
+.hq-char-portrait{width:300px;height:380px;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.hq-char-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.82)}
+.hq-char-name{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:#F5F0E8;margin-bottom:.3rem}
+.hq-char-role{font-family:var(--serif);font-style:italic;color:#C2A05A;font-size:1.1rem;margin-bottom:1.3rem}
+.hq-char-intro{font-family:var(--sans);font-size:.86rem;color:rgba(245,240,232,.44);line-height:2;font-weight:300;max-width:560px}
+
+/* 3. Story */
+.hq-story{max-width:760px}
+.hq-story p{font-family:var(--sans);font-size:.9rem;color:rgba(245,240,232,.5);line-height:2.05;font-weight:300;margin-bottom:1.3rem}
+.hq-story-divider{width:44px;height:1px;background:#C2A05A;margin:2rem 0}
+
+/* 4. Meaning */
+.hq-meaning-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.hq-meaning-img{overflow:hidden;border-radius:6px;position:relative;min-height:340px}
+.hq-meaning-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(.72);position:absolute;inset:0}
+.hq-meaning-quote{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.55rem);font-style:italic;color:rgba(245,240,232,.75);line-height:1.8;border-left:2px solid #C2A05A;padding-left:1.6rem;margin-bottom:1.4rem}
+.hq-meaning-body{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.42);line-height:2;font-weight:300}
+
+/* 5. Mirror — emotional centre */
+.hq-mirror{background:#111728;padding:clamp(4rem,7vw,7rem) 5vw;position:relative;overflow:hidden}
+.hq-mirror::before{content:'"';position:absolute;top:-3rem;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:18rem;color:rgba(194,160,90,.04);line-height:1;pointer-events:none}
+.hq-mirror-label{text-align:center;font-family:var(--sans);font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem}
+.hq-mirror-title{text-align:center;font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:300;color:#E8EAF0;margin-bottom:3rem}
+.hq-mirror-title em{font-style:italic;color:#C2A05A}
+.hq-mirror-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(194,160,90,.12);max-width:1000px;margin:0 auto}
+.hq-mirror-card{background:#0D1424;padding:2.4rem 2rem;text-align:center;transition:background .3s}
+.hq-mirror-card:hover{background:#12192e}
+.hq-mirror-q{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:rgba(232,234,240,.8);line-height:1.6}
+
+/* 6. Modern life */
+.hq-modern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(194,160,90,.1);margin-top:1rem}
+.hq-modern-card{background:#0D0D0D;padding:2.2rem 1.7rem;transition:background .3s;border-top:2px solid transparent}
+.hq-modern-card:hover{background:#111;border-top-color:#C2A05A}
+.hq-modern-tag{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:.9rem}
+.hq-modern-text{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.42);line-height:1.9;font-weight:300}
+
+/* 7. Reflection */
+.hq-reflect{background:#080808;padding:clamp(4rem,7vw,6rem) 5vw;text-align:center}
+.hq-reflect-intro{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:rgba(245,240,232,.55);margin-bottom:2.6rem}
+.hq-reflect-cards{display:flex;flex-direction:column;gap:1px;max-width:640px;margin:0 auto;background:rgba(194,160,90,.14)}
+.hq-reflect-card{background:#0D0D0D;padding:1.6rem 1.8rem;text-align:left;display:flex;gap:1rem;align-items:flex-start;transition:background .3s}
+.hq-reflect-card:hover{background:#121212}
+.hq-reflect-mark{font-family:var(--serif);font-style:italic;color:#C2A05A;font-size:1.1rem;flex-shrink:0}
+.hq-reflect-text{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.55);line-height:1.8;font-weight:300}
+
+/* 8. Related characters — horizontal scroll */
+.hq-related{padding:clamp(3.5rem,6vw,6rem) 5vw;background:#0D0D0D}
+.hq-related-track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem}
+.hq-related-track::-webkit-scrollbar{display:none}
+.hq-related-card{flex:0 0 190px;scroll-snap-align:start;background:#111;border:1px solid rgba(194,160,90,.12);padding:1.8rem 1.2rem;text-align:center;transition:all .3s;cursor:none}
+.hq-related-card:hover{border-color:#C2A05A;background:#151515;transform:translateY(-4px)}
+.hq-related-initial{width:52px;height:52px;border-radius:50%;background:rgba(194,160,90,.07);border:1px solid rgba(194,160,90,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:var(--serif);font-size:1.25rem;color:#C2A05A;font-style:italic}
+.hq-related-name{font-family:var(--serif);font-size:1.05rem;color:#F5F0E8;margin-bottom:.2rem}
+.hq-related-role{font-family:var(--sans);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.3)}
+
+@media(max-width:900px){
+  .hq-char{grid-template-columns:1fr}
+  .hq-char-portrait{width:100%;height:280px}
+  .hq-meaning-wrap{grid-template-columns:1fr}
+}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .h-about-strip,.h-speak,.bk-hero,.bk-details,.con-grid,.footer-grid,.ae-featured,.spk-split{grid-template-columns:1fr}
@@ -1627,6 +1716,121 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
+<!-- ════ HUMAN QUESTION — DETAIL / JOURNEY PAGE (shared template) ════ -->
+<div class="page hq-page" id="hq-detail-page">
+  <section class="hq-hero">
+    <div class="hq-hero-bg"><img id="hqHeroImg" src="speaking-stage.jpg" alt="human question hero"/></div>
+    <button class="hq-back" onclick="return go('questions')">← Back to Human Questions</button>
+    <div class="hq-hero-cnt">
+      <p class="hq-ey" id="hqCat">Identity · A Human Question</p>
+      <h1 class="hq-question" id="hqQuestion">Why do I keep repeating the same mistakes?</h1>
+      <p class="hq-tagline">A timeless question explored through mythology.</p>
+    </div>
+  </section>
+
+  <!-- 2. CHARACTER -->
+  <section class="hq-sec">
+    <p class="hq-num">01 · Character</p>
+    <div class="hq-char">
+      <div class="hq-char-portrait"><img id="hqCharImg" src="workshop-01.jpg" alt="character portrait"/></div>
+      <div>
+        <h2 class="hq-char-name" id="hqCharName">Karna</h2>
+        <p class="hq-char-role" id="hqCharRole">The Wounded Hero</p>
+        <p class="hq-char-intro" id="hqCharIntro">A brief introduction to the character connected with this question.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. STORY -->
+  <section class="hq-sec alt">
+    <p class="hq-num">02 · Story</p>
+    <h2 class="hq-sec-title">The <em>story</em></h2>
+    <div class="hq-story" id="hqStory"></div>
+  </section>
+
+  <!-- 4. MEANING -->
+  <section class="hq-sec">
+    <p class="hq-num">03 · Meaning</p>
+    <h2 class="hq-sec-title">What it <em>means</em></h2>
+    <div class="hq-meaning-wrap">
+      <div class="hq-meaning-img"><img id="hqMeaningImg" src="workshop-01.jpg" alt="meaning imagery"/></div>
+      <div>
+        <p class="hq-meaning-quote" id="hqMeaningQuote">"A placeholder line of symbolic interpretation."</p>
+        <p class="hq-meaning-body" id="hqMeaningBody">Placeholder meaning text.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MIRROR -->
+  <section class="hq-mirror">
+    <p class="hq-mirror-label">The Mirror</p>
+    <h2 class="hq-mirror-title">Look a little <em>closer</em></h2>
+    <div class="hq-mirror-grid" id="hqMirrorGrid"></div>
+  </section>
+
+  <!-- 6. MODERN LIFE -->
+  <section class="hq-sec">
+    <p class="hq-num">04 · Modern Life</p>
+    <h2 class="hq-sec-title">Where this shows <em>up today</em></h2>
+    <div class="hq-modern-grid" id="hqModernGrid"></div>
+  </section>
+
+  <!-- 7. REFLECTION -->
+  <section class="hq-reflect">
+    <p class="hq-mirror-label">Guided Reflection</p>
+    <p class="hq-reflect-intro">Take a moment. Ask yourself —</p>
+    <div class="hq-reflect-cards" id="hqReflectCards"></div>
+  </section>
+
+  <!-- 8. RELATED CHARACTERS -->
+  <section class="hq-related">
+    <p class="hq-num">05 · Related Characters</p>
+    <h2 class="hq-sec-title">Continue the <em>journey</em></h2>
+    <div class="hq-related-track" id="hqRelatedTrack"></div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
 <!-- ════ CONTACT ════ -->
 <div class="page" id="contact-page">
   <section class="con-hero">
@@ -1763,7 +1967,9 @@ const chars=[
   {n:"Ravana",r:"The Shadow",i:"R",themes:["Ego","Shadow","Brilliance and Blindness"],desc:"Ravana is brilliant, devout, a Brahmin of enormous learning, a devotee of Shiva, a king of great power — and catastrophically wrong. He is the most intellectually gifted character in the Ramayana. And he is destroyed by his own unexamined ego.",sym:"Ravana is the shadow archetype — the part of the self that uses intelligence to justify transgression. He is uncomfortably human. To understand him is to understand where gifted people go wrong."},
   {n:"Yudhishthira",r:"The Righteous",i:"Y",themes:["Dharma","Truth","The Cost of Righteousness"],desc:"Yudhishthira is the eldest Pandava and the embodiment of dharma. He never tells a direct lie in the entire Mahabharata — except once, on the battlefield of Kurukshetra, at Krishna's instruction. That single moment undoes the great teacher Drona.",sym:"He represents the burden of righteousness — what it costs to try to be moral in an amoral world. His story asks whether perfect adherence to dharma is always right."},
   {n:"Bhima",r:"The Force",i:"B",themes:["Strength","Loyalty","Directness"],desc:"Bhima is the most emotionally direct of the five Pandavas. Where Arjuna is the archer and Yudhishthira the king, Bhima is the one who acts on feeling immediately, without deliberation. He is the most primal and the most tender.",sym:"Bhima represents the archetype of raw emotional force — the person who cannot pretend, who cannot suppress, who acts from gut feeling rather than strategy. His type of loyalty is fierce and unconditional."},
-  {n:"Kunti",r:"The Mother",i:"Ku",themes:["Sacrifice","Secrets","Maternal Power"],desc:"Kunti is one of the most complex mothers in mythology. She is the mother of the five Pandavas — and also the abandoned mother of Karna, whom she gave up before she was wed. She carries this secret for her entire life. It defines the entire Mahabharata.",sym:"Kunti represents the archetype of the mother whose choices — made under impossible conditions — shape the world. Her secret is the wound at the heart of the Mahabharata."}
+  {n:"Kunti",r:"The Mother",i:"Ku",themes:["Sacrifice","Secrets","Maternal Power"],desc:"Kunti is one of the most complex mothers in mythology. She is the mother of the five Pandavas — and also the abandoned mother of Karna, whom she gave up before she was wed. She carries this secret for her entire life. It defines the entire Mahabharata.",sym:"Kunti represents the archetype of the mother whose choices — made under impossible conditions — shape the world. Her secret is the wound at the heart of the Mahabharata."},
+  {n:"Duryodhana",r:"The Rival",i:"Du",themes:["Envy","Entitlement","Loyalty to Self"],desc:"Duryodhana, eldest of the Kauravas, is driven by a conviction that he alone was cheated of his rightful throne. His grievance, real in part, curdles into an appetite that nothing can satisfy.",sym:"He represents the danger of a wound left unexamined — how entitlement dressed as justice can justify almost anything."},
+  {n:"Parashurama",r:"The Warrior-Sage",i:"P",themes:["Wrath","Discipline","Teaching"],desc:"Parashurama is both sage and warrior — a teacher whose fury is legendary and whose discipline shaped some of mythology's greatest fighters, including Karna himself.",sym:"He represents the teacher who gives everything to a student, and the cost of a single withheld truth between them."}
 ];
 const pressD=[
   {out:"The Hindu",head:"Sundeep Verma is rewriting the rules of how we teach mythology",date:"April 2025"},
@@ -1792,10 +1998,16 @@ const articlesD=[
   {pub:"Times of India",head:"The Author Who Wants India to Re-Read Its Own Stories",ex:"An interview with the author of Ahalya — The Unploughed.",img:"media-article-04.jpg"},
   {pub:"Mid-Day",head:"12 Mythical Women You Should Know About",ex:"Sundeep Verma's popular lecture series brought to print.",img:"media-article-05.jpg"}
 ];
+
+// HUMAN QUESTIONS — index list (drives the grid, each item -> hqDetails)
 const questionsD=[
+  {id:"mistakes",cat:"Identity",q:"Why do I keep repeating the same mistakes?"},
+  {id:"success",cat:"Purpose",q:"Why does success still feel empty?"},
+  {id:"purpose",cat:"Purpose",q:"How do I know my purpose?"},
+  {id:"relationships",cat:"Relationships",q:"Why do relationships become complicated?"},
+  {id:"change",cat:"Identity",q:"Why am I afraid of change?"},
   {cat:"Identity",q:"Who am I when no one is watching?"},
   {cat:"Identity",q:"Why do I keep presenting a self I don't recognise?"},
-  {cat:"Identity",q:"Why do I fear becoming who I am meant to be?"},
   {cat:"Relationships",q:"What does mythology say about unrequited love?"},
   {cat:"Relationships",q:"Why do I attract the same kind of pain in every relationship?"},
   {cat:"Relationships",q:"What does the myth of Ahalya say about desire and silence?"},
@@ -1814,6 +2026,151 @@ const questionsD=[
   {cat:"Story",q:"Can you tell the story of Draupadi's question in the court?"},
   {cat:"Story",q:"What is the full story of Karna — and why does it matter?"}
 ];
+
+// HUMAN QUESTIONS — full detail-page content, keyed by id. CMS-ready: this
+// object is the exact shape a future Sanity query should resolve to.
+const hqDetails={
+  mistakes:{
+    cat:"Identity",
+    question:"Why do I keep repeating the same mistakes?",
+    hero:"speaking-stage.jpg",
+    character:{name:"Karna",role:"The Wounded Hero",img:"workshop-01.jpg",
+      intro:"Karna spent his life trying to earn a place he was never freely given — and every choice he made, noble or catastrophic, can be traced back to that single ache."},
+    story:[
+      "Karna was born to Kunti before her marriage, and abandoned at birth out of fear and shame. Raised by a charioteer, he grew into the greatest archer of his age — yet was mocked at every tournament for his lowly birth, denied entry into contests he had every right to win.",
+      "When Duryodhana, the Kaurava prince, offered him a kingdom and, more importantly, respect, Karna pledged his loyalty for life. Not because Duryodhana's cause was just — Karna knew, more than once, that it was not — but because Duryodhana was the first person who had ever treated him as an equal.",
+      "That loyalty repeated itself again and again. Karna sided with cruelty he privately disagreed with. He stayed silent during Draupadi's humiliation in the court. He marched to a war he suspected was wrong, on the side he suspected would lose — because the debt of being seen, once, felt impossible to walk away from.",
+      "He was offered a way out. Krishna himself revealed Karna's true parentage and invited him to switch sides, to claim the throne that was rightfully his. Karna refused. The mistake he could not stop making was not tactical. It was emotional — the same wound, answered the same way, every time it was touched."
+    ],
+    meaningQuote:"Karna's greatest battle was never against Arjuna — it was against the need to prove his worth.",
+    meaningBody:"We call it a mistake when we make the same choice twice and it costs us. But repetition rarely comes from poor judgement. It comes from an old wound that has never been named, still asking the same question every time it is triggered: will this finally be enough to be accepted? Karna's story does not ask us to stop trusting people who are kind to us. It asks us to notice when loyalty has become a way of re-earning something we should never have had to earn in the first place.",
+    meaningImg:"workshop-01.jpg",
+    mirror:[
+      "Have you ever tried too hard to earn acceptance you should have been given freely?",
+      "Do you define yourself through other people's approval more than your own judgement?",
+      "What wound keeps repeating itself, wearing a different face each time?"
+    ],
+    modern:[
+      {tag:"Relationships",text:"Choosing the same kind of partner, again and again, because their approval feels like the one you never got."},
+      {tag:"Career",text:"Staying loyal to a boss or company that treats you as replaceable, because they were the first to say yes."},
+      {tag:"Friendship",text:"Defending people who let you down, because their attention once made you feel like you belonged."},
+      {tag:"Self-Worth",text:"Mistaking being needed for being valued — and repeating whatever earned you that feeling once."}
+    ],
+    related:["Duryodhana","Kunti","Krishna","Arjuna","Parashurama"]
+  },
+  success:{
+    cat:"Purpose",
+    question:"Why does success still feel empty?",
+    hero:"speaking-stage.jpg",
+    character:{name:"Yudhishthira",role:"The Righteous",img:"workshop-01.jpg",
+      intro:"Yudhishthira won the war, the kingdom, and the throne — and mythology spends more time on his grief afterward than on his victory."},
+    story:[
+      "Yudhishthira fought the Kurukshetra war for thirteen years of exile and one devastating betrayal in a game of dice. When it finally ended, he had won everything he was owed: the throne, the kingdom, his brothers restored, his enemies defeated.",
+      "He could not enjoy it. Every hall in the new palace reminded him of a cousin, teacher, or friend who had died to secure it. He had won by the only method the age allowed — war — and the price sat on him like a permanent weight, even as he ruled wisely and well for decades after.",
+      "Late in the epic, still troubled, Yudhishthira climbs toward the Himalayas with his brothers and a dog, seeking release, not another achievement. He gives up the throne he spent a lifetime pursuing, because he understands, finally, that dharma was never really about winning — it was about how he carried the winning.",
+      "The Mahabharata does not resolve his grief with a bigger victory. It resolves it by having him walk away from victory altogether."
+    ],
+    meaningQuote:"Yudhishthira teaches that the goal was never the throne — it was the person capable of sitting on it honestly.",
+    meaningBody:"Success built entirely on a target — the promotion, the number, the recognition — tends to feel hollow the moment it is reached, because the target was never really the thing we wanted. We wanted proof that the struggle meant something. Yudhishthira's discomfort on his own throne is a reminder that achievement without integration — without processing what it cost — leaves a person standing in a room they cannot feel at home in.",
+    meaningImg:"workshop-01.jpg",
+    mirror:[
+      "Have you reached a goal only to feel strangely unmoved, or even worse?",
+      "What did you quietly give up to get here — and have you grieved it?",
+      "Is the empty feeling about the goal, or about what you told yourself the goal would fix?"
+    ],
+    modern:[
+      {tag:"Career",text:"Reaching the corner office and immediately fixating on the next title instead of feeling the win."},
+      {tag:"Comparison",text:"Measuring your success against someone else's the moment you achieve your own."},
+      {tag:"Imposter Syndrome",text:"Feeling like the achievement belongs to luck, timing, or other people rather than to you."},
+      {tag:"Parenting",text:"Building a stable life for your children while quietly mourning the version of yourself who didn't get to."}
+    ],
+    related:["Arjuna","Krishna","Bhima","Draupadi","Kunti"]
+  },
+  purpose:{
+    cat:"Purpose",
+    question:"How do I know my purpose?",
+    hero:"speaking-stage.jpg",
+    character:{name:"Arjuna",role:"The Seeker",img:"workshop-01.jpg",
+      intro:"Arjuna is the greatest archer of his generation — and the entire Bhagavad Gita begins with him refusing to do the one thing he was born to do."},
+    story:[
+      "On the battlefield of Kurukshetra, Arjuna surveys the opposing army and sees teachers, cousins, and friends arrayed against him. His bow slips from his hands. He tells Krishna he would rather beg in the streets than kill his own family for a kingdom.",
+      "What follows is not a pep talk. Krishna does not tell Arjuna his purpose is to win. Instead, over eighteen chapters, he expands the entire frame of the question — what is duty, what is the self, what is action taken without attachment to its reward.",
+      "Krishna's central teaching is that purpose is not a destination you locate once and follow forever. It is the discipline of acting fully, honestly, and skillfully in the role life has actually placed in front of you — not the role you imagined, and not the role you're avoiding.",
+      "Arjuna picks up his bow again. Not because his doubt was wrong, but because the doubt itself, examined honestly, became the doorway to clarity."
+    ],
+    meaningQuote:"Krishna never tells Arjuna what to do. He expands the question until Arjuna can see clearly enough to choose himself.",
+    meaningBody:"Purpose is often searched for as if it were a hidden object — something you find once and possess forever. The Gita proposes something less comfortable and more useful: purpose is revealed through committed, honest action inside your actual circumstances, not through waiting for certainty before you begin. Arjuna doesn't get an answer before he acts. He gets clarity through the willingness to look directly at the war in front of him.",
+    meaningImg:"workshop-01.jpg",
+    mirror:[
+      "What would you do if you stopped waiting for certainty first?",
+      "Is your hesitation really doubt about purpose, or fear of what acting on it would cost?",
+      "What is the 'battlefield' in front of you right now that you keep looking away from?"
+    ],
+    modern:[
+      {tag:"Career",text:"Waiting for a 'sign' before switching paths, instead of acting where you already stand."},
+      {tag:"Identity",text:"Confusing purpose with a single grand calling, rather than how you show up daily."},
+      {tag:"Leadership",text:"Leading a team through a decision you're still not fully certain about."},
+      {tag:"Failure",text:"Mistaking a wrong turn for proof you have no purpose, rather than part of finding it."}
+    ],
+    related:["Krishna","Yudhishthira","Bhima","Duryodhana","Kunti"]
+  },
+  relationships:{
+    cat:"Relationships",
+    question:"Why do relationships become complicated?",
+    hero:"speaking-stage.jpg",
+    character:{name:"Draupadi",role:"The Sovereign",img:"workshop-01.jpg",
+      intro:"Married to five brothers, publicly humiliated by her own family by marriage, Draupadi's relationships were never simple — and her response to that complexity defined the entire epic."},
+    story:[
+      "Draupadi's marriage to all five Pandava brothers was, from its first moment, a relationship built on complicated loyalty — to five husbands, to an in-law who resented her, to a kingdom that watched her every move.",
+      "When Yudhishthira loses her in a rigged game of dice, she is dragged into the court and an attempt is made to disrobe her in front of everyone she is bound to by marriage or blood. Her own husbands, bound by a code of honour they valued more than her safety in that moment, sit in silence.",
+      "Draupadi does not simply endure. She asks a single, unanswerable question to the court: how could a man who had already gambled away himself have the right to gamble away her? No one can answer. That unanswered question becomes one of the central seeds of the war that follows.",
+      "Her relationships never became simple after that. But her refusal to be silent within them — even when the people she loved failed her — is what mythology remembers."
+    ],
+    meaningQuote:"Draupadi does not ask to be rescued. She asks a question no one in the court can answer. That is the beginning of her power.",
+    meaningBody:"Relationships become complicated not because love is present, but because multiple loyalties, histories, and codes of honour are always operating at once — to family, to duty, to the people we love, to ourselves. Draupadi's story does not promise a way to make relationships simple. It shows what it looks like to stay dignified and clear inside complexity that will not resolve on your timeline.",
+    meaningImg:"workshop-01.jpg",
+    mirror:[
+      "In your most complicated relationship, whose loyalty are you actually competing with?",
+      "Have you ever stayed silent the way the court stayed silent, and regretted it?",
+      "What is the one honest question you have never asked the people closest to you?"
+    ],
+    modern:[
+      {tag:"Family",text:"Navigating in-laws or extended family whose loyalties don't always align with yours."},
+      {tag:"Friendship",text:"Watching a friend group stay silent when one member is treated unfairly."},
+      {tag:"Marriage",text:"Balancing multiple duties — partner, parent, provider — that occasionally pull in different directions."},
+      {tag:"Self-Worth",text:"Learning to ask the hard question instead of accepting a silence that protects everyone but you."}
+    ],
+    related:["Yudhishthira","Bhima","Kunti","Duryodhana","Krishna"]
+  },
+  change:{
+    cat:"Identity",
+    question:"Why am I afraid of change?",
+    hero:"speaking-stage.jpg",
+    character:{name:"Shiva",role:"The Destroyer",img:"workshop-01.jpg",
+      intro:"Shiva is mythology's most misunderstood deity — feared for destruction, when his true role is clearing what has already stopped serving life."},
+    story:[
+      "In the Puranas, Shiva does not destroy out of anger or cruelty. His destruction is precise and necessary — the dissolving of forms that have exhausted their purpose, so that something truer can take their place.",
+      "The story of the Samudra Manthan, the churning of the cosmic ocean, tells of gods and demons pulling together on a serpent to churn the sea for the nectar of immortality. Before anything valuable rose to the surface, a terrible poison emerged first — one strong enough to destroy all creation.",
+      "No one else could hold it. Shiva drank the poison and held it in his throat, refusing to let it pass further into his body or spread into the world. The poison turned his throat blue — visible proof that he had absorbed something devastating and survived, transformed by it rather than destroyed by it.",
+      "Only after the poison was contained could the churning continue, and only then did the true treasures rise. Nothing valuable emerged before the destruction was faced."
+    ],
+    meaningQuote:"Shiva does not destroy from anger. He destroys from necessity — because some things must end before something true can begin.",
+    meaningBody:"Fear of change is often, underneath, a fear of the poison that surfaces first — the discomfort, grief, or uncertainty that always precedes real transformation. We imagine change should feel clean. Mythology insists it rarely does. The nectar comes after the poison, not instead of it. Shiva's willingness to hold what is unbearable, rather than flee it or pass it on, is the model — not fearlessness, but the capacity to metabolise difficulty instead of being destroyed by it.",
+    meaningImg:"workshop-01.jpg",
+    mirror:[
+      "What 'poison' — discomfort, grief, uncertainty — are you avoiding by avoiding the change itself?",
+      "What in your life has already stopped serving you, but you are still protecting?",
+      "What might be waiting on the other side of the part you are most afraid of?"
+    ],
+    modern:[
+      {tag:"Career",text:"Staying in a role you have outgrown because the transition feels harder than the stagnation."},
+      {tag:"Identity",text:"Clinging to an old version of yourself because the new one is still unfamiliar."},
+      {tag:"Grief",text:"Resisting the end of a chapter because ending it makes the loss undeniably real."},
+      {tag:"Leadership",text:"Delaying a necessary but painful decision for a team, hoping it resolves itself."}
+    ],
+    related:["Parashurama","Ravana","Hanuman","Sita","Krishna"]
+  }
+};
 
 // PROGRAM (Invite Sundeep) PAGE DATA
 const programs={
@@ -1909,7 +2266,7 @@ let qx=0,qy=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{qx=e.clientX;qy=e.clientY;qEl.style.left=qx+'px';qEl.style.top=qy+'px'});
 (function at(){tx+=(qx-tx)*.15;ty+=(qy-ty)*.15;qTr.style.left=tx+'px';qTr.style.top=ty+'px';requestAnimationFrame(at)})();
 document.addEventListener('mouseover',e=>{
-  if(e.target.closest('a,button,.pill,.char-card,.art-card,.prog-card,.h-card,.q-card,.cmp-pt,.testi-card,.press-card,.bk-cover,.h-book-cover,.qp-cat,.ae-card,.vid-card,.gi,.wg,.aps-slot,.ab-gallery-card,.btn-read-more,.invite-card,.pr-icon-card,.pr-audience-card,.pr-testi-card')){qEl.classList.add('hover')}
+  if(e.target.closest('a,button,.pill,.char-card,.art-card,.prog-card,.h-card,.q-card,.cmp-pt,.testi-card,.press-card,.bk-cover,.h-book-cover,.qp-cat,.ae-card,.vid-card,.gi,.wg,.aps-slot,.ab-gallery-card,.btn-read-more,.invite-card,.pr-icon-card,.pr-audience-card,.pr-testi-card,.hq-related-card,.hq-mirror-card,.hq-modern-card,.hq-reflect-card')){qEl.classList.add('hover')}
   else qEl.classList.remove('hover');
 });
 document.addEventListener('mousedown',e=>{
@@ -1949,7 +2306,7 @@ const pgMap={
   media:'media-page',questions:'questions-page',
   contact:'contact-page',terms:'terms-page',
   privacy:'privacy-page',character:'character-page',
-  program:'program-page'
+  program:'program-page',hqdetail:'hq-detail-page'
 };
 function go(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -2022,15 +2379,73 @@ function filterLab(v){
   const g=document.getElementById('artGrid');
   if(g)g.innerHTML=d.map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
 }
+
+// HUMAN QUESTIONS — grid render (now fully clickable)
 function renderQs(cat){
   const g=document.getElementById('qGrid');if(!g)return;
   const d=cat==='All'?questionsD:questionsD.filter(q=>q.cat===cat);
-  g.innerHTML=d.map(q=>`<div class="q-card"><p class="q-card-cat">${q.cat}</p><p class="q-card-txt">${q.q}</p><div class="q-card-foot"><span class="q-card-arr">↗</span></div></div>`).join('');
+  g.innerHTML=d.map((q,idx)=>{
+    const realIdx=questionsD.indexOf(q);
+    const clickable=!!q.id;
+    return `<div class="q-card" ${clickable?`onclick="openHQ('${q.id}')"`:`onclick="openHQFallback(${realIdx})"`}>
+      <p class="q-card-cat">${q.cat}</p>
+      <p class="q-card-txt">${q.q}</p>
+      <div class="q-card-foot"><span class="q-card-arr">↗</span></div>
+    </div>`;
+  }).join('');
 }
 function filterQ(cat){
   document.querySelectorAll('.qp-cat').forEach(c=>c.classList.toggle('act',c.textContent===cat||(cat==='All'&&c.textContent==='All')));
   renderQs(cat);
 }
+
+// For sample questions that don't yet have a full hqDetails entry, fall back
+// to the nearest built-out journey so the interaction always works end to end.
+const hqFallbackOrder=['mistakes','success','purpose','relationships','change'];
+function openHQFallback(idx){
+  openHQ(hqFallbackOrder[idx%hqFallbackOrder.length]);
+}
+
+// HUMAN QUESTION — open a full journey/detail page
+function openHQ(id){
+  const d=hqDetails[id];if(!d)return false;
+  document.getElementById('hqHeroImg').src=d.hero;
+  document.getElementById('hqCat').textContent=d.cat+' · A Human Question';
+  document.getElementById('hqQuestion').textContent=d.question;
+  document.getElementById('hqCharImg').src=d.character.img;
+  document.getElementById('hqCharName').textContent=d.character.name;
+  document.getElementById('hqCharRole').textContent=d.character.role;
+  document.getElementById('hqCharIntro').textContent=d.character.intro;
+  document.getElementById('hqStory').innerHTML=d.story.map(p=>`<p>${p}</p>`).join('<div class="hq-story-divider"></div>'.length>0?'':'');
+  // simple paragraphs, single divider after first paragraph for editorial rhythm
+  const storyHtml=d.story.map((p,i)=>`<p>${p}</p>`+(i===0?'<div class="hq-story-divider"></div>':'')).join('');
+  document.getElementById('hqStory').innerHTML=storyHtml;
+  document.getElementById('hqMeaningImg').src=d.meaningImg;
+  document.getElementById('hqMeaningQuote').textContent='"'+d.meaningQuote+'"';
+  document.getElementById('hqMeaningBody').textContent=d.meaningBody;
+  document.getElementById('hqMirrorGrid').innerHTML=d.mirror.map(m=>`<div class="hq-mirror-card"><p class="hq-mirror-q">${m}</p></div>`).join('');
+  document.getElementById('hqModernGrid').innerHTML=d.modern.map(m=>`<div class="hq-modern-card"><p class="hq-modern-tag">${m.tag}</p><p class="hq-modern-text">${m.text}</p></div>`).join('');
+  const reflectPrompts=[
+    "What part of this story feels familiar to you?",
+    "Which character resembles your current struggle?",
+    "What would change if you saw this situation differently?"
+  ];
+  document.getElementById('hqReflectCards').innerHTML=reflectPrompts.map(r=>`<div class="hq-reflect-card"><span class="hq-reflect-mark">"</span><p class="hq-reflect-text">${r}</p></div>`).join('');
+  document.getElementById('hqRelatedTrack').innerHTML=d.related.map(name=>{
+    const ch=chars.find(c=>c.n===name);
+    const initial=ch?ch.i:name.slice(0,2);
+    const role=ch?ch.r:'Character';
+    const hasFullPage=!!ch;
+    return `<div class="hq-related-card" onclick="${hasFullPage?`openCharPage('${name}')`:`void(0)`}">
+      <div class="hq-related-initial">${initial}</div>
+      <div class="hq-related-name">${name}</div>
+      <div class="hq-related-role">${role}</div>
+    </div>`;
+  }).join('');
+  go('hqdetail');
+  return false;
+}
+
 function switchTab(el,type){
   document.querySelectorAll('.med-tab').forEach(t=>t.classList.remove('act'));
   el.classList.add('act');renderMedia(type);
