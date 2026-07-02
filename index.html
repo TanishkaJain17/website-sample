@@ -154,8 +154,9 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 
 /* ABOUT STRIP */
 .h-about-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:540px;background:#0D0D0D}
+/* IMAGE: founder-workshop.jpg */
 .h-about-img{position:relative;overflow:hidden}
-.h-about-img img{width:100%;height:100%;min-height:540px;object-fit:cover;object-position:center;display:block;filter:grayscale(25%) brightness(.85);transition:transform 8s var(--ease)}
+.h-about-img img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(15%) brightness(.88);transition:transform 8s var(--ease)}
 .h-about-img:hover img{transform:scale(1.04)}
 .h-about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 65%,#0D0D0D)}
 .h-about-text{padding:4rem 5vw;display:flex;flex-direction:column;justify-content:center}
@@ -266,10 +267,10 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 ════════════════════════════════════════ */
 #about-page{background:#0D0D0D}
 .ab-hero{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;min-height:100vh;background:#060606;padding-top:90px;overflow:hidden}
-.ab-hero-img-col{max-height:100vh}
-.ab-hero-img-col{display:flex;align-items:center;justify-content:center;height:100%;padding:3rem 3vw 3rem 5vw;background:#060606;box-sizing:border-box}
-.ab-hero-img-col img{width:100%;max-width:480px;height:auto;max-height:calc(100vh - 90px - 6rem);object-fit:contain;object-position:center top;display:block;filter:grayscale(8%) brightness(.96);box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:6px}
-.ab-hero-cnt{position:relative;z-index:2;padding:3rem 5vw 3rem 0;max-width:560px}
+ab-hero-img{position:relative;overflow:hidden}
+/* IMAGE: founder-portrait.jpg */
+.ab-hero-img img{width:100%;height:100%;min-height:420px;object-fit:cover;object-position:center top;display:block;filter:grayscale(12%)}
+.ab-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,#131728)}
 .ab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .ab-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .ab-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#F5F0E8;line-height:1.05}
@@ -1880,7 +1881,7 @@ select.f-inp option{background:#0B1629}
 
     <div class="fw-editorial reveal">
       <div class="fw-img-wrap">
-        <img src="featured-writing.jpg" alt="founder-portrait.jpg — mythology editorial"/>
+        <img src="founder-portrait.jpg" alt="founder-portrait.jpg — mythology editorial"/>
       </div>
       <div class="fw-text-wrap">
         <p class="wei-text">Ancient stories are not relics preserved in temples — they are living maps of identity, ambition, love, grief and transformation. Every essay here explores mythology not as history or religion, but as a mirror through which modern life becomes more understandable. These writings invite you to discover the timeless archetypes hidden inside everyday choices — and to recognise, in the oldest stories ever told, something that feels unmistakably, uncomfortably personal.</p>
@@ -1997,7 +1998,7 @@ select.f-inp option{background:#0B1629}
 <!-- ════ ABOUT ════ -->
 <div class="page" id="about-page">
   <div class="ab-hero">
-    <div class="ab-hero-img-col">
+    <div class="ab-hero-img">
       <img src="founder-portrait.jpg" alt="founder-portrait — Sundeep Verma"/>
     </div>
     <div class="ab-hero-cnt">
@@ -2087,7 +2088,7 @@ select.f-inp option{background:#0B1629}
 <!-- ════ MYTHOLOGY LAB ════ -->
 <div class="page" id="lab-page">
   <div class="lab-hero">
-    <div class="lab-hero-bg"><img src="speaking-stage.jpg" alt="lab-hero — mythology imagery"/></div>
+    <div class="lab-hero-bg"><img src="R.jpg" alt="lab-hero — mythology imagery"/></div>
     <div class="lab-hero-content">
       <p class="lab-label">A Digital Museum of Myth</p>
       <h1 class="lab-title">The Mythology <em>Lab</em></h1>
@@ -2101,7 +2102,7 @@ select.f-inp option{background:#0B1629}
 
   <section class="wgch">
     <div class="wgch-banner">
-      <img src="workshop-01.jpg" alt="wgch-hero — When Gods Came Home"/>
+      <img src="R.jpg" alt="wgch-hero — When Gods Came Home"/>
       <div class="wgch-cnt">
         <p class="wgch-label">Flagship Project · Cobalt Blue Foundation</p>
         <h2 class="wgch-h">When Gods <em>Came Home</em></h2>
