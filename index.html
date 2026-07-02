@@ -11,7 +11,7 @@
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Inter',sans-serif;
   --ease:cubic-bezier(0.25,0.46,0.45,0.94);
-  --gold:#C2A05A;--copper:#9C6B3F;--parch:#F5F0E8;--char:#0D0D0D;
+  --gold:#C2A05A;--copper:#9C6B3F;--parch:#F5F0E8;--char:#0D0D0D;--deepgreen:#0F1F17;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);overflow-x:hidden;cursor:none;background:#0D0D0D}
@@ -31,11 +31,35 @@ img{display:block;max-width:100%}
 #progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#9C6B3F,#C2A05A,#E8D5A0);z-index:1001;width:0%;pointer-events:none;transition:width .08s}
 
 /* ── LOADER ── */
-#loader{position:fixed;inset:0;background:#050505;z-index:9990;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s}
+#loader{position:fixed;inset:0;background:#060504;z-index:9990;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .9s var(--ease);overflow:hidden}
 #loader.gone{opacity:0;pointer-events:none}
-.loader-quote{font-family:var(--serif);color:#F5F0E8;font-size:clamp(1rem,2.2vw,1.5rem);font-style:italic;text-align:center;max-width:500px;line-height:1.9;opacity:0;animation:fadeUp 1s .5s forwards;padding:0 2rem}
-.loader-line{width:50px;height:1px;background:#C2A05A;margin:1.8rem auto 0;transform:scaleX(0);animation:expandLine 1.2s .4s var(--ease) forwards}
-.loader-name{font-family:var(--sans);color:rgba(245,240,232,.3);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;margin-top:1.8rem;opacity:0;animation:fadeUp 1s 1.1s forwards}
+#loader.fast{transition:opacity .5s var(--ease)}
+.loader-texture{position:absolute;inset:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C2A05A' fill-opacity='0.035'%3E%3Cpath d='M60 60v-6h-3v6h-6v3h6v6h3v-6h6v-3z'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.loader-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 38%,rgba(6,5,4,.92) 100%);pointer-events:none}
+.loader-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.loader-particles span{position:absolute;bottom:-10px;width:2px;height:2px;border-radius:50%;background:#C2A05A;opacity:0;animation:loaderFloat linear infinite}
+@keyframes loaderFloat{0%{opacity:0;transform:translateY(0) translateX(0)}10%{opacity:.6}90%{opacity:.35}100%{opacity:0;transform:translateY(-100vh) translateX(20px)}}
+.loader-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;opacity:0;animation:fadeUp 1s .2s forwards}
+.loader-ring-wrap{position:relative;width:min(340px,68vw);height:min(340px,68vw);display:flex;align-items:center;justify-content:center;margin-bottom:2.4rem;transition:transform .3s}
+.loader-ring-glow{position:absolute;inset:-24px;border-radius:50%;background:radial-gradient(circle,rgba(194,160,90,.16),transparent 70%);animation:loaderPulse 2s ease-in-out infinite}
+@keyframes loaderPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.loader-ring-svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.loader-ring-track{fill:none;stroke:rgba(194,160,90,.16);stroke-width:1}
+.loader-ring-progress{fill:none;stroke:#C2A05A;stroke-width:1.3;stroke-linecap:round;stroke-dasharray:880;stroke-dashoffset:880;filter:drop-shadow(0 0 6px rgba(194,160,90,.5))}
+.loader-ring-progress.animate{animation:loaderRing 3s linear forwards}
+@keyframes loaderRing{to{stroke-dashoffset:0}}
+.loader-ring-content{position:relative;z-index:2;text-align:center;padding:0 2.6rem;max-width:280px}
+.loader-quote{font-family:var(--serif);color:#F5F0E8;font-size:clamp(.8rem,1.6vw,.98rem);font-style:italic;text-align:center;line-height:1.75;opacity:0;animation:fadeUp 1s .5s forwards}
+.loader-line{width:34px;height:1px;background:#C2A05A;margin:1.1rem auto;transform:scaleX(0);animation:expandLine 1.2s .4s var(--ease) forwards}
+.loader-name{font-family:var(--sans);color:rgba(245,240,232,.32);font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;opacity:0;animation:fadeUp 1s 1.1s forwards}
+.loader-countdown-label{font-family:var(--sans);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(194,160,90,.55);margin-top:1.3rem;opacity:0;animation:fadeUp 1s 1.3s forwards}
+.loader-countdown-num{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:#C2A05A;margin-top:.2rem;opacity:0;animation:fadeUp 1s 1.4s forwards;transition:opacity .35s}
+.loader-countdown-num.swap{opacity:0}
+.loader-btn{position:relative;z-index:2;margin-top:2.2rem;display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 2.4rem;background:transparent;border:1px solid rgba(194,160,90,.55);color:#C2A05A;font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .4s var(--ease);opacity:0;animation:fadeUp 1s 1.6s forwards}
+.loader-btn:hover{background:rgba(194,160,90,.08);border-color:#C2A05A;color:#F5F0E8;transform:translateY(-2px) scale(1.03);box-shadow:0 0 30px rgba(194,160,90,.25)}
+#loader.exiting .loader-btn,#loader.exiting .loader-quote,#loader.exiting .loader-line,#loader.exiting .loader-name,#loader.exiting .loader-countdown-label,#loader.exiting .loader-countdown-num{opacity:0!important;transition:opacity .3s ease}
+#loader.exiting .loader-ring-wrap{animation:loaderMirrorExpand .95s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes loaderMirrorExpand{0%{transform:scale(1)}55%{transform:scale(1.15)}100%{transform:scale(9);opacity:0}}
 
 /* ── PARTICLES ── */
 #particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
@@ -242,8 +266,9 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 ════════════════════════════════════════ */
 #about-page{background:#0D0D0D}
 .ab-hero{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;min-height:100vh;background:#060606;padding-top:90px;overflow:hidden}
-.ab-hero-img-col{display:flex;align-items:center;justify-content:center;height:100%;padding:3rem 3vw 3rem 5vw;background:#060606}
-.ab-hero-img-col img{width:100%;max-width:480px;height:auto;max-height:80vh;object-fit:contain;display:block;filter:grayscale(8%) brightness(.96);box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:6px}
+.ab-hero-img-col{max-height:100vh}
+.ab-hero-img-col{display:flex;align-items:center;justify-content:center;height:100%;padding:3rem 3vw 3rem 5vw;background:#060606;box-sizing:border-box}
+.ab-hero-img-col img{width:100%;max-width:480px;height:auto;max-height:calc(100vh - 90px - 6rem);object-fit:contain;object-position:center top;display:block;filter:grayscale(8%) brightness(.96);box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:6px}
 .ab-hero-cnt{position:relative;z-index:2;padding:3rem 5vw 3rem 0;max-width:560px}
 .ab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .ab-label::before{content:'';width:18px;height:1px;background:#C2A05A}
@@ -257,10 +282,14 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .ab-gallery-h em{font-style:italic;color:#C2A05A}
 .ab-gallery-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem}
 .ab-gallery-track::-webkit-scrollbar{display:none}
-.ab-gallery-card{flex:0 0 320px;height:240px;overflow:hidden;border-radius:6px;scroll-snap-align:start;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:box-shadow .4s}
+.ab-gallery-card{flex:0 0 280px;height:280px;overflow:hidden;border-radius:6px;scroll-snap-align:start;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:box-shadow .4s,transform .4s;cursor:grab}
 .ab-gallery-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.7)}
 .ab-gallery-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(18%) brightness(.75);transition:transform .6s var(--ease),filter .5s}
 .ab-gallery-card:hover img{transform:scale(1.07);filter:grayscale(0) brightness(.88)}
+.ab-gallery-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem;background:linear-gradient(to top,rgba(6,6,6,.94) 8%,rgba(6,6,6,.2) 58%,transparent 100%);opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.ab-gallery-card:hover .ab-gallery-overlay{opacity:1;transform:none}
+.ab-gallery-overlay-title{font-family:var(--serif);font-size:.92rem;font-style:italic;color:#F5F0E8;line-height:1.3}
+.ab-gallery-overlay-sub{font-family:var(--sans);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A;margin-top:.4rem}
 
 .tl-wrap{padding:5rem 5vw;background:#0D0D0D}
 .tl-h{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;color:#F5F0E8;margin-bottom:3rem}
@@ -288,8 +317,8 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 #lab-page{background:#1A1E35}
 .lab-hero{background:#111728;padding:9rem 5vw 6rem;position:relative;overflow:hidden;min-height:75vh;display:flex;align-items:center}
 .lab-hero::before{content:'ΜΥΘΟΣ';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18rem;color:rgba(194,160,90,.04);line-height:1;pointer-events:none}
-.lab-hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#111728}
-.lab-hero-bg img{width:100%;height:100%;object-fit:contain;object-position:center;opacity:.32}
+.lab-hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#111728;padding:2rem 0}
+.lab-hero-bg img{width:100%;height:100%;object-fit:contain;object-position:center;opacity:.4}
 .lab-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,23,40,.55) 0%,rgba(17,23,40,.35) 45%,rgba(17,23,40,.85) 100%);pointer-events:none}
 .lab-hero-content{position:relative;z-index:2}
 .lab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
@@ -313,9 +342,11 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .wgch-h{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#E8EAF0;margin-bottom:.8rem}
 .wgch-h em{font-style:italic;color:#C2A05A}
 .wgch-p{font-family:var(--sans);font-size:.82rem;color:rgba(232,234,240,.4);line-height:2;font-weight:300;max-width:550px;margin-bottom:1.8rem}
-.wgch-gal{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;height:150px}
-.wg{overflow:hidden}
-.wg img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.55);transition:all .5s}
+.wgch-gal{display:flex;gap:.6rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 5vw 1rem;margin:0 -5vw;cursor:grab}
+.wgch-gal::-webkit-scrollbar{display:none}
+.wgch-gal.dragging{cursor:grabbing;scroll-snap-type:none}
+.wg{overflow:hidden;flex:0 0 220px;aspect-ratio:1/1;scroll-snap-align:start;border-radius:4px;position:relative}
+.wg img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.55);transition:all .5s var(--ease)}
 .wg:hover img{filter:brightness(.85) saturate(.85);transform:scale(1.06)}
 
 .compass-sec{padding:4rem 5vw;background:#1A1E35;text-align:center}
@@ -378,8 +409,8 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .char-page-name{font-family:var(--serif);font-size:clamp(3rem,7vw,6.5rem);font-weight:300;color:#F5F0E8;line-height:1;margin-bottom:.5rem}
 .char-page-role{font-family:var(--serif);font-size:clamp(1rem,2vw,1.4rem);font-style:italic;color:#C2A05A;margin-bottom:1.5rem}
 .char-page-sub{font-family:var(--sans);font-size:.84rem;color:rgba(245,240,232,.4);line-height:2;max-width:500px;font-weight:300}
-.char-page-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(194,160,90,.6);text-decoration:none;border:none;background:none;margin-bottom:3rem;transition:color .3s}
-.char-page-back:hover{color:#C2A05A}
+.char-page-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border:1px solid rgba(194,160,90,.4);background:rgba(194,160,90,.04);padding:.7rem 1.3rem;margin-bottom:3rem;transition:all .35s var(--ease);cursor:pointer}
+.char-page-back:hover{color:#F5F0E8;border-color:#C2A05A;background:rgba(194,160,90,.1);transform:translateX(-3px);box-shadow:0 0 20px rgba(194,160,90,.15)}
 .char-sections{padding:4rem 5vw;background:#0D0D0D;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(194,160,90,.08)}
 .char-section-card{background:#0D0D0D;padding:2.5rem 2rem}
 .char-section-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
@@ -389,6 +420,17 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .char-themes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
 .char-theme-tag{padding:.4rem 1rem;border:1px solid rgba(194,160,90,.22);font-family:var(--sans);font-size:.58rem;letter-spacing:.1em;color:rgba(194,160,90,.65);text-transform:uppercase}
 .char-related-arts{padding:3rem 5vw;background:#080808}
+
+/* THEME PAGE (Browse by Theme -> dedicated pages) */
+#theme-page{background:#1A1E35}
+.th-hero{background:#111728;padding:9rem 5vw 5rem;position:relative;overflow:hidden}
+.th-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.th-label::before{content:'';width:16px;height:1px;background:#C2A05A}
+.th-title{font-family:var(--serif);font-size:clamp(2.6rem,6vw,5rem);font-weight:300;color:#E8EAF0;line-height:1.05}
+.th-title em{font-style:italic;color:#C2A05A}
+.th-sub{font-family:var(--sans);font-size:.86rem;color:rgba(232,234,240,.45);line-height:1.95;max-width:560px;margin-top:1.2rem;font-weight:300}
+.th-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border:1px solid rgba(194,160,90,.4);background:rgba(194,160,90,.04);padding:.7rem 1.3rem;margin-bottom:2.2rem;transition:all .35s var(--ease);cursor:pointer}
+.th-back:hover{color:#F5F0E8;border-color:#C2A05A;background:rgba(194,160,90,.1);transform:translateX(-3px)}
 
 /* ════════════════════════════════════════
    HUMAN QUESTIONS
@@ -431,55 +473,69 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .spk-video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,21,16,.98) 22%,rgba(12,21,16,.6) 62%,rgba(12,21,16,.22) 100%)}
 .spk-video-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(12,21,16,.7) 100%);pointer-events:none}
 .spk-video-cnt{position:relative;z-index:2;padding:0 5vw 6rem;max-width:820px;opacity:0;animation:fadeUp .9s 1s forwards}
-.spk-vid-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#D4C99A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
-.spk-vid-label::before{content:'';width:18px;height:1px;background:#D4C99A}
+.spk-vid-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.spk-vid-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .spk-vid-h1{font-family:var(--serif);font-size:clamp(2.8rem,7vw,6.5rem);font-weight:300;color:#F5F2EA;line-height:1.02;margin-bottom:1.5rem}
-.spk-vid-h1 em{font-style:italic;color:#D4C99A}
+.spk-vid-h1 em{font-style:italic;color:#C2A05A}
 .spk-vid-sub{font-family:var(--sans);font-size:clamp(.78rem,1.2vw,.92rem);color:rgba(245,242,234,.42);line-height:2.1;max-width:480px;font-weight:300;margin-bottom:2.5rem}
 .spk-scroll{display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .8s 1.5s forwards}
-.spk-scroll-line{width:40px;height:1px;background:#D4C99A;animation:ssp 2.2s 2s infinite}
+.spk-scroll-line{width:40px;height:1px;background:#C2A05A;animation:ssp 2.2s 2s infinite}
 @keyframes ssp{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:.4;transform:scaleX(1.5)}}
 .spk-scroll span{font-family:var(--sans);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,234,.3)}
 
 .spk-section{padding:4rem 5vw;background:#1C2E22}
-.spk-s-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#D4C99A;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
-.spk-s-label::before{content:'';width:16px;height:1px;background:#D4C99A}
+.spk-s-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
+.spk-s-label::before{content:'';width:16px;height:1px;background:#C2A05A}
 .spk-s-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#F5F2EA;margin-bottom:1.5rem}
-.spk-s-title em{font-style:italic;color:#D4C99A}
-.spk-split{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:460px;background:rgba(212,201,154,.04)}
-.spk-split-img{overflow:hidden;position:relative}
+.spk-s-title em{font-style:italic;color:#C2A05A}
+.spk-split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;background:rgba(194,160,90,.04)}
+.spk-split-img{overflow:hidden;position:relative;align-self:center;aspect-ratio:4/3;max-height:420px}
 .spk-split-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.6);transition:transform 8s var(--ease)}
 .spk-split-img:hover img{transform:scale(1.04)}
 .spk-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(20,31,23,.05),rgba(20,31,23,.02))}
-.spk-split-text{padding:4rem 4vw;display:flex;flex-direction:column;justify-content:center;background:#141f17}
+.spk-split-text{padding:3rem 4vw;display:flex;flex-direction:column;justify-content:center;background:#141f17}
 .spk-split-text p{font-family:var(--sans);font-size:.82rem;color:rgba(245,242,234,.4);line-height:2;font-weight:300}
-.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(212,201,154,.08);margin-top:2rem}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(194,160,90,.08);margin-top:2rem}
 .prog-card{background:#1C2E22;padding:2.8rem 2rem;transition:all .3s;border-top:2px solid transparent}
-.prog-card:hover{background:#1f3324;border-top-color:#D4C99A}
-.prog-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:rgba(212,201,154,.18);margin-bottom:1.2rem;line-height:1}
+.prog-card:hover{background:#1f3324;border-top-color:#C2A05A}
+.prog-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:rgba(194,160,90,.18);margin-bottom:1.2rem;line-height:1}
 .prog-title{font-family:var(--serif);font-size:1.5rem;color:#F5F2EA;margin-bottom:.7rem;transition:color .3s}
-.prog-card:hover .prog-title{color:#D4C99A}
+.prog-card:hover .prog-title{color:#C2A05A}
 .prog-desc{font-family:var(--sans);font-size:.8rem;color:rgba(245,242,234,.42);line-height:1.9;font-weight:300}
 .prog-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
-.prog-tag{font-family:var(--sans);font-size:.58rem;letter-spacing:.08em;padding:.25rem .7rem;border:1px solid rgba(212,201,154,.16);color:rgba(212,201,154,.4);transition:all .3s}
-.prog-card:hover .prog-tag{border-color:rgba(212,201,154,.3);color:#D4C99A}
-.spk-gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:3px;background:rgba(212,201,154,.06)}
-.gi{overflow:hidden;position:relative}
-.gi.tall{grid-row:span 2}
-.gi.wide{grid-column:span 2}
+.prog-tag{font-family:var(--sans);font-size:.58rem;letter-spacing:.08em;padding:.25rem .7rem;border:1px solid rgba(194,160,90,.16);color:rgba(194,160,90,.4);transition:all .3s}
+.prog-card:hover .prog-tag{border-color:rgba(194,160,90,.3);color:#C2A05A}
+.spk-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:rgba(194,160,90,.06)}
+.gi{overflow:hidden;position:relative;aspect-ratio:1/1}
 .gi img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.55);transition:all .6s var(--ease)}
 .gi:hover img{filter:brightness(.82) saturate(.8);transform:scale(1.05)}
 .gi-label{position:absolute;bottom:.8rem;left:.8rem;font-family:var(--sans);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,234,.5);background:rgba(0,0,0,.5);padding:.22rem .6rem;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s}
 .gi:hover .gi-label{opacity:1}
-.spk-testi{background:#141f17;padding:4rem 5vw;border-top:1px solid rgba(212,201,154,.07)}
-.spk-t-title{font-family:var(--serif);font-size:2rem;font-weight:300;color:#F5F2EA;margin-bottom:2rem}
-.spk-t-title em{font-style:italic;color:#D4C99A}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:rgba(212,201,154,.07)}
-.testi-card{background:#141f17;padding:2.2rem 1.8rem;border:1px solid rgba(212,201,154,.05);transition:border-color .3s}
-.testi-card:hover{border-color:rgba(212,201,154,.2)}
+.spk-testi{background:#141f17;padding:4rem 0 4.5rem;border-top:1px solid rgba(194,160,90,.07);overflow:hidden}
+.spk-t-title{font-family:var(--serif);font-size:2rem;font-weight:300;color:#F5F2EA;margin-bottom:2rem;padding:0 5vw}
+.spk-t-title em{font-style:italic;color:#C2A05A}
+.testi-carousel{position:relative;padding:0 5vw}
+.testi-grid{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;cursor:grab}
+.testi-grid::-webkit-scrollbar{display:none}
+.testi-grid.dragging{cursor:grabbing;scroll-snap-type:none}
+.testi-card{background:#182620;flex:0 0 340px;scroll-snap-align:start;padding:2.4rem 2rem;border:1px solid rgba(194,160,90,.09);transition:border-color .3s}
+.testi-card:hover{border-color:rgba(194,160,90,.28)}
 .testi-q{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(245,242,234,.58);line-height:1.85;margin-bottom:1.2rem}
-.testi-a{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#D4C99A}
+.testi-a{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A}
 .testi-o{font-family:var(--sans);font-size:.6rem;color:rgba(245,242,234,.26);margin-top:.2rem}
+.testi-nav{display:flex;gap:.7rem;margin-top:1.6rem;padding:0 5vw}
+.testi-arrow{width:42px;height:42px;border-radius:50%;border:1px solid rgba(194,160,90,.35);background:transparent;color:#C2A05A;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer}
+.testi-arrow:hover{background:rgba(194,160,90,.12);border-color:#C2A05A;color:#F5F2EA}
+.spk-collab{padding:3.5rem 5vw;background:#141f17;text-align:center;border-top:1px solid rgba(194,160,90,.08);border-bottom:1px solid rgba(194,160,90,.08)}
+.spk-collab-label{font-family:var(--sans);font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(194,160,90,.6);margin-bottom:1.2rem}
+.spk-collab-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(194,160,90,.4),transparent);margin:0 auto 2rem}
+.spk-mq-wrap{overflow:hidden;position:relative}
+.spk-mq-wrap::before,.spk-mq-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:1;pointer-events:none}
+.spk-mq-wrap::before{left:0;background:linear-gradient(to right,#141f17,transparent)}
+.spk-mq-wrap::after{right:0;background:linear-gradient(to left,#141f17,transparent)}
+.spk-mq-track{display:flex;gap:3.5rem;width:max-content;animation:mqa 30s linear infinite}
+.spk-mq-item{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:rgba(245,242,234,.3);letter-spacing:.04em;white-space:nowrap;transition:color .35s,text-shadow .35s}
+.spk-mq-item:hover{color:#C2A05A;text-shadow:0 0 16px rgba(194,160,90,.3)}
 .spk-vids{padding:4rem 5vw;background:#1C2E22}
 .vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:2rem}
 .vid-card{background:#141f17;overflow:hidden;transition:transform .3s}
@@ -487,19 +543,19 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .vid-thumb{position:relative;height:180px;overflow:hidden}
 .vid-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.6);transition:all .5s}
 .vid-card:hover .vid-thumb img{filter:brightness(.82) saturate(.8);transform:scale(1.04)}
-.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(212,201,154,.85);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#141f17;transition:transform .3s;padding-left:3px}
+.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(194,160,90,.85);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#141f17;transition:transform .3s;padding-left:3px}
 .vid-card:hover .vid-play{transform:translate(-50%,-50%) scale(1.15)}
 .vid-info{padding:1rem 1.2rem}
-.vid-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#D4C99A;margin-bottom:.4rem}
+.vid-tag{font-family:var(--sans);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;margin-bottom:.4rem}
 .vid-title{font-family:var(--serif);font-size:.98rem;color:#F5F2EA;line-height:1.4}
 
 /* INVITE SUNDEEP — premium interactive cards */
-.h-speak{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px;background:#0D0D0D}
+.h-speak{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px;background:#1C2E22}
 .h-speak-img{position:relative;overflow:hidden}
 .h-speak-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.65);transition:transform 8s var(--ease)}
 .h-speak-img:hover img{transform:scale(1.04)}
-.h-speak-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(13,13,13,.05),rgba(13,13,13,.02))}
-.h-speak-content{background:#0D0D0D;padding:4.5rem 4vw;display:flex;flex-direction:column;justify-content:center}
+.h-speak-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(20,31,23,.1),rgba(20,31,23,.02))}
+.h-speak-content{background:#1C2E22;padding:4.5rem 4vw;display:flex;flex-direction:column;justify-content:center}
 .sec-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
 .sec-label::before{content:'';width:16px;height:1px;background:#C2A05A}
 .sec-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#F5F0E8;margin-bottom:1.2rem}
@@ -543,8 +599,8 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .pr-title{font-family:var(--serif);font-size:clamp(2.6rem,6vw,5.5rem);font-weight:300;color:#F5F0E8;line-height:1.03}
 .pr-title em{font-style:italic;color:#C2A05A}
 .pr-sub{font-family:var(--sans);font-size:.88rem;color:rgba(245,240,232,.42);line-height:2;max-width:540px;margin-top:1.2rem;font-weight:300}
-.pr-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(194,160,90,.6);text-decoration:none;border:none;background:none;margin-bottom:2rem;transition:color .3s}
-.pr-back:hover{color:#C2A05A}
+.pr-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border:1px solid rgba(194,160,90,.4);background:rgba(194,160,90,.04);padding:.7rem 1.3rem;margin-bottom:2rem;transition:all .35s var(--ease);cursor:pointer}
+.pr-back:hover{color:#F5F0E8;border-color:#C2A05A;background:rgba(194,160,90,.1);transform:translateX(-3px);box-shadow:0 0 20px rgba(194,160,90,.15)}
 
 .pr-section{padding:4.5rem 5vw;background:#0D0D0D}
 .pr-section.alt{background:#080808}
@@ -566,10 +622,8 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .pr-audience-card span{font-family:var(--serif);font-size:1.05rem;color:rgba(245,240,232,.65);transition:color .3s}
 .pr-audience-card:hover span{color:#C2A05A}
 
-.pr-gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:3px;background:rgba(194,160,90,.08);margin-top:2rem}
-.pr-gallery .gi{overflow:hidden;position:relative}
-.pr-gallery .gi.tall{grid-row:span 2}
-.pr-gallery .gi.wide{grid-column:span 2}
+.pr-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:rgba(194,160,90,.08);margin-top:2rem}
+.pr-gallery .gi{overflow:hidden;position:relative;aspect-ratio:1/1}
 .pr-gallery .gi img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.68);transition:transform .6s var(--ease),filter .5s}
 .pr-gallery .gi:hover img{transform:scale(1.06);filter:grayscale(0) brightness(.85)}
 
@@ -584,20 +638,20 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .pr-cta h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#F5F0E8;max-width:620px;margin:0 auto 2rem;line-height:1.4}
 .pr-cta h2 em{font-style:italic;color:#C2A05A}
 
-@media(max-width:900px){.pr-gallery{grid-template-columns:repeat(2,1fr)}.pr-gallery .gi.wide{grid-column:span 1}}
+@media(max-width:900px){.pr-gallery{grid-template-columns:repeat(2,1fr)}}
 
 /* ════════════════════════════════════════
    BOOKS
 ════════════════════════════════════════ */
 #books-page{background:#F7F0E3}
 #books-page .bk-nav-fix{position:fixed;top:0;left:0;right:0;height:68px;background:rgba(6,6,6,.94);backdrop-filter:blur(18px);z-index:498;pointer-events:none}
-.bk-hero{background:#EDE4D3;padding:8rem 5vw 4rem;display:grid;grid-template-columns:1fr 260px;gap:6rem;align-items:center}
+.bk-hero{background:#EDE4D3;padding:8rem 5vw 4rem;display:grid;grid-template-columns:1fr 340px;gap:5rem;align-items:center}
 .bk-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#9C6B3F;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
 .bk-label::before{content:'';width:16px;height:1px;background:#9C6B3F}
 .bk-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.2rem);font-weight:300;color:#2A1F14;line-height:1.05}
 .bk-title em{font-style:italic;color:#9C6B3F}
 .bk-sub{font-family:var(--sans);font-size:.88rem;color:rgba(42,31,20,.5);line-height:1.9;font-weight:300;margin:1.5rem 0}
-.bk-cover{width:220px;height:310px;background:url('ahalya-cover.jpg') center/cover;box-shadow:18px 18px 55px rgba(42,31,20,.3),-4px 0 0 rgba(42,31,20,.18);border-radius:0 3px 3px 0;display:block;transition:transform .5s var(--ease),box-shadow .5s}
+.bk-cover{width:300px;height:420px;background:url('ahalya-cover.jpg') center/cover;box-shadow:26px 26px 70px rgba(42,31,20,.35),-5px 0 0 rgba(42,31,20,.2);border-radius:0 4px 4px 0;display:block;transition:transform .5s var(--ease),box-shadow .5s}
 .bk-cover:hover{transform:translateY(-6px) rotate(1deg);box-shadow:24px 24px 65px rgba(42,31,20,.4),-4px 0 0 rgba(42,31,20,.18)}
 .bk-badge{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#9C6B3F;text-align:center;margin-top:1rem}
 .bk-details{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(42,31,20,.06)}
@@ -611,6 +665,31 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .bk-rev:last-child{border:none}
 .bk-rev-t{font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(42,31,20,.62);line-height:1.8;margin-bottom:.7rem}
 .bk-rev-s{font-family:var(--sans);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#9C6B3F}
+
+/* Upcoming book card */
+.bk-upcoming{background:#F0E8D8;padding:5rem 5vw;border-top:1px solid rgba(42,31,20,.08)}
+.bk-upcoming-card{display:grid;grid-template-columns:190px 1fr;gap:3rem;align-items:center;max-width:820px}
+.bk-upcoming-cover{width:190px;height:266px;border:1px dashed rgba(42,31,20,.35);background:linear-gradient(135deg,#E3D8C0,#EDE4D3);display:flex;align-items:center;justify-content:center;border-radius:0 3px 3px 0;box-shadow:14px 14px 40px rgba(42,31,20,.16);transition:transform .5s var(--ease)}
+.bk-upcoming-card:hover .bk-upcoming-cover{transform:translateY(-4px)}
+.bk-upcoming-cover span{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(42,31,20,.4);text-align:center;padding:0 1.2rem;line-height:1.4}
+.bk-coming-badge{display:inline-block;font-family:var(--sans);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#9C6B3F;border:1px solid rgba(156,107,63,.4);padding:.4rem 1rem;margin-bottom:1.1rem}
+
+/* Excerpt page (dedicated, editorial) */
+#excerpt-page{background:#F7F0E3}
+.ex-hero{position:relative;min-height:52vh;display:flex;align-items:flex-end;overflow:hidden;background:#2A1F14}
+.ex-hero-bg{position:absolute;inset:0}
+.ex-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:grayscale(10%) brightness(.6)}
+.ex-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(42,31,20,.96) 15%,rgba(42,31,20,.5) 60%,rgba(42,31,20,.15) 100%)}
+.ex-hero-cnt{position:relative;z-index:2;padding:2.5rem 5vw 4rem;max-width:760px}
+.ex-back{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#E8D5A0;text-decoration:none;border:1px solid rgba(232,213,160,.4);background:rgba(232,213,160,.06);padding:.7rem 1.3rem;margin:6.5rem 5vw 0;transition:all .35s var(--ease);cursor:pointer;width:fit-content}
+.ex-back:hover{color:#fff;border-color:#E8D5A0;background:rgba(232,213,160,.14);transform:translateX(-3px)}
+.ex-label{font-family:var(--sans);font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:#E8D5A0;margin-bottom:1rem}
+.ex-title{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;color:#F7F0E3;line-height:1.1}
+.ex-title em{font-style:italic;color:#E8D5A0}
+.ex-body{max-width:700px;padding:5rem 5vw;margin:0 auto}
+.ex-body p{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:rgba(42,31,20,.72);line-height:2.1;margin-bottom:1.6rem}
+.ex-body p:first-child::first-letter{font-size:3.2rem;line-height:1;float:left;padding-right:.6rem;padding-top:.3rem;color:#9C6B3F;font-style:normal}
+.ex-divider{width:44px;height:1px;background:#9C6B3F;margin:2.5rem 0}
 
 /* ════════════════════════════════════════
    MEDIA
@@ -637,7 +716,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .ae-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1px;background:rgba(255,255,255,.04)}
 .ae-card{background:#1a1a1a;overflow:hidden;transition:background .3s}
 .ae-card:hover{background:#252525}
-.ae-card-img{height:145px;overflow:hidden}
+.ae-card-img{aspect-ratio:1/1;overflow:hidden}
 .ae-card-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(.2);transition:all .5s}
 .ae-card:hover .ae-card-img img{filter:brightness(.82) grayscale(0);transform:scale(1.04)}
 .ae-card-body{padding:1.3rem 1.4rem}
@@ -705,8 +784,8 @@ select.f-inp option{background:#0B1629}
 .hq-hero-bg{position:absolute;inset:0}
 .hq-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.34;filter:grayscale(20%) brightness(.7)}
 .hq-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.99) 12%,rgba(6,6,6,.6) 55%,rgba(6,6,6,.18) 100%)}
-.hq-back{position:relative;z-index:3;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(194,160,90,.6);text-decoration:none;border:none;background:none;margin:6.5rem 5vw 0;transition:color .3s}
-.hq-back:hover{color:#C2A05A}
+.hq-back{position:relative;z-index:3;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border:1px solid rgba(194,160,90,.4);background:rgba(194,160,90,.04);padding:.7rem 1.3rem;margin:6.5rem 5vw 0;transition:all .35s var(--ease);cursor:pointer;width:fit-content}
+.hq-back:hover{color:#F5F0E8;border-color:#C2A05A;background:rgba(194,160,90,.1);transform:translateX(-3px);box-shadow:0 0 20px rgba(194,160,90,.15)}
 .hq-hero-cnt{position:relative;z-index:2;padding:2.5rem 5vw 5.5rem;max-width:880px}
 .hq-ey{font-family:var(--sans);font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
 .hq-ey::before{content:'';width:18px;height:1px;background:#C2A05A}
@@ -790,12 +869,11 @@ select.f-inp option{background:#0B1629}
   .h-book-strip{grid-template-columns:1fr;text-align:center}
   .h-book-cover{margin:0 auto}
   .spk-gal{grid-template-columns:repeat(2,1fr)}
-  .gi.wide{grid-column:span 1}
   .bk-hero{padding:6rem 5vw 3rem}
   .footer-grid{grid-template-columns:1fr 1fr}
   .f-row{grid-template-columns:1fr}
   .hero-portrait{width:100%;opacity:.28}
-  .wgch-gal{grid-template-columns:repeat(3,1fr)}
+  .wg{flex-basis:170px}
   .fw-editorial{grid-template-columns:1fr}
   .fw-img-wrap img{aspect-ratio:16/9}
 }
@@ -805,13 +883,392 @@ select.f-inp option{background:#0B1629}
   .h-stats{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .cmp-wrap{width:260px;height:260px}
-  .spk-gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
-  .gi.tall{grid-row:span 1}
-  .wgch-gal{grid-template-columns:repeat(2,1fr)}
-  .ab-gallery-card{flex:0 0 260px;height:200px}
+  .spk-gal{grid-template-columns:repeat(2,1fr)}
+  .wg{flex-basis:150px}
+  .ab-gallery-card{flex:0 0 220px;height:220px}
 }
 @media(pointer:coarse){#quill-cursor,#quill-trail{display:none}*{cursor:auto!important}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<style>
+/* ══════════════════════════════════════════
+   THE INNER EPIC — dedicated scrollytelling page
+   ══════════════════════════════════════════ */
+#innerepic-page{background:#0A0A0A}
+.ie-kicker{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:1.6rem;opacity:.85}
+.ie-ch-title{font-family:var(--serif);font-weight:400;color:var(--parch);text-align:center;font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.3;max-width:780px;margin:0 auto 3rem;letter-spacing:.005em}
+.ie-ch-title em{font-style:italic;color:var(--gold)}
+.ie-gold{color:var(--gold)!important}
+
+/* ── CH1 HERO ── */
+.ie-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#171410 0%,#0a0908 55%,#050504 100%)}
+.ie-hero-bg{position:absolute;inset:-10%;background:radial-gradient(circle at 30% 25%,rgba(194,160,90,.10),transparent 45%),radial-gradient(circle at 75% 70%,rgba(156,107,63,.08),transparent 50%);animation:ieDrift 26s ease-in-out infinite alternate}
+@keyframes ieDrift{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.12) translate(-2%,2%)}}
+.ie-hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ie-hero-particles span{position:absolute;bottom:-8px;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;animation:floatUp var(--d,14s) var(--dl,0s) linear infinite}
+.ie-hero-content{position:relative;z-index:2;max-width:880px;padding:0 6vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.ie-line{font-family:var(--serif);font-weight:300;color:var(--parch);font-size:clamp(1.5rem,4.4vw,3.1rem);line-height:1.35;opacity:0;transform:translateY(18px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease)}
+.ie-line.show{opacity:1;transform:none}
+.ie-line em{font-style:italic;color:var(--gold)}
+.ie-continue{margin-top:2.2rem;display:inline-flex;flex-direction:column;align-items:center;gap:.7rem;background:none;border:none;color:rgba(245,240,232,.5);font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;opacity:0;transition:opacity 1s var(--ease) .3s,color .3s}
+.ie-continue.show{opacity:1}
+.ie-continue:hover{color:var(--gold)}
+.ie-continue-line{width:1px;height:34px;background:linear-gradient(#C2A05A,transparent);animation:ieBob 2.2s ease-in-out infinite}
+@keyframes ieBob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ── generic chapter shell ── */
+.ie-ch2,.ie-ch3,.ie-ch4,.ie-ch5,.ie-ch6{position:relative;padding:min(16vh,9rem) 6vw;background:#0A0A0A}
+.ie-ch3{background:#0c0b09}
+.ie-ch5{background:#0c0b09}
+
+/* ── CH2 SITUATIONS ── */
+.ie-situations{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:1.6rem;align-items:center}
+.ie-situations p{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.6vw,1.7rem);color:rgba(245,240,232,.75);text-align:center}
+.ie-ch2-close{margin-top:5rem;text-align:center}
+.ie-big{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3.6vw,2.6rem);color:var(--parch);text-align:center;line-height:1.4;max-width:760px;margin:0 auto .4rem}
+
+/* ── CH3 DIAGRAM ── */
+.ie-diagram{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;max-width:760px;margin:0 auto}
+.ie-diagram-node{border:1px solid rgba(194,160,90,.35);padding:1.5rem 2.2rem;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.8);background:rgba(194,160,90,.04);transition:all .4s var(--ease)}
+.ie-diagram-node:hover{border-color:var(--gold);background:rgba(194,160,90,.09);transform:translateY(-3px)}
+.ie-diagram-node--gold{border-color:var(--gold);color:var(--gold);background:rgba(194,160,90,.1);box-shadow:0 0 30px rgba(194,160,90,.15)}
+.ie-diagram-line{width:60px;height:1px;background:linear-gradient(90deg,rgba(194,160,90,.15),var(--gold),rgba(194,160,90,.15));margin:0 .4rem}
+@media(max-width:720px){.ie-diagram{flex-direction:column;gap:1rem}.ie-diagram-line{width:1px;height:34px}}
+
+/* ── CH4 FLIP CARDS ── */
+.ie-flip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.ie-flip-card{perspective:1200px;height:220px;cursor:pointer}
+.ie-flip-inner{position:relative;width:100%;height:100%;transition:transform .7s var(--ease);transform-style:preserve-3d}
+.ie-flip-card.flipped .ie-flip-inner{transform:rotateY(180deg)}
+.ie-flip-face{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.6rem;border:1px solid rgba(194,160,90,.22)}
+.ie-flip-front{background:linear-gradient(160deg,#141210,#0b0a08)}
+.ie-flip-front p{font-family:var(--serif);font-style:italic;color:rgba(245,240,232,.8);font-size:1.05rem;line-height:1.4}
+.ie-flip-front span{margin-top:1rem;font-family:var(--sans);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(194,160,90,.55)}
+.ie-flip-back{background:linear-gradient(160deg,#1c1710,#0b0a08);transform:rotateY(180deg);border-color:var(--gold)}
+.ie-flip-back h4{font-family:var(--serif);font-size:1.5rem;color:var(--gold);font-weight:500}
+.ie-flip-back p{font-family:var(--sans);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-top:.5rem}
+.ie-flip-back a{margin-top:1.1rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--parch);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .3s}
+.ie-flip-back a:hover{color:var(--gold)}
+
+/* ── CH5 FRAMEWORK ── */
+.ie-framework{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0}
+.ie-fw-node{position:relative;padding:1.1rem 1.5rem;border:1px solid rgba(194,160,90,.3);font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--parch);background:rgba(194,160,90,.04);transition:all .35s var(--ease)}
+.ie-fw-node:hover{background:var(--gold);color:#0D0D0D;transform:translateY(-4px);box-shadow:0 10px 30px rgba(194,160,90,.25)}
+.ie-fw-arrow{width:26px;height:1px;background:rgba(194,160,90,.4);margin:.3rem}
+.ie-fw-tip{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:0;text-transform:none;color:rgba(245,240,232,.5);text-align:center;max-width:920px;margin:2.4rem auto 0;min-height:2.4em}
+@media(max-width:720px){.ie-framework{flex-direction:column}.ie-fw-arrow{width:1px;height:22px}}
+
+/* ── CH6 WHY MYTHOLOGY EXISTS ── */
+.ie-ch6{text-align:center}
+.ie-mid{font-family:var(--sans);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.4);margin:.3rem 0}
+
+/* ── CH7 PATHS ── */
+.ie-ch7{padding:min(16vh,9rem) 6vw;background:#0A0A0A;text-align:center}
+.ie-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.6rem;max-width:1000px;margin:3.5rem auto 0}
+.ie-path{border:1px solid rgba(245,240,232,.12);padding:2.4rem 1.8rem;text-align:left;cursor:pointer;transition:all .4s var(--ease);background:rgba(255,255,255,.01)}
+.ie-path:hover{border-color:var(--gold);background:rgba(194,160,90,.05);transform:translateY(-5px)}
+.ie-path-num{font-family:var(--serif);font-size:.85rem;color:var(--gold);letter-spacing:.08em}
+.ie-path h3{font-family:var(--serif);font-size:1.4rem;color:var(--parch);font-weight:500;margin:.8rem 0 .6rem}
+.ie-path p{font-family:var(--sans);font-size:.76rem;line-height:1.6;color:rgba(245,240,232,.5)}
+
+/* ── CH8 CLOSING ── */
+.ie-ch8{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#050504;text-align:center;padding:6vh 6vw}
+.ie-final{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(1.3rem,3.4vw,2.2rem);color:rgba(245,240,232,.85);margin:.6rem 0;opacity:0;transform:translateY(14px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
+.ie-final.show{opacity:1;transform:none}
+</style>
+<style>
+/* ══════════════════════════════════════════
+   CHARACTER ATLAS
+   ══════════════════════════════════════════ */
+#atlas-page{background:#0A0A0A}
+.atl-kicker{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:1rem;opacity:.85}
+.atl-sec-title{font-family:var(--serif);font-weight:400;color:var(--parch);text-align:center;font-size:clamp(1.7rem,3.6vw,2.7rem);margin:0 auto 1rem;letter-spacing:.005em}
+.atl-sec-title em{font-style:italic;color:var(--gold)}
+.atl-sec-sub{font-family:var(--sans);font-size:.82rem;color:rgba(245,240,232,.4);text-align:center;max-width:520px;margin:0 auto 3rem;font-weight:300}
+.atl-sec{padding:min(11vh,6.5rem) 5vw}
+.atl-sec--dark{background:#080807}
+
+/* ── HERO ── */
+.atl-hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:9rem 5vw 4rem;overflow:hidden;background:radial-gradient(ellipse at 20% 20%,#171410,transparent 55%),radial-gradient(ellipse at 85% 80%,#14110c,transparent 55%),#0a0908}
+.atl-hero-bg{position:absolute;inset:-10%;background-image:url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C2A05A' fill-opacity='0.035'%3E%3Ccircle cx='70' cy='70' r='1.4'/%3E%3C/g%3E%3C/svg%3E");opacity:.6}
+.atl-hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.atl-hero-particles span{position:absolute;bottom:-8px;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;animation:floatUp var(--d,14s) var(--dl,0s) linear infinite}
+.atl-hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;max-width:1300px;margin:0 auto;width:100%}
+.atl-eyebrow{font-family:var(--sans);font-size:.64rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.atl-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6vw,4.6rem);color:var(--parch);line-height:1.02;margin-bottom:1.3rem}
+.atl-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.6vw,1.28rem);color:rgba(245,240,232,.6);max-width:520px;line-height:1.55;margin-bottom:2.2rem}
+.atl-search-wrap{position:relative;max-width:480px}
+.atl-search{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(194,160,90,.3);color:var(--parch);font-family:var(--sans);font-size:.85rem;padding:1.05rem 3.2rem 1.05rem 1.3rem;letter-spacing:.02em;transition:border-color .3s,background .3s}
+.atl-search::placeholder{color:rgba(245,240,232,.32)}
+.atl-search:focus{outline:none;border-color:var(--gold);background:rgba(194,160,90,.06)}
+.atl-search-btn{position:absolute;right:6px;top:6px;bottom:6px;width:40px;background:var(--gold);border:none;color:#0D0D0D;font-size:1rem;cursor:pointer;transition:transform .3s}
+.atl-search-btn:hover{transform:scale(1.06)}
+.atl-search-dropdown{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#131110;border:1px solid rgba(194,160,90,.25);z-index:20;max-height:260px;overflow-y:auto;display:none}
+.atl-search-dropdown.show{display:block}
+.atl-search-item{padding:.8rem 1.2rem;font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.75);cursor:pointer;border-bottom:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;transition:background .2s}
+.atl-search-item:last-child{border-bottom:none}
+.atl-search-item:hover{background:rgba(194,160,90,.08);color:var(--gold)}
+.atl-search-item small{color:rgba(245,240,232,.32);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase}
+.atl-search-empty{padding:.9rem 1.2rem;font-family:var(--sans);font-size:.76rem;color:rgba(245,240,232,.35)}
+.atl-search-hint{font-family:var(--sans);font-size:.7rem;color:rgba(245,240,232,.32);margin-top:1.3rem;letter-spacing:.03em}
+.atl-hero-art{display:flex;align-items:center;justify-content:center}
+.atl-hero-svg{width:100%;max-width:420px;filter:drop-shadow(0 0 24px rgba(194,160,90,.1))}
+
+/* ── FEATURED CARDS ── */
+.atl-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.6rem;max-width:1300px;margin:0 auto}
+.atl-card{position:relative;background:linear-gradient(165deg,#141210,#0b0a08);border:1px solid rgba(194,160,90,.15);padding:2.2rem 1.8rem;cursor:pointer;transition:all .5s var(--ease);overflow:hidden;opacity:0;transform:translateY(22px)}
+.atl-card.reveal-in{opacity:1;transform:none}
+.atl-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(194,160,90,.1),transparent 60%);opacity:0;transition:opacity .5s}
+.atl-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 46px rgba(0,0,0,.4)}
+.atl-card:hover::before{opacity:1}
+.atl-card-portrait{position:relative;z-index:1;width:76px;height:76px;border-radius:50%;border:1px solid rgba(194,160,90,.4);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.5rem;color:var(--gold);background:rgba(194,160,90,.06);margin-bottom:1.3rem;transition:all .5s var(--ease)}
+.atl-card:hover .atl-card-portrait{box-shadow:0 0 26px rgba(194,160,90,.3);transform:scale(1.06)}
+.atl-card-name{position:relative;z-index:1;font-family:var(--serif);font-size:1.5rem;color:var(--parch);font-weight:500;margin-bottom:.3rem}
+.atl-card-desc{position:relative;z-index:1;font-family:var(--sans);font-size:.76rem;color:rgba(245,240,232,.45);line-height:1.6;margin-bottom:1.1rem;min-height:2.8em}
+.atl-card-meta{position:relative;z-index:1;display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.atl-card-tag{font-family:var(--sans);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(194,160,90,.75);border:1px solid rgba(194,160,90,.28);padding:.28rem .6rem}
+.atl-card-btn{position:relative;z-index:1;font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--parch);display:inline-flex;align-items:center;gap:.5rem;transition:color .3s,gap .3s}
+.atl-card:hover .atl-card-btn{color:var(--gold);gap:.8rem}
+
+/* ── MYTHOLOGY MAP ── */
+.atl-map-wrap{max-width:1000px;margin:0 auto;position:relative}
+.atl-map-inner{position:relative;background:radial-gradient(circle at 50% 50%,#100e0b,#050504 75%);border:1px solid rgba(194,160,90,.14);aspect-ratio:1/1;max-height:78vh;margin:0 auto;overflow:hidden}
+#atlMapSvg{width:100%;height:100%;display:block;transition:transform 1s var(--ease)}
+.atl-map-edge{stroke:rgba(194,160,90,.16);stroke-width:1.1;transition:all .5s var(--ease);fill:none}
+.atl-map-edge.dim{stroke-opacity:.05}
+.atl-map-edge.hi{stroke:#E8D5A0;stroke-width:2;stroke-opacity:.9;filter:drop-shadow(0 0 4px rgba(194,160,90,.7))}
+.atl-map-node circle{fill:#141210;stroke:rgba(194,160,90,.5);stroke-width:1.4;transition:all .4s var(--ease);cursor:pointer}
+.atl-map-node:hover circle{stroke:var(--gold);filter:drop-shadow(0 0 10px rgba(194,160,90,.6))}
+.atl-map-node.active circle{fill:var(--gold);stroke:var(--gold);filter:drop-shadow(0 0 20px rgba(194,160,90,.9))}
+.atl-map-node.dim circle{opacity:.22}
+.atl-map-node text{fill:rgba(245,240,232,.8);font-family:var(--sans);font-size:13px;font-weight:500;text-anchor:middle;pointer-events:none;transition:fill .4s,opacity .4s}
+.atl-map-node.active text{fill:#0D0D0D;font-weight:700}
+.atl-map-node.dim text{opacity:.25}
+.atl-map-node{cursor:pointer}
+.atl-map-legend{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:center;margin-top:2rem}
+.atl-map-legend span{font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,.4);display:flex;align-items:center;gap:.4rem}
+.atl-map-legend span::before{content:'';width:14px;height:1.5px;background:var(--dot,rgba(194,160,90,.5))}
+
+/* ── PROFILE PANEL ── */
+.atl-panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(3px);z-index:2000;display:none;opacity:0;transition:opacity .4s var(--ease)}
+.atl-panel-overlay.open{display:block;opacity:1}
+.atl-panel{position:fixed;top:0;right:0;bottom:0;width:min(480px,92vw);background:#0d0c0a;border-left:1px solid rgba(194,160,90,.25);transform:translateX(100%);transition:transform .5s var(--ease);overflow-y:auto;padding:3.4rem 2.2rem 4rem;z-index:2001}
+.atl-panel-overlay.open .atl-panel{transform:translateX(0)}
+.atl-panel-close{position:absolute;top:1.5rem;right:1.6rem;background:none;border:1px solid rgba(245,240,232,.2);color:var(--parch);width:34px;height:34px;cursor:pointer;font-size:.8rem;transition:all .3s}
+.atl-panel-close:hover{border-color:var(--gold);color:var(--gold);transform:rotate(90deg)}
+.atl-p-portrait{width:88px;height:88px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.9rem;color:var(--gold);background:rgba(194,160,90,.08);margin-bottom:1.3rem;box-shadow:0 0 30px rgba(194,160,90,.18)}
+.atl-p-name{font-family:var(--serif);font-size:2.1rem;color:var(--parch);font-weight:500}
+.atl-p-role{font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:.3rem 0 1.4rem}
+.atl-p-intro{font-family:var(--serif);font-style:italic;font-size:1.02rem;color:rgba(245,240,232,.7);line-height:1.6;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.atl-p-block{margin-bottom:1.6rem}
+.atl-p-label{font-family:var(--sans);font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(194,160,90,.65);margin-bottom:.6rem}
+.atl-p-facts{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1rem}
+.atl-p-fact-l{font-family:var(--sans);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.32);margin-bottom:.15rem}
+.atl-p-fact-v{font-family:var(--serif);font-size:.92rem;color:rgba(245,240,232,.85)}
+.atl-p-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.atl-p-tag{font-family:var(--sans);font-size:.6rem;letter-spacing:.06em;color:rgba(245,240,232,.65);border:1px solid rgba(255,255,255,.14);padding:.3rem .65rem;cursor:default}
+.atl-p-tag.link{cursor:pointer;border-color:rgba(194,160,90,.35);color:var(--gold);transition:all .3s}
+.atl-p-tag.link:hover{background:var(--gold);color:#0D0D0D}
+.atl-p-sym{font-family:var(--serif);font-size:.92rem;color:rgba(245,240,232,.6);line-height:1.65}
+.atl-p-q{display:block;font-family:var(--serif);font-style:italic;font-size:.88rem;color:rgba(245,240,232,.7);padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;transition:color .3s,padding-left .3s}
+.atl-p-q:hover{color:var(--gold);padding-left:.4rem}
+.atl-p-actions{display:flex;flex-direction:column;gap:.7rem;margin-top:2rem}
+
+/* ── FAMILY TREE ── */
+.atl-tree{max-width:920px;margin:0 auto}
+.atl-tree-gen{border:1px solid rgba(255,255,255,.08);margin-bottom:1rem}
+.atl-tree-gen-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.6rem;cursor:pointer;background:rgba(255,255,255,.015);transition:background .3s}
+.atl-tree-gen-head:hover{background:rgba(194,160,90,.05)}
+.atl-tree-gen-head h4{font-family:var(--serif);font-size:1.15rem;color:var(--parch);font-weight:500}
+.atl-tree-gen-head span{color:var(--gold);font-family:var(--sans);font-size:.9rem;transition:transform .35s var(--ease)}
+.atl-tree-gen.open .atl-tree-gen-head span{transform:rotate(45deg)}
+.atl-tree-gen-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.atl-tree-gen.open .atl-tree-gen-body{max-height:600px}
+.atl-tree-row{display:flex;flex-wrap:wrap;gap:1rem;padding:0 1.6rem 1.5rem}
+.atl-tree-chip{display:flex;align-items:center;gap:.6rem;border:1px solid rgba(194,160,90,.25);padding:.55rem 1rem .55rem .6rem;cursor:pointer;transition:all .3s}
+.atl-tree-chip:hover{border-color:var(--gold);background:rgba(194,160,90,.06)}
+.atl-tree-chip .ini{width:26px;height:26px;border-radius:50%;background:rgba(194,160,90,.12);color:var(--gold);font-family:var(--serif);font-size:.78rem;display:flex;align-items:center;justify-content:center}
+.atl-tree-chip span{font-family:var(--sans);font-size:.74rem;color:rgba(245,240,232,.75)}
+.atl-tree-chip.plain{cursor:default;opacity:.6}
+.atl-tree-chip.plain:hover{border-color:rgba(194,160,90,.25);background:none}
+
+/* ── JOURNEY ── */
+.atl-journey-pills{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.atl-jp{font-family:var(--sans);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);border:1px solid rgba(255,255,255,.15);padding:.55rem 1.2rem;cursor:pointer;transition:all .3s}
+.atl-jp:hover{color:var(--parch);border-color:rgba(194,160,90,.4)}
+.atl-jp.act{color:#0D0D0D;background:var(--gold);border-color:var(--gold)}
+.atl-journey{display:flex;overflow-x:auto;gap:0;max-width:1200px;margin:0 auto;padding-bottom:1rem}
+.atl-j-step{flex:0 0 auto;width:220px;padding:0 1.3rem;position:relative;text-align:center}
+.atl-j-step::before{content:'';position:absolute;top:9px;left:0;right:0;height:1px;background:rgba(194,160,90,.25)}
+.atl-j-step:first-child::before{left:50%}
+.atl-j-step:last-child::before{right:50%}
+.atl-j-dot{width:9px;height:9px;border-radius:50%;background:var(--gold);margin:0 auto 1.3rem;position:relative;z-index:1;box-shadow:0 0 10px rgba(194,160,90,.5)}
+.atl-j-step h5{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.atl-j-step p{font-family:var(--serif);font-size:.9rem;color:rgba(245,240,232,.6);line-height:1.5}
+
+/* ── ARCHETYPES ── */
+.atl-archetype-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.3rem;max-width:1200px;margin:0 auto}
+.atl-arch-card{border:1px solid rgba(255,255,255,.1);padding:1.8rem 1.5rem;text-align:center;cursor:pointer;transition:all .35s var(--ease)}
+.atl-arch-card:hover{border-color:var(--gold);background:rgba(194,160,90,.05);transform:translateY(-4px)}
+.atl-arch-icon{font-size:1.6rem;margin-bottom:.9rem;filter:grayscale(1) brightness(1.6) sepia(1) hue-rotate(-10deg) saturate(2)}
+.atl-arch-card h4{font-family:var(--serif);font-size:1.15rem;color:var(--parch);margin-bottom:.5rem}
+.atl-arch-card p{font-family:var(--sans);font-size:.72rem;color:rgba(245,240,232,.4);line-height:1.5}
+
+/* ── HUMAN QUESTIONS ── */
+.atl-hq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;max-width:1200px;margin:0 auto}
+.atl-hq-card{border:1px solid rgba(255,255,255,.1);padding:1.7rem}
+.atl-hq-card h4{font-family:var(--serif);font-size:1.2rem;color:var(--gold);margin-bottom:1rem}
+.atl-hq-q{display:block;font-family:var(--serif);font-style:italic;font-size:.88rem;color:rgba(245,240,232,.7);padding:.55rem 0;border-top:1px solid rgba(255,255,255,.06);cursor:pointer;transition:color .3s,padding-left .3s}
+.atl-hq-q:hover{color:var(--gold);padding-left:.35rem}
+
+/* ── EPIC / THEME CARDS ── */
+.atl-epic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;max-width:1200px;margin:0 auto}
+.atl-epic-card{position:relative;border:1px solid rgba(194,160,90,.2);padding:2.4rem 1.6rem;cursor:pointer;transition:all .4s var(--ease);background:linear-gradient(160deg,#141210,#0b0a08)}
+.atl-epic-card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 16px 34px rgba(0,0,0,.35)}
+.atl-epic-card h4{font-family:var(--serif);font-size:1.5rem;color:var(--parch);margin-bottom:.5rem}
+.atl-epic-card p{font-family:var(--sans);font-size:.68rem;letter-spacing:.06em;color:rgba(194,160,90,.7);text-transform:uppercase}
+.atl-theme-grid{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;max-width:1000px;margin:0 auto}
+.atl-theme-pill{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,.6);border:1px solid rgba(255,255,255,.15);padding:.7rem 1.4rem;cursor:pointer;transition:all .3s}
+.atl-theme-pill:hover{color:#0D0D0D;background:var(--gold);border-color:var(--gold)}
+
+/* ── GALLERY ── */
+.atl-gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem;max-width:1300px;margin:0 auto}
+.atl-g-item{position:relative;overflow:hidden;background:#111;cursor:pointer}
+.atl-g-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);opacity:.88}
+.atl-g-item:hover img{transform:scale(1.08);opacity:1}
+.atl-g-item::after{content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);font-family:var(--sans);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--parch);opacity:0;transition:opacity .4s}
+.atl-g-item:hover::after{opacity:1}
+.atl-g-wide{grid-column:span 3;aspect-ratio:16/9}
+.atl-g-tall{grid-column:span 2;grid-row:span 2;aspect-ratio:3/4}
+.atl-g-sq{grid-column:span 2;aspect-ratio:1/1}
+@media(max-width:860px){.atl-gallery{grid-template-columns:repeat(2,1fr)}.atl-g-wide,.atl-g-tall,.atl-g-sq{grid-column:span 2;grid-row:span 1;aspect-ratio:4/3}}
+
+/* ── STORIES ── */
+.atl-story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.6rem;max-width:1300px;margin:0 auto}
+.atl-story-card{border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .4s var(--ease)}
+.atl-story-card:hover{border-color:rgba(194,160,90,.4);transform:translateY(-4px)}
+.atl-story-img{aspect-ratio:16/10;overflow:hidden;background:#111}
+.atl-story-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.atl-story-card:hover .atl-story-img img{transform:scale(1.06)}
+.atl-story-body{padding:1.5rem}
+.atl-story-tag{font-family:var(--sans);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.atl-story-title{font-family:var(--serif);font-size:1.25rem;color:var(--parch);margin:.5rem 0 .6rem}
+.atl-story-body p{font-family:var(--sans);font-size:.74rem;color:rgba(245,240,232,.42);line-height:1.55;margin-bottom:1rem}
+.atl-story-read{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.7)}
+
+/* ── CONNECTED ── */
+.atl-connected{background:radial-gradient(ellipse at 50% 0%,rgba(194,160,90,.06),transparent 60%)}
+.atl-connected-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.1rem;max-width:1200px;margin:0 auto}
+.atl-connected-card{display:block;border:1px solid rgba(255,255,255,.1);padding:1.6rem 1.4rem;text-decoration:none;transition:all .35s var(--ease)}
+.atl-connected-card:hover{border-color:var(--gold);background:rgba(194,160,90,.05);transform:translateY(-3px)}
+.atl-connected-card span{font-family:var(--serif);font-size:1.15rem;color:var(--gold);display:block;margin-bottom:.4rem}
+.atl-connected-card p{font-family:var(--sans);font-size:.7rem;color:rgba(245,240,232,.42)}
+
+@media(max-width:900px){
+  .atl-hero-grid{grid-template-columns:1fr}
+  .atl-hero-art{display:none}
+  .atl-p-facts{grid-template-columns:1fr}
+}
+</style>
+<style>
+/* ══════════════════════════════════════════
+   ASK SUNDEEP
+   ══════════════════════════════════════════ */
+#ask-page{background:#0A0A0A}
+.ask-kicker{font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:1rem;opacity:.85}
+.ask-sec-title{font-family:var(--serif);font-weight:400;color:var(--parch);text-align:center;font-size:clamp(1.7rem,3.6vw,2.7rem);margin:0 auto 1rem;letter-spacing:.005em}
+.ask-sec-title em{font-style:italic;color:var(--gold)}
+.ask-sec-sub{font-family:var(--sans);font-size:.82rem;color:rgba(245,240,232,.4);text-align:center;max-width:520px;margin:0 auto 3rem;font-weight:300}
+.ask-sec{padding:min(11vh,6.5rem) 5vw}
+.ask-sec--dark{background:#080807}
+
+/* HERO */
+.ask-hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;padding:9rem 6vw 4rem;overflow:hidden;background:radial-gradient(ellipse at 50% 20%,#141210,#0a0908 60%,#050504 100%)}
+.ask-hero-bg{position:absolute;inset:-10%;background-image:url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C2A05A' fill-opacity='0.035'%3E%3Ccircle cx='70' cy='70' r='1.4'/%3E%3C/g%3E%3C/svg%3E");opacity:.6;animation:ieDrift 30s ease-in-out infinite alternate}
+.ask-hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ask-hero-particles span{position:absolute;bottom:-8px;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;animation:floatUp var(--d,14s) var(--dl,0s) linear infinite}
+.ask-hero-content{position:relative;z-index:2;max-width:720px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.ask-eyebrow{font-family:var(--sans);font-size:.64rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.ask-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6vw,4.4rem);color:var(--parch);line-height:1.02;margin-bottom:1.3rem}
+.ask-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,1.8vw,1.35rem);color:var(--gold);max-width:560px;line-height:1.5;margin-bottom:1.6rem}
+.ask-lede{font-family:var(--sans);font-size:.9rem;color:rgba(245,240,232,.6);max-width:560px;line-height:1.75;font-weight:300;margin-bottom:1rem}
+.ask-lede-sm{font-family:var(--sans);font-size:.82rem;color:rgba(245,240,232,.4);max-width:480px;line-height:1.7;font-weight:300;margin-bottom:2.2rem}
+.ask-hero-cta{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--parch);border:1px solid var(--gold);padding:1.05rem 2rem;text-decoration:none;position:relative;overflow:hidden;transition:color .4s}
+.ask-hero-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);z-index:-1}
+.ask-hero-cta:hover{color:#0D0D0D}
+.ask-hero-cta:hover::before{transform:scaleX(1)}
+
+/* WHY ASK */
+.ask-why-grid{max-width:900px;margin:0 auto}
+.ask-why-copy{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.3rem);color:rgba(245,240,232,.68);line-height:1.85;text-align:center}
+.ask-why-copy p{margin-bottom:1.4rem}
+.ask-why-copy em{font-style:italic;color:var(--gold)}
+
+/* FORM */
+.ask-form{max-width:760px;margin:0 auto;background:linear-gradient(165deg,rgba(194,160,90,.04),transparent),#0d0c0a;border:1px solid rgba(194,160,90,.18);padding:clamp(1.8rem,4vw,3.2rem)}
+.ask-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.ask-form-row--3{grid-template-columns:1fr 1fr 1fr}
+.ask-field{margin-bottom:1.5rem}
+.ask-field label{display:block;font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.55);margin-bottom:.6rem}
+.ask-field label span{font-weight:400;text-transform:none;letter-spacing:0;color:rgba(245,240,232,.3)}
+.ask-field label .req{color:var(--gold);text-transform:none;letter-spacing:0}
+.ask-field input,.ask-field textarea,.ask-field select{width:100%;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.14);color:var(--parch);font-family:var(--sans);font-size:.86rem;padding:.9rem 1rem;transition:border-color .3s,background .3s;font-weight:300}
+.ask-field textarea{resize:vertical;line-height:1.6}
+.ask-field input:focus,.ask-field textarea:focus,.ask-field select:focus{outline:none;border-color:var(--gold);background:rgba(194,160,90,.05)}
+.ask-field select{cursor:pointer}
+.ask-field select option{background:#0d0c0a}
+.ask-count{text-align:right;font-family:var(--sans);font-size:.62rem;color:rgba(245,240,232,.28);margin-top:.4rem;letter-spacing:.06em}
+.ask-reflect{border-top:1px solid rgba(255,255,255,.08);margin-top:.5rem;padding-top:1.8rem}
+.ask-reflect-title{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(245,240,232,.6);margin-bottom:1.3rem}
+.ask-reflect-title span{font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.28);font-style:normal;margin-left:.4rem}
+.ask-consent{display:flex;align-items:flex-start;gap:.7rem;margin:.6rem 0 2rem;cursor:pointer}
+.ask-consent input{margin-top:.25rem;accent-color:var(--gold)}
+.ask-consent span{font-family:var(--sans);font-size:.74rem;color:rgba(245,240,232,.45);line-height:1.55}
+.ask-submit{width:100%;background:var(--gold);border:none;color:#0D0D0D;font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.7rem;transition:all .4s var(--ease)}
+.ask-submit:hover{background:var(--copper);letter-spacing:.24em}
+.ask-submit span{transition:transform .3s}
+.ask-submit:hover span{transform:translateX(5px)}
+.ask-privacy-note{text-align:center;font-family:var(--sans);font-size:.66rem;color:rgba(245,240,232,.3);margin-top:1rem}
+@media(max-width:720px){.ask-form-row,.ask-form-row--3{grid-template-columns:1fr}}
+
+.ask-confirm{display:none;max-width:640px;margin:0 auto;text-align:center;border:1px solid rgba(194,160,90,.3);background:rgba(194,160,90,.04);padding:4rem 2.5rem}
+.ask-confirm.show{display:block}
+.ask-confirm-mark{font-size:1.6rem;color:var(--gold);margin-bottom:1.3rem}
+.ask-confirm h3{font-family:var(--serif);font-size:1.7rem;color:var(--parch);font-weight:500;margin-bottom:1rem}
+.ask-confirm p{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.7;max-width:460px;margin:0 auto 2rem}
+
+/* WHAT HAPPENS NEXT */
+.ask-next-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;max-width:1200px;margin:0 auto}
+.ask-next-card{border:1px solid rgba(255,255,255,.1);padding:2rem 1.6rem;text-align:center;transition:all .4s var(--ease);opacity:0;transform:translateY(18px)}
+.ask-next-card.visible{opacity:1;transform:none}
+.ask-next-card:hover{border-color:var(--gold);background:rgba(194,160,90,.04);transform:translateY(-4px)}
+.ask-next-num{font-family:var(--serif);font-size:.85rem;color:var(--gold);letter-spacing:.1em}
+.ask-next-card h4{font-family:var(--serif);font-size:1.35rem;color:var(--parch);font-weight:500;margin:.8rem 0 .7rem}
+.ask-next-card p{font-family:var(--sans);font-size:.76rem;color:rgba(245,240,232,.42);line-height:1.6}
+
+/* QUOTE */
+.ask-quote-sec{padding:min(14vh,8rem) 6vw;text-align:center;background:radial-gradient(ellipse at 50% 50%,var(--deepgreen),#080807 70%)}
+.ask-quote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.4rem,3.2vw,2.2rem);color:var(--parch);line-height:1.55;max-width:840px;margin:0 auto 1.6rem}
+.ask-quote-by{font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+/* FAQ */
+.ask-faq{max-width:820px;margin:0 auto}
+.ask-faq-item{border-bottom:1px solid rgba(255,255,255,.1)}
+.ask-faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.5rem 0;cursor:pointer}
+.ask-faq-q h4{font-family:var(--serif);font-size:1.15rem;color:var(--parch);font-weight:500}
+.ask-faq-q span{color:var(--gold);font-family:var(--sans);font-size:1.1rem;flex:0 0 auto;transition:transform .35s var(--ease)}
+.ask-faq-item.open .ask-faq-q span{transform:rotate(45deg)}
+.ask-faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.ask-faq-item.open .ask-faq-a{max-height:220px}
+.ask-faq-a p{font-family:var(--sans);font-size:.84rem;color:rgba(245,240,232,.5);line-height:1.7;padding-bottom:1.6rem;max-width:680px}
+
+/* FOOTER CTA */
+.ask-cta-sec{position:relative;padding:min(18vh,10rem) 6vw;text-align:center;background:#050504;overflow:hidden}
+.ask-cta-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ask-cta-particles span{position:absolute;bottom:-8px;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;animation:floatUp var(--d,14s) var(--dl,0s) linear infinite}
+.ask-cta-line{position:relative;z-index:1;font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,3.6vw,2.5rem);color:rgba(245,240,232,.85);margin-bottom:.4rem}
+.ask-cta-gold{font-style:italic;color:var(--gold);margin-bottom:2.4rem}
+.ask-cta-sec .ask-hero-cta{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -835,9 +1292,26 @@ select.f-inp option{background:#0B1629}
 <div id="particles"></div>
 
 <div id="loader">
-  <p class="loader-quote">"Every myth is a mirror. The question is whether you are brave enough to look."</p>
-  <div class="loader-line"></div>
-  <p class="loader-name">Sundeep Verma · Mythologist · Author · Storyteller</p>
+  <div class="loader-texture"></div>
+  <div class="loader-particles" id="loaderParticles"></div>
+  <div class="loader-vignette"></div>
+  <div class="loader-inner">
+    <div class="loader-ring-wrap" id="loaderRingWrap">
+      <div class="loader-ring-glow"></div>
+      <svg class="loader-ring-svg" viewBox="0 0 300 300">
+        <circle class="loader-ring-track" cx="150" cy="150" r="140"/>
+        <circle class="loader-ring-progress" id="loaderRingProgress" cx="150" cy="150" r="140"/>
+      </svg>
+      <div class="loader-ring-content">
+        <p class="loader-quote">"Every myth is a mirror.<br>The question is whether you are brave enough to look."</p>
+        <div class="loader-line"></div>
+        <p class="loader-name">— Sundeep Verma · Mythologist · Author · Storyteller</p>
+        <p class="loader-countdown-label">Entering your journey</p>
+        <p class="loader-countdown-num" id="loaderCountdownNum">03</p>
+      </div>
+    </div>
+    <button class="loader-btn" id="loaderBtn" onclick="window._exitLoader&&window._exitLoader()">Begin Your Journey →</button>
+  </div>
 </div>
 
 <div id="rc">
@@ -861,10 +1335,13 @@ select.f-inp option{background:#0B1629}
     <li><a href="#" onclick="return go('home')" data-pg="home">Home</a></li>
     <li><a href="#" onclick="return go('about')" data-pg="about">About</a></li>
     <li><a href="#" onclick="return go('lab')" data-pg="lab">Mythology Lab</a></li>
+    <li><a href="#" onclick="return go('atlas')" data-pg="atlas">Character Atlas</a></li>
     <li><a href="#" onclick="return go('speaking')" data-pg="speaking">Speaking</a></li>
     <li><a href="#" onclick="return go('books')" data-pg="books">Books</a></li>
     <li><a href="#" onclick="return go('media')" data-pg="media">Media</a></li>
     <li><a href="#" onclick="return go('questions')" data-pg="questions">Human Questions</a></li>
+    <li><a href="#" onclick="return go('innerepic')" data-pg="innerepic">The Inner Epic</a></li>
+    <li><a href="#" onclick="return go('ask')" data-pg="ask">Ask Sundeep</a></li>
     <li><a href="#" onclick="return go('contact')" data-pg="contact">Contact</a></li>
   </ul>
   <div class="hamburger" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></div>
@@ -873,11 +1350,493 @@ select.f-inp option{background:#0B1629}
   <a href="#" onclick="go('home');toggleMob()" style="--i:0">Home</a>
   <a href="#" onclick="go('about');toggleMob()" style="--i:1">About</a>
   <a href="#" onclick="go('lab');toggleMob()" style="--i:2">Mythology Lab</a>
-  <a href="#" onclick="go('speaking');toggleMob()" style="--i:3">Speaking</a>
-  <a href="#" onclick="go('books');toggleMob()" style="--i:4">Books</a>
-  <a href="#" onclick="go('media');toggleMob()" style="--i:5">Media</a>
-  <a href="#" onclick="go('questions');toggleMob()" style="--i:6">Human Questions</a>
-  <a href="#" onclick="go('contact');toggleMob()" style="--i:7">Contact</a>
+  <a href="#" onclick="go('atlas');toggleMob()" style="--i:3">Character Atlas</a>
+  <a href="#" onclick="go('speaking');toggleMob()" style="--i:4">Speaking</a>
+  <a href="#" onclick="go('books');toggleMob()" style="--i:5">Books</a>
+  <a href="#" onclick="go('media');toggleMob()" style="--i:6">Media</a>
+  <a href="#" onclick="go('questions');toggleMob()" style="--i:7">Human Questions</a>
+  <a href="#" onclick="go('innerepic');toggleMob()" style="--i:8">The Inner Epic</a>
+  <a href="#" onclick="go('ask');toggleMob()" style="--i:9">Ask Sundeep</a>
+  <a href="#" onclick="go('contact');toggleMob()" style="--i:10">Contact</a>
+</div>
+
+<!-- ════ THE INNER EPIC ════ -->
+<div class="page" id="innerepic-page">
+
+  <!-- CHAPTER 1 — WHAT IF -->
+  <section class="ie-hero">
+    <div class="ie-hero-bg"></div>
+    <div class="ie-hero-particles" id="ieParticles"></div>
+    <div class="ie-hero-content">
+      <p class="ie-line" id="ieL1">What if every situation in your life had already been lived thousands of years ago?</p>
+      <p class="ie-line" id="ieL2">Not by you...</p>
+      <p class="ie-line" id="ieL3"><em>...but by someone in mythology.</em></p>
+      <button class="ie-continue" id="ieContinue" onclick="document.getElementById('ieCh2').scrollIntoView({behavior:'smooth'});return false">Continue<span class="ie-continue-line"></span></button>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2 — THE HIDDEN PATTERN -->
+  <section class="ie-ch2" id="ieCh2">
+    <p class="ie-kicker reveal">Chapter Two — The Hidden Pattern</p>
+    <div class="ie-situations">
+      <p class="reveal">"I feel misunderstood."</p>
+      <p class="reveal" style="transition-delay:.08s">"I don't know my purpose."</p>
+      <p class="reveal" style="transition-delay:.16s">"I keep repeating the same mistakes."</p>
+      <p class="reveal" style="transition-delay:.24s">"I fear losing people."</p>
+      <p class="reveal" style="transition-delay:.32s">"I always compare myself."</p>
+      <p class="reveal" style="transition-delay:.4s">"I don't know who I am."</p>
+    </div>
+    <div class="ie-ch2-close">
+      <p class="ie-big reveal">These are not isolated problems.</p>
+      <p class="ie-big ie-gold reveal" style="transition-delay:.15s">They are recurring human patterns.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3 — RECOGNITION -->
+  <section class="ie-ch3">
+    <p class="ie-kicker reveal">Chapter Three — Recognition</p>
+    <h2 class="ie-ch-title reveal">People don't need answers first.<br>They need to <em>recognise the pattern.</em></h2>
+    <div class="ie-diagram reveal">
+      <div class="ie-diagram-node"><span>Situation</span></div>
+      <div class="ie-diagram-line"></div>
+      <div class="ie-diagram-node"><span>Pattern</span></div>
+      <div class="ie-diagram-line"></div>
+      <div class="ie-diagram-node ie-diagram-node--gold"><span>Recognition</span></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 4 — EVERY PATTERN ALREADY EXISTS -->
+  <section class="ie-ch4">
+    <p class="ie-kicker reveal">Chapter Four — Every Pattern Already Exists</p>
+    <h2 class="ie-ch-title reveal">"Someone has <em>already lived this.</em>"</h2>
+    <div class="ie-flip-grid" id="ieFlipGrid"></div>
+  </section>
+
+  <!-- CHAPTER 5 — THE INNER EPIC FRAMEWORK -->
+  <section class="ie-ch5">
+    <p class="ie-kicker reveal">Chapter Five — The Inner Epic Framework</p>
+    <h2 class="ie-ch-title reveal">Sundeep Verma's <em>signature methodology</em></h2>
+    <div class="ie-framework reveal" id="ieFramework"></div>
+    <p class="ie-fw-tip" id="ieFwTip">Hover a step to see what it means.</p>
+  </section>
+
+  <!-- CHAPTER 6 — THIS IS WHY MYTHOLOGY EXISTS -->
+  <section class="ie-ch6">
+    <p class="ie-big reveal">Mythology doesn't tell us what happened.</p>
+    <p class="ie-big ie-gold reveal" style="transition-delay:.1s">Mythology shows us what keeps happening.</p>
+    <p class="ie-mid reveal" style="transition-delay:.3s">Across centuries.</p>
+    <p class="ie-mid reveal" style="transition-delay:.4s">Across civilizations.</p>
+    <p class="ie-mid reveal" style="transition-delay:.5s">Across every human life.</p>
+  </section>
+
+  <!-- CHAPTER 7 — BEGIN WITH YOURSELF -->
+  <section class="ie-ch7">
+    <p class="ie-kicker reveal">Chapter Seven — Begin With Yourself</p>
+    <h2 class="ie-ch-title reveal">What question are you <em>carrying today?</em></h2>
+    <div class="ie-paths">
+      <div class="ie-path reveal" onclick="return go('questions')">
+        <span class="ie-path-num">01 · Human Questions</span>
+        <h3>"I know my question."</h3>
+        <p>Take me there →</p>
+      </div>
+      <div class="ie-path reveal" style="transition-delay:.1s" onclick="return ieGoLab('charGrid')">
+        <span class="ie-path-num">02 · Character Atlas</span>
+        <h3>"I want to discover the people who lived these patterns."</h3>
+        <p>Take me there →</p>
+      </div>
+      <div class="ie-path reveal" style="transition-delay:.2s" onclick="return ieGoLab('artGrid')">
+        <span class="ie-path-num">03 · Mythology Lab</span>
+        <h3>"I want to understand the stories in greater depth."</h3>
+        <p>Take me there →</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 8 — ONE LAST THOUGHT -->
+  <section class="ie-ch8" id="ieCh8">
+    <p class="ie-final" id="ieF1">Perhaps mythology was never about gods.</p>
+    <p class="ie-final ie-gold" id="ieF2">Perhaps it was always about us.</p>
+    <p class="ie-final" id="ieF3">And perhaps...</p>
+    <p class="ie-final ie-gold" id="ieF4">your story has already begun.</p>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="#" onclick="return go('innerepic')">The Inner Epic</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>"Perhaps mythology was never about gods. Perhaps it was always about us."</em></p>
+      <div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════ CHARACTER ATLAS ════ -->
+<div class="page" id="atlas-page">
+
+  <!-- HERO -->
+  <section class="atl-hero">
+    <div class="atl-hero-bg"></div>
+    <div class="atl-hero-particles" id="atlParticles"></div>
+    <div class="atl-hero-grid">
+      <div class="atl-hero-copy">
+        <p class="atl-eyebrow reveal">A Living Mythology Universe</p>
+        <h1 class="atl-h1 reveal">Character Atlas</h1>
+        <p class="atl-sub reveal">Every character is more than a story. Every relationship is a thread. Explore the living universe of mythology.</p>
+        <div class="atl-search-wrap reveal">
+          <input type="text" id="atlSearch" class="atl-search" placeholder="Search any character..." autocomplete="off" oninput="atlSearchInput(this.value)" onkeydown="if(event.key==='Enter')atlSearchGo()"/>
+          <button class="atl-search-btn" onclick="atlSearchGo()">↗</button>
+          <div class="atl-search-dropdown" id="atlSearchDrop"></div>
+        </div>
+        <p class="atl-search-hint reveal">Discover characters, family trees, relationships, archetypes and the stories that connect them.</p>
+      </div>
+      <div class="atl-hero-art reveal-r">
+        <svg viewBox="0 0 400 400" class="atl-hero-svg" id="atlHeroSvg"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED CHARACTERS -->
+  <section class="atl-sec">
+    <p class="atl-kicker reveal">Featured</p>
+    <h2 class="atl-sec-title reveal">Meet the <em>Characters</em></h2>
+    <div class="atl-card-grid" id="atlFeaturedGrid"></div>
+  </section>
+
+  <!-- INTERACTIVE MAP -->
+  <section class="atl-sec atl-sec--dark" id="atlMapSec">
+    <p class="atl-kicker reveal">The Signature Feature</p>
+    <h2 class="atl-sec-title reveal">The <em>Mythology Map</em></h2>
+    <p class="atl-sec-sub reveal">Click any glowing node. Watch its connections come alive.</p>
+    <div class="atl-map-wrap reveal">
+      <div class="atl-map-inner" id="atlMapInner">
+        <svg viewBox="0 0 900 900" id="atlMapSvg" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div class="atl-map-legend" id="atlMapLegend"></div>
+    </div>
+  </section>
+
+  <!-- PROFILE PANEL (slide-in) -->
+  <div class="atl-panel-overlay" id="atlPanelOverlay" onclick="if(event.target===this)closeAtlasPanel()">
+    <aside class="atl-panel" id="atlPanel">
+      <button class="atl-panel-close" onclick="closeAtlasPanel()">✕</button>
+      <div class="atl-panel-body" id="atlPanelBody"></div>
+    </aside>
+  </div>
+
+  <!-- FAMILY TREE -->
+  <section class="atl-sec">
+    <p class="atl-kicker reveal">Lineage</p>
+    <h2 class="atl-sec-title reveal">The <em>Family Tree</em></h2>
+    <p class="atl-sec-sub reveal">The Kuru lineage — expand a generation to explore it.</p>
+    <div class="atl-tree" id="atlTree"></div>
+  </section>
+
+  <!-- CHARACTER JOURNEY -->
+  <section class="atl-sec atl-sec--dark">
+    <p class="atl-kicker reveal">The Arc</p>
+    <h2 class="atl-sec-title reveal">Character <em>Journey</em></h2>
+    <div class="atl-journey-pills reveal" id="atlJourneyPills"></div>
+    <div class="atl-journey" id="atlJourney"></div>
+  </section>
+
+  <!-- ARCHETYPES -->
+  <section class="atl-sec">
+    <p class="atl-kicker reveal">Patterns Beneath the Names</p>
+    <h2 class="atl-sec-title reveal">Explore by <em>Archetype</em></h2>
+    <div class="atl-archetype-grid" id="atlArchetypeGrid"></div>
+  </section>
+
+  <!-- RELATED HUMAN QUESTIONS -->
+  <section class="atl-sec atl-sec--dark">
+    <p class="atl-kicker reveal">From Character to Self</p>
+    <h2 class="atl-sec-title reveal">Related <em>Human Questions</em></h2>
+    <div class="atl-hq-grid" id="atlHqGrid"></div>
+  </section>
+
+  <!-- EXPLORE BY EPIC -->
+  <section class="atl-sec">
+    <p class="atl-kicker reveal">Explore by Epic</p>
+    <h2 class="atl-sec-title reveal">Choose Your <em>World</em></h2>
+    <div class="atl-epic-grid" id="atlEpicGrid"></div>
+  </section>
+
+  <!-- EXPLORE BY THEME -->
+  <section class="atl-sec atl-sec--dark">
+    <p class="atl-kicker reveal">Explore by Theme</p>
+    <h2 class="atl-sec-title reveal">Choose Your <em>Lens</em></h2>
+    <div class="atl-theme-grid" id="atlThemeGrid"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="atl-sec">
+    <p class="atl-kicker reveal">In Pictures</p>
+    <h2 class="atl-sec-title reveal">Character <em>Gallery</em></h2>
+    <div class="atl-gallery" id="atlGallery"></div>
+  </section>
+
+  <!-- FEATURED STORIES -->
+  <section class="atl-sec atl-sec--dark">
+    <p class="atl-kicker reveal">From the Mythology Lab</p>
+    <h2 class="atl-sec-title reveal">Featured <em>Stories</em></h2>
+    <div class="atl-story-grid" id="atlStoryGrid"></div>
+  </section>
+
+  <!-- CONNECTED CONTENT -->
+  <section class="atl-sec atl-connected">
+    <p class="atl-kicker reveal">Continue Exploring</p>
+    <h2 class="atl-sec-title reveal">Everything Here Is <em>Connected</em></h2>
+    <div class="atl-connected-grid reveal">
+      <a href="#" onclick="return go('books')" class="atl-connected-card"><span>Books</span><p>Read the full-length works</p></a>
+      <a href="#" onclick="return go('lab')" class="atl-connected-card"><span>Essays</span><p>Go deeper into the Mythology Lab</p></a>
+      <a href="#" onclick="return go('media')" class="atl-connected-card"><span>Videos</span><p>Watch talks and interviews</p></a>
+      <a href="#" onclick="return go('speaking')" class="atl-connected-card"><span>Workshops</span><p>Bring Sundeep to your organisation</p></a>
+      <a href="#" onclick="return go('questions')" class="atl-connected-card"><span>Human Questions</span><p>Start from what you're carrying</p></a>
+      <a href="#" onclick="return go('innerepic')" class="atl-connected-card"><span>The Inner Epic</span><p>The framework behind this atlas</p></a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('atlas')">Character Atlas</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="#" onclick="return go('innerepic')">The Inner Epic</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>"Mythology is not a collection of stories. It is a single, interconnected world — and you are already in it."</em></p>
+      <div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════ ASK SUNDEEP ════ -->
+<div class="page" id="ask-page">
+
+  <!-- HERO -->
+  <section class="ask-hero">
+    <div class="ask-hero-bg"></div>
+    <div class="ask-hero-particles" id="askParticles"></div>
+    <div class="ask-hero-content">
+      <p class="ask-eyebrow reveal">A Space for Real Questions</p>
+      <h1 class="ask-h1 reveal">Ask Sundeep</h1>
+      <p class="ask-sub reveal">Every question carries a story. Every story reveals a pattern waiting to be recognised.</p>
+      <p class="ask-lede reveal">Share the question that has quietly been following you. It may be about relationships, purpose, ambition, identity, grief, leadership, conflict, love, family, or simply a feeling you have never been able to name.</p>
+      <p class="ask-lede-sm reveal">Mythology may not give you an answer. But it may help you see your question differently.</p>
+      <a href="#askForm" class="ask-hero-cta reveal" onclick="document.getElementById('askForm').scrollIntoView({behavior:'smooth'});return false">Ask Your Question <span class="ask-hero-cta-line"></span></a>
+    </div>
+  </section>
+
+  <!-- WHY ASK -->
+  <section class="ask-sec">
+    <div class="ask-why-grid">
+      <p class="ask-kicker reveal">Why Ask?</p>
+      <div class="ask-why-copy reveal">
+        <p>Life rarely gives us completely new problems. Across thousands of years, human beings have wrestled with remarkably similar questions — in the Mahabharata, the Ramayana, the Puranas, Greek myths, Norse legends. Every culture has attempted to understand the same human patterns.</p>
+        <p>Sometimes what feels like your personal struggle is actually an ancient pattern waiting to be recognised. That is where mythology becomes useful — <em>not as religion, not as history, but as a language for understanding life.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FORM -->
+  <section class="ask-sec ask-sec--dark" id="askForm">
+    <p class="ask-kicker reveal">Your Question</p>
+    <h2 class="ask-sec-title reveal">Tell Us What's <em>Following You</em></h2>
+    <p class="ask-sec-sub reveal">Every field marked optional is truly optional. Take the space you need.</p>
+
+    <form class="ask-form reveal" id="askFormEl" onsubmit="return askSubmit(event)">
+      <div class="ask-form-row">
+        <div class="ask-field">
+          <label for="askName">Name <span>(optional)</span></label>
+          <input type="text" id="askName" name="name" placeholder="How should we address you?"/>
+        </div>
+        <div class="ask-field">
+          <label for="askEmail">Email Address <span class="req">(required)</span></label>
+          <input type="email" id="askEmail" name="email" required placeholder="you@example.com"/>
+        </div>
+      </div>
+      <div class="ask-form-row ask-form-row--3">
+        <div class="ask-field">
+          <label for="askAge">Age <span>(optional)</span></label>
+          <input type="number" id="askAge" name="age" min="1" max="120" placeholder="e.g. 29"/>
+        </div>
+        <div class="ask-field">
+          <label for="askCity">City <span>(optional)</span></label>
+          <input type="text" id="askCity" name="city" placeholder="e.g. Agra"/>
+        </div>
+        <div class="ask-field">
+          <label for="askProfession">Profession <span>(optional)</span></label>
+          <input type="text" id="askProfession" name="profession" placeholder="e.g. Designer"/>
+        </div>
+      </div>
+      <div class="ask-field">
+        <label for="askCategory">Category</label>
+        <select id="askCategory" name="category" required>
+          <option value="" disabled selected>Choose the closest theme</option>
+          <option>Relationships</option><option>Career</option><option>Leadership</option>
+          <option>Purpose</option><option>Identity</option><option>Parenting</option>
+          <option>Marriage</option><option>Grief</option><option>Failure</option>
+          <option>Success</option><option>Friendship</option><option>Family</option>
+          <option>Love</option><option>Mental Conflict</option><option>Mythology</option><option>Other</option>
+        </select>
+      </div>
+      <div class="ask-field">
+        <label for="askTitle">Question Title <span>— a short version</span></label>
+        <input type="text" id="askTitle" name="questionTitle" required placeholder="Why do I always compare myself with others?"/>
+      </div>
+      <div class="ask-field">
+        <label for="askMain">Main Question</label>
+        <textarea id="askMain" name="fullQuestion" required minlength="20" maxlength="7000" rows="7" placeholder="What question has been quietly following you? (roughly 500–1000 words is welcome, but even two sentences are enough)"></textarea>
+        <div class="ask-count" id="askCount">0 words</div>
+      </div>
+
+      <div class="ask-reflect">
+        <p class="ask-reflect-title">Personal Reflection <span>(all optional)</span></p>
+        <div class="ask-field">
+          <label for="askR1">When did this question first appear in your life?</label>
+          <textarea id="askR1" name="reflection1" rows="2"></textarea>
+        </div>
+        <div class="ask-field">
+          <label for="askR2">What emotions does this situation create?</label>
+          <textarea id="askR2" name="reflection2" rows="2"></textarea>
+        </div>
+        <div class="ask-field">
+          <label for="askR3">Have you tried solving it before?</label>
+          <textarea id="askR3" name="reflection3" rows="2"></textarea>
+        </div>
+      </div>
+
+      <label class="ask-consent">
+        <input type="checkbox" id="askAnon" name="publicNameConsent"/>
+        <span>If my story is ever featured publicly, my name may be used instead of staying anonymised.</span>
+      </label>
+
+      <button type="submit" class="ask-submit">Ask Sundeep <span>→</span></button>
+      <p class="ask-privacy-note">Your question is confidential. See "We Protect" below for how it's handled.</p>
+    </form>
+
+    <div class="ask-confirm" id="askConfirm">
+      <div class="ask-confirm-mark">✦</div>
+      <h3>Your question has been received.</h3>
+      <p>Thank you for trusting us with something real. It has been added to the collection of Human Questions we read, reflect on, and learn from — confidentially, and on your terms.</p>
+      <button class="btn-ghost" onclick="askReset()">Ask Another Question</button>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="ask-sec">
+    <p class="ask-kicker reveal">After You Submit</p>
+    <h2 class="ask-sec-title reveal">What Happens <em>Next?</em></h2>
+    <div class="ask-next-grid">
+      <div class="ask-next-card reveal"><span class="ask-next-num">01</span><h4>We Read</h4><p>Every submission is personally reviewed by the team.</p></div>
+      <div class="ask-next-card reveal" style="transition-delay:.08s"><span class="ask-next-num">02</span><h4>We Reflect</h4><p>Some questions may receive a direct response.</p></div>
+      <div class="ask-next-card reveal" style="transition-delay:.16s"><span class="ask-next-num">03</span><h4>We Learn</h4><p>Many questions help shape future essays, workshops, Human Questions and Mythology Lab conversations.</p></div>
+      <div class="ask-next-card reveal" style="transition-delay:.24s"><span class="ask-next-num">04</span><h4>We Protect</h4><p>Every question remains confidential. If your story is ever featured publicly it will always be anonymised unless you explicitly choose otherwise.</p></div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="ask-quote-sec">
+    <p class="ask-quote reveal">"Mythology is not here to solve your problems.<br>It is here to help you recognise the pattern beneath them."</p>
+    <p class="ask-quote-by reveal">— Sundeep Verma</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ask-sec ask-sec--dark">
+    <p class="ask-kicker reveal">Before You Ask</p>
+    <h2 class="ask-sec-title reveal">Frequently Asked <em>Questions</em></h2>
+    <div class="ask-faq" id="askFaq"></div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="ask-cta-sec">
+    <div class="ask-cta-particles" id="askCtaParticles"></div>
+    <p class="ask-cta-line reveal">Every great myth begins with a question.</p>
+    <p class="ask-cta-line ask-cta-gold reveal">Perhaps yours is next.</p>
+    <a href="#askForm" class="ask-hero-cta reveal" onclick="document.getElementById('askForm').scrollIntoView({behavior:'smooth'});return false">Ask Your Question <span class="ask-hero-cta-line"></span></a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('atlas')">Character Atlas</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="#" onclick="return go('innerepic')">The Inner Epic</a></li>
+        <li><a href="#" onclick="return go('ask')">Ask Sundeep</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>"Human Questions. Mythology is only the language."</em></p>
+      <div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div>
+    </div>
+  </footer>
 </div>
 
 <!-- ════ HOME ════ -->
@@ -1049,15 +2008,15 @@ select.f-inp option{background:#0B1629}
   </div>
 
   <div class="ab-gallery-scroll">
-    <p class="ab-gallery-label">Editorial Photography</p>
+    <p class="ab-gallery-label">Glimpses Along the Way</p>
     <h2 class="ab-gallery-h">Moments <em>in focus</em></h2>
     <div class="ab-gallery-track">
-      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-reading.jpg"/></div>
-      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-speaking.jpg"/></div>
-      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-library.jpg"/></div>
-      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-audience.jpg"/></div>
-      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="workshop-01.jpg"/></div>
-      <div class="ab-gallery-card"><img src="founder-portrait.jpg" alt="founder-portrait.jpg"/></div>
+      <div class="ab-gallery-card"><img src="speaking-hero.jpg" alt="about-reading.jpg"/><div class="ab-gallery-overlay"><p class="ab-gallery-overlay-title">Indian Habitat Centre</p><p class="ab-gallery-overlay-sub">Delhi · 2025</p></div></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-speaking.jpg"/><div class="ab-gallery-overlay"><p class="ab-gallery-overlay-title">Corporate Leadership Workshop</p><p class="ab-gallery-overlay-sub">Bangalore · 2025</p></div></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-library.jpg"/><div class="ab-gallery-overlay"><p class="ab-gallery-overlay-title">University Lecture</p><p class="ab-gallery-overlay-sub">Ashoka University · 2024</p></div></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="about-audience.jpg"/><div class="ab-gallery-overlay"><p class="ab-gallery-overlay-title">Jaipur Literature Festival</p><p class="ab-gallery-overlay-sub">Jaipur · 2024</p></div></div>
+      <div class="ab-gallery-card"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><div class="ab-gallery-overlay"><p class="ab-gallery-overlay-title">Museum Walk</p><p class="ab-gallery-overlay-sub">CSMVS, Mumbai · 2024</p></div></div>
+      <div class="ab-gallery-card"><img src="founder-portrait.jpg" alt="founder-portrait.jpg"/><div class="ab-gallery-overlay"><p class="ab-gallery-overlay-title">Portrait Session</p><p class="ab-gallery-overlay-sub">Studio · 2025</p></div></div>
     </div>
   </div>
 
@@ -1165,28 +2124,28 @@ select.f-inp option{background:#0B1629}
     <div class="cmp-wrap">
       <div class="cmp-ring"></div>
       <div class="cmp-center"><span>Explore</span></div>
-      <div class="cmp-pt cp-t" onclick="filterByTheme('Identity')">Identity</div>
-      <div class="cmp-pt cp-r" onclick="filterByTheme('Love')">Love</div>
-      <div class="cmp-pt cp-b" onclick="filterByTheme('Purpose')">Purpose</div>
-      <div class="cmp-pt cp-l" onclick="filterByTheme('Shadow')">Shadow</div>
-      <div class="cmp-pt cp-tr" onclick="filterByTheme('Leadership')">Power</div>
-      <div class="cmp-pt cp-tl" onclick="filterByTheme('Freedom')">Freedom</div>
-      <div class="cmp-pt cp-br" onclick="filterByTheme('Belonging')">Belong</div>
-      <div class="cmp-pt cp-bl" onclick="filterByTheme('Transformation')">Change</div>
+      <div class="cmp-pt cp-t" onclick="return openTheme('Identity')">Identity</div>
+      <div class="cmp-pt cp-r" onclick="return openTheme('Love')">Love</div>
+      <div class="cmp-pt cp-b" onclick="return openTheme('Purpose')">Purpose</div>
+      <div class="cmp-pt cp-l" onclick="return openTheme('Shadow')">Shadow</div>
+      <div class="cmp-pt cp-tr" onclick="return openTheme('Leadership')">Power</div>
+      <div class="cmp-pt cp-tl" onclick="return openTheme('Freedom')">Freedom</div>
+      <div class="cmp-pt cp-br" onclick="return openTheme('Belonging')">Belong</div>
+      <div class="cmp-pt cp-bl" onclick="return openTheme('Transformation')">Change</div>
     </div>
   </section>
   <section class="lab-sec">
     <p class="lab-sec-t">Browse by Theme</p>
     <div class="pills" id="pills">
       <span class="pill act" onclick="filterByTheme('All')">All</span>
-      <span class="pill" onclick="filterByTheme('Identity')">Identity</span>
-      <span class="pill" onclick="filterByTheme('Love')">Love</span>
-      <span class="pill" onclick="filterByTheme('Purpose')">Purpose</span>
-      <span class="pill" onclick="filterByTheme('Shadow')">Shadow</span>
-      <span class="pill" onclick="filterByTheme('Leadership')">Leadership</span>
-      <span class="pill" onclick="filterByTheme('Transformation')">Transformation</span>
-      <span class="pill" onclick="filterByTheme('Belonging')">Belonging</span>
-      <span class="pill" onclick="filterByTheme('Freedom')">Freedom</span>
+      <span class="pill" onclick="return openTheme('Identity')">Identity</span>
+      <span class="pill" onclick="return openTheme('Love')">Love</span>
+      <span class="pill" onclick="return openTheme('Purpose')">Purpose</span>
+      <span class="pill" onclick="return openTheme('Shadow')">Shadow</span>
+      <span class="pill" onclick="return openTheme('Leadership')">Leadership</span>
+      <span class="pill" onclick="return openTheme('Transformation')">Transformation</span>
+      <span class="pill" onclick="return openTheme('Belonging')">Belonging</span>
+      <span class="pill" onclick="return openTheme('Freedom')">Freedom</span>
     </div>
     <div class="art-grid" id="artGrid"></div>
   </section>
@@ -1199,6 +2158,64 @@ select.f-inp option{background:#0B1629}
       <div class="f-brand">
         <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
        
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+        <li><a href="https://www.youtube.com/@mythsbysundeep">YouTube</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>" "</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════ THEME PAGE (shared template for Browse by Theme) ════ -->
+<div class="page" id="theme-page">
+  <section class="th-hero">
+    <button class="th-back" onclick="return go('lab')">← Back to Mythology Lab</button>
+    <p class="th-label">Browse by Theme</p>
+    <h1 class="th-title" id="thTitle">Identity</h1>
+    <p class="th-sub" id="thSub">Mythology explored through this theme.</p>
+  </section>
+  <section class="lab-sec">
+    <p class="lab-sec-t">Writing on this theme</p>
+    <div class="art-grid" id="thArtGrid"></div>
+  </section>
+  <section class="lab-sec">
+    <p class="lab-sec-t">Characters who embody it</p>
+    <div class="char-grid" id="thCharGrid"></div>
+  </section>
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
         <div class="f-social">
           <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
           <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
@@ -1341,7 +2358,7 @@ select.f-inp option{background:#0B1629}
     <div class="spk-split-text">
       <p class="spk-s-label reveal">The Approach</p>
       <h2 class="spk-s-title reveal">Not a lecture.<br><em>A living dialogue.</em></h2>
-      <div style="width:40px;height:1px;background:#D4C99A;margin:1.2rem 0" class="reveal"></div>
+      <div style="width:40px;height:1px;background:#C2A05A;margin:1.2rem 0" class="reveal"></div>
       <p class="reveal">Sundeep's sessions are not informational. They are experiential. Every workshop is built around a specific human question — and mythology becomes the language through which participants explore their own answers.</p>
       <p class="reveal" style="margin-top:1rem">The mythology is not the destination. The participant is.</p>
     </div>
@@ -1358,14 +2375,25 @@ select.f-inp option{background:#0B1629}
   </section>
 
   <div class="spk-gal">
-    <div class="gi tall"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Jaipur Literature Festival</span></div>
-    <div class="gi"><img src="workshop-01.jpg" alt="workshop-02.jpg"/><span class="gi-label">University Lecture</span></div>
-    <div class="gi"><img src="workshop-01.jpg" alt="workshop-03.jpg"/><span class="gi-label">Corporate Session</span></div>
-    <div class="gi wide"><img src="workshop-01.jpg" alt="workshop-04.jpg"/><span class="gi-label">Museum Experience</span></div>
-    <div class="gi"><img src="workshop-01.jpg" alt="workshop-05.jpg"/><span class="gi-label">Festival Stage</span></div>
-    <div class="gi"><img src="workshop-01.jpg" alt="workshop-06.jpg"/><span class="gi-label">Discussion Circle</span></div>
-    <div class="gi"><img src="workshop-01.jpg" alt="workshop-07.jpg"/><span class="gi-label">Audience Interaction</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Jaipur Literature Festival</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">University Lecture</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Corporate Session</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Museum Experience</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Festival Stage</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Discussion Circle</span></div>
+    <div class="gi"><img src="workshop-01.jpg" alt="workshop-01.jpg"/><span class="gi-label">Audience Interaction</span></div>
   </div>
+
+  <section class="spk-collab">
+    <p class="spk-collab-label">Past Collaborations</p>
+    <div class="spk-collab-divider"></div>
+    <div class="spk-mq-wrap">
+      <div class="spk-mq-track">
+        <span class="spk-mq-item">Google</span><span class="spk-mq-item">Microsoft</span><span class="spk-mq-item">Tata</span><span class="spk-mq-item">Infosys</span><span class="spk-mq-item">IIM Ahmedabad</span><span class="spk-mq-item">Ashoka University</span><span class="spk-mq-item">Indian Habitat Centre</span><span class="spk-mq-item">TEDx</span><span class="spk-mq-item">British Council</span><span class="spk-mq-item">UNESCO</span><span class="spk-mq-item">NASSCOM</span><span class="spk-mq-item">The Logos School</span>
+        <span class="spk-mq-item">Google</span><span class="spk-mq-item">Microsoft</span><span class="spk-mq-item">Tata</span><span class="spk-mq-item">Infosys</span><span class="spk-mq-item">IIM Ahmedabad</span><span class="spk-mq-item">Ashoka University</span><span class="spk-mq-item">Indian Habitat Centre</span><span class="spk-mq-item">TEDx</span><span class="spk-mq-item">British Council</span><span class="spk-mq-item">UNESCO</span><span class="spk-mq-item">NASSCOM</span><span class="spk-mq-item">The Logos School</span>
+      </div>
+    </div>
+  </section>
 
   <section class="spk-vids">
     <p class="spk-s-label reveal">Featured Talks</p>
@@ -1379,10 +2407,18 @@ select.f-inp option{background:#0B1629}
 
   <section class="spk-testi">
     <h2 class="spk-t-title reveal">Words from the <em>room</em></h2>
-    <div class="testi-grid">
-      <div class="testi-card reveal"><p class="testi-q">"Sundeep doesn't lecture. He opens a door and you walk through it into something larger than you expected. The room was never the same after he left."</p><p class="testi-a">Director of Programming</p><p class="testi-o">Jaipur Literature Festival</p></div>
-      <div class="testi-card reveal"><p class="testi-q">"Our team left the session not just understanding mythology better — they understood themselves better. That is a rare thing for a corporate programme to achieve."</p><p class="testi-a">Head of People & Culture</p><p class="testi-o">Mahindra Group</p></div>
-      <div class="testi-card reveal"><p class="testi-q">"I have attended dozens of mythology lectures. I have never seen an audience as still and as moved as they were during Sundeep's session. He has a gift."</p><p class="testi-a">Curator</p><p class="testi-o">CSMVS, Mumbai</p></div>
+    <div class="testi-carousel">
+      <div class="testi-grid" id="testiTrack">
+        <div class="testi-card reveal"><p class="testi-q">"Sundeep doesn't lecture. He opens a door and you walk through it into something larger than you expected. The room was never the same after he left."</p><p class="testi-a">Director of Programming</p><p class="testi-o">Jaipur Literature Festival</p></div>
+        <div class="testi-card reveal"><p class="testi-q">"Our team left the session not just understanding mythology better — they understood themselves better. That is a rare thing for a corporate programme to achieve."</p><p class="testi-a">Head of People & Culture</p><p class="testi-o">Mahindra Group</p></div>
+        <div class="testi-card reveal"><p class="testi-q">"I have attended dozens of mythology lectures. I have never seen an audience as still and as moved as they were during Sundeep's session. He has a gift."</p><p class="testi-a">Curator</p><p class="testi-o">CSMVS, Mumbai</p></div>
+        <div class="testi-card reveal"><p class="testi-q">"He has a rare ability to make three-thousand-year-old stories feel like they were written about the person sitting in the third row."</p><p class="testi-a">Festival Director</p><p class="testi-o">Bangalore Literature Festival</p></div>
+        <div class="testi-card reveal"><p class="testi-q">"Our students still reference that lecture a year later. That almost never happens."</p><p class="testi-a">Dean of Student Life</p><p class="testi-o">Ashoka University</p></div>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-arrow" onclick="scrollTesti(-1)" aria-label="Previous">←</button>
+        <button class="testi-arrow" onclick="scrollTesti(1)" aria-label="Next">→</button>
+      </div>
     </div>
   </section>
 
@@ -1396,12 +2432,12 @@ select.f-inp option{background:#0B1629}
       <h2 class="sec-title reveal">Bring <em>mythology</em> into your space</h2>
       <div class="sec-divider reveal"></div>
       <div class="invite-grid">
-        <a href="#" class="invite-card reveal" onclick="return openProgram('workshops')"><span class="invite-card-name">Workshops</span><span class="invite-card-arrow">→</span></a>
         <a href="#" class="invite-card reveal" onclick="return openProgram('keynote')"><span class="invite-card-name">Keynote Lectures</span><span class="invite-card-arrow">→</span></a>
-        <a href="#" class="invite-card reveal" onclick="return openProgram('university')"><span class="invite-card-name">University Programmes</span><span class="invite-card-arrow">→</span></a>
         <a href="#" class="invite-card reveal" onclick="return openProgram('corporate')"><span class="invite-card-name">Corporate Sessions</span><span class="invite-card-arrow">→</span></a>
-        <a href="#" class="invite-card reveal" onclick="return openProgram('museum')"><span class="invite-card-name">Museum Experiences</span><span class="invite-card-arrow">→</span></a>
         <a href="#" class="invite-card reveal" onclick="return openProgram('festival')"><span class="invite-card-name">Festival Conversations</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('workshops')"><span class="invite-card-name">Workshops</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('museum')"><span class="invite-card-name">Museum Experiences</span><span class="invite-card-arrow">→</span></a>
+        <a href="#" class="invite-card reveal" onclick="return openProgram('university')"><span class="invite-card-name">Academic Programmes</span><span class="invite-card-arrow">→</span></a>
       </div>
       <a href="#" class="btn-gold reveal" onclick="return go('contact')" style="display:inline-flex;margin-top:2rem">Enquire About a Session</a>
     </div>
@@ -1550,7 +2586,7 @@ select.f-inp option{background:#0B1629}
       <p class="bk-sub">A retelling of the ancient love story of Ahalya — one of mythology's most misread, most silenced women. Written in visceral poetic form with mesmerizing illustrations that illuminate the spirit of the contemporary woman through an ancient epic.</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap">
         <a href="https://www.amazon.in/Ahalya-Unploughed-Sundeep-Verma/dp/B09CKTQX8S" class="btn-gold">Buy on Amazon</a>
-        <a href="#" class="btn-ghost" style="color:#2A1F14;border-color:rgba(42,31,20,.25)">Read an Excerpt</a>
+        <a href="#" class="btn-ghost" style="color:#2A1F14;border-color:rgba(42,31,20,.25)" onclick="return openExcerpt('ahalya')">Read an Excerpt</a>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem">
@@ -1562,11 +2598,44 @@ select.f-inp option{background:#0B1629}
     <div class="bk-info"><h3>About the Book</h3><p class="bk-st">Mythology · Poetry · Feminine Archetypes</p><p>Ahalya is one of the Panchakanya — the five sacred women of Indian mythology. Traditionally remembered for a curse, Sundeep Verma's retelling asks a different question: what if she wasn't a victim of another's story, but the author of her own desire?</p><p>Written in flowing, sensory verse, the book moves through longing, transgression, silence, and emergence. Each illustration is not decoration — it is interpretation. Together, text and image make a case for reading ancient women on their own terms.</p><p>An ancient symbol for the contemporary woman's conflict between her mind and her heart.</p><a href="https://www.amazon.in/Ahalya-Unploughed-Sundeep-Verma/dp/B09CKTQX8S" class="btn-gold" style="display:inline-flex;margin-top:1.2rem">Order Your Copy</a></div>
     <div class="bk-reviews"><h3>What Readers Say</h3><div class="bk-rev"><p class="bk-rev-t">"A book that reads like a reckoning. Sundeep Verma takes Ahalya out of the footnotes of mythology and places her at the centre of her own story — where she always belonged."</p><p class="bk-rev-s">Scroll.in</p></div><div class="bk-rev"><p class="bk-rev-t">"Visceral, beautiful, and quietly devastating. This is mythology as it was always meant to be — personal."</p><p class="bk-rev-s">Reader Review</p></div><div class="bk-rev"><p class="bk-rev-t">"The illustrations don't decorate the text — they deepen it. A rare achievement in contemporary mythological writing."</p><p class="bk-rev-s">Hindustan Times</p></div></div>
   </div>
+  <section class="bk-upcoming">
+    <p class="bk-label" style="margin-bottom:2rem">Next From Sundeep</p>
+    <div class="bk-upcoming-card">
+      <div class="bk-upcoming-cover"><span>The Inner Epic</span></div>
+      <div>
+        <span class="bk-coming-badge">Coming Soon</span>
+        <h3 style="font-family:var(--serif);font-size:1.9rem;font-weight:400;color:#2A1F14;margin-bottom:.8rem">The Inner <em style="font-style:italic;color:#9C6B3F">Epic</em></h3>
+        <p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.55);line-height:1.9;font-weight:300;max-width:520px;margin-bottom:1.5rem">A new exploration of the psychological architecture hidden inside India's great epics — mapping the Mahabharata and Ramayana onto the inner battles every person quietly fights. Sundeep's most personal book yet.</p>
+        <a href="#" class="btn-gold" onclick="return go('contact')">Notify Me</a>
+      </div>
+    </div>
+  </section>
   <section style="background:#F7F0E3;padding:4rem 5vw"><p class="bk-label reveal">Coming Next</p><h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;color:#2A1F14;margin-bottom:1.2rem" class="reveal">Mythology as <em style="font-style:italic;color:#9C6B3F">Psychology</em></h2><p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.52);line-height:1.9;font-weight:300;max-width:580px" class="reveal">Sundeep's next work explores the psychological dimensions of Indian mythology — examining how the archetypes, narratives, and moral frameworks of the epics correspond to the deepest findings of modern psychology. Coming 2026.</p></section>
   <footer class="footer-light">
     <div class="footer-grid">
       <div class="f-brand"><a href="#" class="nav-logo" style="color:#2A1F14" onclick="return go('home')"><span class="nav-logo-name" style="color:#2A1F14">Myths By Sundeep</span><span class="nav-logo-sub" style="color:#9C6B3F">Mythologist · Author · Storyteller</span></a><p style="color:rgba(42,31,20,.4)">Mythology is not history. It is psychology.</p></div>
       <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('lab')">Mythology Lab</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
+      <div class="f-col"></div><div class="f-col"></div>
+    </div>
+    <div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div>
+  </footer>
+</div>
+
+<!-- ════ EXCERPT (dedicated page, replaces modal) ════ -->
+<div class="page" id="excerpt-page">
+  <section class="ex-hero">
+    <div class="ex-hero-bg"><img id="exHeroImg" src="ahalya-coverfull.jpg" alt="book excerpt hero"/></div>
+    <button class="ex-back" onclick="return go('books')">← Back to Books</button>
+    <div class="ex-hero-cnt">
+      <p class="ex-label">Read an Excerpt</p>
+      <h1 class="ex-title" id="exTitle">Ahalya<br><em>The Unploughed</em></h1>
+    </div>
+  </section>
+  <div class="ex-body" id="exBody"></div>
+  <footer class="footer-light">
+    <div class="footer-grid">
+      <div class="f-brand"><a href="#" class="nav-logo" style="color:#2A1F14" onclick="return go('home')"><span class="nav-logo-name" style="color:#2A1F14">Myths By Sundeep</span><span class="nav-logo-sub" style="color:#9C6B3F">Mythologist · Author · Storyteller</span></a><p style="color:rgba(42,31,20,.4)">Mythology is not history. It is psychology.</p></div>
+      <div class="f-col"><h4>Pages</h4><ul><li><a href="#" onclick="return go('home')">Home</a></li><li><a href="#" onclick="return go('books')">Books</a></li><li><a href="#" onclick="return go('speaking')">Speaking</a></li><li><a href="#" onclick="return go('contact')">Contact</a></li></ul></div>
       <div class="f-col"></div><div class="f-col"></div>
     </div>
     <div class="f-bottom"><p class="f-reflect"><em>"The myth that speaks to you is the one you most need to hear."</em></p><div><p class="f-copy">© 2025 Sundeep Verma · Cobalt Blue Foundation</p><div class="f-legal"><a href="#" onclick="return go('terms')">Terms & Conditions</a><a href="#" onclick="return go('privacy')">Privacy Policy</a></div></div></div>
@@ -1782,11 +2851,11 @@ select.f-inp option{background:#0B1629}
     <div class="hq-reflect-cards" id="hqReflectCards"></div>
   </section>
 
-  <!-- 8. RELATED CHARACTERS -->
+  <!-- 8. MORE HUMAN QUESTIONS -->
   <section class="hq-related">
-    <p class="hq-num">05 · Related Characters</p>
-    <h2 class="hq-sec-title">Continue the <em>journey</em></h2>
-    <div class="hq-related-track" id="hqRelatedTrack"></div>
+    <p class="hq-num">05 · Keep Exploring</p>
+    <h2 class="hq-sec-title">More <em>Human Questions</em></h2>
+    <div class="q-cards-grid" id="hqRelatedTrack" style="padding:0"></div>
   </section>
 
   <footer>
@@ -2306,8 +3375,50 @@ const pgMap={
   media:'media-page',questions:'questions-page',
   contact:'contact-page',terms:'terms-page',
   privacy:'privacy-page',character:'character-page',
-  program:'program-page',hqdetail:'hq-detail-page'
+  program:'program-page',hqdetail:'hq-detail-page',
+  theme:'theme-page',excerpt:'excerpt-page',
+  innerepic:'innerepic-page',atlas:'atlas-page',ask:'ask-page'
 };
+const themeMeta={
+  Identity:"Who are you beneath the roles you play? Stories of self, mask, and the truth underneath.",
+  Love:"Desire, devotion and the myths that hold both — read through India's most misread women.",
+  Purpose:"What are you here to do — and who decides? Stories of vocation, dharma, and doubt.",
+  Shadow:"The parts of ourselves mythology refuses to look away from — ego, temptation, ruin.",
+  Leadership:"Power, guidance and the burden of being followed, told through gods, kings and guides.",
+  Transformation:"What must end before something true can begin — destruction as a form of care.",
+  Belonging:"The ache of being outside, and the myths that finally name it.",
+  Freedom:"What it costs to walk away from the story you were given."
+};
+function openTheme(theme){
+  const meta=themeMeta[theme];
+  document.getElementById('thTitle').textContent=theme;
+  document.getElementById('thSub').textContent=meta||('Mythology explored through the lens of '+theme+'.');
+  const g=document.getElementById('thArtGrid');
+  const d=arts.filter(a=>a.theme===theme);
+  g.innerHTML=(d.length?d:arts.slice(0,3)).map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
+  const cg=document.getElementById('thCharGrid');
+  const dc=chars.filter(c=>c.themes.some(t=>t.toLowerCase().includes(theme.toLowerCase())||theme.toLowerCase().includes(t.toLowerCase())));
+  const charsToShow=dc.length?dc:chars.slice(0,4);
+  cg.innerHTML=charsToShow.map(c=>`<div class="char-card" onclick="openCharPage('${c.n}')"><div class="char-initial">${c.i}</div><div class="char-name">${c.n}</div><div class="char-role">${c.r}</div><div class="char-arrow">↗</div></div>`).join('');
+  go('theme');
+  return false;
+}
+const excerpts={
+  ahalya:{title:"Ahalya<br><em>The Unploughed</em>",hero:"ahalya-cover.jpg",text:[
+    "She had been called many things — cursed, faithless, stone. No one had ever asked her what she wanted, only what she had done. This is the trouble with women who are remembered only for the moment they were caught.",
+    "Before the curse, before the sage, before the god who wore her husband's face in the half-light of dawn, there was simply a woman who noticed she was noticing. That her own wanting had a shape. That the shape frightened her less than the silence that was supposed to follow it.",
+    "They tell the story as though it ends with the stone. It does not. It ends, if it ends at all, with a foot — Rama's, unhurried, human — and the specific, unbearable relief of being seen again as more than a warning.",
+    "This is not a story about forgiveness. Forgiveness assumes a debt. This is a story about what happens to a woman's desire when the world decides it was never hers to have in the first place — and what it costs everyone when she takes it back."
+  ]}
+};
+function openExcerpt(id){
+  const e=excerpts[id];if(!e)return false;
+  document.getElementById('exHeroImg').src=e.hero;
+  document.getElementById('exTitle').innerHTML=e.title;
+  document.getElementById('exBody').innerHTML=e.text.map(p=>`<p>${p}</p>`).join('<div class="ex-divider"></div>');
+  go('excerpt');
+  return false;
+}
 function go(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const el=document.getElementById(pgMap[id]);
@@ -2320,6 +3431,9 @@ function go(id){
   if(id==='media'){renderMedia('articles')}
   if(id==='lab'){renderArts('All');renderChars()}
   if(id==='questions')renderQs('All');
+  if(id==='innerepic')setTimeout(ieInit,80);
+  if(id==='atlas')setTimeout(atlasInit,80);
+  if(id==='ask')setTimeout(askInit,80);
   setTimeout(initReveal,120);
   return false;
 }
@@ -2431,15 +3545,13 @@ function openHQ(id){
     "What would change if you saw this situation differently?"
   ];
   document.getElementById('hqReflectCards').innerHTML=reflectPrompts.map(r=>`<div class="hq-reflect-card"><span class="hq-reflect-mark">"</span><p class="hq-reflect-text">${r}</p></div>`).join('');
-  document.getElementById('hqRelatedTrack').innerHTML=d.related.map(name=>{
-    const ch=chars.find(c=>c.n===name);
-    const initial=ch?ch.i:name.slice(0,2);
-    const role=ch?ch.r:'Character';
-    const hasFullPage=!!ch;
-    return `<div class="hq-related-card" onclick="${hasFullPage?`openCharPage('${name}')`:`void(0)`}">
-      <div class="hq-related-initial">${initial}</div>
-      <div class="hq-related-name">${name}</div>
-      <div class="hq-related-role">${role}</div>
+  const moreIds=hqFallbackOrder.filter(k=>k!==id);
+  document.getElementById('hqRelatedTrack').innerHTML=moreIds.map(k=>{
+    const dd=hqDetails[k];
+    return `<div class="q-card" onclick="openHQ('${k}')">
+      <p class="q-card-cat">${dd.cat}</p>
+      <p class="q-card-txt">${dd.question}</p>
+      <div class="q-card-foot"><span class="q-card-arr">↗</span></div>
     </div>`;
   }).join('');
   go('hqdetail');
@@ -2472,8 +3584,7 @@ function openProgram(slug){
   document.getElementById('prOverview').innerHTML=p.overview.map(t=>`<p>${t}</p>`).join('');
   document.getElementById('prIconGrid').innerHTML=p.experience.map(e=>`<div class="pr-icon-card"><div class="pr-icon">✓</div><div class="pr-icon-txt">${e}</div></div>`).join('');
   document.getElementById('prAudienceGrid').innerHTML=p.audience.map(a=>`<div class="pr-audience-card"><span>${a}</span></div>`).join('');
-  const tallIdx=0,wideIdx=3;
-  document.getElementById('prGallery').innerHTML=p.gallery.map((g,i)=>`<div class="gi${i===tallIdx?' tall':''}${i===wideIdx?' wide':''}"><img src="${g}" alt="${slug}-gallery-${i+1}.jpg"/></div>`).join('');
+  document.getElementById('prGallery').innerHTML=p.gallery.map((g,i)=>`<div class="gi"><img src="${g}" alt="${slug}-gallery-${i+1}.jpg"/></div>`).join('');
   document.getElementById('prTesti').innerHTML=p.testi.map(t=>`<div class="pr-testi-card"><p class="pr-testi-q">"${t.q}"</p><p class="pr-testi-a">${t.a}</p><p class="pr-testi-o">${t.o}</p></div>`).join('');
   go('program');
   return false;
@@ -2485,20 +3596,563 @@ function initReveal(){
   document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.tl-item').forEach(el=>obs.observe(el));
 }
 
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    document.getElementById('loader').classList.add('gone');
+// LOADING SCREEN / MIRROR OF TIME
+(function(){
+  const loader=document.getElementById('loader');
+  const pc=document.getElementById('loaderParticles');
+  for(let i=0;i<22;i++){
+    const sp=document.createElement('span');
+    const sz=Math.random()*2+1;
+    sp.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;animation-duration:${Math.random()*6+5}s;animation-delay:${Math.random()*5}s`;
+    pc.appendChild(sp);
+  }
+  const returning=localStorage.getItem('mbsVisited')==='1';
+  const ring=document.getElementById('loaderRingProgress');
+  const cd=document.getElementById('loaderCountdownNum');
+  let seconds=3,exited=false,tick=null;
+
+  function exitLoader(){
+    if(exited)return;exited=true;
+    if(tick)clearInterval(tick);
+    loader.classList.add('exiting');
+    const wait=returning?150:750;
     setTimeout(()=>{
-      document.getElementById('rc-text').textContent=refs[Math.floor(Math.random()*refs.length)];
-      document.getElementById('rc').classList.add('show');
-    },1700);
-  },1700);
+      loader.classList.add('gone');
+      localStorage.setItem('mbsVisited','1');
+      setTimeout(()=>{
+        loader.style.display='none';
+        const rt=document.getElementById('rc-text');
+        if(rt){rt.textContent=refs[Math.floor(Math.random()*refs.length)];document.getElementById('rc').classList.add('show')}
+      },900);
+    },wait);
+  }
+  window._exitLoader=exitLoader;
+
+  if(returning){
+    loader.classList.add('fast');
+    setTimeout(exitLoader,180);
+  } else {
+    if(ring)ring.classList.add('animate');
+    tick=setInterval(()=>{
+      seconds--;
+      if(cd){
+        cd.classList.add('swap');
+        setTimeout(()=>{cd.textContent=seconds>0?'0'+seconds:'';cd.classList.remove('swap')},260);
+      }
+      if(seconds<=0)exitLoader();
+    },1000);
+  }
+})();
+
+// DRAG-TO-SCROLL for horizontal galleries/carousels (desktop mouse; touch/swipe works natively)
+function makeDraggable(el){
+  if(!el)return;
+  let isDown=false,startX=0,scrollLeft=0,moved=false;
+  el.addEventListener('mousedown',e=>{isDown=true;moved=false;el.classList.add('dragging');startX=e.pageX-el.offsetLeft;scrollLeft=el.scrollLeft});
+  window.addEventListener('mouseup',()=>{isDown=false;el.classList.remove('dragging')});
+  el.addEventListener('mouseleave',()=>{isDown=false;el.classList.remove('dragging')});
+  el.addEventListener('mousemove',e=>{
+    if(!isDown)return;e.preventDefault();moved=true;
+    const x=e.pageX-el.offsetLeft;const walk=(x-startX)*1.15;
+    el.scrollLeft=scrollLeft-walk;
+  });
+  el.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault()}},true);
+}
+function scrollTesti(dir){
+  const t=document.getElementById('testiTrack');if(!t)return;
+  t.scrollBy({left:dir*360,behavior:'smooth'});
+}
+function initTestiAutoScroll(){
+  const t=document.getElementById('testiTrack');if(!t)return;
+  setInterval(()=>{
+    if(t.matches(':hover')||t.classList.contains('dragging'))return;
+    if(t.scrollLeft+t.clientWidth>=t.scrollWidth-4){t.scrollTo({left:0,behavior:'smooth'})}
+    else{t.scrollBy({left:1.2,behavior:'auto'})}
+  },35);
+}
+
+// ═══════ THE INNER EPIC ═══════
+const iePatterns=[
+  {sit:"Feeling unseen",name:"Karna",role:"The Wounded Hero"},
+  {sit:"Duty vs Desire",name:"Arjuna",role:"The Seeker"},
+  {sit:"Waiting",name:"Ahalya",role:"The Unploughed"},
+  {sit:"Power",name:"Ravana",role:"The Shadow"},
+  {sit:"Justice",name:"Draupadi",role:"The Sovereign"},
+  {sit:"Leadership",name:"Krishna",role:"The Guide"}
+];
+const ieFrameworkSteps=[
+  {t:"Recognition",d:"The moment you notice a pattern repeating in your life."},
+  {t:"Human Question",d:"That pattern sharpens into a question only you can ask."},
+  {t:"Pattern",d:"The question reveals itself as something deeply, recurringly human."},
+  {t:"Character",d:"A figure from mythology who has already lived this exact pattern."},
+  {t:"Story",d:"Their full story — what led there, what it cost, what it taught."},
+  {t:"Meaning",d:"The psychological truth the story was always encoding."},
+  {t:"Mirror",d:"The story turns back toward you, reflecting your own situation."},
+  {t:"Reflection",d:"You sit with what the mirror shows — without judgment."},
+  {t:"Transformation",d:"Recognition becomes movement. The pattern begins to loosen."}
+];
+function ieBuildStatic(){
+  const fg=document.getElementById('ieFlipGrid');
+  if(fg&&!fg.dataset.built){
+    fg.dataset.built='1';
+    fg.innerHTML=iePatterns.map((p,i)=>`<div class="ie-flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="ie-flip-inner">
+        <div class="ie-flip-face ie-flip-front"><p>"${p.sit}"</p><span>Tap to reveal</span></div>
+        <div class="ie-flip-face ie-flip-back"><h4>${p.name}</h4><p>${p.role}</p><a href="#" onclick="event.stopPropagation();return openCharPage('${p.name}')">Meet ${p.name} →</a></div>
+      </div>
+    </div>`).join('');
+  }
+  const frm=document.getElementById('ieFramework');
+  if(frm&&!frm.dataset.built){
+    frm.dataset.built='1';
+    frm.innerHTML=ieFrameworkSteps.map((s,i)=>(i?'<div class="ie-fw-arrow"></div>':'')+`<div class="ie-fw-node" data-d="${s.d}" onmouseenter="document.getElementById('ieFwTip').textContent=this.dataset.d" onmouseleave="document.getElementById('ieFwTip').textContent='Hover a step to see what it means.'">${s.t}</div>`).join('');
+  }
+}
+function ieGoLab(anchorId){
+  go('lab');
+  setTimeout(()=>{const el=document.getElementById(anchorId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},260);
+  return false;
+}
+let ieHeroPlayed=false;
+function ieInit(){
+  ieBuildStatic();
+  if(!document.getElementById('ieParticles').dataset.built){
+    document.getElementById('ieParticles').dataset.built='1';
+    for(let i=0;i<26;i++){
+      const sp=document.createElement('span');
+      const sz=Math.random()*2+1;
+      sp.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;--d:${Math.random()*10+10}s;--dl:${Math.random()*8}s`;
+      document.getElementById('ieParticles').appendChild(sp);
+    }
+  }
+  if(!ieHeroPlayed){
+    ieHeroPlayed=true;
+    setTimeout(()=>document.getElementById('ieL1').classList.add('show'),300);
+    setTimeout(()=>document.getElementById('ieL2').classList.add('show'),2600);
+    setTimeout(()=>document.getElementById('ieL3').classList.add('show'),4000);
+    setTimeout(()=>document.getElementById('ieContinue').classList.add('show'),5600);
+  } else {
+    document.getElementById('ieL1').classList.add('show');
+    document.getElementById('ieL2').classList.add('show');
+    document.getElementById('ieL3').classList.add('show');
+    document.getElementById('ieContinue').classList.add('show');
+  }
+  const obs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      ['ieF1','ieF2','ieF3','ieF4'].forEach((id,j)=>setTimeout(()=>document.getElementById(id).classList.add('show'),j*900));
+      obs.disconnect();
+    }
+  }),{threshold:.4});
+  const ch8=document.getElementById('ieCh8');if(ch8)obs.observe(ch8);
+}
+
+// ═══════ CHARACTER ATLAS ═══════
+// Extends the existing `chars` array with atlas-only fields (safe: additive keys only).
+const atlasExtra={
+  Ahalya:{epic:"Ramayana",archetype:"The Outcast",kingdom:"Mithila region",parents:["Brahma (creation myth)"],spouse:["Gautama Maharishi"],children:[],teachers:[],students:[],friends:[],rivals:[],traits:["Reflective","Silent","Resilient"],questions:["relationships","change"]},
+  Arjuna:{epic:"Mahabharata",archetype:"The Seeker",kingdom:"Indraprastha",parents:["Indra","Kunti"],spouse:["Draupadi","Subhadra"],children:["Abhimanyu"],teachers:["Drona","Krishna"],students:[],friends:["Krishna","Draupadi"],rivals:["Karna"],traits:["Doubtful","Devoted","Disciplined"],questions:["purpose","change"]},
+  Karna:{epic:"Mahabharata",archetype:"The Outcast",kingdom:"Anga",parents:["Surya","Kunti"],spouse:["Vrushali"],children:["Vrishasena"],teachers:["Parashurama"],students:[],friends:["Duryodhana"],rivals:["Arjuna"],traits:["Loyal","Proud","Wounded"],questions:["success","mistakes"]},
+  Krishna:{epic:"Mahabharata",archetype:"The Teacher",kingdom:"Dwarka",parents:["Vasudeva","Devaki"],spouse:["Rukmini"],children:[],teachers:[],students:["Arjuna"],friends:["Arjuna","Draupadi"],rivals:[],traits:["Strategic","Playful","Wise"],questions:[]},
+  Draupadi:{epic:"Mahabharata",archetype:"The Rebel",kingdom:"Panchala / Indraprastha",parents:["Drupada"],spouse:["Yudhishthira","Bhima","Arjuna"],children:["Prativindhya","Sutasoma"],teachers:[],students:[],friends:["Krishna"],rivals:["Duryodhana"],traits:["Dignified","Defiant","Unyielding"],questions:["relationships","mistakes"]},
+  Shiva:{epic:"Puranas",archetype:"The Destroyer",kingdom:"Kailasa",parents:[],spouse:["Parvati"],children:["Ganesha","Kartikeya"],teachers:[],students:["Parashurama"],friends:["Ravana"],rivals:[],traits:["Still","Detached","Transformative"],questions:[]},
+  Sita:{epic:"Ramayana",archetype:"The Protector",kingdom:"Mithila / Ayodhya",parents:["Janaka"],spouse:["Rama"],children:["Luv","Kush"],teachers:[],students:[],friends:["Hanuman"],rivals:["Ravana"],traits:["Sovereign","Silent","Unbroken"],questions:[]},
+  Hanuman:{epic:"Ramayana",archetype:"The Protector",kingdom:"Kishkindha",parents:["Anjana","Kesari"],spouse:[],children:[],teachers:["Surya"],students:[],friends:["Sita"],rivals:[],traits:["Devoted","Selfless","Mighty"],questions:[]},
+  Ravana:{epic:"Ramayana",archetype:"The Shadow",kingdom:"Lanka",parents:["Vishrava","Kaikesi"],spouse:["Mandodari"],children:["Meghnad"],teachers:["Shiva"],students:[],friends:[],rivals:["Sita"],traits:["Brilliant","Prideful","Blind"],questions:[]},
+  Yudhishthira:{epic:"Mahabharata",archetype:"The Leader",kingdom:"Indraprastha / Hastinapura",parents:["Dharma (Yama)","Kunti"],spouse:["Draupadi"],children:[],teachers:["Drona"],students:[],friends:[],rivals:["Duryodhana"],traits:["Righteous","Burdened","Truthful"],questions:["purpose","success"]},
+  Bhima:{epic:"Mahabharata",archetype:"The Warrior",kingdom:"Indraprastha",parents:["Vayu","Kunti"],spouse:["Draupadi","Hidimbi"],children:["Ghatotkacha"],teachers:["Drona"],students:[],friends:["Krishna"],rivals:["Duryodhana"],traits:["Direct","Fierce","Tender"],questions:[]},
+  Kunti:{epic:"Mahabharata",archetype:"The Mother",kingdom:"Hastinapura",parents:[],spouse:["Pandu"],children:["Karna","Yudhishthira","Bhima","Arjuna"],teachers:[],students:[],friends:[],rivals:[],traits:["Sacrificing","Secretive","Enduring"],questions:[]},
+  Duryodhana:{epic:"Mahabharata",archetype:"The Rebel",kingdom:"Hastinapura",parents:["Dhritarashtra","Gandhari"],spouse:[],children:[],teachers:["Drona"],students:[],friends:["Karna"],rivals:["Yudhishthira","Bhima","Draupadi"],traits:["Ambitious","Envious","Loyal to his own"],questions:["mistakes","success"]},
+  Parashurama:{epic:"Mahabharata",archetype:"The Teacher",kingdom:"—",parents:[],spouse:[],children:[],teachers:["Shiva"],students:["Karna"],friends:[],rivals:[],traits:["Disciplined","Wrathful","Exacting"],questions:[]}
+};
+chars.forEach(c=>Object.assign(c,atlasExtra[c.n]||{}));
+const atlasEdges=[
+  ["Karna","Kunti","family"],["Karna","Duryodhana","friend"],["Karna","Arjuna","enemy"],["Karna","Parashurama","mentor"],
+  ["Arjuna","Krishna","mentor"],["Arjuna","Draupadi","spouse"],["Arjuna","Kunti","family"],["Arjuna","Bhima","sibling"],["Arjuna","Yudhishthira","sibling"],
+  ["Yudhishthira","Draupadi","spouse"],["Yudhishthira","Kunti","family"],["Yudhishthira","Duryodhana","enemy"],
+  ["Bhima","Kunti","family"],["Bhima","Duryodhana","enemy"],["Bhima","Draupadi","spouse"],
+  ["Krishna","Draupadi","friend"],["Duryodhana","Yudhishthira","enemy"],
+  ["Shiva","Ravana","mentor"],["Shiva","Parashurama","mentor"],
+  ["Sita","Hanuman","friend"],["Sita","Ravana","enemy"],
+  ["Ahalya","Sita","story"],["Ahalya","Draupadi","story"]
+];
+const atlasArchetypes=[
+  {n:"The Warrior",icon:"⚔",d:"Acts through strength and directness rather than deliberation."},
+  {n:"The Teacher",icon:"☀",d:"Guides by enlarging the question, not by supplying the answer."},
+  {n:"The Rebel",icon:"⚡",d:"Refuses a script the world has already written for them."},
+  {n:"The Protector",icon:"🛡",d:"Strength that appears fully only in service of something loved."},
+  {n:"The Seeker",icon:"◈",d:"Stands at a threshold, unable to cross it until seen clearly."},
+  {n:"The Outcast",icon:"◐",d:"Carries a wound of unbelonging that shapes every choice."},
+  {n:"The Leader",icon:"♛",d:"Bears the cost of trying to stay righteous in an unrighteous world."},
+  {n:"The Shadow",icon:"◆",d:"Brilliance turned toward transgression by an unexamined ego."},
+  {n:"The Mother",icon:"❖",d:"Choices made under impossible conditions, carried silently."},
+  {n:"The Destroyer",icon:"✦",d:"Ends what has calcified so something true can emerge."}
+];
+function atlInitials(n){return n.length>2?n.slice(0,2):n}
+function atlNameSlug(n){return n}
+
+function renderAtlFeatured(){
+  const g=document.getElementById('atlFeaturedGrid');if(!g||g.dataset.built)return;g.dataset.built='1';
+  g.innerHTML=chars.map(c=>`<div class="atl-card" onclick="openAtlasProfile('${c.n}')">
+    <div class="atl-card-portrait">${c.i}</div>
+    <div class="atl-card-name">${c.n}</div>
+    <div class="atl-card-desc">${c.r} · ${c.epic||''}</div>
+    <div class="atl-card-meta">${(c.themes||[]).slice(0,2).map(t=>`<span class="atl-card-tag">${t}</span>`).join('')}</div>
+    <div class="atl-card-btn">Explore <span>→</span></div>
+  </div>`).join('');
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal-in')}),{threshold:.1});
+  g.querySelectorAll('.atl-card').forEach(el=>obs.observe(el));
+}
+
+function atlNodePositions(){
+  const n=chars.length,R=380,cx=450,cy=450,pos={};
+  chars.forEach((c,i)=>{const a=(i/n)*2*Math.PI-Math.PI/2;pos[c.n]={x:cx+R*Math.cos(a),y:cy+R*Math.sin(a)};});
+  return pos;
+}
+function renderAtlMap(){
+  const svg=document.getElementById('atlMapSvg');if(!svg||svg.dataset.built)return;svg.dataset.built='1';
+  const pos=atlNodePositions();
+  let edgesHtml=atlasEdges.map(([a,b,t])=>{
+    const pa=pos[a],pb=pos[b];if(!pa||!pb)return'';
+    return `<line class="atl-map-edge" data-a="${a}" data-b="${b}" data-t="${t}" x1="${pa.x}" y1="${pa.y}" x2="${pb.x}" y2="${pb.y}"></line>`;
+  }).join('');
+  let nodesHtml=chars.map(c=>{
+    const p=pos[c.n];
+    return `<g class="atl-map-node" data-name="${c.n}" onclick="atlMapClick('${c.n}')" transform="translate(${p.x},${p.y})">
+      <circle r="30"></circle>
+      <text y="5">${c.i}</text>
+      <text y="48" style="font-size:11px;fill:rgba(245,240,232,.55);text-transform:uppercase;letter-spacing:.05em">${c.n}</text>
+    </g>`;
+  }).join('');
+  svg.innerHTML=edgesHtml+nodesHtml;
+  const legend=document.getElementById('atlMapLegend');
+  const types=[...new Set(atlasEdges.map(e=>e[2]))];
+  legend.innerHTML=types.map(t=>`<span>${t}</span>`).join('');
+}
+let atlActiveChar=null;
+function atlMapClick(name){
+  atlActiveChar=name;
+  document.querySelectorAll('.atl-map-node').forEach(n=>{
+    const nm=n.dataset.name;
+    const connected=nm===name||atlasEdges.some(e=>(e[0]===name&&e[1]===nm)||(e[1]===name&&e[0]===nm));
+    n.classList.toggle('active',nm===name);
+    n.classList.toggle('dim',!connected);
+  });
+  document.querySelectorAll('.atl-map-edge').forEach(e=>{
+    const touch=e.dataset.a===name||e.dataset.b===name;
+    e.classList.toggle('hi',touch);
+    e.classList.toggle('dim',!touch);
+  });
+  const pos=atlNodePositions()[name];
+  const svg=document.getElementById('atlMapSvg');
+  if(pos&&svg){
+    const dx=(450-pos.x)*.35,dy=(450-pos.y)*.35;
+    svg.style.transform=`scale(1.22) translate(${dx*0.6}px,${dy*0.6}px)`;
+  }
+  openAtlasProfile(name);
+}
+
+function openAtlasProfile(name){
+  const c=chars.find(x=>x.n===name);if(!c)return;
+  const linkTag=(n)=>chars.find(x=>x.n===n)?`<span class="atl-p-tag link" onclick="openAtlasProfile('${n}')">${n}</span>`:`<span class="atl-p-tag">${n}</span>`;
+  const listOrDash=(arr)=>arr&&arr.length?arr.map(linkTag).join(''):'<span class="atl-p-tag">—</span>';
+  const qHtml=(c.questions||[]).map(id=>{
+    const q=questionsD.find(q=>q.id===id);if(!q)return'';
+    return `<span class="atl-p-q" onclick="closeAtlasPanel();openHQ('${id}')">${q.q}</span>`;
+  }).join('')||'<p style="font-family:var(--sans);font-size:.72rem;color:rgba(245,240,232,.35)">No linked questions yet.</p>';
+  document.getElementById('atlPanelBody').innerHTML=`
+    <div class="atl-p-portrait">${c.i}</div>
+    <div class="atl-p-name">${c.n}</div>
+    <div class="atl-p-role">${c.r} · ${c.epic||''}</div>
+    <p class="atl-p-intro">${c.desc}</p>
+    <div class="atl-p-block"><p class="atl-p-label">Quick Facts</p>
+      <div class="atl-p-facts">
+        <div><p class="atl-p-fact-l">Epic</p><p class="atl-p-fact-v">${c.epic||'—'}</p></div>
+        <div><p class="atl-p-fact-l">Kingdom</p><p class="atl-p-fact-v">${c.kingdom||'—'}</p></div>
+        <div><p class="atl-p-fact-l">Archetype</p><p class="atl-p-fact-v">${c.archetype||'—'}</p></div>
+        <div><p class="atl-p-fact-l">Traits</p><p class="atl-p-fact-v">${(c.traits||[]).join(', ')||'—'}</p></div>
+      </div>
+    </div>
+    <div class="atl-p-block"><p class="atl-p-label">Parents</p><div class="atl-p-tags">${listOrDash(c.parents)}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Spouse</p><div class="atl-p-tags">${listOrDash(c.spouse)}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Children</p><div class="atl-p-tags">${listOrDash(c.children)}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Teachers</p><div class="atl-p-tags">${listOrDash(c.teachers)}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Friends</p><div class="atl-p-tags">${listOrDash(c.friends)}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Rivals</p><div class="atl-p-tags">${listOrDash(c.rivals)}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Symbolism</p><p class="atl-p-sym">${c.sym}</p></div>
+    <div class="atl-p-block"><p class="atl-p-label">Themes</p><div class="atl-p-tags">${(c.themes||[]).map(t=>`<span class="atl-p-tag">${t}</span>`).join('')}</div></div>
+    <div class="atl-p-block"><p class="atl-p-label">Related Human Questions</p>${qHtml}</div>
+    <div class="atl-p-actions">
+      <button class="btn-gold" onclick="closeAtlasPanel();openCharPage('${c.n}')" style="justify-content:center">Read Full Profile</button>
+    </div>
+  `;
+  document.getElementById('atlPanelOverlay').classList.add('open');
+}
+function closeAtlasPanel(){
+  document.getElementById('atlPanelOverlay').classList.remove('open');
+  document.querySelectorAll('.atl-map-node').forEach(n=>n.classList.remove('active','dim'));
+  document.querySelectorAll('.atl-map-edge').forEach(e=>e.classList.remove('hi','dim'));
+  const svg=document.getElementById('atlMapSvg');if(svg)svg.style.transform='';
+}
+
+// ── SEARCH ──
+function atlSearchInput(v){
+  const drop=document.getElementById('atlSearchDrop');
+  if(!v.trim()){drop.classList.remove('show');return}
+  const matches=chars.filter(c=>c.n.toLowerCase().includes(v.toLowerCase())).slice(0,7);
+  drop.innerHTML=matches.length?matches.map(c=>`<div class="atl-search-item" onclick="document.getElementById('atlSearch').value='';document.getElementById('atlSearchDrop').classList.remove('show');openAtlasProfile('${c.n}')">${c.n}<small>${c.r}</small></div>`).join(''):`<div class="atl-search-empty">No character found.</div>`;
+  drop.classList.add('show');
+}
+function atlSearchGo(){
+  const v=document.getElementById('atlSearch').value.trim();
+  const match=chars.find(c=>c.n.toLowerCase()===v.toLowerCase())||chars.find(c=>c.n.toLowerCase().includes(v.toLowerCase()));
+  if(match){document.getElementById('atlSearchDrop').classList.remove('show');openAtlasProfile(match.n)}
+}
+
+// ── FAMILY TREE (Kuru lineage) ──
+function renderAtlTree(){
+  const el=document.getElementById('atlTree');if(!el||el.dataset.built)return;el.dataset.built='1';
+  const gens=[
+    {label:"Generation I — The Parents",items:[{n:"Kunti",plain:false},{n:"Pandu",plain:true},{n:"Dhritarashtra",plain:true},{n:"Gandhari",plain:true}]},
+    {label:"Generation II — The Pandavas & Kauravas",items:[{n:"Yudhishthira",plain:false},{n:"Bhima",plain:false},{n:"Arjuna",plain:false},{n:"Karna",plain:false},{n:"Duryodhana",plain:false},{n:"Draupadi",plain:false}]},
+    {label:"Generation III — The Next Line",items:[{n:"Abhimanyu",plain:true},{n:"Ghatotkacha",plain:true},{n:"Vrishasena",plain:true}]}
+  ];
+  el.innerHTML=gens.map((g,i)=>`<div class="atl-tree-gen ${i===1?'open':''}">
+    <div class="atl-tree-gen-head" onclick="this.parentElement.classList.toggle('open')"><h4>${g.label}</h4><span>+</span></div>
+    <div class="atl-tree-gen-body"><div class="atl-tree-row">${g.items.map(it=>{
+      const has=chars.find(c=>c.n===it.n);
+      return has?`<div class="atl-tree-chip" onclick="openAtlasProfile('${it.n}')"><span class="ini">${has.i}</span><span>${it.n}</span></div>`:`<div class="atl-tree-chip plain"><span class="ini">${atlInitials(it.n)}</span><span>${it.n}</span></div>`;
+    }).join('')}</div></div>
+  </div>`).join('');
+}
+
+// ── JOURNEY ──
+const atlasJourneys={
+  Karna:[["Birth","Born to Kunti and abandoned to protect her honour — carried away by the river."],["Transformation","Raised by a charioteer, he trains in secret to become a peerless archer."],["Conflict","Denied entry into tournaments for his birth, humiliated before his peers."],["Greatest Challenge","Learns his true parentage on the eve of war — and chooses loyalty over lineage."],["Wisdom","Understands that dignity, once truly claimed, cannot be taken by circumstance."],["Legacy","Remembered not for his defeat, but for a generosity that never wavered."]],
+  Arjuna:[["Birth","Born of Indra, destined for greatness among the Pandavas."],["Transformation","Masters archery under Drona, becoming without equal on the battlefield."],["Conflict","Faces his own family across the battlefield of Kurukshetra."],["Greatest Challenge","Freezes at the sight of loved ones he must fight — and refuses to raise his bow."],["Wisdom","Krishna's counsel becomes the Bhagavad Gita — action without attachment."],["Legacy","The archetype of anyone who has had to act despite paralysing doubt."]],
+  Ahalya:[["Birth","One of the Panchakanya — born into a story not yet her own to tell."],["Transformation","Discovers a desire the world insists she should not have."],["Conflict","Deceived, cursed, and turned to stone for a moment she did not choose."],["Greatest Challenge","Endures decades of silence and judgement without a voice."],["Wisdom","Recognises that the shape of her own longing was never the crime."],["Legacy","Restored by a single unhurried, human touch — seen again, at last."]],
+  Draupadi:[["Birth","Born of fire, from her father's yajna — never meant to be ordinary."],["Transformation","Becomes wife to five, queen of a new city built from wilderness."],["Conflict","Humiliated in open court while her husbands watch in silence."],["Greatest Challenge","Asks the one question the court cannot answer."],["Wisdom","Learns that dignity does not require permission to exist."],["Legacy","Becomes the seed from which an entire war of accountability grows."]]
+};
+function renderAtlJourney(name){
+  const steps=atlasJourneys[name];if(!steps)return;
+  document.getElementById('atlJourney').innerHTML=steps.map(([t,d])=>`<div class="atl-j-step"><div class="atl-j-dot"></div><h5>${t}</h5><p>${d}</p></div>`).join('');
+  document.querySelectorAll('.atl-jp').forEach(p=>p.classList.toggle('act',p.dataset.n===name));
+}
+function renderAtlJourneyPills(){
+  const el=document.getElementById('atlJourneyPills');if(!el||el.dataset.built)return;el.dataset.built='1';
+  const names=Object.keys(atlasJourneys);
+  el.innerHTML=names.map(n=>`<button class="atl-jp" data-n="${n}" onclick="renderAtlJourney('${n}')">${n}</button>`).join('');
+  renderAtlJourney(names[0]);
+}
+
+// ── ARCHETYPES ──
+function renderAtlArchetypes(){
+  const el=document.getElementById('atlArchetypeGrid');if(!el||el.dataset.built)return;el.dataset.built='1';
+  el.innerHTML=atlasArchetypes.map(a=>`<div class="atl-arch-card" onclick="atlFilterByArchetype('${a.n}')"><div class="atl-arch-icon">${a.icon}</div><h4>${a.n}</h4><p>${a.d}</p></div>`).join('');
+}
+function atlFilterByArchetype(name){
+  const g=document.getElementById('atlFeaturedGrid');
+  const filtered=chars.filter(c=>c.archetype===name);
+  g.innerHTML=(filtered.length?filtered:chars).map(c=>`<div class="atl-card reveal-in" onclick="openAtlasProfile('${c.n}')">
+    <div class="atl-card-portrait">${c.i}</div><div class="atl-card-name">${c.n}</div>
+    <div class="atl-card-desc">${c.r} · ${c.epic||''}</div>
+    <div class="atl-card-meta">${(c.themes||[]).slice(0,2).map(t=>`<span class="atl-card-tag">${t}</span>`).join('')}</div>
+    <div class="atl-card-btn">Explore <span>→</span></div>
+  </div>`).join('');
+  document.getElementById('atlFeaturedGrid').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function atlFilterByEpic(name){atlFilterGeneric(c=>c.epic===name)}
+function atlFilterByTheme(name){atlFilterGeneric(c=>(c.themes||[]).some(t=>t.toLowerCase().includes(name.toLowerCase())||name.toLowerCase().includes(t.toLowerCase())))}
+function atlFilterGeneric(fn){
+  const g=document.getElementById('atlFeaturedGrid');
+  const filtered=chars.filter(fn);
+  g.innerHTML=(filtered.length?filtered:chars.slice(0,4)).map(c=>`<div class="atl-card reveal-in" onclick="openAtlasProfile('${c.n}')">
+    <div class="atl-card-portrait">${c.i}</div><div class="atl-card-name">${c.n}</div>
+    <div class="atl-card-desc">${c.r} · ${c.epic||''}</div>
+    <div class="atl-card-meta">${(c.themes||[]).slice(0,2).map(t=>`<span class="atl-card-tag">${t}</span>`).join('')}</div>
+    <div class="atl-card-btn">Explore <span>→</span></div>
+  </div>`).join('');
+  document.getElementById('atlFeaturedGrid').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ── HUMAN QUESTIONS ──
+function renderAtlHq(){
+  const el=document.getElementById('atlHqGrid');if(!el||el.dataset.built)return;el.dataset.built='1';
+  const withQ=chars.filter(c=>c.questions&&c.questions.length);
+  el.innerHTML=withQ.map(c=>`<div class="atl-hq-card"><h4>${c.n}</h4>${c.questions.map(id=>{
+    const q=questionsD.find(q=>q.id===id);if(!q)return'';
+    return `<span class="atl-hq-q" onclick="openHQ('${id}')">${q.q}</span>`;
+  }).join('')}</div>`).join('');
+}
+
+// ── EPIC / THEME ──
+function renderAtlEpicTheme(){
+  const eg=document.getElementById('atlEpicGrid');
+  if(eg&&!eg.dataset.built){
+    eg.dataset.built='1';
+    const epics=[["Mahabharata","The great war of dharma and its cost"],["Ramayana","Duty, exile, and devotion"],["Puranas","The cosmic and the divine"],["Vedas","The oldest layer of the tradition"]];
+    eg.innerHTML=epics.map(([n,d])=>`<div class="atl-epic-card" onclick="atlFilterByEpic('${n}')"><h4>${n}</h4><p>${d}</p></div>`).join('');
+  }
+  const tg=document.getElementById('atlThemeGrid');
+  if(tg&&!tg.dataset.built){
+    tg.dataset.built='1';
+    const themes=["Duty","Identity","Purpose","Leadership","Power","Love","Justice","Sacrifice","Forgiveness","Ego","Courage"];
+    tg.innerHTML=themes.map(t=>`<span class="atl-theme-pill" onclick="atlFilterByTheme('${t}')">${t}</span>`).join('');
+  }
+}
+
+// ── GALLERY ──
+function renderAtlGallery(){
+  const el=document.getElementById('atlGallery');if(!el||el.dataset.built)return;el.dataset.built='1';
+  const items=[
+    {img:"speaking-stage.jpg",cap:"Karna — The Wounded Hero",cls:"atl-g-wide"},
+    {img:"about-library.jpg",cap:"Arjuna — The Seeker",cls:"atl-g-tall"},
+    {img:"workshop-02.jpg",cap:"Draupadi — The Sovereign",cls:"atl-g-sq"},
+    {img:"ahalya-cover.jpg",cap:"Ahalya — The Unploughed",cls:"atl-g-sq"},
+    {img:"workshop-04.jpg",cap:"Shiva — The Destroyer",cls:"atl-g-wide"},
+    {img:"about-reading.jpg",cap:"Ravana — The Shadow",cls:"atl-g-sq"},
+    {img:"talk-02.jpg",cap:"Krishna — The Guide",cls:"atl-g-sq"}
+  ];
+  el.innerHTML=items.map(it=>`<div class="${it.cls} atl-g-item" data-cap="${it.cap}"><img src="${it.img}" alt="${it.cap}"/></div>`).join('');
+}
+
+// ── FEATURED STORIES (reuses existing `arts` data) ──
+function renderAtlStories(){
+  const el=document.getElementById('atlStoryGrid');if(!el||el.dataset.built)return;el.dataset.built='1';
+  const imgs=["speaking-stage.jpg","workshop-01.jpg","about-library.jpg","ahalya-cover.jpg","workshop-03.jpg","talk-01.jpg"];
+  const d=arts.slice(0,6);
+  el.innerHTML=d.map((a,i)=>`<div class="atl-story-card" onclick="return go('lab')">
+    <div class="atl-story-img"><img src="${imgs[i%imgs.length]}" alt="${a.title}"/></div>
+    <div class="atl-story-body"><p class="atl-story-tag">${a.theme}</p><h3 class="atl-story-title">${a.title}</h3><p>${a.ex}</p><span class="atl-story-read">Read Story →</span></div>
+  </div>`).join('');
+}
+
+// ── HERO CONSTELLATION (decorative preview) ──
+function renderAtlHeroSvg(){
+  const svg=document.getElementById('atlHeroSvg');if(!svg||svg.dataset.built)return;svg.dataset.built='1';
+  const sample=chars.slice(0,7),n=sample.length,cx=200,cy=200,R=140;
+  const pts=sample.map((c,i)=>{const a=(i/n)*2*Math.PI;return{x:cx+R*Math.cos(a),y:cy+R*Math.sin(a),c}});
+  let lines='';
+  pts.forEach((p,i)=>{const q=pts[(i+2)%n];lines+=`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke="rgba(194,160,90,.18)" stroke-width="1"/>`});
+  let nodes=pts.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="5" fill="#C2A05A" opacity=".85"><animate attributeName="opacity" values=".5;1;.5" dur="3.4s" repeatCount="indefinite"/></circle>`).join('');
+  svg.innerHTML=`<circle cx="${cx}" cy="${cy}" r="7" fill="#C2A05A"/>`+lines+nodes;
+}
+
+function atlasInit(){
+  if(!document.getElementById('atlParticles').dataset.built){
+    document.getElementById('atlParticles').dataset.built='1';
+    for(let i=0;i<20;i++){
+      const sp=document.createElement('span');
+      const sz=Math.random()*2+1;
+      sp.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;--d:${Math.random()*10+10}s;--dl:${Math.random()*8}s`;
+      document.getElementById('atlParticles').appendChild(sp);
+    }
+  }
+  renderAtlHeroSvg();
+  renderAtlFeatured();
+  renderAtlMap();
+  renderAtlTree();
+  renderAtlJourneyPills();
+  renderAtlArchetypes();
+  renderAtlHq();
+  renderAtlEpicTheme();
+  renderAtlGallery();
+  renderAtlStories();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAtlasPanel()});
+
+// ═══════ ASK SUNDEEP ═══════
+const askFaqData=[
+  {q:"Will I receive a reply?",a:"Every question is read by the team. Not every question receives an individual written reply, but many shape the essays, workshops and Human Questions published across the site — and some do receive a direct, personal response."},
+  {q:"Will my question be public?",a:"Not unless it's featured. If we ever draw on your question for an essay, workshop or Mythology Lab piece, it will always be anonymised — your name, city and identifying details removed — unless you've explicitly told us otherwise."},
+  {q:"Can I ask anonymously?",a:"Yes. Name, age, city and profession are all optional. Only an email address is required, so we can reach you if a personal response is possible."},
+  {q:"Can I ask more than one question?",a:"Yes. There's no limit — return to this page any time a new question is quietly following you."},
+  {q:"Is this counselling?",a:"No. This is not therapy, counselling or medical advice. It's a space for reflection through mythology. If you're going through a mental health crisis, please reach out to a licensed professional or a crisis helpline in your area."},
+  {q:"Can mythology really help with modern life?",a:"Mythology isn't a solution — it's a mirror. Many of the patterns we live through today (comparison, duty versus desire, betrayal, ambition, grief) were already being explored in these stories thousands of years ago. Recognising the pattern is often the first real step."}
+];
+function renderAskFaq(){
+  const el=document.getElementById('askFaq');if(!el||el.dataset.built)return;el.dataset.built='1';
+  el.innerHTML=askFaqData.map((f,i)=>`<div class="ask-faq-item${i===0?' open':''}">
+    <div class="ask-faq-q" onclick="this.parentElement.classList.toggle('open')"><h4>${f.q}</h4><span>+</span></div>
+    <div class="ask-faq-a"><p>${f.a}</p></div>
+  </div>`).join('');
+}
+function askWordCount(){
+  const el=document.getElementById('askMain');if(!el)return;
+  const words=el.value.trim().split(/\s+/).filter(Boolean).length;
+  const c=document.getElementById('askCount');if(c)c.textContent=(el.value.trim()?words:0)+' words';
+}
+// In-memory CMS-ready record of the current session's submissions (no backend yet).
+// Shape matches the future Sanity `humanQuestionSubmission` document.
+let askSubmissions=[];
+function askSubmit(e){
+  e.preventDefault();
+  const f=document.getElementById('askFormEl');
+  const record={
+    name:f.name.value.trim()||null,
+    email:f.email.value.trim(),
+    age:f.age.value?Number(f.age.value):null,
+    city:f.city.value.trim()||null,
+    profession:f.profession.value.trim()||null,
+    category:f.category.value,
+    questionTitle:f.questionTitle.value.trim(),
+    fullQuestion:f.fullQuestion.value.trim(),
+    reflections:{
+      whenAppeared:f.reflection1.value.trim()||null,
+      emotions:f.reflection2.value.trim()||null,
+      triedBefore:f.reflection3.value.trim()||null
+    },
+    publicNameConsent:f.publicNameConsent.checked,
+    dateSubmitted:new Date().toISOString(),
+    status:"Pending"
+  };
+  askSubmissions.push(record);
+  // console.log kept for future CMS wiring / QA — structure mirrors the Sanity schema described above.
+  console.log('Ask Sundeep submission (CMS-ready):',record);
+  f.classList.add('ask-form-hidden');
+  f.style.display='none';
+  document.getElementById('askConfirm').classList.add('show');
+  document.getElementById('askConfirm').scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
+}
+function askReset(){
+  const f=document.getElementById('askFormEl');
+  f.reset();f.style.display='';
+  document.getElementById('askConfirm').classList.remove('show');
+  askWordCount();
+  document.getElementById('askForm').scrollIntoView({behavior:'smooth'});
+}
+function askInit(){
+  renderAskFaq();
+  const mainEl=document.getElementById('askMain');
+  if(mainEl&&!mainEl.dataset.wired){mainEl.dataset.wired='1';mainEl.addEventListener('input',askWordCount)}
+  ['askParticles','askCtaParticles'].forEach(id=>{
+    const host=document.getElementById(id);
+    if(host&&!host.dataset.built){
+      host.dataset.built='1';
+      for(let i=0;i<18;i++){
+        const sp=document.createElement('span');
+        const sz=Math.random()*2+1;
+        sp.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;--d:${Math.random()*10+10}s;--dl:${Math.random()*8}s`;
+        host.appendChild(sp);
+      }
+    }
+  });
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
+  document.querySelectorAll('.ask-next-card').forEach(el=>obs.observe(el));
+}
+
+window.addEventListener('load',()=>{
   document.getElementById('navbar').classList.add('with-motw');
   initReveal();
   renderArts('All');
   renderChars();
   renderMedia('articles');
   renderQs('All');
+  ieBuildStatic();
+  makeDraggable(document.querySelector('.wgch-gal'));
+  makeDraggable(document.querySelector('.ab-gallery-track'));
+  makeDraggable(document.getElementById('testiTrack'));
+  initTestiAutoScroll();
 });
 </script>
 </body>
