@@ -1998,7 +1998,7 @@ select.f-inp option{background:#0B1629}
 
       <label class="ask-consent">
         <input type="checkbox" id="askAnon" name="publicNameConsent"/>
-        <span>If my story is ever featured publicly, my name may be used instead of staying anonymised.</span>
+        <span>If my story helps others, I'm happy for my name to be included when it's shared publicly.</span>
       </label>
 
       <button type="submit" class="ask-submit">Ask Sundeep <span>→</span></button>
@@ -2089,7 +2089,7 @@ select.f-inp option{background:#0B1629}
     <div class="hero-texture"></div>
     <div class="hero-gold-line"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Sundeep Verma · Mythologist · Author · Founder, Cobalt Blue Foundation</p>
+      <!--<p class="hero-eyebrow">Sundeep Verma · Mythologist · Author · Founder, Cobalt Blue Foundation</p> -->
       <h1 class="hero-h1">Mythology<br>is not old.<br><em>It's running<br>inside you.</em></h1>
       <p class="hero-sub">Ancient stories still shape your identity, relationships, ambition, grief, love and purpose — right now, today.</p>
     </div>
@@ -3917,11 +3917,10 @@ function initReveal(){
     sp.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;animation-duration:${Math.random()*6+5}s;animation-delay:${Math.random()*5}s`;
     pc.appendChild(sp);
   }
-  let returning=false;
-  try{returning=localStorage.getItem('mbsVisited')==='1'}catch(e){}
+  let exited=false,tick=null;
   const ring=document.getElementById('loaderRingProgress');
   const cd=document.getElementById('loaderCountdownNum');
-  let seconds=3,exited=false,tick=null;
+  let seconds=3;
   const EXIT_ANIM_MS=950; // must match #loader.exiting .loader-ring-wrap keyframe duration
 
   // Single, idempotent exit path — safe to call from the timer, the button, or twice in a row.
@@ -3932,7 +3931,6 @@ function initReveal(){
     loader.classList.add('exiting');
     setTimeout(()=>{
       loader.classList.add('gone');
-      try{localStorage.setItem('mbsVisited','1')}catch(e){}
       setTimeout(()=>{
         loader.style.display='none';
         const rt=document.getElementById('rc-text');
@@ -3942,22 +3940,16 @@ function initReveal(){
   }
   window._exitLoader=exitLoader;
 
-  if(returning){
-    // Returning visitors skip the countdown but still get the full, un-truncated exit
-    // animation — no early cut that would flicker or feel broken.
-    loader.classList.add('fast');
-    exitLoader();
-  } else {
-    if(ring)ring.classList.add('animate');
-    tick=setInterval(()=>{
-      seconds--;
-      if(cd){
-        cd.classList.add('swap');
-        setTimeout(()=>{cd.textContent=seconds>0?'0'+seconds:'';cd.classList.remove('swap')},260);
-      }
-      if(seconds<=0)exitLoader();
-    },1000);
-  }
+  // Every load — including reloads — plays the full ring + countdown, then exits.
+  if(ring)ring.classList.add('animate');
+  tick=setInterval(()=>{
+    seconds--;
+    if(cd){
+      cd.classList.add('swap');
+      setTimeout(()=>{cd.textContent=seconds>0?'0'+seconds:'';cd.classList.remove('swap')},260);
+    }
+    if(seconds<=0)exitLoader();
+  },1000);
 })();
 
 // DRAG-TO-SCROLL for horizontal galleries/carousels (desktop mouse; touch/swipe works natively)
