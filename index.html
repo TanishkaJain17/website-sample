@@ -272,6 +272,11 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .ab-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:.45}
 .ab-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#060606 18%,rgba(6,6,6,.55) 55%,rgba(6,6,6,.05) 100%)}
 .ab-hero-cnt{position:relative;z-index:2;padding:0 5vw;max-width:750px}
+.ab-hero-social{display:flex;gap:1.8rem;margin-top:1.8rem}
+.ab-hero-social a{display:flex;align-items:center;gap:.55rem;color:rgba(245,240,232,.55);text-decoration:none;font-family:var(--sans);font-size:.68rem;letter-spacing:.06em;transition:color .3s}
+.ab-hero-social a svg{width:17px;height:17px;flex:0 0 auto;color:rgba(194,160,90,.7);transition:color .3s}
+.ab-hero-social a:hover{color:#F5F0E8}
+.ab-hero-social a:hover svg{color:#C2A05A}
 .ab-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem;opacity:0;animation:fadeUp .8s .5s forwards}
 .ab-label::before{content:'';width:18px;height:1px;background:#C2A05A}
 .ab-title{font-family:var(--serif);font-size:clamp(3rem,7.5vw,7rem);font-weight:300;color:#F5F0E8;line-height:1.02;opacity:0;animation:fadeUp .9s .7s forwards}
@@ -378,7 +383,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .pill{padding:.55rem 1.3rem;border:1px solid rgba(194,160,90,.2);font-family:var(--sans);font-size:.65rem;letter-spacing:.08em;color:rgba(232,234,240,.5);transition:all .3s;background:transparent}
 .pill:hover,.pill.act{background:rgba(194,160,90,.1);color:#F5F0E8;border-color:rgba(194,160,90,.5)}
 .art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:rgba(194,160,90,.1)}
-.art-card{background:#1A1E35;padding:1.8rem;transition:background .3s;position:relative;overflow:hidden}
+.art-card{background:#1A1E35;padding:1.8rem;transition:background .3s;position:relative;overflow:hidden;cursor:pointer}
 .art-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:#C2A05A;transform:scaleY(0);transition:transform .35s var(--ease);transform-origin:bottom}
 .art-card:hover{background:#1e2440}
 .art-card:hover::before{transform:scaleY(1)}
@@ -449,6 +454,20 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .qp-h1{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#F5F0E8;line-height:1.05}
 .qp-h1 em{font-style:italic;color:#C2A05A}
 .qp-sub{font-family:var(--sans);font-size:.84rem;color:rgba(245,240,232,.38);line-height:2;max-width:480px;margin-top:1.2rem;font-weight:300}
+.qp-search-wrap{background:#0D0D0D;padding:2.4rem 5vw 0;display:flex;justify-content:center}
+.qp-search{position:relative;width:100%;max-width:640px}
+.qp-search svg{position:absolute;left:1.3rem;top:50%;transform:translateY(-50%);width:18px;height:18px;color:rgba(194,160,90,.5);pointer-events:none}
+.qp-search input{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(194,160,90,.25);color:var(--parch);font-family:var(--serif);font-style:italic;font-size:1.05rem;padding:1.1rem 1.4rem 1.1rem 3.2rem;transition:border-color .3s,background .3s}
+.qp-search input::placeholder{color:rgba(245,240,232,.28)}
+.qp-search input:focus{outline:none;border-color:#C2A05A;background:rgba(194,160,90,.05)}
+.qp-search-dropdown{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#141210;border:1px solid rgba(194,160,90,.3);box-shadow:0 20px 50px rgba(0,0,0,.5);max-height:340px;overflow-y:auto;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:20}
+.qp-search-dropdown.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.qp-search-result{padding:.9rem 1.4rem;cursor:pointer;border-bottom:1px solid rgba(194,160,90,.08);transition:background .2s}
+.qp-search-result:last-child{border-bottom:none}
+.qp-search-result:hover,.qp-search-result.hl{background:rgba(194,160,90,.1)}
+.qp-search-result-cat{font-family:var(--sans);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A;margin-bottom:.25rem;display:block}
+.qp-search-result-q{font-family:var(--serif);font-size:.92rem;color:#F5F0E8;font-style:italic}
+.qp-search-empty{padding:1rem 1.4rem;font-family:var(--sans);font-size:.78rem;color:rgba(245,240,232,.4)}
 .qp-cats-wrap{padding:2.5rem 5vw;background:#0D0D0D;border-bottom:1px solid rgba(194,160,90,.08)}
 .qp-cats{display:flex;flex-wrap:wrap;gap:.5rem}
 .qp-cat{padding:.52rem 1.25rem;border:1px solid rgba(194,160,90,.18);font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);transition:all .3s}
@@ -704,6 +723,26 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .med-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#F0F0F0;line-height:1.05}
 .med-sub{font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.85;max-width:480px;margin-top:1rem;font-weight:300}
 .med-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.05);padding:0 5vw;background:#222;overflow-x:auto}
+
+/* Master Articles archive (item 4) */
+#articles-page{background:#141414}
+.am-hero{background:#1a1a1a;padding:8rem 5vw 3.5rem;position:relative}
+.am-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,240,240,.35);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.am-label::before{content:'';width:16px;height:1px;background:rgba(240,240,240,.35)}
+.am-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#F0F0F0;line-height:1.05}
+.am-sub{font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.85;max-width:520px;margin-top:1rem;font-weight:300}
+.am-back{margin-top:2rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A;background:none;border:1px solid rgba(194,160,90,.4);padding:.7rem 1.3rem;cursor:pointer;transition:all .3s}
+.am-back:hover{background:rgba(194,160,90,.08);border-color:#C2A05A}
+.am-list{max-width:920px;margin:0 auto;padding:4rem 5vw 6rem}
+.am-article{scroll-margin-top:100px;display:grid;grid-template-columns:280px 1fr;gap:2.6rem;padding:2.5rem 0}
+.am-article-img{border-radius:6px;overflow:hidden;min-height:200px}
+.am-article-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.85)}
+.am-article-meta{display:flex;gap:.5rem;align-items:center;font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A;margin-bottom:.8rem}
+.am-dot{color:rgba(194,160,90,.4)}
+.am-article-title{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:#F5F0E8;margin-bottom:1rem;line-height:1.25}
+.am-article-body p{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.9;font-weight:300;margin-bottom:.9rem}
+.am-divider{height:1px;background:rgba(194,160,90,.14);max-width:920px;margin:0 auto}
+@media(max-width:760px){.am-article{grid-template-columns:1fr}}
 .med-tab{padding:.95rem 1.4rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,240,240,.32);transition:all .3s;border-bottom:2px solid transparent;white-space:nowrap}
 .med-tab.act,.med-tab:hover{color:#F0F0F0;border-bottom-color:#fff}
 .med-content{padding:3rem 5vw;background:#2A2A2A}
@@ -787,7 +826,7 @@ select.f-inp option{background:#0B1629}
 .hq-hero-bg{position:absolute;inset:0}
 .hq-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.34;filter:grayscale(20%) brightness(.7)}
 .hq-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.99) 12%,rgba(6,6,6,.6) 55%,rgba(6,6,6,.18) 100%)}
-.hq-back{position:relative;z-index:3;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border:1px solid rgba(194,160,90,.4);background:rgba(194,160,90,.04);padding:.7rem 1.3rem;margin:6.5rem 5vw 0;transition:all .35s var(--ease);cursor:pointer;width:fit-content}
+.hq-back{position:absolute;top:6.5rem;left:5vw;z-index:5;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border:1px solid rgba(194,160,90,.4);background:rgba(13,13,13,.55);backdrop-filter:blur(6px);padding:.7rem 1.3rem;transition:all .35s var(--ease);cursor:pointer;width:fit-content}
 .hq-back:hover{color:#F5F0E8;border-color:#C2A05A;background:rgba(194,160,90,.1);transform:translateX(-3px);box-shadow:0 0 20px rgba(194,160,90,.15)}
 .hq-hero-cnt{position:relative;z-index:2;padding:2.5rem 5vw 5.5rem;max-width:880px}
 .hq-ey{font-family:var(--sans);font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
@@ -796,28 +835,29 @@ select.f-inp option{background:#0B1629}
 .hq-tagline{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:rgba(245,240,232,.4);margin-top:1.4rem}
 
 /* shared section chrome */
-.hq-sec{padding:clamp(3.5rem,6vw,6rem) 5vw;background:#0D0D0D}
+.hq-sec{padding:clamp(3.5rem,6vw,6rem) 5vw;background:#0D0D0D;text-align:center}
 .hq-sec.alt{background:#080808}
-.hq-num{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem}
+.hq-num{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;justify-content:center;gap:.9rem;margin-bottom:1.3rem}
 .hq-num::after{content:'';flex:0 0 40px;height:1px;background:rgba(194,160,90,.4)}
+.hq-num::before{content:'';flex:0 0 40px;height:1px;background:rgba(194,160,90,.4)}
 .hq-sec-title{font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:300;color:#F5F0E8;margin-bottom:1.6rem}
 .hq-sec-title em{font-style:italic;color:#C2A05A}
 
 /* 2. Character */
-.hq-char{display:grid;grid-template-columns:300px 1fr;gap:3.5rem;align-items:center}
-.hq-char-portrait{width:300px;height:380px;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.hq-char{display:grid;grid-template-columns:300px 1fr;gap:3.5rem;align-items:center;justify-content:center;max-width:900px;margin:0 auto;text-align:left}
+.hq-char-portrait{width:300px;height:380px;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);margin:0 auto}
 .hq-char-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.82)}
 .hq-char-name{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:#F5F0E8;margin-bottom:.3rem}
 .hq-char-role{font-family:var(--serif);font-style:italic;color:#C2A05A;font-size:1.1rem;margin-bottom:1.3rem}
 .hq-char-intro{font-family:var(--sans);font-size:.86rem;color:rgba(245,240,232,.44);line-height:2;font-weight:300;max-width:560px}
 
 /* 3. Story */
-.hq-story{max-width:760px}
+.hq-story{max-width:760px;margin:0 auto;text-align:center}
 .hq-story p{font-family:var(--sans);font-size:.9rem;color:rgba(245,240,232,.5);line-height:2.05;font-weight:300;margin-bottom:1.3rem}
-.hq-story-divider{width:44px;height:1px;background:#C2A05A;margin:2rem 0}
+.hq-story-divider{width:44px;height:1px;background:#C2A05A;margin:2rem auto}
 
 /* 4. Meaning */
-.hq-meaning-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.hq-meaning-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;max-width:1000px;margin:0 auto;text-align:left}
 .hq-meaning-img{overflow:hidden;border-radius:6px;position:relative;min-height:340px}
 .hq-meaning-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(.72);position:absolute;inset:0}
 .hq-meaning-quote{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.55rem);font-style:italic;color:rgba(245,240,232,.75);line-height:1.8;border-left:2px solid #C2A05A;padding-left:1.6rem;margin-bottom:1.4rem}
@@ -836,7 +876,7 @@ select.f-inp option{background:#0B1629}
 
 /* 6. Modern life */
 .hq-modern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(194,160,90,.1);margin-top:1rem}
-.hq-modern-card{background:#0D0D0D;padding:2.2rem 1.7rem;transition:background .3s;border-top:2px solid transparent}
+.hq-modern-card{background:#0D0D0D;padding:2.2rem 1.7rem;transition:background .3s;border-top:2px solid transparent;text-align:center}
 .hq-modern-card:hover{background:#111;border-top-color:#C2A05A}
 .hq-modern-tag{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:.9rem}
 .hq-modern-text{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.42);line-height:1.9;font-weight:300}
@@ -1071,6 +1111,24 @@ select.f-inp option{background:#0B1629}
 .fw-detail h3{font-family:var(--serif);font-weight:400;font-style:italic;color:var(--parch);font-size:1.35rem;margin:.4rem 0 .7rem}
 .fw-detail p{font-family:var(--sans);font-weight:300;font-size:.78rem;line-height:1.8;color:rgba(245,240,232,.6);margin:0}
 .fw-detail-example{margin-top:.9rem !important;padding-top:.8rem;border-top:1px solid rgba(194,160,90,.18);font-style:italic;color:var(--gold) !important;font-family:var(--serif) !important;font-size:.92rem !important;line-height:1.6 !important}
+.fw-detail-close{position:absolute;top:.7rem;right:.8rem;width:24px;height:24px;border-radius:50%;border:1px solid rgba(194,160,90,.3);background:rgba(0,0,0,.35);color:var(--gold);font-size:.95rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s var(--ease);padding:0}
+.fw-detail-close:hover{background:var(--gold);color:#0a0806;border-color:var(--gold);transform:scale(1.08)}
+
+/* Cinematic curtain — plays the Act I/II/III script over the (still-visible) constellation */
+.fw-curtain{position:absolute;inset:-6vh -6vw;background:rgba(5,4,3,.97);display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;opacity:0;pointer-events:none;transition:opacity .9s var(--ease);z-index:40;border-radius:24px}
+.fw-curtain.show{opacity:1;pointer-events:auto}
+.fw-curtain-inner{max-width:620px}
+.fw-curtain-line{font-family:var(--serif);font-weight:300;font-size:clamp(1.05rem,2.2vw,1.5rem);color:rgba(245,240,232,.72);line-height:1.8;opacity:0;transform:translateY(14px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);margin:0 0 .5rem}
+.fw-curtain-line.show{opacity:1;transform:translateY(0)}
+.fw-curtain-line.big{font-size:clamp(1.5rem,3.4vw,2.4rem);color:#F5F0E8;font-style:italic}
+.fw-curtain-line.gold{color:var(--gold)}
+.fw-curtain-line.dim{color:rgba(245,240,232,.3);font-size:.85rem;letter-spacing:.06em}
+.fw-curtain-skip{position:absolute;bottom:1.6rem;right:1.8rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.32);background:none;border:none;cursor:pointer;transition:color .3s}
+.fw-curtain-skip:hover{color:var(--gold)}
+.fw-q-capture{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:1.6rem}
+.fw-q-capture textarea,.fw-q-capture input{width:100%;max-width:440px;background:rgba(255,255,255,.03);border:1px solid rgba(194,160,90,.3);color:var(--parch);font-family:var(--serif);font-style:italic;font-size:1rem;padding:.9rem 1.1rem;resize:none;transition:border-color .3s}
+.fw-q-capture textarea:focus,.fw-q-capture input:focus{outline:none;border-color:var(--gold)}
+@media(max-width:760px){.fw-curtain{inset:-3vh -3vw;border-radius:16px}}
 
 .fw-hint{margin-top:2.6rem;font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.02em;color:rgba(245,240,232,.4);min-height:1.4em;transition:opacity .4s}
 
@@ -1231,8 +1289,8 @@ select.f-inp option{background:#0B1629}
 
 /* ── JOURNEY ── */
 .atl-journey-pills{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
-.atl-jp{font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);border:1px solid rgba(255,255,255,.15);padding:.7rem 1.5rem;cursor:pointer;transition:all .3s}
-.atl-jp:hover{color:var(--parch);border-color:rgba(194,160,90,.4)}
+.atl-jp{font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#F5F0E8;background:#0D0D0D;border:1px solid rgba(194,160,90,.55);padding:.7rem 1.5rem;cursor:pointer;transition:all .3s}
+.atl-jp:hover{color:#F5F0E8;border-color:var(--gold);background:#161412;box-shadow:0 0 0 1px rgba(194,160,90,.15) inset}
 .atl-jp.act{color:#0D0D0D;background:var(--gold);border-color:var(--gold)}
 .atl-journey{display:flex;overflow-x:auto;gap:0;max-width:1300px;margin:0 auto;padding:1rem 1rem 2rem}
 .atl-j-step{flex:0 0 auto;width:280px;padding:0 2rem;position:relative;text-align:center}
@@ -1354,6 +1412,11 @@ select.f-inp option{background:#0B1629}
 .ask-field input:focus,.ask-field textarea:focus,.ask-field select:focus{outline:none;border-color:var(--gold);background:rgba(194,160,90,.05)}
 .ask-field select{cursor:pointer}
 .ask-field select option{background:#0d0c0a}
+.ask-cat-chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.ask-cat-chip{font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,.55);background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.14);padding:.55rem 1.1rem;cursor:pointer;transition:all .25s var(--ease);user-select:none}
+.ask-cat-chip:hover{border-color:rgba(194,160,90,.5);color:var(--parch)}
+.ask-cat-chip.sel{background:var(--gold);border-color:var(--gold);color:#0D0D0D;font-weight:600}
+.ask-cat-hint{font-family:var(--sans);font-size:.66rem;color:rgba(245,240,232,.3);margin-top:.6rem}
 .ask-count{text-align:right;font-family:var(--sans);font-size:.62rem;color:rgba(245,240,232,.28);margin-top:.4rem;letter-spacing:.06em}
 .ask-reflect{border-top:1px solid rgba(255,255,255,.08);margin-top:.5rem;padding-top:1.8rem}
 .ask-reflect-title{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(245,240,232,.6);margin-bottom:1.3rem}
@@ -1553,7 +1616,7 @@ select.f-inp option{background:#0B1629}
   <section class="ie-ch5 ie-ch5--portal">
     <p class="ie-kicker reveal">Chapter Five</p>
     <h2 class="ie-ch-title reveal">Sundeep Verma's <em>signature methodology</em></h2>
-    <p class="ie-ch5-lead reveal">Nine movements. One living system of thought. It does not read like a page — it unlocks like knowledge.</p>
+    <p class="ie-ch5-lead reveal">Six movements. One living system of thought. It does not read like a page — it unlocks like knowledge.</p>
     <button class="ie-ch5-portal-btn reveal" onclick="return go('framework')">
       <span class="ie-ch5-portal-ring"></span>
       <span class="ie-ch5-portal-txt">Explore The Inner Epic<em>™</em></span>
@@ -1649,7 +1712,7 @@ select.f-inp option{background:#0B1629}
       <p class="fw-eyebrow">A Signature Methodology</p>
       <h1 class="fw-hero-title">The Inner Epic<span class="fw-tm">™</span></h1>
       <p class="fw-hero-sub">Recognise the Pattern. Not the Story.</p>
-      <p class="fw-hero-desc">Nine movements that turn a private feeling into a recognised human pattern — and a mythological story into a mirror. This is not documentation. It is a system you unlock, one recognition at a time.</p>
+      <p class="fw-hero-desc">A three-act journey that turns a private feeling into a recognised human pattern — and a mythological story into a mirror. This is not documentation. It is something you sit with, one recognition at a time.</p>
       <button class="fw-hero-cta" onclick="document.getElementById('fwMachineSec').scrollIntoView({behavior:'smooth'});return false">
         <span>Enter the Framework</span>
         <span class="fw-hero-cta-line"></span>
@@ -1661,7 +1724,7 @@ select.f-inp option{background:#0B1629}
   <section class="fw-machine-sec" id="fwMachineSec">
     <p class="fw-kicker">The Living Framework</p>
     <h2 class="fw-machine-title">A framework that <em>reveals itself.</em></h2>
-    <p class="fw-machine-sub">Click Recognition to begin unlocking the system one node at a time — or let it guide you.</p>
+    <p class="fw-machine-sub">This isn't a diagram to read. It's a question to sit with. Begin when you're ready — and give it a few quiet minutes.</p>
     <div class="fw-controls">
       <button class="fw-btn-primary" id="fwExperienceBtn" onclick="return fwStartExperience()">Experience The Framework</button>
       <button class="fw-btn-ghost" onclick="return fwReset()">Reset</button>
@@ -1671,19 +1734,24 @@ select.f-inp option{background:#0B1629}
       <svg class="fw-connectors" id="fwConnectors" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
       <div class="fw-nodes" id="fwNodes"></div>
       <div class="fw-detail" id="fwDetail">
+        <button class="fw-detail-close" onclick="fwCloseDetail(event)" aria-label="Close">×</button>
         <span class="fw-detail-num" id="fwDetailNum"></span>
         <h3 id="fwDetailTitle"></h3>
         <p id="fwDetailText"></p>
         <p class="fw-detail-example" id="fwDetailExample"></p>
       </div>
+      <div class="fw-curtain" id="fwCurtain">
+        <div class="fw-curtain-inner" id="fwCurtainInner"></div>
+        <button class="fw-curtain-skip" id="fwSkipBtn" onclick="return fwSkipCurtain()">Skip →</button>
+      </div>
     </div>
-    <p class="fw-hint" id="fwHint">Click "Recognition" to begin.</p>
+    <p class="fw-hint" id="fwHint">Click "Human Question" to begin — or press Experience The Framework and let it guide you.</p>
   </section>
 
   <!-- ENDING -->
   <section class="fw-ending" id="fwEnding">
     <div class="fw-ending-glow"></div>
-    <p class="fw-ending-quote">"Every story begins with a question. <em>Every transformation begins with recognition.</em>"</p>
+    <p class="fw-ending-quote">"Every journey ends with a better question <em>than the one that began it.</em>"</p>
     <div class="fw-paths">
       <div class="fw-path" onclick="return go('questions')">
         <span>01 · Continue</span>
@@ -1960,22 +2028,17 @@ select.f-inp option{background:#0B1629}
         </div>
       </div>
       <div class="ask-field">
-        <label for="askCategory">Category</label>
-        <select id="askCategory" name="category" required>
-          <option value="" disabled selected>Choose the closest theme</option>
-          <option>Relationships</option><option>Career</option><option>Leadership</option>
-          <option>Purpose</option><option>Identity</option><option>Parenting</option>
-          <option>Marriage</option><option>Grief</option><option>Failure</option>
-          <option>Success</option><option>Friendship</option><option>Family</option>
-          <option>Love</option><option>Mental Conflict</option><option>Mythology</option><option>Other</option>
-        </select>
+        <label>Category <span>— select all that feel relevant</span></label>
+        <div class="ask-cat-chips" id="askCatChips"></div>
+        <input type="hidden" id="askCategory" name="category" required/>
+        <p class="ask-cat-hint" id="askCatHint">Choose one or more themes.</p>
       </div>
       <div class="ask-field">
-        <label for="askTitle">Question Title <span>— a short version</span></label>
+        <label for="askTitle">Your Question <span>— a short version</span></label>
         <input type="text" id="askTitle" name="questionTitle" required placeholder="Why do I always compare myself with others?"/>
       </div>
       <div class="ask-field">
-        <label for="askMain">Main Question</label>
+        <label for="askMain">Additional Information</label>
         <textarea id="askMain" name="fullQuestion" required minlength="20" maxlength="7000" rows="7" placeholder="What question has been quietly following you? (roughly 500–1000 words is welcome, but even two sentences are enough)"></textarea>
         <div class="ask-count" id="askCount">0 words</div>
       </div>
@@ -2247,6 +2310,16 @@ select.f-inp option{background:#0B1629}
       <p class="ab-label">The Man Behind the Myths</p>
       <h1 class="ab-title">Sundeep<br><em>Verma</em></h1>
       <p class="ab-sub">Mythologist. Author. Storyteller. Founder of Cobalt Blue Foundation. A man who left advertising to spend his life decoding why ancient stories still run our lives today.</p>
+      <div class="ab-hero-social">
+        <a href="https://www.instagram.com/mythsbysundeep" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.3"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg>
+          <span>@mythsbysundeep</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mythsbysundeep/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 10v6.2M7.5 7.6v.01M11.5 16.2V10M11.5 12.7c0-1.5 1-2.7 2.5-2.7s2.5 1.2 2.5 2.7v3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <span>Sundeep Verma</span>
+        </a>
+      </div>
     </div>
     <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll to explore</span></div>
   </div>
@@ -2895,7 +2968,7 @@ select.f-inp option{background:#0B1629}
     <p class="med-sub">Press coverage, interviews, podcast appearances, and writing from Sundeep Verma's public intellectual life.</p>
   </section>
   <div class="med-tabs">
-    <div class="med-tab act" onclick="switchTab(this,'articles')">Articles</div>
+    <div class="med-tab act" onclick="return go('articles')">Articles</div>
     <div class="med-tab" onclick="switchTab(this,'press')">Press</div>
     <div class="med-tab" onclick="switchTab(this,'interviews')">Interviews</div>
     <div class="med-tab" onclick="switchTab(this,'podcasts')">Podcasts</div>
@@ -2964,6 +3037,56 @@ select.f-inp option{background:#0B1629}
   </footer>
 </div>
 
+<!-- ════ MASTER ARTICLES ARCHIVE ════ -->
+<div class="page" id="articles-page">
+  <section class="am-hero">
+    <p class="am-label">Media & Press</p>
+    <h1 class="am-title">Articles</h1>
+    <p class="am-sub">Every article, essay and feature — in one place. Click a card anywhere on the site and it will bring you straight here.</p>
+    <button class="am-back" onclick="return go('media')">← Back to Media & Press</button>
+  </section>
+  <div class="am-list" id="articlesMasterList"></div>
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+        <li><a href="https://substack.com/@mythsbysundeep">Substack</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://www.cobaltbluefoundation.com/tickets">Upcoming Events</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>"Perhaps mythology was never about gods. Perhaps it was always about us."</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
 <!-- ════ HUMAN QUESTIONS ════ -->
 <div class="page" id="questions-page">
   <div class="qp-hero">
@@ -2972,6 +3095,13 @@ select.f-inp option{background:#0B1629}
       <p class="qp-ey">An Open Archive of Inquiry</p>
       <h1 class="qp-h1">Human <em>Questions</em></h1>
       <p class="qp-sub">Not a FAQ. Not a forum. A curated space where mythology meets the questions that keep people awake at night — and suggests which ancient story might help.</p>
+    </div>
+  </div>
+  <div class="qp-search-wrap">
+    <div class="qp-search">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <input type="text" id="qpSearchInput" placeholder="Why... How... Who... What if... Can... Should..." autocomplete="off" oninput="qpSearchInput()" onfocus="qpSearchInput()"/>
+      <div class="qp-search-dropdown" id="qpSearchDropdown"></div>
     </div>
   </div>
   <div class="qp-cats-wrap">
@@ -3367,7 +3497,42 @@ const articlesD=[
   {pub:"Mid-Day",head:"12 Mythical Women You Should Know About",ex:"Sundeep Verma's popular lecture series brought to print.",img:"media-article-05.jpg"}
 ];
 
-// HUMAN QUESTIONS — index list (drives the grid, each item -> hqDetails)
+// ═══════ MASTER ARTICLES PAGE (single archive — item 4) ═══════
+function slugify(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
+function articleFull(ex,title){
+  return [
+    ex,
+    `This is one of the recurring threads in Sundeep Verma's work: mythology read not as history, but as a mirror for the patterns we live today. "${title}" traces that pattern through a specific character and moment, asking not "what happened" but "what does this keep teaching us."`,
+    `As with all of Sundeep's writing, the intention isn't to retell a story you already know — it's to notice what the story has been quietly pointing at all along, and to see where it still shows up in the life you're living now.`
+  ];
+}
+const articlesMaster=(function(){
+  const fromArts=arts.map(a=>({id:slugify(a.title),title:a.title,pub:"Myths By Sundeep · Substack",date:a.date,img:"workshop-01.jpg",ex:a.ex,full:articleFull(a.ex,a.title)}));
+  const fromMedia=articlesD.map(a=>({id:slugify(a.head),title:a.head,pub:a.pub,date:a.date||"2025",img:a.img,ex:a.ex,full:articleFull(a.ex,a.head)}));
+  const seen=new Set(),out=[];
+  [...fromMedia,...fromArts].forEach(a=>{if(!seen.has(a.id)){seen.add(a.id);out.push(a)}});
+  return out;
+})();
+function openArticle(id){
+  go('articles');
+  setTimeout(()=>{
+    const el=document.getElementById('art-'+id);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  },260);
+  return false;
+}
+function renderArticlesMaster(){
+  const c=document.getElementById('articlesMasterList');
+  if(!c||c.dataset.built)return;c.dataset.built='1';
+  c.innerHTML=articlesMaster.map(a=>`<article class="am-article" id="art-${a.id}">
+    <div class="am-article-img"><img src="${a.img}" alt="${a.img}"/></div>
+    <div class="am-article-body">
+      <div class="am-article-meta"><span>${a.pub}</span><span class="am-dot">·</span><span>${a.date}</span></div>
+      <h2 class="am-article-title">${a.title}</h2>
+      ${a.full.map(p=>`<p>${p}</p>`).join('')}
+    </div>
+  </article>`).join('<div class="am-divider"></div>');
+}
 const questionsD=[
   {id:"mistakes",cat:"Identity",q:"Why do I keep repeating the same mistakes?"},
   {id:"success",cat:"Purpose",q:"Why does success still feel empty?"},
@@ -3677,7 +3842,7 @@ const pgMap={
   program:'program-page',hqdetail:'hq-detail-page',
   theme:'theme-page',excerpt:'excerpt-page',
   innerepic:'innerepic-page',atlas:'atlas-page',ask:'ask-page',
-  framework:'framework-page'
+  framework:'framework-page',articles:'articles-page'
 };
 const themeMeta={
   Identity:"Who are you beneath the roles you play? Stories of self, mask, and the truth underneath.",
@@ -3695,7 +3860,7 @@ function openTheme(theme){
   document.getElementById('thSub').textContent=meta||('Mythology explored through the lens of '+theme+'.');
   const g=document.getElementById('thArtGrid');
   const d=arts.filter(a=>a.theme===theme);
-  g.innerHTML=(d.length?d:arts.slice(0,3)).map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
+  g.innerHTML=(d.length?d:arts.slice(0,3)).map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
   const cg=document.getElementById('thCharGrid');
   const dc=chars.filter(c=>c.themes.some(t=>t.toLowerCase().includes(theme.toLowerCase())||theme.toLowerCase().includes(t.toLowerCase())));
   const charsToShow=dc.length?dc:chars.slice(0,4);
@@ -3729,6 +3894,7 @@ function go(id){
   if(isHome){mw.classList.remove('hidden-motw');nav.classList.add('with-motw')}
   else{mw.classList.add('hidden-motw');nav.classList.remove('with-motw')}
   if(id==='media'){renderMedia('articles')}
+  if(id==='articles'){renderArticlesMaster()}
   if(id==='lab'){renderArts('All');renderChars()}
   if(id==='questions')renderQs('All');
   if(id==='innerepic')setTimeout(ieInit,80);
@@ -3750,7 +3916,7 @@ function toggleMob(){
 function renderArts(theme){
   const g=document.getElementById('artGrid');if(!g)return;
   const d=theme==='All'?arts:arts.filter(a=>a.theme===theme);
-  g.innerHTML=d.map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
+  g.innerHTML=d.map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
 }
 
 function renderChars(){
@@ -3778,7 +3944,7 @@ function openCharPage(name){
   const ra=document.getElementById('charRelatedArts');
   const related=arts.filter(a=>a.title.toLowerCase().includes(name.toLowerCase()));
   const toShow=related.length>0?related:arts.slice(0,3);
-  ra.innerHTML=toShow.map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
+  ra.innerHTML=toShow.map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
   go('character');
 }
 
@@ -3792,10 +3958,33 @@ function filterLab(v){
   const lv=v.toLowerCase();
   const d=arts.filter(a=>a.title.toLowerCase().includes(lv)||a.theme.toLowerCase().includes(lv)||a.ex.toLowerCase().includes(lv));
   const g=document.getElementById('artGrid');
-  if(g)g.innerHTML=d.map(a=>`<div class="art-card"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
+  if(g)g.innerHTML=d.map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
 }
 
 // HUMAN QUESTIONS — grid render (now fully clickable)
+function qpSearchInput(){
+  const val=document.getElementById('qpSearchInput').value.trim().toLowerCase();
+  const dd=document.getElementById('qpSearchDropdown');
+  if(!val){dd.classList.remove('show');dd.innerHTML='';return;}
+  const matches=questionsD.filter(q=>q.q.toLowerCase().includes(val)).slice(0,8);
+  if(!matches.length){
+    dd.innerHTML='<div class="qp-search-empty">No questions match yet — try "Ask Sundeep" to submit your own.</div>';
+  } else {
+    dd.innerHTML=matches.map(q=>{
+      const idx=questionsD.indexOf(q);
+      const action=q.id?`openHQ('${q.id}')`:`openHQFallback(${idx})`;
+      return `<div class="qp-search-result" onclick="document.getElementById('qpSearchDropdown').classList.remove('show');${action}">
+        <span class="qp-search-result-cat">${q.cat}</span>
+        <p class="qp-search-result-q">${q.q}</p>
+      </div>`;
+    }).join('');
+  }
+  dd.classList.add('show');
+}
+document.addEventListener('click',e=>{
+  const wrap=document.getElementById('qpSearchDropdown');
+  if(wrap&&!e.target.closest('.qp-search'))wrap.classList.remove('show');
+});
 function renderQs(cat){
   const g=document.getElementById('qGrid');if(!g)return;
   const d=cat==='All'?questionsD:questionsD.filter(q=>q.cat===cat);
@@ -3879,7 +4068,7 @@ function renderMedia(type){
   if(type==='articles'){
     const feat=articlesD.find(a=>a.featured);
     const rest=articlesD.filter(a=>!a.featured);
-    c.innerHTML=`<div class="ae-wrap"><div class="ae-featured"><div class="ae-feat-img"><img src="${feat.img}" alt="${feat.img}"/></div><div class="ae-feat-text"><span class="ae-pub">${feat.pub}</span><h3 class="ae-head">${feat.head}</h3><p class="ae-ex">${feat.ex}</p><a href="#" class="btn-gold" style="width:fit-content;font-size:.58rem;padding:.7rem 1.5rem">Read Article</a></div></div><div class="ae-cards">${rest.map(a=>`<div class="ae-card"><div class="ae-card-img"><img src="${a.img}" alt="${a.img}"/></div><div class="ae-card-body"><span class="ae-pub">${a.pub}</span><h3 class="ae-head" style="font-size:1rem;margin-bottom:.5rem">${a.head}</h3><p class="ae-ex" style="font-size:.72rem;margin-bottom:.9rem">${a.ex}</p><a href="#" class="ae-card-link">Read Article →</a></div></div>`).join('')}</div></div>`;return;
+    c.innerHTML=`<div class="ae-wrap"><div class="ae-featured"><div class="ae-feat-img"><img src="${feat.img}" alt="${feat.img}"/></div><div class="ae-feat-text"><span class="ae-pub">${feat.pub}</span><h3 class="ae-head">${feat.head}</h3><p class="ae-ex">${feat.ex}</p><a href="#" class="btn-gold" style="width:fit-content;font-size:.58rem;padding:.7rem 1.5rem" onclick="return openArticle('${slugify(feat.head)}')">Read Article</a></div></div><div class="ae-cards">${rest.map(a=>`<div class="ae-card"><div class="ae-card-img"><img src="${a.img}" alt="${a.img}"/></div><div class="ae-card-body"><span class="ae-pub">${a.pub}</span><h3 class="ae-head" style="font-size:1rem;margin-bottom:.5rem">${a.head}</h3><p class="ae-ex" style="font-size:.72rem;margin-bottom:.9rem">${a.ex}</p><a href="#" class="ae-card-link" onclick="return openArticle('${slugify(a.head)}')">Read Article →</a></div></div>`).join('')}</div></div>`;return;
   }
   const items=type==='podcasts'?podD:type==='writing'?wrtD:pressD;
   c.innerHTML=`<div class="press-grid">${items.map(p=>`<div class="press-card"><p class="pc-out">${p.out}</p><h3 class="pc-head">${p.head}</h3><p class="pc-date">${p.date}</p></div>`).join('')}</div>`;
@@ -4055,18 +4244,19 @@ function ieInit(){
 }
 
 // ═══════ THE INNER EPIC™ FRAMEWORK (dedicated page) ═══════
+// Restructured as a three-act emotional journey. Recognition is the climax;
+// everything before it builds toward it, everything after unfolds because of it.
 const fwSteps=[
-  {t:"Recognition",d:"The moment you notice a pattern repeating in your life — the déjà vu of having been here before.",ex:"“This is a recurring human pattern.”"},
-  {t:"Human Question",d:"That pattern sharpens into a question only you can ask.",ex:"“I always feel unseen.”"},
-  {t:"Pattern",d:"The question reveals itself as something deeply, recurringly human.",ex:"Seeking validation."},
-  {t:"Character",d:"A figure from mythology who has already lived this exact pattern.",ex:"Karna"},
-  {t:"Story",d:"Their full story — what led there, what it cost, what it taught.",ex:"The Mahabharata"},
-  {t:"Meaning",d:"The psychological truth the story was always encoding.",ex:"Worth cannot come from recognition."},
-  {t:"Mirror",d:"The story turns back toward you, reflecting your own situation.",ex:"Where do you seek approval?"},
-  {t:"Reflection",d:"You sit with what the mirror shows — without judgment.",ex:"Journal Prompt."},
-  {t:"Transformation",d:"Recognition becomes movement. The pattern begins to loosen its grip.",ex:"The pattern loosens its grip."}
+  {t:"Human Question",d:"The private question only you seem to be carrying — the one that keeps returning in different clothes.",ex:"\u201CWhy does this always happen to me?\u201D"},
+  {t:"Recognition",d:"The moment you notice this isn't new. Someone has lived this exact pattern before you.",ex:"The story hasn't changed. You have."},
+  {t:"Mythic Story",d:"The mythological figure who already lived this pattern — in full, with everything it cost them.",ex:"Karna. Eklavya. Draupadi."},
+  {t:"Mythic Reframing",d:"Not changing what happened. Changing how it is understood.",ex:"\u201CMaybe I'm living an ancient pattern.\u201D"},
+  {t:"Agency",d:"If this pattern has appeared before, what no longer has to remain inevitable?",ex:"What becomes possible now?"},
+  {t:"Hope",d:"Not certainty. Not optimism. Just this — your next response has never existed before.",ex:"A better question than the one you arrived with."}
 ];
 let fwRevealed=1,fwActive=0,fwPlaying=false,fwBuilt=false,fwPlayTimer=null;
+const fwRecognitionChars=["Eklavya","Karna","Draupadi"];
+let fwCapturedQuestion='';
 
 function fwPolarToPct(i,n){
   const angle=(-90+i*(360/n))*Math.PI/180,r=38;
@@ -4112,6 +4302,9 @@ function fwUpdateVisuals(){
   }
 }
 
+// Positions the detail chip opposite the active node, then nudges it further
+// out if it would still overlap any other revealed node — so a chip can never
+// sit on top of the constellation. (Fix for item 2 — chip/node overlap.)
 function fwPositionDetail(i){
   const detail=document.getElementById('fwDetail'),machine=document.getElementById('fwMachine');
   if(window.innerWidth<=760){detail.style.left='';detail.style.top='';return;}
@@ -4121,6 +4314,17 @@ function fwPositionDetail(i){
   let left=goRight?nx+80:nx-350,top=goDown?ny+40:ny-160;
   left=Math.max(-10,Math.min(rect.width-260,left));
   top=Math.max(-10,Math.min(rect.height-140,top));
+  const chipRect={left,top,right:left+280,bottom:top+230};
+  let pushed=false;
+  document.querySelectorAll('.fw-node.revealed').forEach(n=>{
+    const nr=n.getBoundingClientRect();
+    const nl=nr.left-rect.left,nt=nr.top-rect.top,nrr=nl+nr.width,nb=nt+nr.height;
+    const overlap=!(chipRect.right<nl||chipRect.left>nrr||chipRect.bottom<nt||chipRect.top>nb);
+    if(overlap)pushed=true;
+  });
+  if(pushed){
+    top=top<rect.height/2?Math.max(-10,top-100):Math.min(rect.height-140,top+100);
+  }
   detail.style.left=left+'px';
   detail.style.top=top+'px';
 }
@@ -4136,6 +4340,16 @@ function fwShowDetail(i){
   const hint=document.getElementById('fwHint');
   if(i<fwSteps.length-1)hint.textContent=i===fwRevealed-1?`Click "${s.t}" again to unlock the next movement.`:'Click a revealed node to revisit it.';
   else hint.textContent='The framework is complete.';
+}
+
+// Chips are always dismissible — closing never breaks the machine underneath.
+function fwCloseDetail(e){
+  if(e)e.stopPropagation();
+  document.getElementById('fwDetail').classList.remove('show');
+  fwActive=-1;
+  fwUpdateVisuals();
+  const hint=document.getElementById('fwHint');
+  if(hint)hint.textContent='Click any revealed node to open it again.';
 }
 
 function fwClickNode(i){
@@ -4159,37 +4373,160 @@ function fwAssemble(){
   setTimeout(()=>ending.scrollIntoView({behavior:'smooth',block:'start'}),900);
 }
 
+// ── Cinematic curtain: plays the Act I / II / III script as a sequence of
+// slow, spacious text beats over the (still-visible) constellation. ──
+let fwCurtainCancel=null,fwCurtainTimer=null;
+function fwPlayBeats(beats,cb){
+  const curtain=document.getElementById('fwCurtain'),inner=document.getElementById('fwCurtainInner');
+  curtain.classList.add('show');
+  inner.innerHTML='';
+  let idx=0,cancelled=false;
+  fwCurtainCancel=()=>{cancelled=true;clearTimeout(fwCurtainTimer);curtain.classList.remove('show');cb&&cb();};
+  function nextBeat(){
+    if(cancelled)return;
+    if(idx>=beats.length){curtain.classList.remove('show');fwCurtainTimer=setTimeout(()=>{cb&&cb()},500);return;}
+    const b=beats[idx++];
+    if(b.clear!==false)inner.innerHTML='';
+    if(b.text){
+      const p=document.createElement('p');
+      p.className='fw-curtain-line'+(b.cls?(' '+b.cls):'');
+      p.textContent=b.text;
+      inner.appendChild(p);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>p.classList.add('show')));
+    }
+    fwCurtainTimer=setTimeout(nextBeat,b.hold||1800);
+  }
+  nextBeat();
+}
+function fwSkipCurtain(){if(fwCurtainCancel)fwCurtainCancel();return false;}
+
+const fwActI=[
+  {text:"Think of something in your life that keeps returning.",hold:3200},
+  {text:"…",cls:"dim",hold:1500},
+  {text:"Don't answer.",hold:1800},
+  {text:"Just notice what came into your mind.",hold:2800},
+  {text:"Have you ever caught yourself saying…",hold:2200},
+  {text:"\u201CWhy does this always happen to me?\u201D",cls:"big gold",hold:3200},
+  {text:"Different people. Different places. Different years.",hold:2600},
+  {text:"Yet somehow… the feeling returns.",hold:2600},
+  {text:"Why?",cls:"big",hold:2800}
+];
+const fwActIIIntro=[
+  {text:"Imagine…",hold:1600},
+  {text:"someone lived this exact pattern thousands of years ago.",hold:2800},
+  {text:"Some experiences disappear. Others survive.",hold:2400},
+  {text:"Not because they happened. Because they keep happening.",hold:2800},
+  {text:"What if… stories were never preserving history?",hold:2600},
+  {text:"What if… they were preserving human patterns?",hold:2800},
+  {text:"Waiting until someone needed to see them again.",hold:3200}
+];
+const fwReframingBeats=[
+  {text:"Why me?",hold:1600},
+  {text:"↓",cls:"dim",hold:900},
+  {text:"Maybe… this question isn't mine alone.",cls:"gold",hold:2600},
+  {text:"I'm unlucky.",hold:1600},
+  {text:"↓",cls:"dim",hold:900},
+  {text:"Maybe… I'm living an ancient pattern.",cls:"gold",hold:2600},
+  {text:"I'm broken.",hold:1600},
+  {text:"↓",cls:"dim",hold:900},
+  {text:"Maybe… I've entered an old story.",cls:"gold",hold:2600},
+  {text:"Mythic Reframing",cls:"big gold",hold:2200},
+  {text:"Not changing what happened. Changing how it is understood.",cls:"dim",hold:2800}
+];
+const fwAgencyBeats=[
+  {text:"If this pattern has appeared before…",hold:2400},
+  {text:"what no longer has to remain inevitable?",cls:"gold",hold:3000},
+  {text:"What becomes possible now…",hold:2200},
+  {text:"that wasn't possible a moment ago?",cls:"gold",hold:3000}
+];
+const fwHopeBeats=[
+  {text:"Hope isn't certainty.",hold:2000},
+  {text:"Hope isn't optimism.",hold:2000},
+  {text:"Hope is quieter.",hold:2400},
+  {text:"The pattern may be ancient…",hold:2400},
+  {text:"But your next response has never existed before.",cls:"gold",hold:3400}
+];
+
+function fwRevealNode(i,cb){
+  fwRevealed=Math.max(fwRevealed,i+1);
+  fwActive=i;
+  fwShowDetail(i);
+  fwUpdateVisuals();
+  fwCurtainTimer=setTimeout(()=>{cb&&cb()},2600);
+}
+
+function fwShowQuestionCapture(){
+  const curtain=document.getElementById('fwCurtain'),inner=document.getElementById('fwCurtainInner');
+  curtain.classList.add('show');
+  inner.innerHTML=`<p class="fw-curtain-line big show">What question has been quietly shaping your life?</p>
+    <div class="fw-q-capture">
+      <textarea id="fwQInput" rows="2" placeholder="Write your question..."></textarea>
+      <button class="fw-btn-primary" onclick="return fwSubmitQuestion()" style="margin-top:1.4rem">Continue</button>
+    </div>`;
+}
+function fwSubmitQuestion(){
+  fwCapturedQuestion=(document.getElementById('fwQInput')||{}).value?.trim()||'';
+  const inner=document.getElementById('fwCurtainInner');
+  inner.innerHTML=`<p class="fw-curtain-line show">Would you like us to let you know when this question becomes part of the Human Questions collection?</p>
+    <div class="fw-q-capture">
+      <input type="email" id="fwQEmail" placeholder="Email address (optional)"/>
+      <button class="fw-btn-primary" onclick="return fwFinishExperience()" style="margin-top:1.2rem">Submit</button>
+    </div>`;
+  return false;
+}
+function fwFinishExperience(){
+  document.getElementById('fwCurtain').classList.remove('show');
+  fwPlaying=false;
+  const btn=document.getElementById('fwExperienceBtn');
+  btn.classList.remove('fw-playing');btn.textContent='Experience The Framework';
+  fwAssemble();
+  return false;
+}
+
 function fwStartExperience(){
   if(fwPlaying)return false;
   fwReset();
   fwPlaying=true;
-  document.getElementById('fwExperienceBtn').classList.add('fw-playing');
-  document.getElementById('fwExperienceBtn').textContent='Playing…';
-  document.getElementById('fwHint').textContent='Sit back — the framework is guiding you through itself.';
-  let i=0;
-  const step=()=>{
-    fwRevealed=Math.max(fwRevealed,i+1);
-    fwActive=i;
-    fwShowDetail(i);
-    fwUpdateVisuals();
-    i++;
-    if(i<fwSteps.length){
-      fwPlayTimer=setTimeout(step,2500);
-    } else {
-      fwPlayTimer=setTimeout(()=>{
-        fwAssemble();
-        fwPlaying=false;
-        document.getElementById('fwExperienceBtn').classList.remove('fw-playing');
-        document.getElementById('fwExperienceBtn').textContent='Experience The Framework';
-      },2200);
-    }
-  };
-  setTimeout(step,400);
+  const btn=document.getElementById('fwExperienceBtn');
+  btn.classList.add('fw-playing');btn.textContent='Playing…';
+  document.getElementById('fwHint').textContent='Sit back — give this a few quiet minutes.';
+  const charName=fwRecognitionChars[Math.floor(Math.random()*fwRecognitionChars.length)];
+  fwPlayBeats(fwActI,()=>{
+    fwRevealNode(0,()=>{ // Human Question
+      const climax=fwActIIIntro.concat([
+        {text:charName,cls:"big gold",hold:3000},
+        {text:"",hold:3000},
+        {text:"This…",cls:"big",hold:1400},
+        {text:"is Recognition.",cls:"big gold",hold:3000},
+        {text:"",hold:1000},
+        {text:"The story hasn't changed.",cls:"big",hold:2200},
+        {text:"You have.",cls:"big gold",hold:3400}
+      ]);
+      fwPlayBeats(climax,()=>{
+        fwRevealNode(1,()=>{ // Recognition
+          fwRevealNode(2,()=>{ // Mythic Story
+            fwPlayBeats(fwReframingBeats,()=>{
+              fwRevealNode(3,()=>{ // Mythic Reframing
+                fwPlayBeats(fwAgencyBeats,()=>{
+                  fwRevealNode(4,()=>{ // Agency
+                    fwPlayBeats(fwHopeBeats,()=>{
+                      fwRevealNode(5,fwShowQuestionCapture); // Hope
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
   return false;
 }
 
 function fwReset(){
-  clearTimeout(fwPlayTimer);
+  clearTimeout(fwPlayTimer);clearTimeout(fwCurtainTimer);
+  fwCurtainCancel=null;
   fwPlaying=false;
   fwRevealed=1;fwActive=0;
   document.getElementById('fwExperienceBtn').classList.remove('fw-playing');
@@ -4198,7 +4535,8 @@ function fwReset(){
   document.getElementById('fwMachine').classList.remove('assembled');
   const loop=document.getElementById('fwLoop');if(loop)loop.classList.remove('on');
   document.getElementById('fwEnding').classList.remove('on');
-  document.getElementById('fwHint').textContent='Click "Recognition" to begin.';
+  document.getElementById('fwHint').textContent='Click "Human Question" to begin — or press Experience The Framework and let it guide you.';
+  const curtain=document.getElementById('fwCurtain');if(curtain)curtain.classList.remove('show');
   fwUpdateVisuals();
   return false;
 }
@@ -4344,9 +4682,14 @@ function atlMapClick(name){
     return;
   }
   atlActiveChar=name;
+  const connectedNames=new Set([name]);
+  atlasEdges.forEach(e=>{
+    if(e[0]===name)connectedNames.add(e[1]);
+    if(e[1]===name)connectedNames.add(e[0]);
+  });
   document.querySelectorAll('.atl-map-node').forEach(n=>{
     const nm=n.dataset.name;
-    const connected=nm===name||atlasEdges.some(e=>(e[0]===name&&e[1]===nm)||(e[1]===name&&e[0]===nm));
+    const connected=connectedNames.has(nm);
     n.classList.toggle('active',nm===name);
     n.classList.toggle('dim',!connected);
   });
@@ -4355,12 +4698,28 @@ function atlMapClick(name){
     e.classList.toggle('hi',touch);
     e.classList.toggle('dim',!touch);
   });
-  const pos=atlNodePositions()[name];
-  const svg=document.getElementById('atlMapSvg');
-  if(pos&&svg){
-    const dx=(450-pos.x)*.35,dy=(450-pos.y)*.35;
-    svg.style.transform=`scale(1.22) translate(${dx*0.6}px,${dy*0.6}px)`;
-  }
+  atlFitToConnected(connectedNames);
+}
+
+// Computes a scale + translate that keeps the selected node AND every first-level
+// connected node inside the visible frame — instead of zooming blindly toward a
+// single point (which used to push connections off-screen).
+function atlFitToConnected(connectedNames){
+  const pos=atlNodePositions();
+  const pts=[...connectedNames].map(n=>pos[n]).filter(Boolean);
+  const svg=document.getElementById('atlMapSvg'),inner=document.getElementById('atlMapInner');
+  if(!pts.length||!svg||!inner)return;
+  const view=900,pad=110;
+  const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
+  let minX=Math.min(...xs)-pad,maxX=Math.max(...xs)+pad;
+  let minY=Math.min(...ys)-pad,maxY=Math.max(...ys)+pad;
+  const w=Math.max(maxX-minX,260),h=Math.max(maxY-minY,260);
+  let scale=Math.min(view/w,view/h);
+  scale=Math.max(1,Math.min(scale,1.7)); // never shrink below 1x; cap zoom so labels stay legible
+  const cx=(minX+maxX)/2,cy=(minY+maxY)/2;
+  const ratio=inner.clientWidth/view; // px-per-user-unit at the (untransformed) base size
+  const tx=(view/2-cx)*ratio,ty=(view/2-cy)*ratio;
+  svg.style.transform=`scale(${scale}) translate(${tx}px,${ty}px)`;
 }
 
 function openAtlasProfile(name){
@@ -4589,6 +4948,26 @@ function renderAskFaq(){
     <div class="ask-faq-a"><p>${f.a}</p></div>
   </div>`).join('');
 }
+const askCategories=["Relationships","Career","Leadership","Purpose","Identity","Parenting","Marriage","Grief","Failure","Success","Friendship","Family","Love","Mental Conflict","Mythology","Other"];
+let askSelectedCats=[];
+function renderAskCatChips(){
+  const el=document.getElementById('askCatChips');if(!el||el.dataset.built)return;el.dataset.built='1';
+  el.innerHTML=askCategories.map(c=>`<div class="ask-cat-chip" data-c="${c}" onclick="askToggleCat('${c}')">${c}</div>`).join('');
+}
+function askToggleCat(c){
+  const i=askSelectedCats.indexOf(c);
+  if(i>-1)askSelectedCats.splice(i,1);else askSelectedCats.push(c);
+  document.querySelectorAll('#askCatChips .ask-cat-chip').forEach(ch=>ch.classList.toggle('sel',askSelectedCats.includes(ch.dataset.c)));
+  document.getElementById('askCategory').value=askSelectedCats.join(', ');
+  const hint=document.getElementById('askCatHint');
+  hint.textContent=askSelectedCats.length?askSelectedCats.length+' selected':'Choose one or more themes.';
+}
+function askResetCats(){
+  askSelectedCats=[];
+  document.querySelectorAll('#askCatChips .ask-cat-chip').forEach(ch=>ch.classList.remove('sel'));
+  document.getElementById('askCategory').value='';
+  document.getElementById('askCatHint').textContent='Choose one or more themes.';
+}
 function askWordCount(){
   const el=document.getElementById('askMain');if(!el)return;
   const words=el.value.trim().split(/\s+/).filter(Boolean).length;
@@ -4599,6 +4978,12 @@ function askWordCount(){
 let askSubmissions=[];
 function askSubmit(e){
   e.preventDefault();
+  if(!askSelectedCats.length){
+    document.getElementById('askCatHint').textContent='Please select at least one category.';
+    document.getElementById('askCatHint').style.color='#C2765A';
+    document.getElementById('askCatChips').scrollIntoView({behavior:'smooth',block:'center'});
+    return false;
+  }
   const f=document.getElementById('askFormEl');
   const record={
     name:f.name.value.trim()||null,
@@ -4630,12 +5015,14 @@ function askSubmit(e){
 function askReset(){
   const f=document.getElementById('askFormEl');
   f.reset();f.style.display='';
+  askResetCats();
   document.getElementById('askConfirm').classList.remove('show');
   askWordCount();
   document.getElementById('askForm').scrollIntoView({behavior:'smooth'});
 }
 function askInit(){
   renderAskFaq();
+  renderAskCatChips();
   const mainEl=document.getElementById('askMain');
   if(mainEl&&!mainEl.dataset.wired){mainEl.dataset.wired='1';mainEl.addEventListener('input',askWordCount)}
   ['askParticles','askCtaParticles'].forEach(id=>{
