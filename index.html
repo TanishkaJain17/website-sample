@@ -46,7 +46,7 @@ img{display:block;max-width:100%}
 .loader-ring-svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
 .loader-ring-track{fill:none;stroke:rgba(194,160,90,.16);stroke-width:1}
 .loader-ring-progress{fill:none;stroke:#C2A05A;stroke-width:1.3;stroke-linecap:round;stroke-dasharray:880;stroke-dashoffset:880;filter:drop-shadow(0 0 6px rgba(194,160,90,.5))}
-.loader-ring-progress.animate{animation:loaderRing 3s linear forwards}
+.loader-ring-progress.animate{animation:loaderRing 6s linear forwards}
 @keyframes loaderRing{to{stroke-dashoffset:0}}
 .loader-ring-content{position:relative;z-index:2;text-align:center;padding:0 2.6rem;max-width:280px}
 .loader-quote{font-family:var(--serif);color:#F5F0E8;font-size:clamp(.8rem,1.6vw,.98rem);font-style:italic;text-align:center;line-height:1.75;opacity:0;animation:fadeUp 1s .5s forwards}
@@ -207,9 +207,8 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 
 /* BOOK STRIP */
 .h-book-strip{display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:center;background:#080808;padding:5rem 5vw;border-top:1px solid rgba(194,160,90,.08)}
-.h-book-cover{width:238px;height:335px;flex-shrink:0;background:url('ahalya-cover.jpg') center/cover;box-shadow:20px 20px 60px rgba(0,0,0,.85),-5px 0 0 rgba(0,0,0,.6),0 0 40px rgba(194,160,90,.08);border-radius:0 4px 4px 0;animation:bookFloat 4s ease-in-out infinite;transition:box-shadow .5s}
-@keyframes bookFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.h-book-cover:hover{box-shadow:28px 28px 70px rgba(0,0,0,.9),-5px 0 0 rgba(0,0,0,.65),0 0 50px rgba(194,160,90,.18);animation-play-state:paused}
+.h-book-cover{width:262px;height:369px;flex-shrink:0;background:url('ahalya-cover.jpg') center/cover;box-shadow:20px 20px 60px rgba(0,0,0,.85),-5px 0 0 rgba(0,0,0,.6),0 0 40px rgba(194,160,90,.08);border-radius:0 4px 4px 0;transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+.h-book-cover:hover{box-shadow:28px 28px 70px rgba(0,0,0,.9),-5px 0 0 rgba(0,0,0,.65),0 0 50px rgba(194,160,90,.18);transform:scale(1.015)}
 .h-book-text p{font-family:var(--sans);color:rgba(245,240,232,.38);line-height:1.9;font-size:.85rem;margin:1.2rem 0 1.8rem;font-weight:300}
 
 /* PRESS */
@@ -428,6 +427,11 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .char-themes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
 .char-theme-tag{padding:.4rem 1rem;border:1px solid rgba(194,160,90,.22);font-family:var(--sans);font-size:.58rem;letter-spacing:.1em;color:rgba(194,160,90,.65);text-transform:uppercase}
 .char-related-arts{padding:3rem 5vw;background:#080808}
+.char-atlas-cta{padding:4.5rem 5vw;background:radial-gradient(ellipse at 50% 30%,#171310 0%,#0a0908 70%);text-align:center;border-top:1px solid rgba(194,160,90,.1)}
+.cac-kicker{font-family:var(--sans);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-bottom:.9rem}
+.cac-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;color:#F5F0E8;margin-bottom:1.1rem}
+.cac-title em{font-style:italic;color:#C2A05A}
+.cac-text{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.45);line-height:1.9;max-width:560px;margin:0 auto 1.8rem}
 
 /* THEME PAGE (Browse by Theme -> dedicated pages) */
 #theme-page{background:#1A1E35}
@@ -731,6 +735,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .am-label::before{content:'';width:16px;height:1px;background:rgba(240,240,240,.35)}
 .am-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#F0F0F0;line-height:1.05}
 .am-sub{font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.85;max-width:520px;margin-top:1rem;font-weight:300}
+.am-sub.am-quote{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(245,240,232,.6);max-width:640px}
 .am-back{margin-top:2rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A;background:none;border:1px solid rgba(194,160,90,.4);padding:.7rem 1.3rem;cursor:pointer;transition:all .3s}
 .am-back:hover{background:rgba(194,160,90,.08);border-color:#C2A05A}
 .am-list{max-width:920px;margin:0 auto;padding:4rem 5vw 6rem}
@@ -1125,7 +1130,8 @@ select.f-inp option{background:#0B1629}
 .fw-curtain-line.dim{color:rgba(245,240,232,.3);font-size:.85rem;letter-spacing:.06em}
 .fw-curtain-skip{position:absolute;bottom:1.6rem;right:1.8rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.32);background:none;border:none;cursor:pointer;transition:color .3s}
 .fw-curtain-skip:hover{color:var(--gold)}
-.fw-q-capture{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:1.6rem}
+.fw-q-capture{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:1.6rem;opacity:0;transform:translateY(10px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.fw-q-capture.show{opacity:1;transform:translateY(0)}
 .fw-q-capture textarea,.fw-q-capture input{width:100%;max-width:440px;background:rgba(255,255,255,.03);border:1px solid rgba(194,160,90,.3);color:var(--parch);font-family:var(--serif);font-style:italic;font-size:1rem;padding:.9rem 1.1rem;resize:none;transition:border-color .3s}
 .fw-q-capture textarea:focus,.fw-q-capture input:focus{outline:none;border-color:var(--gold)}
 @media(max-width:760px){.fw-curtain{inset:-3vh -3vw;border-radius:16px}}
@@ -1241,8 +1247,25 @@ select.f-inp option{background:#0B1629}
 .atl-map-node.active text{fill:#0D0D0D;font-weight:700}
 .atl-map-node.dim text{opacity:.25}
 .atl-map-node{cursor:pointer}
-.atl-map-legend{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:center;margin-top:2rem}
-.atl-map-legend span{font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,.4);display:flex;align-items:center;gap:.6rem}
+.atl-map-legend{display:flex;flex-wrap:wrap;gap:.7rem 1.7rem;justify-content:center;margin-top:1rem;background:rgba(255,255,255,.02);border:1px solid rgba(194,160,90,.12);padding:1.2rem 1.6rem}
+.atl-map-legend span{font-family:var(--sans);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,240,232,.6);display:flex;align-items:center;gap:.7rem}
+.atl-legend-label{text-align:center;font-family:var(--sans);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(194,160,90,.55);margin-top:2.2rem;margin-bottom:0}
+.atl-map-toolbar{display:flex;justify-content:flex-end;margin-bottom:.9rem}
+.atl-reset-btn{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#C2A05A;background:rgba(194,160,90,.05);border:1px solid rgba(194,160,90,.35);padding:.6rem 1.2rem;cursor:pointer;transition:all .3s}
+.atl-reset-btn:hover{background:rgba(194,160,90,.12);border-color:var(--gold)}
+
+/* Weekly featured character */
+.atl-weekly-feat{max-width:900px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:2.8rem;align-items:center;background:linear-gradient(165deg,#141210,#0b0a08);border:1px solid rgba(194,160,90,.2);padding:2.6rem}
+.atl-weekly-portrait{width:220px;height:220px;border-radius:50%;border:1px solid rgba(194,160,90,.4);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:3.2rem;color:var(--gold);background:rgba(194,160,90,.06);margin:0 auto}
+.atl-weekly-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:#C2A05A;margin-bottom:.6rem}
+.atl-weekly-name{font-family:var(--serif);font-size:2.2rem;color:var(--parch);font-weight:400;margin-bottom:.6rem}
+.atl-weekly-desc{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.85;margin-bottom:1.5rem;max-width:520px}
+.atl-see-other-wrap{text-align:center;margin:2.4rem 0 1.4rem}
+.atl-see-other-btn{font-family:var(--sans);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.6);background:none;border:1px solid rgba(245,240,232,.22);padding:.85rem 1.8rem;cursor:pointer;transition:all .3s}
+.atl-see-other-btn:hover{color:var(--gold);border-color:rgba(194,160,90,.5)}
+.atl-all-chars{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s var(--ease),opacity .5s var(--ease);margin-top:0}
+.atl-all-chars.open{max-height:4000px;opacity:1;margin-top:1rem}
+@media(max-width:640px){.atl-weekly-feat{grid-template-columns:1fr;text-align:center}.atl-weekly-portrait{width:150px;height:150px;font-size:2.2rem}.atl-weekly-desc{margin-left:auto;margin-right:auto}}
 
 /* ── PROFILE PANEL ── */
 .atl-panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(3px);z-index:2000;display:none;opacity:0;transition:opacity .4s var(--ease)}
@@ -1507,7 +1530,7 @@ select.f-inp option{background:#0B1629}
         <div class="loader-line"></div>
         <p class="loader-name">— Sundeep Verma · Mythologist · Author · Storyteller</p>
         <p class="loader-countdown-label">Entering your journey</p>
-        <p class="loader-countdown-num" id="loaderCountdownNum">03</p>
+        <p class="loader-countdown-num" id="loaderCountdownNum">06</p>
       </div>
     </div>
     <button class="loader-btn" id="loaderBtn" onclick="window._exitLoader&&window._exitLoader()">Begin Your Journey →</button>
@@ -1521,9 +1544,9 @@ select.f-inp option{background:#0B1629}
 </div>
 
 <div id="motw">
-  <span class="motw-label">Myth of the Week</span>
-  <span class="motw-text">This week: <em>The Churning of the Ocean</em> — What rises when you are tested to your core?</span>
-  <a href="#" class="motw-link" onclick="return go('lab')">Explore →</a>
+  <span class="motw-label" id="motwLabel">Myth of the Week</span>
+  <span class="motw-text" id="motwText">This week: <em>The Churning of the Ocean</em> — What rises when you are tested to your core?</span>
+  <a href="#" class="motw-link" id="motwLink" onclick="return go('lab')">Explore →</a>
 </div>
 
 <nav id="navbar">
@@ -1832,11 +1855,15 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- FEATURED CHARACTERS -->
+  <!-- FEATURED CHARACTER OF THE WEEK -->
   <section class="atl-sec">
-    <p class="atl-kicker reveal">Featured</p>
-    <h2 class="atl-sec-title reveal">Meet the <em>Characters</em></h2>
-    <div class="atl-card-grid" id="atlFeaturedGrid"></div>
+    <p class="atl-kicker reveal">Featured This Week</p>
+    <h2 class="atl-sec-title reveal">Character of the <em>Week</em></h2>
+    <div class="atl-weekly-feat" id="atlWeeklyFeatured"></div>
+    <div class="atl-see-other-wrap">
+      <button class="atl-see-other-btn" onclick="return atlToggleAllChars()" id="atlSeeOtherBtn">See Other Characters</button>
+    </div>
+    <div class="atl-card-grid atl-all-chars" id="atlFeaturedGrid"></div>
   </section>
 
   <!-- INTERACTIVE MAP -->
@@ -1845,9 +1872,13 @@ select.f-inp option{background:#0B1629}
     <h2 class="atl-sec-title reveal">The <em>Mythology Map</em></h2>
     <p class="atl-sec-sub reveal">Click a name to wake its constellation of connections. Click it again to step inside their full story.</p>
     <div class="atl-map-wrap reveal">
+      <div class="atl-map-toolbar">
+        <button class="atl-reset-btn" onclick="return resetAtlasMap()" id="atlResetBtn">↺ Reset Atlas</button>
+      </div>
       <div class="atl-map-inner" id="atlMapInner">
         <svg viewBox="0 0 900 900" id="atlMapSvg" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
+      <p class="atl-legend-label">Relationship Key</p>
       <div class="atl-map-legend" id="atlMapLegend"></div>
     </div>
   </section>
@@ -2038,8 +2069,8 @@ select.f-inp option{background:#0B1629}
         <input type="text" id="askTitle" name="questionTitle" required placeholder="Why do I always compare myself with others?"/>
       </div>
       <div class="ask-field">
-        <label for="askMain">Additional Information</label>
-        <textarea id="askMain" name="fullQuestion" required minlength="20" maxlength="7000" rows="7" placeholder="What question has been quietly following you? (roughly 500–1000 words is welcome, but even two sentences are enough)"></textarea>
+        <label for="askMain">Additional Information <span>— optional</span></label>
+        <textarea id="askMain" name="fullQuestion" maxlength="7000" rows="7" placeholder="Add any extra context, if you'd like. (Not required — even a short question above is enough.)"></textarea>
         <div class="ask-count" id="askCount">0 words</div>
       </div>
 
@@ -2194,24 +2225,24 @@ select.f-inp option{background:#0B1629}
           <div class="wei-line"></div>
           <span class="wei-tag">Mythology · Psychology · Modern Life</span>
         </div>
-        <a href="#" class="btn-read-more">Read More →</a>
+        <a href="#" class="btn-read-more" onclick="return go('writings')">Read More →</a>
       </div>
     </div>
 
     <div class="h-cards">
-      <div class="h-card reveal">
+      <div class="h-card reveal" onclick="return openArticle('why-myth-still-breathes-inside-modern-life')" style="cursor:pointer">
         <p class="h-card-tag">Identity · Psychology</p>
         <h3 class="h-card-title">Why Myth Still Breathes Inside Modern Life</h3>
         <p class="h-card-ex">Ancient stories keep shaping desire, identity, belonging, and the roles we perform every day — without our knowing.</p>
         <div class="h-card-footer"><span class="h-card-date">April 2025</span><span class="h-card-arrow">↗</span></div>
       </div>
-      <div class="h-card reveal">
+      <div class="h-card reveal" onclick="return openArticle('ahalya-and-the-cost-of-unheard-desire')" style="cursor:pointer">
         <p class="h-card-tag">Mythology · Feminine</p>
         <h3 class="h-card-title">Ahalya and the Cost of Unheard Desire</h3>
         <p class="h-card-ex">A closer look at longing, silence, and agency through one of mythology's most layered and misunderstood feminine figures.</p>
         <div class="h-card-footer"><span class="h-card-date">March 2025</span><span class="h-card-arrow">↗</span></div>
       </div>
-      <div class="h-card reveal">
+      <div class="h-card reveal" onclick="return openArticle('how-stories-teach-us-to-name-our-shadows')" style="cursor:pointer">
         <p class="h-card-tag">Shadow · Reflection</p>
         <h3 class="h-card-title">How Stories Teach Us to Name Our Shadows</h3>
         <p class="h-card-ex">Mythic characters often carry the fears and contradictions we struggle to admit — making them powerful tools for reflection.</p>
@@ -2609,6 +2640,12 @@ select.f-inp option{background:#0B1629}
     <h2 class="h-title" style="margin-bottom:2rem">Explore <em>connected articles</em></h2>
     <div class="art-grid" id="charRelatedArts"></div>
   </div>
+  <div class="char-atlas-cta">
+    <p class="cac-kicker">The Living Universe</p>
+    <h2 class="cac-title">Continue in <em>Character Atlas</em></h2>
+    <p class="cac-text" id="charAtlasCtaText">See how this character connects — through family, rivalry, mentorship and shared story — to everyone else in the mythological universe.</p>
+    <button class="btn-gold" id="charAtlasCtaBtn" onclick="return openCharInAtlas()">Explore Character Atlas →</button>
+  </div>
   <footer>
     <div class="footer-grid">
       <div class="f-brand">
@@ -2924,7 +2961,16 @@ select.f-inp option{background:#0B1629}
         <span class="bk-coming-badge">Coming Soon</span>
         <h3 style="font-family:var(--serif);font-size:1.9rem;font-weight:400;color:#2A1F14;margin-bottom:.8rem">The Inner <em style="font-style:italic;color:#9C6B3F">Epic</em></h3>
         <p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.55);line-height:1.9;font-weight:300;max-width:520px;margin-bottom:1.5rem">A new exploration of the psychological architecture hidden inside India's great epics — mapping the Mahabharata and Ramayana onto the inner battles every person quietly fights. Sundeep's most personal book yet.</p>
-        <a href="#" class="btn-gold" onclick="return go('contact')">Notify Me</a>
+        <a href="#" class="btn-gold" id="notifyBtn-inner-epic" onclick="return notifyMe('inner-epic')">Notify Me</a>
+      </div>
+    </div>
+    <div class="bk-upcoming-card" style="margin-top:3.5rem">
+      <div class="bk-upcoming-cover"><span>Calendar of Love</span></div>
+      <div>
+        <span class="bk-coming-badge">Coming Soon</span>
+        <h3 style="font-family:var(--serif);font-size:1.9rem;font-weight:400;color:#2A1F14;margin-bottom:.8rem">Calendar of <em style="font-style:italic;color:#9C6B3F">Love</em></h3>
+        <p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.55);line-height:1.9;font-weight:300;max-width:520px;margin-bottom:1.5rem">A year of mythology retold through the seasons of love — devotion, longing, betrayal, reunion — one story for every month, drawn from the epics' most enduring romances.</p>
+        <a href="#" class="btn-gold" id="notifyBtn-calendar-of-love" onclick="return notifyMe('calendar-of-love')">Notify Me</a>
       </div>
     </div>
   </section>
@@ -2968,7 +3014,7 @@ select.f-inp option{background:#0B1629}
     <p class="med-sub">Press coverage, interviews, podcast appearances, and writing from Sundeep Verma's public intellectual life.</p>
   </section>
   <div class="med-tabs">
-    <div class="med-tab act" onclick="return go('articles')">Articles</div>
+    <div class="med-tab act" onclick="return go('writings')">Writings</div>
     <div class="med-tab" onclick="switchTab(this,'press')">Press</div>
     <div class="med-tab" onclick="switchTab(this,'interviews')">Interviews</div>
     <div class="med-tab" onclick="switchTab(this,'podcasts')">Podcasts</div>
@@ -3038,11 +3084,11 @@ select.f-inp option{background:#0B1629}
 </div>
 
 <!-- ════ MASTER ARTICLES ARCHIVE ════ -->
-<div class="page" id="articles-page">
+<div class="page" id="writings-page">
   <section class="am-hero">
     <p class="am-label">Media & Press</p>
-    <h1 class="am-title">Articles</h1>
-    <p class="am-sub">Every article, essay and feature — in one place. Click a card anywhere on the site and it will bring you straight here.</p>
+    <h1 class="am-title">Writings</h1>
+    <p class="am-sub am-quote">“A living body of work exploring mythology, human questions and the patterns that shape our lives.”</p>
     <button class="am-back" onclick="return go('media')">← Back to Media & Press</button>
   </section>
   <div class="am-list" id="articlesMasterList"></div>
@@ -3499,6 +3545,17 @@ const articlesD=[
 
 // ═══════ MASTER ARTICLES PAGE (single archive — item 4) ═══════
 function slugify(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
+// Placeholder "Notify Me" handler for upcoming books — swaps the button for a
+// brief success message. Wire this to a real mailing-list endpoint later.
+function notifyMe(bookId){
+  const btn=document.getElementById('notifyBtn-'+bookId);
+  if(!btn||btn.dataset.done)return false;
+  btn.dataset.done='1';
+  btn.textContent='✓ We\'ll let you know';
+  btn.style.pointerEvents='none';
+  btn.style.opacity='.75';
+  return false;
+}
 function articleFull(ex,title){
   return [
     ex,
@@ -3506,15 +3563,21 @@ function articleFull(ex,title){
     `As with all of Sundeep's writing, the intention isn't to retell a story you already know — it's to notice what the story has been quietly pointing at all along, and to see where it still shows up in the life you're living now.`
   ];
 }
+const homeFeaturedWritings=[
+  {title:"Why Myth Still Breathes Inside Modern Life",pub:"Myths By Sundeep · Substack",date:"April 2025",img:"founder-portrait.jpg",ex:"Ancient stories keep shaping desire, identity, belonging, and the roles we perform every day — without our knowing."},
+  {title:"Ahalya and the Cost of Unheard Desire",pub:"Myths By Sundeep · Substack",date:"March 2025",img:"founder-portrait.jpg",ex:"A closer look at longing, silence, and agency through one of mythology's most layered and misunderstood feminine figures."},
+  {title:"How Stories Teach Us to Name Our Shadows",pub:"Myths By Sundeep · Substack",date:"February 2025",img:"founder-portrait.jpg",ex:"Mythic characters often carry the fears and contradictions we struggle to admit — making them powerful tools for reflection."}
+];
 const articlesMaster=(function(){
+  const fromHome=homeFeaturedWritings.map(a=>({id:slugify(a.title),title:a.title,pub:a.pub,date:a.date,img:a.img,ex:a.ex,full:articleFull(a.ex,a.title)}));
   const fromArts=arts.map(a=>({id:slugify(a.title),title:a.title,pub:"Myths By Sundeep · Substack",date:a.date,img:"workshop-01.jpg",ex:a.ex,full:articleFull(a.ex,a.title)}));
   const fromMedia=articlesD.map(a=>({id:slugify(a.head),title:a.head,pub:a.pub,date:a.date||"2025",img:a.img,ex:a.ex,full:articleFull(a.ex,a.head)}));
   const seen=new Set(),out=[];
-  [...fromMedia,...fromArts].forEach(a=>{if(!seen.has(a.id)){seen.add(a.id);out.push(a)}});
+  [...fromHome,...fromMedia,...fromArts].forEach(a=>{if(!seen.has(a.id)){seen.add(a.id);out.push(a)}});
   return out;
 })();
 function openArticle(id){
-  go('articles');
+  go('writings');
   setTimeout(()=>{
     const el=document.getElementById('art-'+id);
     if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -3842,7 +3905,7 @@ const pgMap={
   program:'program-page',hqdetail:'hq-detail-page',
   theme:'theme-page',excerpt:'excerpt-page',
   innerepic:'innerepic-page',atlas:'atlas-page',ask:'ask-page',
-  framework:'framework-page',articles:'articles-page'
+  framework:'framework-page',writings:'writings-page'
 };
 const themeMeta={
   Identity:"Who are you beneath the roles you play? Stories of self, mask, and the truth underneath.",
@@ -3894,7 +3957,7 @@ function go(id){
   if(isHome){mw.classList.remove('hidden-motw');nav.classList.add('with-motw')}
   else{mw.classList.add('hidden-motw');nav.classList.remove('with-motw')}
   if(id==='media'){renderMedia('articles')}
-  if(id==='articles'){renderArticlesMaster()}
+  if(id==='writings'){renderArticlesMaster()}
   if(id==='lab'){renderArts('All');renderChars()}
   if(id==='questions')renderQs('All');
   if(id==='innerepic')setTimeout(ieInit,80);
@@ -3929,8 +3992,10 @@ function renderChars(){
   </div>`).join('');
 }
 
+let currentCharPageName=null;
 function openCharPage(name){
   const ch=chars.find(c=>c.n===name);if(!ch)return;
+  currentCharPageName=name;
   document.getElementById('charName').textContent=ch.n;
   document.getElementById('charNameInline').textContent=ch.n;
   document.getElementById('charRole').textContent=ch.r;
@@ -3939,6 +4004,8 @@ function openCharPage(name){
   document.getElementById('charOverview').textContent=ch.desc;
   document.getElementById('charSymbol').textContent=ch.sym;
   document.getElementById('charThemeText').textContent=`${ch.n} embodies ${ch.themes.join(', ')} — themes that resonate as deeply today as they did thousands of years ago.`;
+  const cacText=document.getElementById('charAtlasCtaText');
+  if(cacText)cacText.textContent=`See how ${ch.n} connects — through family, rivalry, mentorship and shared story — to everyone else in the mythological universe.`;
   const th=document.getElementById('charThemes');
   th.innerHTML=ch.themes.map(t=>`<span class="char-theme-tag">${t}</span>`).join('');
   const ra=document.getElementById('charRelatedArts');
@@ -3946,6 +4013,21 @@ function openCharPage(name){
   const toShow=related.length>0?related:arts.slice(0,3);
   ra.innerHTML=toShow.map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
   go('character');
+}
+
+// "Continue in Character Atlas" — opens the Atlas with this character's
+// constellation already selected; falls back to the plain Atlas homepage
+// if for any reason the character isn't found on the map.
+function openCharInAtlas(){
+  const name=currentCharPageName;
+  go('atlas');
+  setTimeout(()=>{
+    if(name&&atlNodePositions()[name]){
+      atlMapClick(name);
+      document.getElementById('atlMapSec')?.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  },260);
+  return false;
 }
 
 function filterByTheme(t){
@@ -4109,7 +4191,7 @@ function initReveal(){
   let exited=false,tick=null;
   const ring=document.getElementById('loaderRingProgress');
   const cd=document.getElementById('loaderCountdownNum');
-  let seconds=3;
+  let seconds=6;
   const EXIT_ANIM_MS=950; // must match #loader.exiting .loader-ring-wrap keyframe duration
 
   // Single, idempotent exit path — safe to call from the timer, the button, or twice in a row.
@@ -4376,6 +4458,7 @@ function fwAssemble(){
 // ── Cinematic curtain: plays the Act I / II / III script as a sequence of
 // slow, spacious text beats over the (still-visible) constellation. ──
 let fwCurtainCancel=null,fwCurtainTimer=null;
+const fwPaceMult=1.28; // overall pacing slowed ~28% — do not rush transitions
 function fwPlayBeats(beats,cb){
   const curtain=document.getElementById('fwCurtain'),inner=document.getElementById('fwCurtainInner');
   curtain.classList.add('show');
@@ -4384,7 +4467,7 @@ function fwPlayBeats(beats,cb){
   fwCurtainCancel=()=>{cancelled=true;clearTimeout(fwCurtainTimer);curtain.classList.remove('show');cb&&cb();};
   function nextBeat(){
     if(cancelled)return;
-    if(idx>=beats.length){curtain.classList.remove('show');fwCurtainTimer=setTimeout(()=>{cb&&cb()},500);return;}
+    if(idx>=beats.length){curtain.classList.remove('show');fwCurtainTimer=setTimeout(()=>{cb&&cb()},Math.round(500*fwPaceMult));return;}
     const b=beats[idx++];
     if(b.clear!==false)inner.innerHTML='';
     if(b.text){
@@ -4394,7 +4477,7 @@ function fwPlayBeats(beats,cb){
       inner.appendChild(p);
       requestAnimationFrame(()=>requestAnimationFrame(()=>p.classList.add('show')));
     }
-    fwCurtainTimer=setTimeout(nextBeat,b.hold||1800);
+    fwCurtainTimer=setTimeout(nextBeat,Math.round((b.hold||1800)*fwPaceMult));
   }
   nextBeat();
 }
@@ -4452,26 +4535,46 @@ function fwRevealNode(i,cb){
   fwActive=i;
   fwShowDetail(i);
   fwUpdateVisuals();
-  fwCurtainTimer=setTimeout(()=>{cb&&cb()},2600);
+  fwCurtainTimer=setTimeout(()=>{cb&&cb()},Math.round(2600*fwPaceMult));
+}
+
+// Hope is the emotional ending of the animation — nothing below it should
+// scroll into view or reveal itself yet. We hold on quiet, empty stillness
+// (chip closed, curtain hidden, nothing moving) before the question surfaces.
+function fwSilentPause(ms,cb){
+  document.getElementById('fwDetail').classList.remove('show');
+  const curtain=document.getElementById('fwCurtain');
+  curtain.classList.remove('show');
+  fwCurtainCancel=()=>{clearTimeout(fwCurtainTimer);cb&&cb();};
+  fwCurtainTimer=setTimeout(()=>{cb&&cb()},ms);
 }
 
 function fwShowQuestionCapture(){
-  const curtain=document.getElementById('fwCurtain'),inner=document.getElementById('fwCurtainInner');
-  curtain.classList.add('show');
-  inner.innerHTML=`<p class="fw-curtain-line big show">What question has been quietly shaping your life?</p>
-    <div class="fw-q-capture">
-      <textarea id="fwQInput" rows="2" placeholder="Write your question..."></textarea>
-      <button class="fw-btn-primary" onclick="return fwSubmitQuestion()" style="margin-top:1.4rem">Continue</button>
-    </div>`;
+  fwSilentPause(Math.round(3400*fwPaceMult),()=>{
+    const curtain=document.getElementById('fwCurtain'),inner=document.getElementById('fwCurtainInner');
+    curtain.classList.add('show');
+    inner.innerHTML=`<p class="fw-curtain-line big" id="fwQPrompt">What question has been quietly shaping your life?</p>
+      <div class="fw-q-capture" id="fwQCaptureBox">
+        <textarea id="fwQInput" rows="2" placeholder="Write your question..."></textarea>
+        <button class="fw-btn-primary" onclick="return fwSubmitQuestion()" style="margin-top:1.4rem">Continue</button>
+      </div>`;
+    const prompt=document.getElementById('fwQPrompt'),box=document.getElementById('fwQCaptureBox');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>prompt.classList.add('show')));
+    // The input field gracefully appears only after the question itself has had a moment to land.
+    fwCurtainTimer=setTimeout(()=>box.classList.add('show'),Math.round(1600*fwPaceMult));
+  });
 }
 function fwSubmitQuestion(){
   fwCapturedQuestion=(document.getElementById('fwQInput')||{}).value?.trim()||'';
   const inner=document.getElementById('fwCurtainInner');
-  inner.innerHTML=`<p class="fw-curtain-line show">Would you like us to let you know when this question becomes part of the Human Questions collection?</p>
-    <div class="fw-q-capture">
+  inner.innerHTML=`<p class="fw-curtain-line" id="fwEmailPrompt">Would you like us to let you know when this question becomes part of the Human Questions collection?</p>
+    <div class="fw-q-capture" id="fwEmailBox">
       <input type="email" id="fwQEmail" placeholder="Email address (optional)"/>
       <button class="fw-btn-primary" onclick="return fwFinishExperience()" style="margin-top:1.2rem">Submit</button>
     </div>`;
+  const prompt=document.getElementById('fwEmailPrompt'),box=document.getElementById('fwEmailBox');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>prompt.classList.add('show')));
+  fwCurtainTimer=setTimeout(()=>box.classList.add('show'),Math.round(900*fwPaceMult));
   return false;
 }
 function fwFinishExperience(){
@@ -4614,6 +4717,39 @@ const atlasArchetypes=[
 function atlInitials(n){return n.length>2?n.slice(0,2):n}
 function atlNameSlug(n){return n}
 
+function renderAtlWeeklyFeatured(){
+  const el=document.getElementById('atlWeeklyFeatured');if(!el)return;
+  // Rotates automatically once a week (deterministic by ISO week number) — no manual update needed,
+  // though the index math can be swapped for a manual pick later if preferred.
+  const weekNum=Math.floor(Date.now()/(7*24*60*60*1000));
+  const c=chars[weekNum%chars.length];
+  el.innerHTML=`
+    <div class="atl-weekly-portrait">${c.i}</div>
+    <div>
+      <p class="atl-weekly-label">Character of the Week</p>
+      <h3 class="atl-weekly-name">${c.n}</h3>
+      <p class="atl-weekly-desc">${c.desc}</p>
+      <button class="btn-gold" onclick="openAtlasProfile('${c.n}')">Explore ${c.n} →</button>
+    </div>`;
+}
+function atlToggleAllChars(){
+  const g=document.getElementById('atlFeaturedGrid'),btn=document.getElementById('atlSeeOtherBtn');
+  const open=g.classList.toggle('open');
+  btn.textContent=open?'Hide Characters':'See Other Characters';
+  if(open)setTimeout(()=>g.scrollIntoView({behavior:'smooth',block:'nearest'}),300);
+  return false;
+}
+// Fully restores the constellation: all nodes/edges visible, zoom reset, legend intact.
+function resetAtlasMap(){
+  document.querySelectorAll('.atl-map-node').forEach(n=>n.classList.remove('active','dim'));
+  document.querySelectorAll('.atl-map-edge').forEach(e=>e.classList.remove('hi','dim'));
+  const svg=document.getElementById('atlMapSvg');
+  if(svg)svg.style.transform='';
+  atlActiveChar=null;
+  const search=document.getElementById('atlSearch');if(search)search.value='';
+  const drop=document.getElementById('atlSearchDrop');if(drop)drop.classList.remove('show');
+  return false;
+}
 function renderAtlFeatured(){
   const g=document.getElementById('atlFeaturedGrid');if(!g||g.dataset.built)return;g.dataset.built='1';
   g.innerHTML=chars.map(c=>`<div class="atl-card" onclick="openAtlasProfile('${c.n}')">
@@ -4920,6 +5056,7 @@ function atlasInit(){
     }
   }
   renderAtlHeroSvg();
+  renderAtlWeeklyFeatured();
   renderAtlFeatured();
   renderAtlMap();
   renderAtlTree();
@@ -5041,6 +5178,45 @@ function askInit(){
   document.querySelectorAll('.ask-next-card').forEach(el=>obs.observe(el));
 }
 
+// ═══════ HOME STRIP — now a living discovery feature, not static text.
+// Rotates through real content already on the site: a Human Question, a
+// Writing, a Character, a Mythology Lab pattern, and an Inner Epic insight.
+// Deterministic-by-day pick (so it feels fresh daily) + a slow auto-cycle
+// through the day's five picks while the visitor is on the page. ═══════
+function buildMotwItems(){
+  const items=[];
+  const dayIdx=Math.floor(Date.now()/(24*60*60*1000));
+  const q=questionsD[dayIdx%questionsD.length];
+  items.push({label:"Today's Human Question",text:q.q,action:()=>q.id?openHQ(q.id):openHQFallback(questionsD.indexOf(q))});
+  const w=articlesMaster[dayIdx%articlesMaster.length];
+  items.push({label:"Today's Writing",text:`${w.title} — ${w.ex}`,action:()=>openArticle(w.id)});
+  const c=chars[dayIdx%chars.length];
+  items.push({label:"Character of the Week",text:`${c.n}, ${c.r} — ${c.desc}`,action:()=>openCharPage(c.n)});
+  const a=arts[dayIdx%arts.length];
+  items.push({label:"Pattern of the Week",text:`${a.title} — ${a.ex}`,action:()=>{go('lab');setTimeout(()=>document.getElementById('artGrid')?.scrollIntoView({behavior:'smooth'}),260)}});
+  items.push({label:"Myth of the Week",text:`An insight from The Inner Epic™ — recognition begins the moment a pattern repeats.`,action:()=>go('framework')});
+  return items;
+}
+let motwItems=[],motwIdx=0,motwTimer=null;
+function renderMotwItem(){
+  const item=motwItems[motwIdx];if(!item)return;
+  const label=document.getElementById('motwLabel'),text=document.getElementById('motwText'),link=document.getElementById('motwLink');
+  const strip=document.getElementById('motw');
+  strip.style.opacity='0';
+  setTimeout(()=>{
+    label.textContent=item.label;
+    text.textContent=item.text;
+    link.onclick=()=>{item.action();return false;};
+    strip.style.opacity='1';
+  },320);
+}
+function initMotw(){
+  if(!document.getElementById('motw')||motwItems.length)return;
+  motwItems=buildMotwItems();
+  renderMotwItem();
+  motwTimer=setInterval(()=>{motwIdx=(motwIdx+1)%motwItems.length;renderMotwItem();},8000);
+}
+
 window.addEventListener('load',()=>{
   document.getElementById('navbar').classList.add('with-motw');
   initReveal();
@@ -5049,6 +5225,7 @@ window.addEventListener('load',()=>{
   renderMedia('articles');
   renderQs('All');
   ieBuildStatic();
+  initMotw();
   makeDraggable(document.querySelector('.wgch-gal'));
   makeDraggable(document.querySelector('.ab-gallery-track'));
   makeDraggable(document.getElementById('testiTrack'));
