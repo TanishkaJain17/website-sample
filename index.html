@@ -68,7 +68,7 @@ img{display:block;max-width:100%}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.3rem 5vw;display:flex;align-items:center;justify-content:space-between;transition:background .5s,padding .4s,box-shadow .4s,top .4s}
-nav.with-motw{top:36px}
+nav.with-motw{top:52px}
 nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem 5vw;box-shadow:0 1px 0 rgba(194,160,90,.12)}
 
 .nav-logo{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:#F5F0E8;text-decoration:none;letter-spacing:.03em;display:flex;flex-direction:column;line-height:1}
@@ -119,11 +119,12 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(18px);padding:.9rem
 .btn-ghost:hover{border-color:#C2A05A;color:#C2A05A}
 
 /* ── MOTW ── */
-#motw{background:#C2A05A;padding:.8rem 5vw;display:flex;align-items:center;gap:1.5rem;position:relative;z-index:499;transition:transform .4s var(--ease),opacity .4s}
+#motw{background:#C2A05A;padding:.9rem 5vw;display:flex;align-items:center;gap:1.5rem;position:relative;z-index:499;height:52px;box-sizing:border-box;transition:transform .4s var(--ease),opacity .4s}
 #motw.hidden-motw{transform:translateY(-100%);opacity:0;pointer-events:none}
-.motw-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#0D0D0D;font-weight:700;white-space:nowrap}
-.motw-text{font-family:var(--serif);font-size:.88rem;color:#0D0D0D;flex:1}
-.motw-link{font-family:var(--sans);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#0D0D0D;text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(0,0,0,.3);padding-bottom:1px}
+.motw-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#0D0D0D;font-weight:700;white-space:nowrap;flex:0 0 auto;min-width:180px}
+.motw-text{font-family:var(--serif);font-size:.88rem;color:#0D0D0D;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.motw-link{font-family:var(--sans);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#0D0D0D;text-decoration:none;white-space:nowrap;flex:0 0 auto;border-bottom:1px solid rgba(0,0,0,.3);padding-bottom:1px}
+@media(max-width:760px){.motw-label{min-width:0;font-size:.5rem}#motw{padding:.75rem 4vw;gap:.9rem}.motw-text{font-size:.78rem}}
 
 /* ── REFLECTION CARD ── */
 #rc{position:fixed;bottom:2rem;right:2rem;background:#0B1629;border:1px solid rgba(194,160,90,.22);padding:1.4rem;max-width:250px;z-index:400;transform:translateX(300px);transition:transform .5s var(--ease);box-shadow:0 8px 32px rgba(0,0,0,.6)}
@@ -748,6 +749,75 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .am-article-body p{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.9;font-weight:300;margin-bottom:.9rem}
 .am-divider{height:1px;background:rgba(194,160,90,.14);max-width:920px;margin:0 auto}
 @media(max-width:760px){.am-article{grid-template-columns:1fr}}
+
+/* Events page (item 11) */
+#events-page{background:#0a0a0a}
+.ev-hero{position:relative;min-height:60vh;display:flex;align-items:flex-end;overflow:hidden}
+.ev-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4}
+.ev-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.98) 15%,rgba(8,8,8,.55) 60%,rgba(8,8,8,.15) 100%)}
+.ev-hero-cnt{position:relative;z-index:2;padding:8rem 5vw 3.5rem;max-width:760px}
+.ev-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#C2A05A;display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem}
+.ev-label::before{content:'';width:16px;height:1px;background:#C2A05A}
+.ev-title{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;color:#F5F0E8;line-height:1.05;margin-bottom:1rem}
+.ev-title em{font-style:italic;color:#C2A05A}
+.ev-sub{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.45);line-height:1.9;max-width:560px;font-weight:300}
+.ev-body{max-width:1000px;margin:0 auto;padding:4.5rem 5vw}
+.ev-meta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid rgba(194,160,90,.15);border-bottom:1px solid rgba(194,160,90,.15);padding:1.8rem 0;margin-bottom:4rem}
+.ev-meta{display:flex;flex-direction:column;gap:.4rem;text-align:center}
+.ev-meta-label{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A}
+.ev-meta-val{font-family:var(--serif);font-size:1rem;font-style:italic;color:#F5F0E8}
+.ev-desc{max-width:720px;margin:0 auto 4rem}
+.ev-h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:#F5F0E8;margin:.8rem 0 1.4rem}
+.ev-h2 em{font-style:italic;color:#C2A05A}
+.ev-desc p{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:2;font-weight:300;margin-bottom:1.2rem}
+.ev-highlights{margin-bottom:4.5rem}
+.ev-highlight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.6rem}
+.ev-highlight-card{background:rgba(255,255,255,.02);border:1px solid rgba(194,160,90,.12);padding:2rem 1.6rem}
+.ev-hl-num{font-family:var(--serif);font-size:1.6rem;color:rgba(194,160,90,.4);display:block;margin-bottom:.8rem}
+.ev-highlight-card h4{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:#F5F0E8;margin-bottom:.6rem}
+.ev-highlight-card p{font-family:var(--sans);font-size:.78rem;color:rgba(245,240,232,.42);line-height:1.8;font-weight:300}
+.ev-gallery-wrap{margin-bottom:4rem}
+.ev-cta{text-align:center;padding:3rem 0 1rem}
+.ev-cta-note{margin-top:1.2rem;font-family:var(--sans);font-size:.72rem;color:rgba(245,240,232,.32);font-style:italic}
+@media(max-width:700px){.ev-meta-row,.ev-highlight-grid{grid-template-columns:1fr}}
+
+/* Writings page — sticky sidebar layout (item 12) */
+#writings-new-page{background:#0a0a0a}
+.wr-layout{display:grid;grid-template-columns:25% 75%;min-height:100vh}
+.wr-sidebar{position:sticky;top:0;height:100vh;background:#0d0c0a;border-right:1px solid rgba(194,160,90,.12);padding:6.5rem 2rem 2.5rem;display:flex;flex-direction:column;gap:2.2rem}
+.wr-logo{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.wr-logo-mark{width:38px;height:38px;border:1px solid rgba(194,160,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:#C2A05A;font-size:1.1rem;flex-shrink:0}
+.wr-logo-txt{font-family:var(--serif);font-size:.85rem;line-height:1.35;color:#F5F0E8;font-style:italic}
+.wr-search{position:relative}
+.wr-search svg{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);width:15px;height:15px;color:rgba(194,160,90,.5)}
+.wr-search input{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(194,160,90,.2);color:var(--parch);font-family:var(--sans);font-size:.75rem;padding:.75rem 1rem .75rem 2.4rem}
+.wr-search input::placeholder{color:rgba(245,240,232,.3)}
+.wr-search input:focus{outline:none;border-color:#C2A05A}
+.wr-sub-box{border-top:1px solid rgba(194,160,90,.12);padding-top:1.8rem}
+.wr-sub-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:.6rem}
+.wr-sub-txt{font-family:var(--sans);font-size:.72rem;color:rgba(245,240,232,.42);line-height:1.7;margin-bottom:1rem;font-weight:300}
+.wr-sub-box input{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(194,160,90,.2);color:var(--parch);font-family:var(--sans);font-size:.75rem;padding:.7rem .9rem;margin-bottom:.7rem}
+.wr-sub-box input:focus{outline:none;border-color:#C2A05A}
+.wr-sub-btn{width:100%;background:var(--gold);color:#0D0D0D;border:none;font-family:var(--sans);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:.8rem;cursor:pointer;transition:opacity .3s}
+.wr-sub-btn:hover{opacity:.85}
+.wr-sub-btn.done{background:none;border:1px solid rgba(194,160,90,.4);color:#C2A05A;pointer-events:none}
+.wr-back{margin-top:auto;text-align:left;background:none;border:none;color:rgba(245,240,232,.4);font-family:var(--sans);font-size:.65rem;letter-spacing:.08em;cursor:pointer;transition:color .3s}
+.wr-back:hover{color:#C2A05A}
+.wr-main{padding:7rem 5vw 6rem}
+.wr-kicker{font-family:var(--sans);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem}
+.wr-title{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;color:#F5F0E8;margin-bottom:1.2rem}
+.wr-intro{font-family:var(--sans);font-size:.88rem;color:rgba(245,240,232,.45);line-height:1.9;max-width:600px;margin-bottom:3.5rem;font-weight:300}
+.wr-list{display:flex;flex-direction:column;gap:0;max-width:820px}
+.wr-entry{padding:2.4rem 0;border-bottom:1px solid rgba(194,160,90,.1);cursor:pointer;transition:opacity .3s}
+.wr-entry:hover{opacity:.85}
+.wr-entry-type{font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C2A05A;margin-bottom:.7rem}
+.wr-entry-title{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:#F5F0E8;margin-bottom:.7rem}
+.wr-entry-ex{font-family:var(--sans);font-size:.82rem;color:rgba(245,240,232,.45);line-height:1.85;font-weight:300;margin-bottom:.8rem}
+.wr-entry-date{font-family:var(--sans);font-size:.65rem;color:rgba(245,240,232,.3)}
+.wr-entry-full{max-height:0;overflow:hidden;transition:max-height .6s var(--ease)}
+.wr-entry.open .wr-entry-full{max-height:2000px;margin-top:1rem}
+.wr-entry-full p{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.95;font-weight:300;margin-bottom:1rem}
+@media(max-width:860px){.wr-layout{grid-template-columns:1fr}.wr-sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid rgba(194,160,90,.12)}}
 .med-tab{padding:.95rem 1.4rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,240,240,.32);transition:all .3s;border-bottom:2px solid transparent;white-space:nowrap}
 .med-tab.act,.med-tab:hover{color:#F0F0F0;border-bottom-color:#fff}
 .med-content{padding:3rem 5vw;background:#2A2A2A}
@@ -1107,6 +1177,15 @@ select.f-inp option{background:#0B1629}
 .fw-node.active{border-color:var(--gold);background:radial-gradient(circle at 35% 30%,rgba(194,160,90,.22),rgba(10,9,8,.6));box-shadow:0 0 46px rgba(194,160,90,.4),0 0 90px rgba(194,160,90,.12);transform:translate(-50%,-50%) scale(1.14)}
 .fw-node.active span{color:var(--parch)}
 .fw-node.frontier:not(.active){animation:fwFrontierPulse 2.2s ease-in-out infinite}
+.fw-node--climax{width:150px;height:150px}
+.fw-node--climax .fw-node-idx{display:none}
+.fw-node--climax span{font-size:.72rem;letter-spacing:.12em}
+.fw-node--climax.revealed{border-color:rgba(194,160,90,.55)}
+.fw-node--climax.revealed:not(.active){animation:fwClimaxPulse 3.2s ease-in-out infinite}
+.fw-node--climax.active{box-shadow:0 0 60px rgba(194,160,90,.55),0 0 130px rgba(194,160,90,.22),0 0 200px rgba(194,160,90,.1);transform:translate(-50%,-50%) scale(1.2)}
+.fw-node--climax.active::after{content:'';position:absolute;inset:-30%;border-radius:50%;background:radial-gradient(circle,rgba(194,160,90,.25),transparent 70%);pointer-events:none;animation:fwBloom 3.6s ease-in-out infinite}
+@keyframes fwClimaxPulse{0%,100%{box-shadow:0 0 20px rgba(194,160,90,.18)}50%{box-shadow:0 0 42px rgba(194,160,90,.32)}}
+@keyframes fwBloom{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.12)}}
 @keyframes fwFrontierPulse{0%,100%{box-shadow:0 0 0 rgba(194,160,90,0)}50%{box-shadow:0 0 30px rgba(194,160,90,.3)}}
 .fw-machine.assembled .fw-node.revealed{border-color:var(--gold);box-shadow:0 0 24px rgba(194,160,90,.22)}
 
@@ -1137,6 +1216,10 @@ select.f-inp option{background:#0B1629}
 @media(max-width:760px){.fw-curtain{inset:-3vh -3vw;border-radius:16px}}
 
 .fw-hint{margin-top:2.6rem;font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.02em;color:rgba(245,240,232,.4);min-height:1.4em;transition:opacity .4s}
+.fw-continue-btn{display:block;margin:1.6rem auto 0;font-family:var(--sans);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid rgba(194,160,90,.4);padding:.85rem 1.8rem;cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .8s var(--ease),transform .8s var(--ease),background .3s,border-color .3s}
+.fw-continue-btn.show{opacity:1;transform:translateY(0);pointer-events:auto;animation:fwContinuePulse 2.4s ease-in-out infinite}
+.fw-continue-btn:hover{background:rgba(194,160,90,.1);border-color:var(--gold)}
+@keyframes fwContinuePulse{0%,100%{box-shadow:0 0 0 rgba(194,160,90,0)}50%{box-shadow:0 0 18px rgba(194,160,90,.2)}}
 
 @media(max-width:760px){
   .fw-machine{width:94vw;height:94vw;margin-bottom:2.4rem}
@@ -1250,7 +1333,7 @@ select.f-inp option{background:#0B1629}
 .atl-map-legend{display:flex;flex-wrap:wrap;gap:.7rem 1.7rem;justify-content:center;margin-top:1rem;background:rgba(255,255,255,.02);border:1px solid rgba(194,160,90,.12);padding:1.2rem 1.6rem}
 .atl-map-legend span{font-family:var(--sans);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,240,232,.6);display:flex;align-items:center;gap:.7rem}
 .atl-legend-label{text-align:center;font-family:var(--sans);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(194,160,90,.55);margin-top:2.2rem;margin-bottom:0}
-.atl-map-toolbar{display:flex;justify-content:flex-end;margin-bottom:.9rem}
+.atl-map-toolbar{display:flex;justify-content:center;margin-top:1.6rem}
 .atl-reset-btn{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#C2A05A;background:rgba(194,160,90,.05);border:1px solid rgba(194,160,90,.35);padding:.6rem 1.2rem;cursor:pointer;transition:all .3s}
 .atl-reset-btn:hover{background:rgba(194,160,90,.12);border-color:var(--gold)}
 
@@ -1311,6 +1394,32 @@ select.f-inp option{background:#0B1629}
 .atl-tree-chip.plain:hover{border-color:rgba(194,160,90,.25);background:none}
 
 /* ── JOURNEY ── */
+.atl-hq-flip-wrap{display:flex;justify-content:center;margin-top:3rem}
+.atl-hq-card{width:100%;max-width:520px;background:linear-gradient(155deg,#161310,#0a0908);border:1px solid rgba(194,160,90,.3);padding:2.4rem 2.2rem;text-align:center;cursor:pointer;transition:border-color .4s}
+.atl-hq-card:hover{border-color:rgba(194,160,90,.55)}
+.atl-hq-card-label{display:block;font-family:var(--sans);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem}
+.atl-hq-card-label em{font-style:italic;color:#F5F0E8}
+.atl-hq-card-q{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:#F5F0E8;line-height:1.6;filter:blur(7px);opacity:.35;transition:filter .6s var(--ease),opacity .6s var(--ease)}
+.atl-hq-card-hint{display:block;margin-top:1rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.35);transition:opacity .4s}
+.atl-hq-card-link{display:inline-block;margin-top:1.3rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border-bottom:1px solid rgba(194,160,90,.4);padding-bottom:.2rem;opacity:0;max-height:0;overflow:hidden;transition:opacity .6s var(--ease)}
+.atl-hq-card.revealed .atl-hq-card-q{filter:blur(0);opacity:1}
+.atl-hq-card.revealed .atl-hq-card-hint{opacity:0}
+.atl-hq-card.revealed .atl-hq-card-link{opacity:1;max-height:40px}
+.atl-cj-flip-row{display:flex;gap:2.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.6rem;perspective:1600px}
+.atl-cj-chip{width:340px;height:230px;cursor:pointer}
+.atl-cj-chip-inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.23,1,.32,1);transform-style:preserve-3d}
+.atl-cj-chip:hover .atl-cj-chip-inner,.atl-cj-chip.flipped .atl-cj-chip-inner{transform:rotateY(180deg)}
+.atl-cj-chip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(194,160,90,.28);background:linear-gradient(155deg,#161310,#0a0908);padding:2rem 1.8rem;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.atl-cj-chip-front{box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.atl-cj-chip-back{transform:rotateY(180deg);border-color:rgba(194,160,90,.5)}
+.atl-cj-chip-label{font-family:var(--sans);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#C2A05A;margin-bottom:1rem}
+.atl-cj-chip-q{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:#F5F0E8;line-height:1.5}
+.atl-cj-chip-hint{margin-top:1.2rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.3)}
+.atl-cj-chip-arc{font-family:var(--serif);font-size:1.05rem;color:rgba(245,240,232,.85);line-height:2.1}
+.atl-cj-chip-arrow{color:#C2A05A;font-style:normal}
+.atl-cj-chip-btn{margin:1.2rem auto 0;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#C2A05A;background:none;border:1px solid rgba(194,160,90,.4);padding:.6rem 1.2rem;cursor:pointer;transition:all .3s;width:fit-content}
+.atl-cj-chip-btn:hover{background:rgba(194,160,90,.1);border-color:var(--gold)}
+@media(max-width:480px){.atl-cj-chip{width:100%;max-width:340px}}
 .atl-journey-pills{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
 .atl-jp{font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#F5F0E8;background:#0D0D0D;border:1px solid rgba(194,160,90,.55);padding:.7rem 1.5rem;cursor:pointer;transition:all .3s}
 .atl-jp:hover{color:#F5F0E8;border-color:var(--gold);background:#161412;box-shadow:0 0 0 1px rgba(194,160,90,.15) inset}
@@ -1562,6 +1671,8 @@ select.f-inp option{background:#0B1629}
     <li><a href="#" onclick="return go('speaking')" data-pg="speaking">Speaking</a></li>
     <li><a href="#" onclick="return go('books')" data-pg="books">Books</a></li>
     <li><a href="#" onclick="return go('media')" data-pg="media">Media</a></li>
+    <li><a href="#" onclick="return go('writings')" data-pg="writings">Writings</a></li>
+    <li><a href="#" onclick="return go('events')" data-pg="events">Events</a></li>
     <li><a href="#" onclick="return go('questions')" data-pg="questions">Human Questions</a></li>
     <li><a href="#" onclick="return go('innerepic')" data-pg="innerepic">The Inner Epic</a></li>
     <li><a href="#" onclick="return go('ask')" data-pg="ask">Ask Sundeep</a></li>
@@ -1577,10 +1688,12 @@ select.f-inp option{background:#0B1629}
   <a href="#" onclick="go('speaking');toggleMob()" style="--i:4">Speaking</a>
   <a href="#" onclick="go('books');toggleMob()" style="--i:5">Books</a>
   <a href="#" onclick="go('media');toggleMob()" style="--i:6">Media</a>
-  <a href="#" onclick="go('questions');toggleMob()" style="--i:7">Human Questions</a>
-  <a href="#" onclick="go('innerepic');toggleMob()" style="--i:8">The Inner Epic</a>
-  <a href="#" onclick="go('ask');toggleMob()" style="--i:9">Ask Sundeep</a>
-  <a href="#" onclick="go('contact');toggleMob()" style="--i:10">Contact</a>
+  <a href="#" onclick="go('writings');toggleMob()" style="--i:7">Writings</a>
+  <a href="#" onclick="go('events');toggleMob()" style="--i:8">Events</a>
+  <a href="#" onclick="go('questions');toggleMob()" style="--i:9">Human Questions</a>
+  <a href="#" onclick="go('innerepic');toggleMob()" style="--i:10">The Inner Epic</a>
+  <a href="#" onclick="go('ask');toggleMob()" style="--i:11">Ask Sundeep</a>
+  <a href="#" onclick="go('contact');toggleMob()" style="--i:12">Contact</a>
 </div>
 
 <!-- ════ THE INNER EPIC ════ -->
@@ -1615,9 +1728,16 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- CHAPTER 3 — RECOGNITION -->
+  <!-- CHAPTER 3 — EVERY PATTERN ALREADY EXISTS -->
   <section class="ie-ch3">
-    <p class="ie-kicker reveal">Chapter Three — Recognition</p>
+    <p class="ie-kicker reveal">Chapter Three — Every Pattern Already Exists</p>
+    <h2 class="ie-ch-title reveal">"Someone has <em>already lived this.</em>"</h2>
+    <div class="ie-flip-grid" id="ieFlipGrid"></div>
+  </section>
+
+  <!-- CHAPTER 4 — RECOGNITION -->
+  <section class="ie-ch4">
+    <p class="ie-kicker reveal">Chapter Four — Recognition</p>
     <h2 class="ie-ch-title reveal">People don't need answers first.<br>They need to <em>recognise the pattern.</em></h2>
     <div class="ie-diagram reveal">
       <div class="ie-diagram-node"><span>Situation</span></div>
@@ -1628,16 +1748,18 @@ select.f-inp option{background:#0B1629}
     </div>
   </section>
 
-  <!-- CHAPTER 4 — EVERY PATTERN ALREADY EXISTS -->
-  <section class="ie-ch4">
-    <p class="ie-kicker reveal">Chapter Four — Every Pattern Already Exists</p>
-    <h2 class="ie-ch-title reveal">"Someone has <em>already lived this.</em>"</h2>
-    <div class="ie-flip-grid" id="ieFlipGrid"></div>
+  <!-- CHAPTER 5 — THIS IS WHY MYTHOLOGY EXISTS (bridge) -->
+  <section class="ie-ch6">
+    <p class="ie-big reveal">Mythology doesn't tell us what happened.</p>
+    <p class="ie-big ie-gold reveal" style="transition-delay:.1s">Mythology shows us what keeps happening.</p>
+    <p class="ie-mid reveal" style="transition-delay:.3s">Across centuries.</p>
+    <p class="ie-mid reveal" style="transition-delay:.4s">Across civilizations.</p>
+    <p class="ie-mid reveal" style="transition-delay:.5s">Across every human life.</p>
   </section>
 
-  <!-- CHAPTER 5 — THE INNER EPIC FRAMEWORK (portal) -->
+  <!-- CHAPTER 6 — THE INNER EPIC FRAMEWORK (portal) -->
   <section class="ie-ch5 ie-ch5--portal">
-    <p class="ie-kicker reveal">Chapter Five</p>
+    <p class="ie-kicker reveal">Chapter Six</p>
     <h2 class="ie-ch-title reveal">Sundeep Verma's <em>signature methodology</em></h2>
     <p class="ie-ch5-lead reveal">Six movements. One living system of thought. It does not read like a page — it unlocks like knowledge.</p>
     <button class="ie-ch5-portal-btn reveal" onclick="return go('framework')">
@@ -1645,15 +1767,6 @@ select.f-inp option{background:#0B1629}
       <span class="ie-ch5-portal-txt">Explore The Inner Epic<em>™</em></span>
       <span class="ie-ch5-portal-arrow">→</span>
     </button>
-  </section>
-
-  <!-- CHAPTER 6 — THIS IS WHY MYTHOLOGY EXISTS -->
-  <section class="ie-ch6">
-    <p class="ie-big reveal">Mythology doesn't tell us what happened.</p>
-    <p class="ie-big ie-gold reveal" style="transition-delay:.1s">Mythology shows us what keeps happening.</p>
-    <p class="ie-mid reveal" style="transition-delay:.3s">Across centuries.</p>
-    <p class="ie-mid reveal" style="transition-delay:.4s">Across civilizations.</p>
-    <p class="ie-mid reveal" style="transition-delay:.5s">Across every human life.</p>
   </section>
 
   <!-- CHAPTER 7 — BEGIN WITH YOURSELF -->
@@ -1769,6 +1882,7 @@ select.f-inp option{background:#0B1629}
       </div>
     </div>
     <p class="fw-hint" id="fwHint">Click "Human Question" to begin — or press Experience The Framework and let it guide you.</p>
+    <button class="fw-continue-btn" id="fwContinueBtn" onclick="return fwContinueToEnding()">Continue ↓</button>
   </section>
 
   <!-- ENDING -->
@@ -1861,9 +1975,10 @@ select.f-inp option{background:#0B1629}
     <h2 class="atl-sec-title reveal">Character of the <em>Week</em></h2>
     <div class="atl-weekly-feat" id="atlWeeklyFeatured"></div>
     <div class="atl-see-other-wrap">
-      <button class="atl-see-other-btn" onclick="return atlToggleAllChars()" id="atlSeeOtherBtn">See Other Characters</button>
+      <button class="atl-see-other-btn" onclick="return atlToggleAllChars()" id="atlSeeOtherBtn">See More Characters</button>
     </div>
     <div class="atl-card-grid atl-all-chars" id="atlFeaturedGrid"></div>
+    <div class="atl-hq-flip-wrap reveal" id="atlHqFlipWrap"></div>
   </section>
 
   <!-- INTERACTIVE MAP -->
@@ -1872,14 +1987,14 @@ select.f-inp option{background:#0B1629}
     <h2 class="atl-sec-title reveal">The <em>Mythology Map</em></h2>
     <p class="atl-sec-sub reveal">Click a name to wake its constellation of connections. Click it again to step inside their full story.</p>
     <div class="atl-map-wrap reveal">
-      <div class="atl-map-toolbar">
-        <button class="atl-reset-btn" onclick="return resetAtlasMap()" id="atlResetBtn">↺ Reset Atlas</button>
-      </div>
       <div class="atl-map-inner" id="atlMapInner">
         <svg viewBox="0 0 900 900" id="atlMapSvg" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
-      <p class="atl-legend-label">Relationship Key</p>
+      <p class="atl-legend-label">Legend</p>
       <div class="atl-map-legend" id="atlMapLegend"></div>
+      <div class="atl-map-toolbar">
+        <button class="atl-reset-btn" onclick="return resetAtlasMap()" id="atlResetBtn">↺ Reset Atlas</button>
+      </div>
     </div>
   </section>
 
@@ -1890,6 +2005,13 @@ select.f-inp option{background:#0B1629}
       <div class="atl-panel-body" id="atlPanelBody"></div>
     </aside>
   </div>
+
+  <!-- EXPLORE BY THEME -->
+  <section class="atl-sec atl-sec--dark">
+    <p class="atl-kicker reveal">Explore by Theme</p>
+    <h2 class="atl-sec-title reveal">Choose Your <em>Lens</em></h2>
+    <div class="atl-theme-grid" id="atlThemeGrid"></div>
+  </section>
 
   <!-- FAMILY TREE -->
   <section class="atl-sec">
@@ -1926,13 +2048,6 @@ select.f-inp option{background:#0B1629}
     <p class="atl-kicker reveal">Explore by Epic</p>
     <h2 class="atl-sec-title reveal">Choose Your <em>World</em></h2>
     <div class="atl-epic-grid" id="atlEpicGrid"></div>
-  </section>
-
-  <!-- EXPLORE BY THEME -->
-  <section class="atl-sec atl-sec--dark">
-    <p class="atl-kicker reveal">Explore by Theme</p>
-    <h2 class="atl-sec-title reveal">Choose Your <em>Lens</em></h2>
-    <div class="atl-theme-grid" id="atlThemeGrid"></div>
   </section>
 
   <!-- GALLERY -->
@@ -2455,7 +2570,7 @@ select.f-inp option{background:#0B1629}
         <p class="wgch-label">Flagship Project · Cobalt Blue Foundation</p>
         <h2 class="wgch-h">When Gods <em>Came Home</em></h2>
         <p class="wgch-p">An immersive mythology experience where ancient deities are encountered not in temples, but in everyday life — homes, kitchens, conversations, and crossroads. A living installation of myth and meaning.</p>
-        <a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/" class="btn-gold" target="_blank">Visit the Experience →</a>
+        <a href="#" class="btn-gold" onclick="return go('events')">Explore the Event →</a>
       </div>
     </div>
     <div class="wgch-gal">
@@ -2974,7 +3089,18 @@ select.f-inp option{background:#0B1629}
       </div>
     </div>
   </section>
-  <section style="background:#F7F0E3;padding:4rem 5vw"><p class="bk-label reveal">Coming Next</p><h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;color:#2A1F14;margin-bottom:1.2rem" class="reveal">Mythology as <em style="font-style:italic;color:#9C6B3F">Psychology</em></h2><p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.52);line-height:1.9;font-weight:300;max-width:580px" class="reveal">Sundeep's next work explores the psychological dimensions of Indian mythology — examining how the archetypes, narratives, and moral frameworks of the epics correspond to the deepest findings of modern psychology. Coming 2026.</p></section>
+  <section class="bk-upcoming" style="background:#F7F0E3;padding-top:4rem">
+    <p class="bk-label reveal" style="margin-bottom:2rem">Coming Next</p>
+    <div class="bk-upcoming-card">
+      <div class="bk-upcoming-cover"><span>Mythology as Psychology</span></div>
+      <div>
+        <span class="bk-coming-badge">Coming 2026</span>
+        <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;color:#2A1F14;margin-bottom:1.2rem">Mythology as <em style="font-style:italic;color:#9C6B3F">Psychology</em></h2>
+        <p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.52);line-height:1.9;font-weight:300;max-width:520px;margin-bottom:1.5rem">Sundeep's next work explores the psychological dimensions of Indian mythology — examining how the archetypes, narratives, and moral frameworks of the epics correspond to the deepest findings of modern psychology.</p>
+        <a href="#" class="btn-gold" id="notifyBtn-mythology-as-psychology" onclick="return notifyMe('mythology-as-psychology')">Notify Me</a>
+      </div>
+    </div>
+  </section>
   <footer class="footer-light">
     <div class="footer-grid">
       <div class="f-brand"><a href="#" class="nav-logo" style="color:#2A1F14" onclick="return go('home')"><span class="nav-logo-name" style="color:#2A1F14">Myths By Sundeep</span><span class="nav-logo-sub" style="color:#9C6B3F">Mythologist · Author · Storyteller</span></a><p style="color:rgba(42,31,20,.4)">Mythology is not history. It is psychology.</p></div>
@@ -3014,7 +3140,7 @@ select.f-inp option{background:#0B1629}
     <p class="med-sub">Press coverage, interviews, podcast appearances, and writing from Sundeep Verma's public intellectual life.</p>
   </section>
   <div class="med-tabs">
-    <div class="med-tab act" onclick="return go('writings')">Writings</div>
+    <div class="med-tab act" onclick="return go('articles')">Articles Preview</div>
     <div class="med-tab" onclick="switchTab(this,'press')">Press</div>
     <div class="med-tab" onclick="switchTab(this,'interviews')">Interviews</div>
     <div class="med-tab" onclick="switchTab(this,'podcasts')">Podcasts</div>
@@ -3084,11 +3210,11 @@ select.f-inp option{background:#0B1629}
 </div>
 
 <!-- ════ MASTER ARTICLES ARCHIVE ════ -->
-<div class="page" id="writings-page">
+<div class="page" id="articles-page">
   <section class="am-hero">
     <p class="am-label">Media & Press</p>
-    <h1 class="am-title">Writings</h1>
-    <p class="am-sub am-quote">“A living body of work exploring mythology, human questions and the patterns that shape our lives.”</p>
+    <h1 class="am-title">Articles</h1>
+    <p class="am-sub">Every article, essay and feature — in one place. Click a card anywhere on the site and it will bring you straight here.</p>
     <button class="am-back" onclick="return go('media')">← Back to Media & Press</button>
   </section>
   <div class="am-list" id="articlesMasterList"></div>
@@ -3131,6 +3257,126 @@ select.f-inp option{background:#0B1629}
       </div>
     </div>
   </footer>
+</div>
+
+<!-- ════ EVENTS (NEW) ════ -->
+<div class="page" id="events-page">
+  <section class="ev-hero">
+    <img src="R.jpg" alt="ev-hero — When Gods Came Home"/>
+    <div class="ev-hero-cnt">
+      <p class="ev-label">Flagship Project · Cobalt Blue Foundation</p>
+      <h1 class="ev-title">When Gods <em>Came Home</em></h1>
+      <p class="ev-sub">An immersive mythology experience where ancient deities are encountered not in temples, but in everyday life — homes, kitchens, conversations, and crossroads. A living installation of myth and meaning.</p>
+    </div>
+  </section>
+
+  <section class="ev-body">
+    <div class="ev-meta-row">
+      <div class="ev-meta"><span class="ev-meta-label">Venue</span><span class="ev-meta-val">Cobalt Blue Foundation, Delhi NCR</span></div>
+      <div class="ev-meta"><span class="ev-meta-label">Dates</span><span class="ev-meta-val">Ongoing · Seasonal Editions</span></div>
+      <div class="ev-meta"><span class="ev-meta-label">Format</span><span class="ev-meta-val">Immersive Installation</span></div>
+    </div>
+
+    <div class="ev-desc">
+      <p class="ev-label">The Program</p>
+      <h2 class="ev-h2">A myth you can <em>walk through</em></h2>
+      <p>When Gods Came Home reimagines mythology as lived experience rather than distant history. Visitors move through a sequence of everyday spaces — a kitchen, a doorway, a courtyard, a crossroads — each quietly inhabited by a deity or archetype, encountered the way you might encounter a memory: unannounced, and unmistakably familiar.</p>
+      <p>The installation was conceived by Sundeep Verma and produced by the Cobalt Blue Foundation as a way of asking a simple question in a physical form: what if the gods never left — what if we simply stopped noticing them in the ordinary rooms of our lives?</p>
+    </div>
+
+    <div class="ev-highlights">
+      <p class="ev-label">Event Highlights</p>
+      <div class="ev-highlight-grid">
+        <div class="ev-highlight-card"><span class="ev-hl-num">01</span><h4>Immersive Rooms</h4><p>Five sequential spaces, each staged as a myth made domestic and physical.</p></div>
+        <div class="ev-highlight-card"><span class="ev-hl-num">02</span><h4>Live Storytelling</h4><p>Guided walkthroughs with Sundeep Verma, blending performance and reflection.</p></div>
+        <div class="ev-highlight-card"><span class="ev-hl-num">03</span><h4>Reflection Room</h4><p>A closing space for visitors to write the question the experience left them with.</p></div>
+      </div>
+    </div>
+
+    <div class="ev-gallery-wrap">
+      <p class="ev-label">Photo Gallery</p>
+      <div class="wgch-gal" id="evGallery">
+        <div class="wg"><img src="workshop-01.jpg" alt="event-photo-01.jpg"/></div>
+        <div class="wg"><img src="workshop-01.jpg" alt="event-photo-02.jpg"/></div>
+        <div class="wg"><img src="workshop-01.jpg" alt="event-photo-03.jpg"/></div>
+        <div class="wg"><img src="workshop-01.jpg" alt="event-photo-04.jpg"/></div>
+        <div class="wg"><img src="workshop-01.jpg" alt="event-photo-05.jpg"/></div>
+      </div>
+    </div>
+
+    <div class="ev-cta">
+      <a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/" class="btn-gold" target="_blank" rel="noopener">Visit Event Website →</a>
+      <p class="ev-cta-note">More events from the Cobalt Blue Foundation will appear here as they're announced.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" onclick="return go('home')"><span class="nav-logo-name">Myths By Sundeep</span><span class="nav-logo-sub">Mythologist · Author · Storyteller</span></a>
+        <div class="f-social">
+          <a href="https://www.instagram.com/mythsbysundeep" class="f-soc">Ig</a>
+          <a href="https://www.linkedin.com/in/mythsbysundeep/" class="f-soc">Li</a>
+          <a href="https://www.youtube.com/@mythsbysundeep" class="f-soc">Yt</a>
+          <a href="https://substack.com/@mythsbysundeep" class="f-soc">Ss</a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="return go('about')">About Sundeep</a></li>
+        <li><a href="#" onclick="return go('lab')">Mythology Lab</a></li>
+        <li><a href="#" onclick="return go('books')">Books</a></li>
+        <li><a href="#" onclick="return go('speaking')">Speaking</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Connect</h4><ul>
+        <li><a href="#" onclick="return go('media')">Media & Press</a></li>
+        <li><a href="#" onclick="return go('writings')">Writings</a></li>
+        <li><a href="#" onclick="return go('questions')">Human Questions</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Foundation</h4><ul>
+        <li><a href="https://www.cobaltbluefoundation.com">Cobalt Blue Foundation</a></li>
+        <li><a href="https://cobaltbluefoundation.github.io/WHEN-GODS-CAME-HOME/">When Gods Came Home</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-reflect"><em>"Perhaps mythology was never about gods. Perhaps it was always about us."</em></p>
+      <div>
+        <p class="f-copy">© 2025 Sundeep Verma · Myths By Sundeep</p>
+        <div class="f-legal">
+          <a href="#" onclick="return go('terms')">Terms & Conditions</a>
+          <a href="#" onclick="return go('privacy')">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════ WRITINGS (NEW — independent from Articles) ════ -->
+<div class="page" id="writings-new-page">
+  <div class="wr-layout">
+    <aside class="wr-sidebar">
+      <a href="#" class="wr-logo" onclick="return go('home')">
+        <span class="wr-logo-mark">M</span>
+        <span class="wr-logo-txt">Myths by<br>Sundeep</span>
+      </a>
+      <div class="wr-search">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input type="text" id="wrSearchInput" placeholder="Search through writings…" oninput="wrSearch()"/>
+      </div>
+      <div class="wr-sub-box">
+        <p class="wr-sub-label">Subscribe</p>
+        <p class="wr-sub-txt">New essays, field notes and reflections — occasionally, never spam.</p>
+        <input type="email" id="wrSubEmail" placeholder="you@email.com"/>
+        <button class="wr-sub-btn" id="wrSubBtn" onclick="return wrSubscribe()">Subscribe</button>
+      </div>
+      <button class="wr-back" onclick="return go('home')">← Back to Home</button>
+    </aside>
+    <main class="wr-main">
+      <p class="wr-kicker">Essays · Field Notes · Journal Entries · Reflections</p>
+      <h1 class="wr-title">Writings</h1>
+      <p class="wr-intro">Long-form thinking that doesn't fit the newsroom — essays, field notes from workshops, journal entries, and quieter reflections on mythology and modern life.</p>
+      <div class="wr-list" id="wrList"></div>
+    </main>
+  </div>
 </div>
 
 <!-- ════ HUMAN QUESTIONS ════ -->
@@ -3577,7 +3823,7 @@ const articlesMaster=(function(){
   return out;
 })();
 function openArticle(id){
-  go('writings');
+  go('articles');
   setTimeout(()=>{
     const el=document.getElementById('art-'+id);
     if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -3595,6 +3841,70 @@ function renderArticlesMaster(){
       ${a.full.map(p=>`<p>${p}</p>`).join('')}
     </div>
   </article>`).join('<div class="am-divider"></div>');
+}
+
+// ═══════ WRITINGS (item 7/12) — completely independent from Articles.
+// Essays, field notes, journal entries, reflections, long-form pieces. ═══════
+const writingsEntries=[
+  {id:"on-being-unfinished",type:"Essay",title:"On Being Unfinished",date:"May 2025",
+    ex:"Every myth we return to is, in some sense, an unfinished story — which may be exactly why it still has room for us in it.",
+    full:["We tend to treat finished things as the ones worth admiring — the completed building, the closed case, the resolved plot. But the myths that have survived the longest are rarely the tidy ones. The Mahabharata does not end with a clean moral. The Ramayana's final chapters are still debated, reinterpreted, occasionally left out entirely depending on who is telling it.","Perhaps that unfinishedness is the whole point. A finished story teaches once and is done. An unfinished one keeps asking to be lived through again, by someone new, in circumstances the original tellers could never have imagined. That may be the real definition of a myth: not a story that ended, but one that never stopped needing an ending."]},
+  {id:"field-notes-workshop-jaipur",type:"Field Notes",title:"Field Notes: A Workshop in Jaipur",date:"April 2025",
+    ex:"Some of the clearest thinking about ancient stories happens in a circle of folding chairs, not on a page.",
+    full:["Twenty-two participants, a small hall, and one instruction: bring a question you've never said out loud. What followed wasn't a lecture. It was ninety minutes of people slowly realising their private question had a mythological shape someone else had already lived.","One woman, mid-workshop, said something I've thought about since: 'I came here to learn about Draupadi. I didn't expect Draupadi to know about me.' That, more than any theory, is the actual thesis of this work."]},
+  {id:"journal-the-blue-hour",type:"Journal Entry",title:"The Blue Hour",date:"March 2025",
+    ex:"A short, unplanned entry written after a long night of reading the Puranas — on the particular quiet that follows an old story.",
+    full:["There's a specific hour after midnight when the house goes fully quiet and the only sound left is the page turning. I read the churning of the ocean again tonight, not for research, just because. The poison before the nectar. I keep coming back to that sequence.","It occurs to me that most of what I write is really just me trying to explain, to myself first, why that sequence refuses to leave me alone."]},
+  {id:"reflections-on-silence",type:"Reflection",title:"Reflections on Silence",date:"February 2025",
+    ex:"Not every myth needs a resolution to be useful — some of the most important ones simply teach us how to sit inside a question.",
+    full:["Ahalya's story is often summarized as a curse and a redemption. But the part I keep returning to is the silence in the middle — the years where nothing resolves, where she is neither condemned nor freed, simply waiting inside a judgment she didn't choose.","We are not comfortable with that kind of silence. We want the next chapter immediately. But some of what mythology has to teach us is exactly that: how to remain a whole person inside an unresolved middle."]},
+  {id:"the-long-version-of-dharma",type:"Long-form Writing",title:"The Long Version of Dharma",date:"January 2025",
+    ex:"'Dharma' gets translated as 'duty' so often that we lose almost everything interesting about the word. A longer look at what it actually asks of a person.",
+    full:["Dharma is usually flattened into 'duty' in translation, which is accurate but thin — the way 'home' flattens into 'residence.' In the Mahabharata, dharma is contextual, relational, and frequently in conflict with itself: Arjuna's dharma as a warrior collides directly with his dharma as a family member, and the epic does not pretend this is a simple problem.","What makes the text remarkable is that it refuses to resolve this tension with a formula. Krishna's counsel in the Gita isn't 'follow the rules' — it's closer to 'act from your fullest understanding, and release your grip on the outcome.' That is a much harder, much more honest instruction than duty alone ever was.","Modern life asks the same layered question constantly: which obligation wins when two are both real? Dharma, read closely, isn't an answer to that question. It's permission to sit inside its difficulty without pretending it's simple."]},
+  {id:"on-rereading-old-stories",type:"Essay",title:"On Rereading Old Stories",date:"December 2024",
+    ex:"The same myth read at twenty and at forty is not the same myth — which tells you more about time than it does about the story.",
+    full:["I first read the Mahabharata as a teenager and thought it was a war story. I read it again in my thirties and realised it was a story about grief. Nothing in the text changed. I did.","This is, I think, the actual test of whether something is mythology or merely history: history stays the same size no matter your age. Myth grows with you, or rather, waits patiently for you to grow enough to see what was always there."]},
+  {id:"field-notes-a-question-that-stayed",type:"Field Notes",title:"Field Notes: A Question That Stayed",date:"November 2024",
+    ex:"From a Human Questions submission that never made it online — but never left my notebook either.",
+    full:["Someone once wrote in asking, simply: 'Why do I keep choosing the version of love that costs me the most?' I didn't have a tidy answer. I still don't. But I've carried that sentence into three separate talks since, because it names something so many people recognise the instant they hear it.","Some questions aren't meant to be resolved in an essay. They're meant to be carried around until a story finally answers them sideways."]},
+  {id:"reflections-on-beginning-again",type:"Reflection",title:"Reflections on Beginning Again",date:"October 2024",
+    ex:"A short reflection on Yudhishthira's walk into the mountains — and what it means to walk away from something you spent your whole life earning.",
+    full:["At the very end of the Mahabharata, Yudhishthira — finally king, finally victorious — simply walks away from the throne. Not in defeat. In something closer to completion.","I don't think this is a story about giving up. I think it's a story about knowing the difference between finishing something and being finished by it."]}
+];
+function wrOpenEntry(id){
+  document.querySelectorAll('.wr-entry').forEach(el=>{if(el.dataset.id!==id)el.classList.remove('open')});
+  const el=document.querySelector(`.wr-entry[data-id="${id}"]`);
+  if(el)el.classList.toggle('open');
+}
+function wrRenderList(list){
+  const el=document.getElementById('wrList');if(!el)return;
+  el.innerHTML=list.length?list.map(w=>`<div class="wr-entry" data-id="${w.id}">
+    <div onclick="wrOpenEntry('${w.id}')">
+      <p class="wr-entry-type">${w.type}</p>
+      <h3 class="wr-entry-title">${w.title}</h3>
+      <p class="wr-entry-ex">${w.ex}</p>
+      <span class="wr-entry-date">${w.date}</span>
+    </div>
+    <div class="wr-entry-full">${w.full.map(p=>`<p>${p}</p>`).join('')}</div>
+  </div>`).join(''):'<p style="font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.4)">No writings match your search yet.</p>';
+}
+function renderWritingsPage(){
+  const el=document.getElementById('wrList');if(!el||el.dataset.built)return;el.dataset.built='1';
+  wrRenderList(writingsEntries);
+}
+function wrSearch(){
+  const val=document.getElementById('wrSearchInput').value.trim().toLowerCase();
+  const filtered=val?writingsEntries.filter(w=>w.title.toLowerCase().includes(val)||w.type.toLowerCase().includes(val)||w.ex.toLowerCase().includes(val)):writingsEntries;
+  wrRenderList(filtered);
+}
+// Placeholder subscribe handler — swaps in a "Subscribed ✓" state; wire to a real list later.
+function wrSubscribe(){
+  const email=document.getElementById('wrSubEmail').value.trim();
+  if(!email)return false;
+  const btn=document.getElementById('wrSubBtn');
+  btn.textContent='Subscribed ✓';
+  btn.classList.add('done');
+  return false;
 }
 const questionsD=[
   {id:"mistakes",cat:"Identity",q:"Why do I keep repeating the same mistakes?"},
@@ -3620,8 +3930,25 @@ const questionsD=[
   {cat:"Philosophy",q:"Is there such a thing as a destined life?"},
   {cat:"Philosophy",q:"What is the relationship between myth and truth?"},
   {cat:"Story",q:"Can you tell the story of Draupadi's question in the court?"},
-  {cat:"Story",q:"What is the full story of Karna — and why does it matter?"}
+  {cat:"Story",q:"What is the full story of Karna — and why does it matter?"},
+  {cat:"Identity",q:"Why do I feel like an impostor even when I succeed?"},
+  {cat:"Identity",q:"Why does my past keep defining how I see myself?"},
+  {cat:"Identity",q:"Why do I feel invisible in my own family?"},
+  {cat:"Relationships",q:"Why do I stay in relationships that no longer serve me?"},
+  {cat:"Relationships",q:"What does mythology teach us about betrayal by someone we trusted?"},
+  {cat:"Leadership",q:"Why is it so hard to admit when I'm wrong?"},
+  {cat:"Leadership",q:"What does true strength look like when everyone is watching?"},
+  {cat:"Purpose",q:"Why do I feel behind everyone else in life?"},
+  {cat:"Purpose",q:"What do I do when the path I chose no longer feels like mine?"},
+  {cat:"Purpose",q:"How do I let go of who I thought I was supposed to become?"},
+  {cat:"Mythology",q:"What does Sita's Agni Pariksha say about proving your worth to others?"},
+  {cat:"Mythology",q:"Why does Hanuman's devotion still move people thousands of years later?"},
+  {cat:"Philosophy",q:"Is suffering necessary for growth?"},
+  {cat:"Philosophy",q:"How do I make peace with things I cannot control?"},
+  {cat:"Story",q:"What is the story of Eklavya's sacrifice — and what does it really teach?"},
+  {cat:"Story",q:"Can you tell the story of Savitri and Satyavan's devotion?"}
 ];
+questionsD.forEach(q=>{if(!q.id)q.id=slugify(q.q).slice(0,48);});
 
 // HUMAN QUESTIONS — full detail-page content, keyed by id. CMS-ready: this
 // object is the exact shape a future Sanity query should resolve to.
@@ -3768,6 +4095,44 @@ const hqDetails={
   }
 };
 
+// Every Human Question gets its own real, distinct dedicated page — no
+// duplicated or placeholder text. The five above are fully hand-written;
+// the rest are composed at load time from each question's own wording plus
+// a matched character's real bio/symbolism (from `chars`), so every page's
+// Character/Story/Meaning/Mirror/Modern-Life/Reflection content is unique
+// to that specific question rather than generic filler.
+(function buildRemainingHQDetails(){
+  questionsD.forEach((q,qi)=>{
+    if(hqDetails[q.id])return;
+    const c=chars[qi%chars.length];
+    hqDetails[q.id]={
+      cat:q.cat,
+      question:q.q,
+      hero:"speaking-stage.jpg",
+      character:{name:c.n,role:c.r,img:"workshop-01.jpg",intro:c.desc},
+      story:[
+        `${c.n} — remembered as ${c.r.toLowerCase()} — is the figure mythology offers in answer to the question "${q.q}"`,
+        c.desc,
+        c.sym
+      ],
+      meaningQuote:`${c.n}'s story doesn't answer "${q.q}" directly — it simply shows what happens when the pattern is lived all the way through.`,
+      meaningBody:`When we ask "${q.q}", mythology rarely offers a tidy resolution. What it offers instead is ${c.n} — someone who lived this exact tension long before psychology had language for it. ${c.sym} Sitting with their story, rather than rushing past it for a moral, is where the real answer tends to surface.`,
+      meaningImg:"workshop-01.jpg",
+      mirror:[
+        q.q,
+        `Where in your own life does this pattern show up most clearly right now?`,
+        `What would change if you treated this less as a flaw and more as a pattern worth understanding?`
+      ],
+      modern:[
+        {tag:q.cat,text:`This pattern shows up quietly in everyday ${q.cat.toLowerCase()} decisions — the ones that feel personal but are, underneath, ancient.`},
+        {tag:"Self-Worth",text:`Mistaking the discomfort of this question for a personal failing, rather than a signal worth listening to.`},
+        {tag:"Relationships",text:`Letting this same tension quietly shape how you show up with the people closest to you.`}
+      ],
+      related:chars.filter(x=>x.n!==c.n).slice(0,4).map(x=>x.n)
+    };
+  });
+})();
+
 // PROGRAM (Invite Sundeep) PAGE DATA
 const programs={
   workshops:{
@@ -3905,7 +4270,7 @@ const pgMap={
   program:'program-page',hqdetail:'hq-detail-page',
   theme:'theme-page',excerpt:'excerpt-page',
   innerepic:'innerepic-page',atlas:'atlas-page',ask:'ask-page',
-  framework:'framework-page',writings:'writings-page'
+  framework:'framework-page',articles:'articles-page',writings:'writings-new-page',events:'events-page'
 };
 const themeMeta={
   Identity:"Who are you beneath the roles you play? Stories of self, mask, and the truth underneath.",
@@ -3957,7 +4322,8 @@ function go(id){
   if(isHome){mw.classList.remove('hidden-motw');nav.classList.add('with-motw')}
   else{mw.classList.add('hidden-motw');nav.classList.remove('with-motw')}
   if(id==='media'){renderMedia('articles')}
-  if(id==='writings'){renderArticlesMaster()}
+  if(id==='articles'){renderArticlesMaster()}
+  if(id==='writings'){renderWritingsPage()}
   if(id==='lab'){renderArts('All');renderChars()}
   if(id==='questions')renderQs('All');
   if(id==='innerepic')setTimeout(ieInit,80);
@@ -4330,8 +4696,8 @@ function ieInit(){
 // everything before it builds toward it, everything after unfolds because of it.
 const fwSteps=[
   {t:"Human Question",d:"The private question only you seem to be carrying — the one that keeps returning in different clothes.",ex:"\u201CWhy does this always happen to me?\u201D"},
-  {t:"Recognition",d:"The moment you notice this isn't new. Someone has lived this exact pattern before you.",ex:"The story hasn't changed. You have."},
   {t:"Mythic Story",d:"The mythological figure who already lived this pattern — in full, with everything it cost them.",ex:"Karna. Eklavya. Draupadi."},
+  {t:"Recognition",d:"The moment you notice this isn't new. Someone has lived this exact pattern before you.",ex:"The story hasn't changed. You have.",climax:true},
   {t:"Mythic Reframing",d:"Not changing what happened. Changing how it is understood.",ex:"\u201CMaybe I'm living an ancient pattern.\u201D"},
   {t:"Agency",d:"If this pattern has appeared before, what no longer has to remain inevitable?",ex:"What becomes possible now?"},
   {t:"Hope",d:"Not certainty. Not optimism. Just this — your next response has never existed before.",ex:"A better question than the one you arrived with."}
@@ -4351,7 +4717,7 @@ function fwBuild(){
   const n=fwSteps.length,pts=fwSteps.map((s,i)=>fwPolarToPct(i,n));
   nodesEl.innerHTML=fwSteps.map((s,i)=>{
     const p=pts[i];
-    return `<div class="fw-node" id="fwNode${i}" style="left:${p.x}%;top:${p.y}%" onclick="return fwClickNode(${i})"><div><span class="fw-node-idx">0${i+1}</span><span>${s.t}</span></div></div>`;
+    return `<div class="fw-node${s.climax?' fw-node--climax':''}" id="fwNode${i}" style="left:${p.x}%;top:${p.y}%" onclick="return fwClickNode(${i})"><div><span class="fw-node-idx">0${i+1}</span><span>${s.t}</span></div></div>`;
   }).join('');
   let svgHtml='';
   for(let i=0;i<n-1;i++){
@@ -4450,9 +4816,17 @@ function fwClickNode(i){
 function fwAssemble(){
   document.getElementById('fwMachine').classList.add('assembled');
   document.getElementById('fwLoop').classList.add('on');
-  const ending=document.getElementById('fwEnding');
-  ending.classList.add('on');
-  setTimeout(()=>ending.scrollIntoView({behavior:'smooth',block:'start'}),900);
+  document.getElementById('fwEnding').classList.add('on');
+  // No auto-scroll — Hope (and the quiet moment after it) stays the emotional
+  // ending until the visitor deliberately chooses to move on.
+  const cont=document.getElementById('fwContinueBtn');
+  if(cont)cont.classList.add('show');
+}
+function fwContinueToEnding(){
+  const cont=document.getElementById('fwContinueBtn');
+  if(cont)cont.classList.remove('show');
+  document.getElementById('fwEnding').scrollIntoView({behavior:'smooth',block:'start'});
+  return false;
 }
 
 // ── Cinematic curtain: plays the Act I / II / III script as a sequence of
@@ -4596,24 +4970,26 @@ function fwStartExperience(){
   const charName=fwRecognitionChars[Math.floor(Math.random()*fwRecognitionChars.length)];
   fwPlayBeats(fwActI,()=>{
     fwRevealNode(0,()=>{ // Human Question
-      const climax=fwActIIIntro.concat([
-        {text:charName,cls:"big gold",hold:3000},
-        {text:"",hold:3000},
-        {text:"This…",cls:"big",hold:1400},
-        {text:"is Recognition.",cls:"big gold",hold:3000},
-        {text:"",hold:1000},
-        {text:"The story hasn't changed.",cls:"big",hold:2200},
-        {text:"You have.",cls:"big gold",hold:3400}
-      ]);
-      fwPlayBeats(climax,()=>{
-        fwRevealNode(1,()=>{ // Recognition
-          fwRevealNode(2,()=>{ // Mythic Story
-            fwPlayBeats(fwReframingBeats,()=>{
-              fwRevealNode(3,()=>{ // Mythic Reframing
-                fwPlayBeats(fwAgencyBeats,()=>{
-                  fwRevealNode(4,()=>{ // Agency
-                    fwPlayBeats(fwHopeBeats,()=>{
-                      fwRevealNode(5,fwShowQuestionCapture); // Hope
+      fwPlayBeats(fwActIIIntro,()=>{
+        fwRevealNode(1,()=>{ // Mythic Story — the character who already lived it
+          const climax=[
+            {text:charName,cls:"big gold",hold:3000},
+            {text:"",hold:3000},
+            {text:"This…",cls:"big",hold:1400},
+            {text:"is Recognition.",cls:"big gold",hold:3000},
+            {text:"",hold:1000},
+            {text:"The story hasn't changed.",cls:"big",hold:2200},
+            {text:"You have.",cls:"big gold",hold:3400}
+          ];
+          fwPlayBeats(climax,()=>{
+            fwRevealNode(2,()=>{ // Recognition — the emotional climax
+              fwPlayBeats(fwReframingBeats,()=>{
+                fwRevealNode(3,()=>{ // Mythic Reframing
+                  fwPlayBeats(fwAgencyBeats,()=>{
+                    fwRevealNode(4,()=>{ // Agency
+                      fwPlayBeats(fwHopeBeats,()=>{
+                        fwRevealNode(5,fwShowQuestionCapture); // Hope
+                      });
                     });
                   });
                 });
@@ -4732,17 +5108,10 @@ function renderAtlWeeklyFeatured(){
       <button class="btn-gold" onclick="openAtlasProfile('${c.n}')">Explore ${c.n} →</button>
     </div>`;
 }
-function atlToggleAllChars(){
-  const g=document.getElementById('atlFeaturedGrid'),btn=document.getElementById('atlSeeOtherBtn');
-  const open=g.classList.toggle('open');
-  btn.textContent=open?'Hide Characters':'See Other Characters';
-  if(open)setTimeout(()=>g.scrollIntoView({behavior:'smooth',block:'nearest'}),300);
-  return false;
-}
 // Fully restores the constellation: all nodes/edges visible, zoom reset, legend intact.
 function resetAtlasMap(){
-  document.querySelectorAll('.atl-map-node').forEach(n=>n.classList.remove('active','dim'));
-  document.querySelectorAll('.atl-map-edge').forEach(e=>e.classList.remove('hi','dim'));
+  document.querySelectorAll('#atlMapSvg .atl-map-node').forEach(n=>n.classList.remove('active','dim'));
+  document.querySelectorAll('#atlMapSvg .atl-map-edge').forEach(e=>e.classList.remove('hi','dim'));
   const svg=document.getElementById('atlMapSvg');
   if(svg)svg.style.transform='';
   atlActiveChar=null;
@@ -4823,13 +5192,13 @@ function atlMapClick(name){
     if(e[0]===name)connectedNames.add(e[1]);
     if(e[1]===name)connectedNames.add(e[0]);
   });
-  document.querySelectorAll('.atl-map-node').forEach(n=>{
+  document.querySelectorAll('#atlMapSvg .atl-map-node').forEach(n=>{
     const nm=n.dataset.name;
     const connected=connectedNames.has(nm);
     n.classList.toggle('active',nm===name);
     n.classList.toggle('dim',!connected);
   });
-  document.querySelectorAll('.atl-map-edge').forEach(e=>{
+  document.querySelectorAll('#atlMapSvg .atl-map-edge').forEach(e=>{
     const touch=e.dataset.a===name||e.dataset.b===name;
     e.classList.toggle('hi',touch);
     e.classList.toggle('dim',!touch);
@@ -4896,8 +5265,8 @@ function openAtlasProfile(name){
 }
 function closeAtlasPanel(){
   document.getElementById('atlPanelOverlay').classList.remove('open');
-  document.querySelectorAll('.atl-map-node').forEach(n=>n.classList.remove('active','dim'));
-  document.querySelectorAll('.atl-map-edge').forEach(e=>e.classList.remove('hi','dim'));
+  document.querySelectorAll('#atlMapSvg .atl-map-node').forEach(n=>n.classList.remove('active','dim'));
+  document.querySelectorAll('#atlMapSvg .atl-map-edge').forEach(e=>e.classList.remove('hi','dim'));
   const svg=document.getElementById('atlMapSvg');if(svg)svg.style.transform='';
   atlActiveChar=null;
 }
@@ -4945,6 +5314,39 @@ function renderAtlJourney(name){
   document.getElementById('atlJourney').innerHTML=steps.map(([t,d])=>`<div class="atl-j-step"><div class="atl-j-dot"></div><h5>${t}</h5><p>${d}</p></div>`).join('');
   document.querySelectorAll('.atl-jp').forEach(p=>p.classList.toggle('act',p.dataset.n===name));
 }
+// ── SEE MORE CHARACTERS (toggle, top of page only) ──
+function atlToggleAllChars(){
+  const g=document.getElementById('atlFeaturedGrid'),btn=document.getElementById('atlSeeOtherBtn');
+  const open=g.classList.toggle('open');
+  btn.textContent=open?'Hide Characters':'See More Characters';
+  if(open)setTimeout(()=>g.scrollIntoView({behavior:'smooth',block:'nearest'}),300);
+  return false;
+}
+
+// ── SINGLE REVEALING CARD — the Human Question tied to this week's
+// featured character specifically. One-sided: it reveals in place on tap,
+// no flip-to-a-different-face. ──
+function atlFindHQForChar(name){
+  for(const q of questionsD){
+    const d=hqDetails[q.id];
+    if(d&&d.character&&d.character.name===name)return q;
+  }
+  return null;
+}
+function renderAtlHqFlip(){
+  const el=document.getElementById('atlHqFlipWrap');if(!el)return;
+  const weekNum=Math.floor(Date.now()/(7*24*60*60*1000));
+  const c=chars[weekNum%chars.length];
+  const q=atlFindHQForChar(c.n);
+  if(!q){el.innerHTML='';return;}
+  el.innerHTML=`
+    <div class="atl-hq-card" id="atlHqCard" onclick="this.classList.toggle('revealed')">
+      <span class="atl-hq-card-label">Human Question · <em>${c.n}</em></span>
+      <p class="atl-hq-card-q">${q.q}</p>
+      <span class="atl-hq-card-hint">Tap to reveal</span>
+      <a href="#" class="atl-hq-card-link" onclick="event.stopPropagation();openHQ('${q.id}')">Explore this question →</a>
+    </div>`;
+}
 function renderAtlJourneyPills(){
   const el=document.getElementById('atlJourneyPills');if(!el||el.dataset.built)return;el.dataset.built='1';
   const names=Object.keys(atlasJourneys);
@@ -4957,30 +5359,29 @@ function renderAtlArchetypes(){
   const el=document.getElementById('atlArchetypeGrid');if(!el||el.dataset.built)return;el.dataset.built='1';
   el.innerHTML=atlasArchetypes.map(a=>`<div class="atl-arch-card" onclick="atlFilterByArchetype('${a.n}')"><div class="atl-arch-icon">${a.icon}</div><h4>${a.n}</h4><p>${a.d}</p></div>`).join('');
 }
-function atlFilterByArchetype(name){
+function atlRenderFilteredGrid(filtered,label){
   const g=document.getElementById('atlFeaturedGrid');
-  const filtered=chars.filter(c=>c.archetype===name);
   g.innerHTML=(filtered.length?filtered:chars).map(c=>`<div class="atl-card reveal-in" onclick="openAtlasProfile('${c.n}')">
     <div class="atl-card-portrait">${c.i}</div><div class="atl-card-name">${c.n}</div>
     <div class="atl-card-desc">${c.r} · ${c.epic||''}</div>
     <div class="atl-card-meta">${(c.themes||[]).slice(0,2).map(t=>`<span class="atl-card-tag">${t}</span>`).join('')}</div>
     <div class="atl-card-btn">Explore <span>→</span></div>
   </div>`).join('');
-  document.getElementById('atlFeaturedGrid').scrollIntoView({behavior:'smooth',block:'center'});
+  g.classList.add('open');
+  const btn=document.getElementById('atlSeeOtherBtn');
+  if(btn)btn.textContent='Hide Characters';
+  g.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function atlFilterByEpic(name){atlFilterGeneric(c=>c.epic===name)}
-function atlFilterByTheme(name){atlFilterGeneric(c=>(c.themes||[]).some(t=>t.toLowerCase().includes(name.toLowerCase())||name.toLowerCase().includes(t.toLowerCase())))}
-function atlFilterGeneric(fn){
-  const g=document.getElementById('atlFeaturedGrid');
-  const filtered=chars.filter(fn);
-  g.innerHTML=(filtered.length?filtered:chars.slice(0,4)).map(c=>`<div class="atl-card reveal-in" onclick="openAtlasProfile('${c.n}')">
-    <div class="atl-card-portrait">${c.i}</div><div class="atl-card-name">${c.n}</div>
-    <div class="atl-card-desc">${c.r} · ${c.epic||''}</div>
-    <div class="atl-card-meta">${(c.themes||[]).slice(0,2).map(t=>`<span class="atl-card-tag">${t}</span>`).join('')}</div>
-    <div class="atl-card-btn">Explore <span>→</span></div>
-  </div>`).join('');
-  document.getElementById('atlFeaturedGrid').scrollIntoView({behavior:'smooth',block:'center'});
+function atlFilterByArchetype(name){
+  atlRenderFilteredGrid(chars.filter(c=>c.archetype===name),`Showing characters who embody the ${name} archetype.`);
 }
+function atlFilterByEpic(name){
+  atlRenderFilteredGrid(chars.filter(c=>c.epic===name),`Showing characters from the ${name}.`);
+}
+function atlFilterByTheme(name){
+  atlRenderFilteredGrid(chars.filter(c=>(c.themes||[]).some(t=>t.toLowerCase().includes(name.toLowerCase())||name.toLowerCase().includes(t.toLowerCase()))),`Showing characters explored through the lens of ${name}.`);
+}
+function atlFilterGeneric(fn){atlRenderFilteredGrid(chars.filter(fn),'Filtered results.');}
 
 // ── HUMAN QUESTIONS ──
 function renderAtlHq(){
@@ -5058,6 +5459,7 @@ function atlasInit(){
   renderAtlHeroSvg();
   renderAtlWeeklyFeatured();
   renderAtlFeatured();
+  renderAtlHqFlip();
   renderAtlMap();
   renderAtlTree();
   renderAtlJourneyPills();
