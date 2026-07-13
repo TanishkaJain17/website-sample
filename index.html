@@ -339,7 +339,7 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .search-inp:focus{border-color:#C2A05A;background:rgba(17,23,40,.95)}
 .search-inp::placeholder{color:rgba(232,234,240,.3)}
 .search-ico{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);color:#C2A05A;font-size:1.1rem}
-.lab-search-dropdown{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#141210;border:1px solid rgba(194,160,90,.3);box-shadow:0 20px 50px rgba(0,0,0,.5);max-height:400px;overflow-y:auto;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:30}
+.lab-search-dropdown{position:fixed;background:#141210;border:1px solid rgba(194,160,90,.3);box-shadow:0 20px 50px rgba(0,0,0,.5);max-height:min(420px,60vh);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:3000}
 .lab-search-dropdown.show{opacity:1;transform:translateY(0);pointer-events:auto}
 .lab-sd-group-label{padding:.7rem 1.2rem .4rem;font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;background:rgba(194,160,90,.05)}
 .lab-sd-item{padding:.75rem 1.2rem;cursor:pointer;border-bottom:1px solid rgba(194,160,90,.08);transition:background .2s;display:flex;flex-direction:column;gap:.15rem}
@@ -4437,6 +4437,30 @@ function labSearchGo(kind,id){
   else if(kind==='article')openArticle(id);
   else if(kind==='book')go('books');
 }
+// Dropdown is position:fixed (its parent .lab-hero uses overflow:hidden for the
+// background art, which was clipping the results list). We instead compute its
+// on-screen position from the input itself, so the full list is always visible
+// and independently scrollable regardless of where it sits on the page.
+function labPositionDropdown(){
+  const inp=document.getElementById('labSearchInput'),drop=document.getElementById('labSearchDrop');
+  if(!inp||!drop)return;
+  const r=inp.getBoundingClientRect();
+  const spaceBelow=window.innerHeight-r.bottom-16;
+  drop.style.left=r.left+'px';
+  drop.style.width=r.width+'px';
+  if(spaceBelow<200&&r.top>spaceBelow){
+    // Not enough room below — open upward instead.
+    drop.style.top='';
+    drop.style.bottom=(window.innerHeight-r.top+8)+'px';
+    drop.style.maxHeight=Math.max(180,r.top-24)+'px';
+  } else {
+    drop.style.bottom='';
+    drop.style.top=(r.bottom+8)+'px';
+    drop.style.maxHeight=Math.max(180,spaceBelow)+'px';
+  }
+}
+window.addEventListener('resize',()=>{if(document.getElementById('labSearchDrop')?.classList.contains('show'))labPositionDropdown();});
+window.addEventListener('scroll',()=>{if(document.getElementById('labSearchDrop')?.classList.contains('show'))labPositionDropdown();},true);
 function filterLab(v){
   const drop=document.getElementById('labSearchDrop');
   const term=(v||'').trim();
@@ -4468,7 +4492,7 @@ function filterLab(v){
   if(artMatches.length)html+='<div class="lab-sd-group-label">Stories &amp; Articles</div>'+artMatches.slice(0,4).map(a=>`<div class="lab-sd-item" onclick="labSearchGo('article','${slugify(a.title)}')"><span class="lab-sd-item-title">${labHighlight(a.title,term)}</span><span class="lab-sd-item-sub">${a.theme} · ${a.date}</span></div>`).join('');
   if(bookMatches.length)html+='<div class="lab-sd-group-label">Books</div>'+bookMatches.slice(0,3).map(b=>`<div class="lab-sd-item" onclick="labSearchGo('book','${slugify(b.title)}')"><span class="lab-sd-item-title">${labHighlight(b.title,term)}</span><span class="lab-sd-item-sub">${labHighlight(b.ex,term)}</span></div>`).join('');
   if(!html)html=`<div class="lab-sd-empty">No matches for "${term}" — try a character, theme, or question.</div>`;
-  if(drop){drop.innerHTML=html;drop.classList.add('show');}
+  if(drop){drop.innerHTML=html;drop.classList.add('show');labPositionDropdown();}
 }
 document.addEventListener('click',e=>{
   const drop=document.getElementById('labSearchDrop');
