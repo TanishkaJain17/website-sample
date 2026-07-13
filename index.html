@@ -13,7 +13,7 @@
   --ease:cubic-bezier(0.25,0.46,0.45,0.94);
   --gold:#C2A05A;--copper:#9C6B3F;--parch:#F5F0E8;--char:#0D0D0D;--deepgreen:#0F1F17;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
 body{font-family:var(--sans);overflow-x:hidden;cursor:none;background:#0D0D0D}
 a,button,input,select,textarea{cursor:none}
 img{display:block;max-width:100%}
@@ -339,6 +339,15 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .search-inp:focus{border-color:#C2A05A;background:rgba(17,23,40,.95)}
 .search-inp::placeholder{color:rgba(232,234,240,.3)}
 .search-ico{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);color:#C2A05A;font-size:1.1rem}
+.lab-search-dropdown{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#141210;border:1px solid rgba(194,160,90,.3);box-shadow:0 20px 50px rgba(0,0,0,.5);max-height:400px;overflow-y:auto;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:30}
+.lab-search-dropdown.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.lab-sd-group-label{padding:.7rem 1.2rem .4rem;font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;background:rgba(194,160,90,.05)}
+.lab-sd-item{padding:.75rem 1.2rem;cursor:pointer;border-bottom:1px solid rgba(194,160,90,.08);transition:background .2s;display:flex;flex-direction:column;gap:.15rem}
+.lab-sd-item:hover{background:rgba(194,160,90,.1)}
+.lab-sd-item-title{font-family:var(--serif);font-size:.9rem;color:#F5F0E8}
+.lab-sd-item-title mark{background:none;color:#C2A05A;font-style:italic}
+.lab-sd-item-sub{font-family:var(--sans);font-size:.65rem;color:rgba(245,240,232,.4);letter-spacing:.03em}
+.lab-sd-empty{padding:1.1rem 1.2rem;font-family:var(--sans);font-size:.78rem;color:rgba(245,240,232,.4)}
 
 .wgch{background:#0D1020}
 .wgch-banner{position:relative;min-height:420px;display:flex;align-items:flex-end;overflow:hidden}
@@ -671,6 +680,8 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
    BOOKS
 ════════════════════════════════════════ */
 #books-page{background:#F7F0E3}
+.bk-back-home{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#2A1F14;text-decoration:none;border:1px solid rgba(42,31,20,.28);background:rgba(42,31,20,.04);padding:.7rem 1.3rem;margin:6.5rem 5vw 0;transition:all .35s var(--ease);cursor:pointer}
+.bk-back-home:hover{background:rgba(42,31,20,.09);border-color:rgba(42,31,20,.5)}
 #books-page .bk-nav-fix{position:fixed;top:0;left:0;right:0;height:68px;background:rgba(6,6,6,.94);backdrop-filter:blur(18px);z-index:498;pointer-events:none}
 .bk-hero{background:#EDE4D3;padding:8rem 5vw 4rem;display:grid;grid-template-columns:1fr 340px;gap:5rem;align-items:center}
 .bk-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#9C6B3F;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
@@ -721,13 +732,13 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 /* ════════════════════════════════════════
    MEDIA
 ════════════════════════════════════════ */
-#media-page{background:#2A2A2A}
-.med-hero{background:#1a1a1a;padding:8rem 5vw 3.5rem}
-.med-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,240,240,.35);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
-.med-label::before{content:'';width:16px;height:1px;background:rgba(240,240,240,.35)}
-.med-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#F0F0F0;line-height:1.05}
-.med-sub{font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.85;max-width:480px;margin-top:1rem;font-weight:300}
-.med-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.05);padding:0 5vw;background:#222;overflow-x:auto}
+#media-page{background:#0a0908}
+.med-hero{background:#0d0c0a;padding:9rem 5vw 3.8rem}
+.med-label{font-family:var(--sans);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.1rem;display:flex;align-items:center;gap:.8rem}
+.med-label::before{content:'';width:18px;height:1px;background:#C2A05A}
+.med-title{font-family:var(--serif);font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:300;color:#F5F0E8;line-height:1.05}
+.med-sub{font-family:var(--sans);font-size:.87rem;color:rgba(245,240,232,.42);line-height:1.9;max-width:480px;margin-top:1.1rem;font-weight:300}
+.med-tabs{display:flex;border-bottom:1px solid rgba(194,160,90,.12);padding:0 5vw;background:#0a0908;overflow-x:auto}
 
 /* Master Articles archive (item 4) */
 #articles-page{background:#141414}
@@ -818,63 +829,64 @@ footer.footer-light .f-legal a:hover{color:#9C6B3F}
 .wr-entry.open .wr-entry-full{max-height:2000px;margin-top:1rem}
 .wr-entry-full p{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.95;font-weight:300;margin-bottom:1rem}
 @media(max-width:860px){.wr-layout{grid-template-columns:1fr}.wr-sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid rgba(194,160,90,.12)}}
-.med-tab{padding:.95rem 1.4rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,240,240,.32);transition:all .3s;border-bottom:2px solid transparent;white-space:nowrap}
-.med-tab.act,.med-tab:hover{color:#F0F0F0;border-bottom-color:#fff}
-.med-content{padding:3rem 5vw;background:#2A2A2A}
+.med-tab{padding:.95rem 1.4rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.35);transition:all .3s;border-bottom:2px solid transparent;white-space:nowrap}
+.med-tab.act,.med-tab:hover{color:#C2A05A;border-bottom-color:#C2A05A}
+.med-content{padding:3.2rem 5vw 5rem;background:#0a0908}
 .ae-wrap{display:flex;flex-direction:column;gap:1px}
-.ae-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:380px;background:rgba(255,255,255,.04)}
+.ae-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:380px;background:rgba(194,160,90,.1)}
 .ae-feat-img{overflow:hidden;position:relative}
 .ae-feat-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(.2);transition:all .6s}
 .ae-feat-img:hover img{filter:brightness(.82) grayscale(0);transform:scale(1.03)}
-.ae-feat-text{background:#1a1a1a;padding:3rem 3vw;display:flex;flex-direction:column;justify-content:flex-end}
-.ae-pub{font-family:var(--sans);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,240,240,.38);margin-bottom:.7rem;display:block}
-.ae-head{font-family:var(--serif);font-size:1.5rem;color:#F0F0F0;line-height:1.4;margin-bottom:.7rem}
-.ae-ex{font-family:var(--sans);font-size:.76rem;color:rgba(240,240,240,.42);line-height:1.85;font-weight:300;margin-bottom:1.2rem}
-.ae-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1px;background:rgba(255,255,255,.04)}
-.ae-card{background:#1a1a1a;overflow:hidden;transition:background .3s}
-.ae-card:hover{background:#252525}
+.ae-feat-text{background:#0d0c0a;padding:3rem 3vw;display:flex;flex-direction:column;justify-content:flex-end}
+.ae-pub{font-family:var(--sans);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#C2A05A;margin-bottom:.8rem;display:block}
+.ae-head{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:#F5F0E8;line-height:1.4;margin-bottom:.8rem}
+.ae-ex{font-family:var(--sans);font-size:.76rem;color:rgba(245,240,232,.42);line-height:1.85;font-weight:300;margin-bottom:1.3rem}
+.ae-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1px;background:rgba(194,160,90,.1)}
+.ae-card{background:#0d0c0a;overflow:hidden;transition:background .3s}
+.ae-card:hover{background:#141210}
 .ae-card-img{aspect-ratio:1/1;overflow:hidden}
 .ae-card-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(.2);transition:all .5s}
 .ae-card:hover .ae-card-img img{filter:brightness(.82) grayscale(0);transform:scale(1.04)}
-.ae-card-body{padding:1.3rem 1.4rem}
-.ae-card-link{font-family:var(--sans);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,240,240,.45);text-decoration:none;border-bottom:1px solid rgba(240,240,240,.18);padding-bottom:1px;transition:color .3s}
-.ae-card-link:hover{color:#fff}
-.press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,.04)}
-.press-card{background:#2A2A2A;padding:2rem 1.8rem;border:1px solid rgba(255,255,255,.04);transition:border-color .3s}
-.press-card:hover{border-color:rgba(255,255,255,.16)}
-.pc-out{font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,240,240,.38);margin-bottom:.8rem}
-.pc-head{font-family:var(--serif);font-size:1.12rem;color:#F0F0F0;line-height:1.5;margin-bottom:.7rem}
-.pc-date{font-family:var(--sans);font-size:.6rem;color:rgba(240,240,240,.2);letter-spacing:.1em}
+.ae-card-body{padding:1.4rem 1.5rem}
+.ae-card-link{font-family:var(--sans);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border-bottom:1px solid rgba(194,160,90,.4);padding-bottom:1px;transition:color .3s}
+.ae-card-link:hover{color:#F5F0E8}
+.press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:rgba(194,160,90,.1)}
+.press-card{background:#0d0c0a;padding:2.1rem 1.9rem;border:1px solid rgba(194,160,90,.08);transition:border-color .3s}
+.press-card:hover{border-color:rgba(194,160,90,.35)}
+.pc-out{font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:.9rem}
+.pc-head{font-family:var(--serif);font-size:1.14rem;font-weight:300;color:#F5F0E8;line-height:1.55;margin-bottom:.8rem}
+.pc-date{font-family:var(--sans);font-size:.6rem;color:rgba(245,240,232,.3);letter-spacing:.1em}
 
 /* ════════════════════════════════════════
    CONTACT
 ════════════════════════════════════════ */
-#contact-page{background:#0B1629}
-.con-hero{background:#08101e;padding:8rem 5vw 4rem;position:relative}
-.con-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(194,160,90,.1)}
-.con-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
-.con-label::before{content:'';width:16px;height:1px;background:#C2A05A}
-.con-title{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;color:#E8EEF8;line-height:1.05}
+#contact-page{background:#0a0908}
+.con-hero{background:#0d0c0a;padding:9rem 5vw 4.5rem;position:relative}
+.con-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(194,160,90,.14)}
+.con-label{font-family:var(--sans);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+.con-label::before{content:'';width:18px;height:1px;background:#C2A05A}
+.con-title{font-family:var(--serif);font-size:clamp(2.7rem,5.8vw,4.8rem);font-weight:300;color:#F5F0E8;line-height:1.05}
 .con-title em{font-style:italic;color:#C2A05A}
-.con-sub{font-family:var(--sans);font-size:.88rem;color:rgba(232,238,248,.42);line-height:1.9;max-width:440px;margin-top:1rem;font-weight:300}
-.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(194,160,90,.07)}
-.con-form-wrap{background:#0B1629;padding:5rem 4vw}
-.con-f-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#C2A05A;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
+.con-sub{font-family:var(--sans);font-size:.9rem;color:rgba(245,240,232,.45);line-height:1.95;max-width:460px;margin-top:1.3rem;font-weight:300}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(194,160,90,.1)}
+.con-form-wrap{background:#0a0908;padding:5.5rem 4vw}
+.con-f-label{font-family:var(--sans);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:#C2A05A;margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem}
 .con-f-label::before{content:'';width:14px;height:1px;background:#C2A05A}
-.con-f-title{font-family:var(--serif);font-size:1.7rem;font-weight:400;color:#E8EEF8;margin-bottom:2rem}
+.con-f-title{font-family:var(--serif);font-size:clamp(1.7rem,2.6vw,2.1rem);font-weight:300;color:#F5F0E8;margin-bottom:2.4rem;line-height:1.3}
 .con-f-title em{font-style:italic;color:#C2A05A}
-.f-group{margin-bottom:1.4rem}
-.f-lbl{font-family:var(--sans);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,238,248,.38);display:block;margin-bottom:.45rem}
-.f-inp{width:100%;padding:.75rem 1rem;background:rgba(232,238,248,.03);border:1px solid rgba(194,160,90,.13);color:#E8EEF8;font-family:var(--sans);font-size:.82rem;outline:none;transition:border-color .3s;-webkit-appearance:none}
-.f-inp:focus{border-color:#C2A05A;background:rgba(194,160,90,.04)}
-.f-inp::placeholder{color:rgba(232,238,248,.18)}
-textarea.f-inp{min-height:110px;resize:vertical}
-select.f-inp option{background:#0B1629}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.con-info{background:#08101e;padding:5rem 4vw;display:flex;flex-direction:column;gap:2.5rem;border-left:1px solid rgba(194,160,90,.07)}
-.ci-lbl{font-family:var(--sans);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:#C2A05A;margin-bottom:.5rem}
-.ci-val{font-family:var(--serif);font-size:1.05rem;color:#E8EEF8;line-height:1.5}
-.ci-sub{font-family:var(--sans);font-size:.72rem;color:rgba(232,238,248,.4);margin-top:.3rem;font-weight:300}
+.f-group{margin-bottom:1.6rem}
+.f-lbl{font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.4);display:block;margin-bottom:.55rem}
+.f-inp{width:100%;padding:.9rem 1.1rem;background:rgba(255,255,255,.025);border:1px solid rgba(194,160,90,.22);color:#F5F0E8;font-family:var(--sans);font-size:.85rem;outline:none;transition:border-color .35s,background .35s;-webkit-appearance:none}
+.f-inp:hover{border-color:rgba(194,160,90,.4);background:rgba(194,160,90,.035)}
+.f-inp:focus{border-color:#C2A05A;background:rgba(194,160,90,.06);box-shadow:0 0 0 1px rgba(194,160,90,.15)}
+.f-inp::placeholder{color:rgba(245,240,232,.22)}
+textarea.f-inp{min-height:120px;resize:vertical}
+select.f-inp option{background:#141210;color:#F5F0E8}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.con-info{background:#0d0c0a;padding:5.5rem 4vw;display:flex;flex-direction:column;gap:2.8rem;border-left:1px solid rgba(194,160,90,.1)}
+.ci-lbl{font-family:var(--sans);font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:#C2A05A;margin-bottom:.6rem}
+.ci-val{font-family:var(--serif);font-size:1.15rem;font-weight:300;color:#F5F0E8;line-height:1.55}
+.ci-sub{font-family:var(--sans);font-size:.74rem;color:rgba(245,240,232,.4);margin-top:.35rem;font-weight:300}
 
 /* ════════════════════════════════════════
    TERMS & PRIVACY PAGES
@@ -1284,7 +1296,7 @@ select.f-inp option{background:#0B1629}
 .atl-hero-svg{width:100%;max-width:420px;filter:drop-shadow(0 0 24px rgba(194,160,90,.1))}
 
 /* ── FEATURED CARDS ── */
-.atl-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.6rem;max-width:1300px;margin:0 auto}
+.atl-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.6rem;max-width:1300px;margin:0 auto;scroll-margin-top:110px}
 .atl-card{position:relative;background:linear-gradient(165deg,#141210,#0b0a08);border:1px solid rgba(194,160,90,.15);padding:2.2rem 1.8rem;cursor:pointer;transition:all .5s var(--ease);overflow:hidden;opacity:0;transform:translateY(22px)}
 .atl-card.reveal-in{opacity:1;transform:none}
 .atl-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(194,160,90,.1),transparent 60%);opacity:0;transition:opacity .5s}
@@ -1343,7 +1355,7 @@ select.f-inp option{background:#0B1629}
 .atl-weekly-label{font-family:var(--sans);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:#C2A05A;margin-bottom:.6rem}
 .atl-weekly-name{font-family:var(--serif);font-size:2.2rem;color:var(--parch);font-weight:400;margin-bottom:.6rem}
 .atl-weekly-desc{font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.85;margin-bottom:1.5rem;max-width:520px}
-.atl-see-other-wrap{text-align:center;margin:2.4rem 0 1.4rem}
+.atl-see-other-wrap{text-align:center;margin:2.4rem 0 1.4rem;scroll-margin-top:110px}
 .atl-see-other-btn{font-family:var(--sans);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.6);background:none;border:1px solid rgba(245,240,232,.22);padding:.85rem 1.8rem;cursor:pointer;transition:all .3s}
 .atl-see-other-btn:hover{color:var(--gold);border-color:rgba(194,160,90,.5)}
 .atl-all-chars{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s var(--ease),opacity .5s var(--ease);margin-top:0}
@@ -1394,17 +1406,16 @@ select.f-inp option{background:#0B1629}
 .atl-tree-chip.plain:hover{border-color:rgba(194,160,90,.25);background:none}
 
 /* ── JOURNEY ── */
-.atl-hq-flip-wrap{display:flex;justify-content:center;margin-top:3rem}
-.atl-hq-card{width:100%;max-width:520px;background:linear-gradient(155deg,#161310,#0a0908);border:1px solid rgba(194,160,90,.3);padding:2.4rem 2.2rem;text-align:center;cursor:pointer;transition:border-color .4s}
-.atl-hq-card:hover{border-color:rgba(194,160,90,.55)}
-.atl-hq-card-label{display:block;font-family:var(--sans);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.2rem}
-.atl-hq-card-label em{font-style:italic;color:#F5F0E8}
-.atl-hq-card-q{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:#F5F0E8;line-height:1.6;filter:blur(7px);opacity:.35;transition:filter .6s var(--ease),opacity .6s var(--ease)}
-.atl-hq-card-hint{display:block;margin-top:1rem;font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.35);transition:opacity .4s}
-.atl-hq-card-link{display:inline-block;margin-top:1.3rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#C2A05A;text-decoration:none;border-bottom:1px solid rgba(194,160,90,.4);padding-bottom:.2rem;opacity:0;max-height:0;overflow:hidden;transition:opacity .6s var(--ease)}
-.atl-hq-card.revealed .atl-hq-card-q{filter:blur(0);opacity:1}
-.atl-hq-card.revealed .atl-hq-card-hint{opacity:0}
-.atl-hq-card.revealed .atl-hq-card-link{opacity:1;max-height:40px}
+.atl-hq-flip-wrap{display:flex;justify-content:center;margin:4rem 0 1rem;scroll-margin-top:110px}
+.atl-hq-feature-card{width:100%;max-width:720px;background:linear-gradient(155deg,#181410,#0a0908);border:1px solid rgba(194,160,90,.4);padding:4.2rem 3.6rem;text-align:center;position:relative;box-shadow:0 0 70px rgba(194,160,90,.09),0 30px 80px rgba(0,0,0,.5);transition:box-shadow .5s var(--ease),border-color .5s var(--ease)}
+.atl-hq-feature-card:hover{border-color:rgba(194,160,90,.7);box-shadow:0 0 100px rgba(194,160,90,.16),0 30px 80px rgba(0,0,0,.55)}
+.atl-hq-feature-label{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#C2A05A;margin-bottom:1.8rem}
+.atl-hq-feature-label em{font-style:italic;color:#F5F0E8}
+.atl-hq-feature-q{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3.2vw,2.15rem);color:#F5F0E8;line-height:1.55;max-width:560px;margin:0 auto 1.9rem;position:relative}
+.atl-hq-feature-q::before,.atl-hq-feature-q::after{content:'"';color:rgba(194,160,90,.5);font-family:var(--serif);font-style:normal}
+.atl-hq-feature-sub{font-family:var(--sans);font-size:.82rem;font-weight:300;color:rgba(245,240,232,.48);line-height:1.9;max-width:460px;margin:0 auto 2.4rem}
+.atl-hq-feature-card .btn-gold{margin:0 auto}
+@media(max-width:760px){.atl-hq-feature-card{padding:2.8rem 1.8rem}}
 .atl-cj-flip-row{display:flex;gap:2.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.6rem;perspective:1600px}
 .atl-cj-chip{width:340px;height:230px;cursor:pointer}
 .atl-cj-chip-inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.23,1,.32,1);transform-style:preserve-3d}
@@ -1974,11 +1985,11 @@ select.f-inp option{background:#0B1629}
     <p class="atl-kicker reveal">Featured This Week</p>
     <h2 class="atl-sec-title reveal">Character of the <em>Week</em></h2>
     <div class="atl-weekly-feat" id="atlWeeklyFeatured"></div>
+    <div class="atl-hq-flip-wrap reveal" id="atlHqFlipWrap"></div>
     <div class="atl-see-other-wrap">
       <button class="atl-see-other-btn" onclick="return atlToggleAllChars()" id="atlSeeOtherBtn">See More Characters</button>
     </div>
     <div class="atl-card-grid atl-all-chars" id="atlFeaturedGrid"></div>
-    <div class="atl-hq-flip-wrap reveal" id="atlHqFlipWrap"></div>
   </section>
 
   <!-- INTERACTIVE MAP -->
@@ -2556,8 +2567,9 @@ select.f-inp option{background:#0B1629}
       <h1 class="lab-title">The Mythology <em>Lab</em></h1>
       <p class="lab-sub">Not a blog. Not a library. A living institution — where ancient stories are decoded as tools for modern understanding.</p>
       <div class="search-wrap">
-        <input class="search-inp" type="text" placeholder="Search myths, themes, archetypes, questions, characters…" oninput="filterLab(this.value)"/>
+        <input class="search-inp" id="labSearchInput" type="text" placeholder="Search myths, themes, archetypes, questions, characters…" autocomplete="off" oninput="filterLab(this.value)" onfocus="filterLab(this.value)" onkeydown="if(event.key==='Enter'){this.blur();document.getElementById('labSearchDrop').classList.remove('show')}"/>
         <span class="search-ico">⌕</span>
+        <div class="lab-search-dropdown" id="labSearchDrop"></div>
       </div>
     </div>
     <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll to explore</span></div>
@@ -3048,6 +3060,7 @@ select.f-inp option{background:#0B1629}
 <!-- ════ BOOKS ════ -->
 <div class="page" id="books-page">
   <div class="bk-nav-fix"></div>
+  <button class="bk-back-home" onclick="return go('home')">← Back to Home</button>
   <section class="bk-hero">
     <div>
       <p class="bk-label">Published Work</p>
@@ -3646,7 +3659,7 @@ select.f-inp option{background:#0B1629}
       <div><p class="ci-lbl">For Speaking Enquiries</p><p class="ci-val">Cobalt Blue Foundation</p><p class="ci-sub">workshops@cobaltbluefoundation.com</p></div>
       <div><p class="ci-lbl">For Press & Media</p><p class="ci-val">Media Relations</p><p class="ci-sub">press@cobaltbluefoundation.com</p></div>
       <div><p class="ci-lbl">Follow the Work</p><p class="ci-val" style="font-size:.88rem;line-height:2.1"><a href="https://www.instagram.com/mythsbysundeep" style="color:#C2A05A;display:block;text-decoration:none">Instagram · @mythsbysundeep</a><a href="https://substack.com/@mythsbysundeep" style="color:#C2A05A;display:block;text-decoration:none">Substack · Myths By Sundeep</a><a href="https://www.youtube.com/@mythsbysundeep" style="color:#C2A05A;display:block;text-decoration:none">YouTube · @mythsbysundeep</a><a href="https://www.linkedin.com/in/mythsbysundeep/" style="color:#C2A05A;display:block;text-decoration:none">LinkedIn · Sundeep Verma</a></p></div>
-      <div><p class="ci-lbl">The Foundation</p><p class="ci-val" style="font-size:.88rem"><a href="https://www.cobaltbluefoundation.com" style="color:#E8EEF8;text-decoration:none">cobaltbluefoundation.com</a></p><p class="ci-sub">Tickets, events, and upcoming programs</p></div>
+      <div><p class="ci-lbl">The Foundation</p><p class="ci-val" style="font-size:.88rem"><a href="https://www.cobaltbluefoundation.com" style="color:#F5F0E8;text-decoration:none">cobaltbluefoundation.com</a></p><p class="ci-sub">Tickets, events, and upcoming programs</p></div>
     </div>
   </div>
  <footer>
@@ -4401,13 +4414,66 @@ function filterByTheme(t){
   renderArts(t);
   document.getElementById('artGrid')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function filterLab(v){
-  if(!v){renderArts('All');return}
-  const lv=v.toLowerCase();
-  const d=arts.filter(a=>a.title.toLowerCase().includes(lv)||a.theme.toLowerCase().includes(lv)||a.ex.toLowerCase().includes(lv));
-  const g=document.getElementById('artGrid');
-  if(g)g.innerHTML=d.map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${a.title}</h3><p class="art-ex">${a.ex}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join('');
+// ═══════ MYTHOLOGY LAB — UNIFIED SEARCH (item 1) ═══════
+// Searches by character, story, theme, human question and keyword — instant,
+// no page reload, with highlighted dropdown suggestions. Empty query returns
+// the full collection.
+const booksIndex=[
+  {title:"Ahalya — The Unploughed",ex:"A retelling of the ancient love story of Ahalya — one of mythology's most misread, most silenced women.",tags:["Ahalya","feminine archetypes","poetry","desire"]},
+  {title:"The Inner Epic",ex:"Mapping the Mahabharata and Ramayana onto the inner battles every person quietly fights — Karna, Arjuna and Draupadi among them.",tags:["Karna","Arjuna","Draupadi","Mahabharata","Ramayana","identity"]},
+  {title:"Calendar of Love",ex:"A year of mythology retold through the seasons of love — devotion, longing, betrayal, reunion.",tags:["love","devotion","Sita","Savitri"]},
+  {title:"Mythology as Psychology",ex:"How the archetypes, narratives and moral frameworks of the epics correspond to the deepest findings of modern psychology.",tags:["psychology","archetype","shadow"]}
+];
+function labEsc(s){return String(s).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function labHighlight(text,term){
+  if(!term)return text;
+  return text.replace(new RegExp('('+labEsc(term)+')','ig'),'<mark>$1</mark>');
 }
+function labSearchGo(kind,id){
+  const drop=document.getElementById('labSearchDrop');if(drop)drop.classList.remove('show');
+  if(kind==='char')openCharPage(id);
+  else if(kind==='theme')openTheme(id);
+  else if(kind==='question')openHQ(id);
+  else if(kind==='article')openArticle(id);
+  else if(kind==='book')go('books');
+}
+function filterLab(v){
+  const drop=document.getElementById('labSearchDrop');
+  const term=(v||'').trim();
+  if(!term){
+    if(drop){drop.classList.remove('show');drop.innerHTML='';}
+    renderArts('All');renderChars();
+    document.querySelectorAll('#pills .pill').forEach(p=>p.classList.toggle('act',p.textContent==='All'));
+    return;
+  }
+  const lv=term.toLowerCase();
+  const charMatches=chars.filter(c=>c.n.toLowerCase().includes(lv)||c.r.toLowerCase().includes(lv)||(c.themes||[]).some(t=>t.toLowerCase().includes(lv))||c.desc.toLowerCase().includes(lv));
+  const artMatches=arts.filter(a=>a.title.toLowerCase().includes(lv)||a.theme.toLowerCase().includes(lv)||a.ex.toLowerCase().includes(lv));
+  const themeMatches=Object.keys(themeMeta).filter(t=>t.toLowerCase().includes(lv));
+  const qMatches=questionsD.filter(q=>q.q.toLowerCase().includes(lv)||q.cat.toLowerCase().includes(lv));
+  const bookMatches=booksIndex.filter(b=>b.title.toLowerCase().includes(lv)||b.ex.toLowerCase().includes(lv)||b.tags.some(t=>t.toLowerCase().includes(lv)));
+
+  // Instant-filter the grids on the page itself — no reload.
+  const g=document.getElementById('artGrid');
+  if(g)g.innerHTML=artMatches.length?artMatches.map(a=>`<div class="art-card" onclick="return openArticle('${slugify(a.title)}')"><span class="art-tag">${a.theme}</span><h3 class="art-title">${labHighlight(a.title,term)}</h3><p class="art-ex">${labHighlight(a.ex,term)}</p><div class="art-meta"><span>${a.date}</span><span>Read →</span></div></div>`).join(''):`<p style="font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.4)">No stories match "${term}".</p>`;
+  const cg=document.getElementById('charGrid');
+  if(cg)cg.innerHTML=charMatches.length?charMatches.map(c=>`<div class="char-card" onclick="openCharPage('${c.n}')"><div class="char-initial">${c.i}</div><div class="char-name">${labHighlight(c.n,term)}</div><div class="char-role">${c.r}</div><div class="char-arrow">↗</div></div>`).join(''):`<p style="font-family:var(--sans);font-size:.8rem;color:rgba(245,240,232,.4)">No characters match "${term}".</p>`;
+  document.querySelectorAll('#pills .pill').forEach(p=>p.classList.remove('act'));
+
+  // Dropdown suggestions, grouped and highlighted.
+  let html='';
+  if(charMatches.length)html+='<div class="lab-sd-group-label">Characters</div>'+charMatches.slice(0,4).map(c=>`<div class="lab-sd-item" onclick="labSearchGo('char','${c.n}')"><span class="lab-sd-item-title">${labHighlight(c.n,term)}</span><span class="lab-sd-item-sub">${c.r}</span></div>`).join('');
+  if(themeMatches.length)html+='<div class="lab-sd-group-label">Themes</div>'+themeMatches.slice(0,4).map(t=>`<div class="lab-sd-item" onclick="labSearchGo('theme','${t}')"><span class="lab-sd-item-title">${labHighlight(t,term)}</span><span class="lab-sd-item-sub">${themeMeta[t]||''}</span></div>`).join('');
+  if(qMatches.length)html+='<div class="lab-sd-group-label">Human Questions</div>'+qMatches.slice(0,4).map(q=>`<div class="lab-sd-item" onclick="labSearchGo('question','${q.id}')"><span class="lab-sd-item-title">${labHighlight(q.q,term)}</span><span class="lab-sd-item-sub">${q.cat}</span></div>`).join('');
+  if(artMatches.length)html+='<div class="lab-sd-group-label">Stories &amp; Articles</div>'+artMatches.slice(0,4).map(a=>`<div class="lab-sd-item" onclick="labSearchGo('article','${slugify(a.title)}')"><span class="lab-sd-item-title">${labHighlight(a.title,term)}</span><span class="lab-sd-item-sub">${a.theme} · ${a.date}</span></div>`).join('');
+  if(bookMatches.length)html+='<div class="lab-sd-group-label">Books</div>'+bookMatches.slice(0,3).map(b=>`<div class="lab-sd-item" onclick="labSearchGo('book','${slugify(b.title)}')"><span class="lab-sd-item-title">${labHighlight(b.title,term)}</span><span class="lab-sd-item-sub">${labHighlight(b.ex,term)}</span></div>`).join('');
+  if(!html)html=`<div class="lab-sd-empty">No matches for "${term}" — try a character, theme, or question.</div>`;
+  if(drop){drop.innerHTML=html;drop.classList.add('show');}
+}
+document.addEventListener('click',e=>{
+  const drop=document.getElementById('labSearchDrop');
+  if(drop&&!e.target.closest('.search-wrap'))drop.classList.remove('show');
+});
 
 // HUMAN QUESTIONS — grid render (now fully clickable)
 function qpSearchInput(){
@@ -4512,7 +4578,7 @@ function switchTab(el,type){
 }
 function renderMedia(type){
   const c=document.getElementById('medContent');if(!c)return;
-  if(type==='kit'){c.innerHTML=`<div style="max-width:480px;padding:3rem 5vw"><h2 style="font-family:var(--serif);font-size:2rem;font-weight:400;color:#F0F0F0;margin-bottom:1rem">Media Kit</h2><p style="font-family:var(--sans);font-size:.85rem;color:rgba(240,240,240,.42);line-height:1.9;font-weight:300;margin-bottom:2rem">High-resolution photos, biography, press releases, and brand assets available on request. Contact press@cobaltbluefoundation.com</p><a href="#" class="btn-gold" onclick="return go('contact')">Request Media Kit</a></div>`;return;}
+  if(type==='kit'){c.innerHTML=`<div style="max-width:480px;padding:3rem 5vw"><h2 style="font-family:var(--serif);font-size:2rem;font-weight:300;color:#F5F0E8;margin-bottom:1rem">Media Kit</h2><p style="font-family:var(--sans);font-size:.85rem;color:rgba(245,240,232,.42);line-height:1.9;font-weight:300;margin-bottom:2rem">High-resolution photos, biography, press releases, and brand assets available on request. Contact press@cobaltbluefoundation.com</p><a href="#" class="btn-gold" onclick="return go('contact')">Request Media Kit</a></div>`;return;}
   if(type==='articles'){
     const feat=articlesD.find(a=>a.featured);
     const rest=articlesD.filter(a=>!a.featured);
@@ -4941,6 +5007,20 @@ function fwShowQuestionCapture(){
 function fwSubmitQuestion(){
   fwCapturedQuestion=(document.getElementById('fwQInput')||{}).value?.trim()||'';
   const inner=document.getElementById('fwCurtainInner');
+  // Beautiful cinematic pause + acknowledgement before the transition into email
+  // collection — replaces the previous abrupt jump straight to the email field.
+  inner.innerHTML=`
+    <p class="fw-curtain-line big gold" id="fwAck1">Thank you.</p>
+    <p class="fw-curtain-line" id="fwAck2">Your question has become part of a much larger conversation.</p>
+    <p class="fw-curtain-line dim" id="fwAck3">Every meaningful journey begins with noticing the question that quietly shapes us.</p>
+    <p class="fw-curtain-line" id="fwAck4">Your reflection has been received.</p>`;
+  const ackLines=['fwAck1','fwAck2','fwAck3','fwAck4'].map(id=>document.getElementById(id));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>ackLines.forEach(l=>l&&l.classList.add('show'))));
+  fwCurtainTimer=setTimeout(fwShowEmailCollection,Math.round(2000*fwPaceMult));
+  return false;
+}
+function fwShowEmailCollection(){
+  const inner=document.getElementById('fwCurtainInner');
   inner.innerHTML=`<p class="fw-curtain-line" id="fwEmailPrompt">Would you like us to let you know when this question becomes part of the Human Questions collection?</p>
     <div class="fw-q-capture" id="fwEmailBox">
       <input type="email" id="fwQEmail" placeholder="Email address (optional)"/>
@@ -4949,7 +5029,6 @@ function fwSubmitQuestion(){
   const prompt=document.getElementById('fwEmailPrompt'),box=document.getElementById('fwEmailBox');
   requestAnimationFrame(()=>requestAnimationFrame(()=>prompt.classList.add('show')));
   fwCurtainTimer=setTimeout(()=>box.classList.add('show'),Math.round(900*fwPaceMult));
-  return false;
 }
 function fwFinishExperience(){
   document.getElementById('fwCurtain').classList.remove('show');
@@ -5339,12 +5418,14 @@ function renderAtlHqFlip(){
   const c=chars[weekNum%chars.length];
   const q=atlFindHQForChar(c.n);
   if(!q){el.innerHTML='';return;}
+  const detail=hqDetails[q.id];
+  const explainer=(detail&&detail.meaningQuote)||`${c.n}'s story still asks this question of anyone willing to sit with it.`;
   el.innerHTML=`
-    <div class="atl-hq-card" id="atlHqCard" onclick="this.classList.toggle('revealed')">
-      <span class="atl-hq-card-label">Human Question · <em>${c.n}</em></span>
-      <p class="atl-hq-card-q">${q.q}</p>
-      <span class="atl-hq-card-hint">Tap to reveal</span>
-      <a href="#" class="atl-hq-card-link" onclick="event.stopPropagation();openHQ('${q.id}')">Explore this question →</a>
+    <div class="atl-hq-feature-card" id="atlHqCard">
+      <span class="atl-hq-feature-label">Character Question · <em>${c.n}</em></span>
+      <p class="atl-hq-feature-q">${q.q}</p>
+      <p class="atl-hq-feature-sub">${explainer}</p>
+      <button class="btn-gold" onclick="return go('questions')">Explore Related Questions →</button>
     </div>`;
 }
 function renderAtlJourneyPills(){
@@ -5370,7 +5451,11 @@ function atlRenderFilteredGrid(filtered,label){
   g.classList.add('open');
   const btn=document.getElementById('atlSeeOtherBtn');
   if(btn)btn.textContent='Hide Characters';
-  g.scrollIntoView({behavior:'smooth',block:'start'});
+  // Scroll to the "See More Characters" toggle rather than the grid itself, so the
+  // filtered section's heading context and the full first row of cards are both
+  // clear of the sticky nav (scroll-padding-top on <html> supplies the offset).
+  const anchor=document.getElementById('atlSeeOtherBtn')?.closest('.atl-see-other-wrap')||g;
+  anchor.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function atlFilterByArchetype(name){
   atlRenderFilteredGrid(chars.filter(c=>c.archetype===name),`Showing characters who embody the ${name} archetype.`);
@@ -5429,7 +5514,7 @@ function renderAtlStories(){
   const el=document.getElementById('atlStoryGrid');if(!el||el.dataset.built)return;el.dataset.built='1';
   const imgs=["speaking-stage.jpg","workshop-01.jpg","about-library.jpg","ahalya-cover.jpg","workshop-03.jpg","talk-01.jpg"];
   const d=arts.slice(0,6);
-  el.innerHTML=d.map((a,i)=>`<div class="atl-story-card" onclick="return go('lab')">
+  el.innerHTML=d.map((a,i)=>`<div class="atl-story-card" onclick="return openArticle('${slugify(a.title)}')">
     <div class="atl-story-img"><img src="${imgs[i%imgs.length]}" alt="${a.title}"/></div>
     <div class="atl-story-body"><p class="atl-story-tag">${a.theme}</p><h3 class="atl-story-title">${a.title}</h3><p>${a.ex}</p><span class="atl-story-read">Read Story →</span></div>
   </div>`).join('');
