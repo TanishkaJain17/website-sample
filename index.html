@@ -93,21 +93,24 @@
 html{scroll-behavior:smooth;scroll-padding-top:110px}
 body{font-family:var(--sans);overflow-x:hidden;cursor:none;background:var(--bg-0);color:var(--ink);transition:var(--world-transition)}
 
-/* ── WORLD ATMOSPHERE ── night sky vs. manuscript paper, always present, always quiet */
+/* ── WORLD ATMOSPHERE ── night sky vs. manuscript paper, always present, always quiet.
+   The twinkling star field has been removed site-wide (it read as decorative/
+   distracting rather than calm); Night now rests on a still, almost-invisible
+   vignette instead — no motion, just a quiet deepening toward the edges. The
+   floating gold dust in individual sections (hero/CTA particle fields) is a
+   separate, intentional effect and is untouched. */
 #worldAtmosphere{position:fixed;inset:0;pointer-events:none;z-index:1}
-.atmo-stars{position:absolute;inset:0;opacity:1;transition:opacity 1s var(--ease)}
-[data-theme="day"] .atmo-stars{opacity:0}
-.atmo-star{position:absolute;width:2px;height:2px;border-radius:50%;background:#F5F0E8;box-shadow:0 0 4px 1px rgba(245,240,232,.5);animation:starTwinkle var(--sd,5s) var(--sdl,0s) ease-in-out infinite}
+.atmo-vignette{position:absolute;inset:0;opacity:1;transition:opacity 1s var(--ease);background:radial-gradient(ellipse at 50% 40%,transparent 55%,rgba(0,0,0,.28) 100%)}
+[data-theme="day"] .atmo-vignette{opacity:0}
 .atmo-paper{position:absolute;inset:0;opacity:0;transition:opacity 1.1s var(--ease);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%232B2013' fill-opacity='0.05'%3E%3Ccircle cx='18' cy='24' r='.7'/%3E%3Ccircle cx='76' cy='12' r='.5'/%3E%3Ccircle cx='120' cy='40' r='.8'/%3E%3Ccircle cx='45' cy='62' r='.5'/%3E%3Ccircle cx='95' cy='78' r='.6'/%3E%3Ccircle cx='140' cy='95' r='.5'/%3E%3Ccircle cx='22' cy='105' r='.6'/%3E%3Ccircle cx='68' cy='128' r='.5'/%3E%3Ccircle cx='115' cy='140' r='.7'/%3E%3Ccircle cx='150' cy='20' r='.4'/%3E%3Ccircle cx='8' cy='150' r='.5'/%3E%3C/g%3E%3C/svg%3E")}
 [data-theme="day"] .atmo-paper{opacity:1}
-@keyframes starTwinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:.95;transform:scale(1.3)}}
 
 /* ── CINEMATIC WORLD TRANSITION ── a brief, deliberate flash when switching worlds */
 #worldFlash{position:fixed;inset:0;pointer-events:none;z-index:700;opacity:0;background:radial-gradient(circle at 92% 4%,rgba(245,240,232,.9),rgba(194,160,90,.25) 40%,transparent 70%)}
 body.world-transitioning #worldFlash{animation:worldFlash 1s var(--ease)}
 @keyframes worldFlash{0%{opacity:0}18%{opacity:.55}100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.atmo-star{animation:none}body.world-transitioning #worldFlash{animation:none}}
+@media(prefers-reduced-motion:reduce){body.world-transitioning #worldFlash{animation:none}}
 a,button,input,select,textarea{cursor:none}
 img{display:block;max-width:100%}
 
@@ -970,6 +973,36 @@ footer.footer-light .f-legal a:hover{color:var(--copper)}
 .bk-upcoming-card:hover .bk-upcoming-cover{transform:translateY(-4px)}
 .bk-upcoming-cover span{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(42,31,20,.4);text-align:center;padding:0 1.2rem;line-height:1.4}
 .bk-coming-badge{display:inline-block;font-family:var(--sans);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--copper);border:1px solid rgba(156,107,63,.4);padding:.4rem 1rem;margin-bottom:1.1rem}
+.bk-upcoming-title{color:#2A1F14}
+.bk-upcoming-desc{color:rgba(42,31,20,.52)}
+
+/* ── BOOKS PAGE — DARK MODE ──
+   This page was hardcoded to a single warm-paper palette in every theme, so
+   it never joined the rest of the site's charcoal Dark Mode identity and
+   looked pasted-in next to About/Speaking/Media/Human Questions/Character
+   Atlas/Mythology Lab. It's kept exactly as-is for Day Mode; only Night gets
+   this override, moving it onto the same --bg-N/--ink/--gold system as
+   everywhere else. Book cover artwork is untouched. */
+[data-theme="night"] #books-page,[data-theme="night"] #excerpt-page{background:var(--bg-0)}
+[data-theme="night"] .bk-back-home{color:var(--ink);border-color:var(--card-border);background:rgba(194,160,90,.05)}
+[data-theme="night"] .bk-back-home:hover{background:rgba(194,160,90,.1);border-color:var(--gold)}
+[data-theme="night"] .bk-hero{background:var(--bg-1)}
+[data-theme="night"] .bk-label,[data-theme="night"] .bk-title em,[data-theme="night"] .bk-badge,[data-theme="night"] .bk-st,[data-theme="night"] .bk-rev-s{color:var(--gold)}
+[data-theme="night"] .bk-label::before{background:var(--gold)}
+[data-theme="night"] .bk-coming-badge{color:var(--gold);border-color:rgba(194,160,90,.4)}
+[data-theme="night"] .bk-title{color:var(--ink)}
+[data-theme="night"] .bk-sub{color:rgba(var(--ink-rgb),.62)}
+[data-theme="night"] .bk-cover{box-shadow:26px 26px 70px rgba(0,0,0,.5),-5px 0 0 rgba(0,0,0,.3)}
+[data-theme="night"] .bk-cover:hover{box-shadow:24px 24px 65px rgba(0,0,0,.55),-4px 0 0 rgba(0,0,0,.28)}
+[data-theme="night"] .bk-details{background:rgba(194,160,90,.08)}
+[data-theme="night"] .bk-info{background:var(--bg-1)}
+[data-theme="night"] .bk-info h3,[data-theme="night"] .bk-reviews h3,[data-theme="night"] .bk-upcoming-title{color:var(--ink)}
+[data-theme="night"] .bk-info p,[data-theme="night"] .bk-rev-t,[data-theme="night"] .bk-upcoming-desc{color:rgba(var(--ink-rgb),.65)}
+[data-theme="night"] .bk-reviews,[data-theme="night"] .bk-upcoming{background:var(--bg-2)}
+[data-theme="night"] .bk-rev{border-bottom-color:var(--card-border)}
+[data-theme="night"] .bk-upcoming{border-top-color:var(--card-border)}
+[data-theme="night"] .bk-upcoming-cover{background:linear-gradient(135deg,var(--bg-1),var(--bg-2));border-color:rgba(194,160,90,.35);box-shadow:14px 14px 40px rgba(0,0,0,.4)}
+[data-theme="night"] .bk-upcoming-cover span{color:rgba(var(--ink-rgb),.45)}
 
 /* Excerpt page (dedicated, editorial) */
 #excerpt-page{background:#F7F0E3}
@@ -1311,10 +1344,13 @@ select.f-inp option{background:var(--bg-1);color:var(--ink)}
 .ie-line{font-family:var(--serif);font-weight:300;color:var(--ink);font-size:clamp(1.5rem,4.4vw,3.1rem);line-height:1.35;opacity:0;transform:translateY(18px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease)}
 .ie-line.show{opacity:1;transform:none}
 .ie-line em{font-style:italic;color:var(--gold)}
-.ie-continue{margin-top:2.2rem;display:inline-flex;flex-direction:column;align-items:center;gap:.7rem;background:none;border:none;color:rgba(var(--ink-rgb),.5);font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;opacity:0;transition:opacity 1s var(--ease) .3s,color .3s}
+.ie-continue{margin-top:2.2rem;display:inline-flex;flex-direction:column;align-items:center;gap:.7rem;background:none;border:none;color:rgba(var(--ink-rgb),.5);font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;opacity:0;transition:opacity 1s var(--ease) .3s,color .3s,background .3s,border-color .3s,box-shadow .3s}
 .ie-continue.show{opacity:1}
 .ie-continue:hover{color:var(--gold)}
 .ie-continue-line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:ieBob 2.2s ease-in-out infinite}
+[data-theme="day"] .ie-hero{background:radial-gradient(ellipse at 50% 30%,#FBF7EF 0%,var(--bg-4) 55%,var(--bg-8) 100%)}
+[data-theme="day"] .ie-continue{background:#FCFAF4;border:1px solid var(--card-border);padding:.9rem 1.6rem;border-radius:2px}
+[data-theme="day"] .ie-continue:hover{border-color:var(--gold);box-shadow:0 8px 22px rgba(168,120,42,.18)}
 @keyframes ieBob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
 /* ── generic chapter shell ── */
@@ -1991,33 +2027,169 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 .ask-cta-line{position:relative;z-index:1;font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,3.6vw,2.5rem);color:rgba(var(--ink-rgb),.85);margin-bottom:.4rem}
 .ask-cta-gold{font-style:italic;color:var(--gold);margin-bottom:2.4rem}
 .ask-cta-sec .ask-hero-cta{position:relative;z-index:1}
+
+/* ══════════════════════════════════════════════════════════════════
+   DAY MODE COLOR PATCH (PART 4)
+   These sections were still rendering with hardcoded Night-only hex
+   values (they never referenced the --bg-N / --gold variable system),
+   so switching to Day Mode had no visible effect on them. Colors only —
+   no spacing, layout, typography, or animation changes below.
+   Palette used: Warm Ivory #F8F4EA · Soft Parchment #EFE7D6 ·
+   Paper White #FCFAF4 · Charcoal #2E2A26 · Slate #5F5B56 ·
+   Muted Gold #B48A3C · Warm Stone #D8CBB6.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 1 — CHARACTER ATLAS HERO: the two hardcoded near-black radial pools
+   behind the heading, plus the search dropdown, never adapted to Day. */
+[data-theme="day"] .atl-hero{background:radial-gradient(ellipse at 20% 20%,#FBF7EF,transparent 55%),radial-gradient(ellipse at 85% 80%,#F4EBDA,transparent 55%),var(--bg-4)}
+[data-theme="day"] .atl-hero-bg{opacity:.35}
+[data-theme="day"] .atl-hero-particles span{opacity:0;background:var(--bronze)}
+[data-theme="day"] .atl-search{background:#FCFAF4;border-color:var(--card-border);color:var(--ink-heading)}
+[data-theme="day"] .atl-search::placeholder{color:var(--ink-muted)}
+[data-theme="day"] .atl-search-btn{color:#FFFCF8}
+[data-theme="day"] .atl-search-dropdown{background:#FCFAF4;border-color:var(--card-border);box-shadow:var(--shadow-soft)}
+[data-theme="day"] .atl-search-item{color:var(--ink-secondary);border-bottom-color:rgba(168,120,42,.12)}
+[data-theme="day"] .atl-search-item:hover{background:var(--card-hover-bg);color:var(--gold)}
+[data-theme="day"] .atl-search-item small,[data-theme="day"] .atl-search-empty,[data-theme="day"] .atl-search-hint{color:var(--ink-muted)}
+[data-theme="day"] .atl-sub{color:var(--ink-secondary)}
+
+/* 2 — CONSTELLATION (MYTHOLOGY MAP): the central instrument was almost
+   black with no contrast against ivory; give it an engraved bronze
+   disc instead. Edge/node colors were already patched earlier — this
+   only completes the frame around them. */
+[data-theme="day"] .atl-map-inner{background:radial-gradient(circle at 50% 50%,#F4EBDA,var(--bg-8) 78%);border-color:var(--card-border);box-shadow:inset 0 0 60px rgba(168,120,42,.06)}
+[data-theme="day"] .atl-map-legend{background:#FCFAF4;border-color:var(--card-border)}
+[data-theme="day"] .atl-map-legend span{color:var(--ink-secondary)}
+
+/* 3 — "WHEN GODS CAME HOME" (Mythology Lab section): banner overlay and
+   copy were hardcoded to a near-black navy gradient regardless of theme. */
+[data-theme="day"] .wgch-banner::after{background:linear-gradient(to top,rgba(248,244,234,.97) 18%,rgba(248,244,234,.65) 62%,rgba(248,244,234,.15) 100%)}
+[data-theme="day"] .wgch-h{color:var(--ink-heading)}
+[data-theme="day"] .wgch-h em{color:var(--gold)}
+[data-theme="day"] .wgch-p{color:var(--ink-secondary)}
+
+/* 4 — INNER EPIC HERO: gradient resolved to a hardcoded near-black at
+   its outer edge, and body copy stayed at Night's low-contrast grey. */
+[data-theme="day"] .fw-hero{background:radial-gradient(ellipse at 50% 32%,var(--bg-1) 0%,var(--bg-4) 55%,#F2ECE3 100%)}
+[data-theme="day"] .fw-hero-desc{color:var(--ink-secondary)}
+[data-theme="day"] .fw-hero-cta span:first-child{color:var(--ink-muted)}
+
+/* 5 & 6 — CHAPTER 3 ("Someone has already lived this") and the
+   SIGNATURE METHODOLOGY portal share the same hardcoded near-black
+   background, so both are fixed together. */
+[data-theme="day"] .ie-ch3,[data-theme="day"] .ie-ch5{background:var(--bg-3)}
+[data-theme="day"] .ie-ch5-lead{color:var(--ink-secondary)}
+[data-theme="day"] .ie-ch5-portal-btn{border-color:var(--card-border)}
+[data-theme="day"] .ie-ch5-portal-ring{border-color:rgba(168,120,42,.22)}
+[data-theme="day"] .ie-ch5-portal-txt{color:var(--ink-heading)}
+[data-theme="day"] .ie-ch5-portal-btn:hover{border-color:var(--gold);box-shadow:0 0 30px rgba(168,120,42,.18)}
+
+/* 7 — WORDS FROM THE ROOM (testimonials): cards were hardcoded to a
+   dark forest-green, invisible against Day's parchment sections. */
+[data-theme="day"] .testi-card{background:#FCFAF4;border-color:var(--card-border)}
+[data-theme="day"] .testi-card:hover{border-color:var(--gold);box-shadow:var(--shadow-glow-card)}
+[data-theme="day"] .testi-q{color:var(--ink-heading)}
+[data-theme="day"] .testi-a{color:var(--gold)}
+[data-theme="day"] .testi-o{color:var(--ink-muted)}
+[data-theme="day"] .testi-arrow{border-color:var(--card-border);color:var(--gold)}
+[data-theme="day"] .testi-arrow:hover{background:rgba(168,120,42,.1);border-color:var(--gold);color:var(--ink-heading)}
+
+/* 8 — ASK SUNDEEP QUOTE: background resolved to Night's deep-green +
+   near-black gradient with no Day equivalent. */
+[data-theme="day"] .ask-quote-sec{background:radial-gradient(ellipse at 50% 50%,var(--bg-2),#FBF7EF 70%)}
+[data-theme="day"] .ask-quote{color:var(--ink-heading)}
+[data-theme="day"] .ask-quote-by{color:var(--gold)}
+
+/* ══════════════════════════════════════════════════════════════════
+   DAY MODE COLOR SYSTEM — FINAL UI AUDIT (PART 5)
+   Same rule as Part 4: colors only, nothing structural. Each block
+   below closes a spot where a section fell back to a hardcoded
+   Night-only hex value instead of the --bg-N / --ink / --gold system.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 1 — HUMAN QUESTIONS · "THE MIRROR": section and cards were hardcoded
+   to a near-black navy that never referenced the theme system. */
+[data-theme="day"] .hq-mirror{background:var(--bg-2)}
+[data-theme="day"] .hq-mirror::before{color:rgba(168,120,42,.08)}
+[data-theme="day"] .hq-mirror-card{background:#FCFAF4;border:1px solid var(--card-border)}
+[data-theme="day"] .hq-mirror-card:hover{background:var(--card-hover-bg)}
+[data-theme="day"] .hq-mirror-q{color:var(--ink-heading)}
+
+/* 2 — MYTHOLOGY LAB · "WHEN GODS CAME HOME": completes the Part-4 fix
+   — the gallery frame now sits on a parchment strip instead of ivory
+   floating with no separation, per "section dividers → light bronze". */
+[data-theme="day"] .wgch-gal{border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border)}
+
+/* 3 — CHARACTER PAGE · "THE LIVING UNIVERSE": CTA band was hardcoded
+   to a near-black radial gradient regardless of theme. */
+[data-theme="day"] .char-atlas-cta{background:radial-gradient(ellipse at 50% 30%,var(--bg-3) 0%,var(--bg-4) 70%);border-top-color:var(--card-border)}
+[data-theme="day"] .cac-text{color:var(--ink-secondary)}
+
+/* 4 — THE INNER EPIC · HERO: rounds out the Part-4 fix — the italic
+   sub-line under the title stayed at full gold-on-gold with no extra
+   weight against the now-light background, so give it more contrast. */
+[data-theme="day"] .fw-hero-sub{color:var(--gold);text-shadow:0 1px 0 rgba(255,255,255,.4)}
+
+/* 5 — THE LIVING FRAMEWORK — INTRODUCTION: the diagram's section frame
+   and the node detail popover were both hardcoded near-black. */
+[data-theme="day"] .fw-machine-sec{background:var(--bg-2)}
+[data-theme="day"] .fw-machine-sub{color:var(--ink-secondary)}
+[data-theme="day"] .fw-detail{background:#FCFAF4;border-color:var(--card-border);box-shadow:var(--shadow-soft)}
+[data-theme="day"] .fw-detail h3{color:var(--ink-heading)}
+[data-theme="day"] .fw-detail p{color:var(--ink-secondary)}
+[data-theme="day"] .fw-detail-close{background:rgba(31,27,23,.06);color:var(--ink-heading);border-color:var(--card-border)}
+[data-theme="day"] .fw-detail-close:hover{background:var(--gold);color:#FFFCF8;border-color:var(--gold)}
+[data-theme="day"] .fw-btn-primary{background:rgba(168,120,42,.08);color:var(--ink-heading)}
+[data-theme="day"] .fw-btn-primary:hover,[data-theme="day"] .fw-btn-primary.fw-playing{background:var(--gold);color:#FFFCF8}
+[data-theme="day"] .fw-btn-ghost{border-color:var(--card-border);color:var(--ink-secondary)}
+[data-theme="day"] .fw-btn-ghost:hover{border-color:var(--gold);color:var(--ink-heading)}
+
+/* FRAMEWORK PAGE — remaining dark elements: the curtain overlay (shown
+   mid-experience) and, most visibly, the closing "Ending" section with the
+   three path cards directly below the framework diagram — both were
+   hardcoded near-black with no Day equivalent, so they still read as a
+   large dark/navy card breaking the manuscript feel. */
+[data-theme="day"] .fw-curtain{background:rgba(248,244,234,.97)}
+[data-theme="day"] .fw-curtain-line{color:var(--ink-secondary)}
+[data-theme="day"] .fw-curtain-line.big{color:var(--ink-heading)}
+[data-theme="day"] .fw-curtain-line.dim{color:var(--ink-muted)}
+[data-theme="day"] .fw-curtain-skip{color:var(--ink-muted)}
+[data-theme="day"] .fw-ending{background:radial-gradient(ellipse at 50% 40%,#F4EBDA 0%,var(--bg-4) 70%)}
+[data-theme="day"] .fw-hint{color:var(--ink-muted)}
+[data-theme="day"] .fw-continue-btn{border-color:var(--card-border);color:var(--gold)}
+[data-theme="day"] .fw-continue-btn:hover{background:rgba(168,120,42,.08);border-color:var(--gold)}
+[data-theme="day"] .fw-path{background:#FCFAF4;border-color:var(--card-border)}
+[data-theme="day"] .fw-path:hover{border-color:var(--gold);background:var(--card-hover-bg)}
+[data-theme="day"] .fw-path h4{color:var(--ink-heading)}
+[data-theme="day"] .fw-path p{color:var(--ink-muted)}
+
+/* 6 — SPEAKING PAGE — HERO: the page shell and the video's overlay +
+   vignette were hardcoded forest-green/near-black, so the hero read as
+   dark no matter what the section background underneath was set to. */
+[data-theme="day"] #speaking-page{background:var(--bg-0)}
+[data-theme="day"] .spk-video-overlay{background:linear-gradient(to top,rgba(248,244,234,.96) 22%,rgba(248,244,234,.55) 62%,rgba(248,244,234,.1) 100%)}
+[data-theme="day"] .spk-video-vignette{background:radial-gradient(ellipse at center,transparent 50%,rgba(216,205,190,.4) 100%)}
+[data-theme="day"] .spk-video-wrap video,[data-theme="day"] .spk-video-fallback{opacity:.5;filter:saturate(.7) brightness(.92)}
+[data-theme="day"] .spk-vid-sub{color:var(--ink-secondary)}
+[data-theme="day"] .spk-scroll span{color:var(--ink-muted)}
+
+/* 7 — SPEAKING PAGE — FEATURED (TALKS) SECTION: the marquee's edge
+   fades still referenced Night's dark green, leaving two visible dark
+   bars over an otherwise light strip. */
+[data-theme="day"] .spk-mq-wrap::before{background:linear-gradient(to right,var(--bg-4),transparent)}
+[data-theme="day"] .spk-mq-wrap::after{background:linear-gradient(to left,var(--bg-4),transparent)}
+[data-theme="day"] .spk-mq-item{color:var(--ink-muted)}
+[data-theme="day"] .spk-s-title,[data-theme="day"] .sec-title{color:var(--ink-heading)}
+[data-theme="day"] .prog-desc,[data-theme="day"] .spk-split-text p{color:var(--ink-secondary)}
+[data-theme="day"] .prog-num{color:rgba(168,120,42,.22)}
+[data-theme="day"] .prog-tag{border-color:var(--card-border);color:var(--ink-muted)}
+[data-theme="day"] .prog-card:hover .prog-tag{border-color:var(--gold);color:var(--gold)}
 </style>
 </head>
 <body>
 
 <div id="worldAtmosphere" aria-hidden="true">
-  <div class="atmo-stars">
-    <span class="atmo-star" style="left:6%;top:12%;--sd:4.5s;--sdl:.2s"></span>
-    <span class="atmo-star" style="left:14%;top:28%;--sd:5.2s;--sdl:1.4s"></span>
-    <span class="atmo-star" style="left:23%;top:8%;--sd:3.8s;--sdl:.8s"></span>
-    <span class="atmo-star" style="left:34%;top:19%;--sd:6s;--sdl:2.1s"></span>
-    <span class="atmo-star" style="left:42%;top:35%;--sd:4.2s;--sdl:.5s"></span>
-    <span class="atmo-star" style="left:53%;top:11%;--sd:5.6s;--sdl:1.9s"></span>
-    <span class="atmo-star" style="left:61%;top:24%;--sd:3.6s;--sdl:1.1s"></span>
-    <span class="atmo-star" style="left:71%;top:9%;--sd:5s;--sdl:.3s"></span>
-    <span class="atmo-star" style="left:78%;top:31%;--sd:4.7s;--sdl:1.6s"></span>
-    <span class="atmo-star" style="left:87%;top:15%;--sd:6.2s;--sdl:.9s"></span>
-    <span class="atmo-star" style="left:93%;top:26%;--sd:3.9s;--sdl:2.3s"></span>
-    <span class="atmo-star" style="left:9%;top:52%;--sd:5.4s;--sdl:1.2s"></span>
-    <span class="atmo-star" style="left:19%;top:68%;--sd:4.4s;--sdl:.6s"></span>
-    <span class="atmo-star" style="left:31%;top:81%;--sd:6.1s;--sdl:1.8s"></span>
-    <span class="atmo-star" style="left:47%;top:59%;--sd:3.7s;--sdl:2.5s"></span>
-    <span class="atmo-star" style="left:58%;top:74%;--sd:5.3s;--sdl:.4s"></span>
-    <span class="atmo-star" style="left:67%;top:88%;--sd:4.9s;--sdl:1.5s"></span>
-    <span class="atmo-star" style="left:82%;top:63%;--sd:3.5s;--sdl:2s"></span>
-    <span class="atmo-star" style="left:91%;top:79%;--sd:5.8s;--sdl:.7s"></span>
-    <span class="atmo-star" style="left:97%;top:47%;--sd:4.1s;--sdl:1.3s"></span>
-  </div>
+  <div class="atmo-vignette"></div>
   <div class="atmo-paper"></div>
 </div>
 <div id="worldFlash" aria-hidden="true"></div>
@@ -2091,9 +2263,9 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
             <p class="mega-intro">Every great journey begins with a question that refuses to leave us.</p>
           </div>
           <div class="mega-col mega-col--links">
-            <a href="#" class="mega-link" role="menuitem" onclick="return go('questions')"><span class="mega-link-label">Questions</span><span class="mega-link-name">Begin with the question<br>that refuses to leave you.</span></a>
-            <a href="#" class="mega-link" role="menuitem" onclick="return go('atlas')"><span class="mega-link-label">Lives</span><span class="mega-link-name">Step into the Character Atlas —<br>a living universe of mythology.</span></a>
-            <a href="#" class="mega-link" role="menuitem" onclick="return go('lab')"><span class="mega-link-label">Situations</span><span class="mega-link-name">The Mythology Lab — ancient<br>stories decoded for modern life.</span></a>
+            <a href="#" class="mega-link" role="menuitem" onclick="return go('questions')"><span class="mega-link-label">Ask</span><span class="mega-link-name">Begin with a question.</span></a>
+            <a href="#" class="mega-link" role="menuitem" onclick="return go('atlas')"><span class="mega-link-label">Meet</span><span class="mega-link-name">Meet those who walked this path before you.</span></a>
+            <a href="#" class="mega-link" role="menuitem" onclick="return go('lab')"><span class="mega-link-label">Reflect</span><span class="mega-link-name">Where mythology meets modern life.</span></a>
           </div>
           <div class="mega-col mega-col--quote">
             <p class="mega-quote">"Mythology does not begin with stories.<br>It begins with recognition."</p>
@@ -2103,11 +2275,11 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
     </li>
     <li><a href="#" onclick="return go('innerepic')" data-pg="innerepic">The Inner Epic™</a></li>
     <li class="nav-item has-mega" data-menu="discover">
-      <a href="#" class="nav-trigger" data-pg="discover" role="button" aria-haspopup="true" aria-expanded="false" onclick="return toggleMega('discover',this)" onkeydown="return megaKeydown(event,'discover',this)">Discover</a>
+      <a href="#" class="nav-trigger" data-pg="discover" role="button" aria-haspopup="true" aria-expanded="false" onclick="return toggleMega('discover',this)" onkeydown="return megaKeydown(event,'discover',this)">Continue</a>
       <div class="mega-panel" id="mega-discover" role="menu" aria-hidden="true">
         <div class="mega-inner">
           <div class="mega-col mega-col--intro">
-            <p class="mega-kicker">Discover</p>
+            <p class="mega-kicker">Continue</p>
             <p class="mega-intro">Explore the expanding world of Myths by Sundeep.</p>
           </div>
           <div class="mega-col mega-col--links">
@@ -2156,14 +2328,14 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
   <div class="mob-acc" style="--i:1">
     <button class="mob-acc-head" onclick="toggleMobAcc(this)">Questions<span>+</span></button>
     <div class="mob-acc-body">
-      <a href="#" onclick="go('questions');toggleMob()">Questions</a>
-      <a href="#" onclick="go('atlas');toggleMob()">Lives</a>
-      <a href="#" onclick="go('lab');toggleMob()">Situations</a>
+      <a href="#" onclick="go('questions');toggleMob()">Ask</a>
+      <a href="#" onclick="go('atlas');toggleMob()">Meet</a>
+      <a href="#" onclick="go('lab');toggleMob()">Reflect</a>
     </div>
   </div>
   <a href="#" onclick="go('innerepic');toggleMob()" style="--i:2">The Inner Epic™</a>
   <div class="mob-acc" style="--i:3">
-    <button class="mob-acc-head" onclick="toggleMobAcc(this)">Discover<span>+</span></button>
+    <button class="mob-acc-head" onclick="toggleMobAcc(this)">Continue<span>+</span></button>
     <div class="mob-acc-body">
       <a href="#" onclick="go('books');toggleMob()">Books</a>
       <a href="#" onclick="go('writings');toggleMob()">Writings</a>
@@ -3591,14 +3763,14 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
       </div>
     </div>
   </section>
-  <section class="bk-upcoming" style="background:#F7F0E3;padding-top:4rem">
+  <section class="bk-upcoming bk-upcoming--next" style="padding-top:4rem">
     <p class="bk-label reveal" style="margin-bottom:2rem">Coming Next</p>
     <div class="bk-upcoming-card">
       <div class="bk-upcoming-cover"><span>Mythology as Psychology</span></div>
       <div>
         <span class="bk-coming-badge">Coming 2026</span>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;color:#2A1F14;margin-bottom:1.2rem">Mythology as <em style="font-style:italic;color:var(--copper)">Psychology</em></h2>
-        <p style="font-family:var(--sans);font-size:.85rem;color:rgba(42,31,20,.52);line-height:1.9;font-weight:300;max-width:520px;margin-bottom:1.5rem">Sundeep's next work explores the psychological dimensions of Indian mythology — examining how the archetypes, narratives, and moral frameworks of the epics correspond to the deepest findings of modern psychology.</p>
+        <h2 class="bk-upcoming-title" style="font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:300;margin-bottom:1.2rem">Mythology as <em style="font-style:italic;color:var(--copper)">Psychology</em></h2>
+        <p class="bk-upcoming-desc" style="font-family:var(--sans);font-size:.85rem;line-height:1.9;font-weight:300;max-width:520px;margin-bottom:1.5rem">Sundeep's next work explores the psychological dimensions of Indian mythology — examining how the archetypes, narratives, and moral frameworks of the epics correspond to the deepest findings of modern psychology.</p>
         <a href="#" class="btn-gold" id="notifyBtn-mythology-as-psychology" onclick="return notifyMe('mythology-as-psychology')">Notify Me</a>
       </div>
     </div>
