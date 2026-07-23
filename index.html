@@ -2207,7 +2207,7 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 .stu-hero-cta:hover{color:var(--gold)}
 .stu-hero-cta-line{width:1px;height:32px;background:linear-gradient(var(--gold),transparent);animation:ieBob 2.2s ease-in-out infinite}
 
-.stu-collect-nav{padding:min(11vh,6.5rem) 6vw;background:var(--bg-2);text-align:center}
+.stu-collect-nav{padding:min(15vh,8.5rem) 6vw;background:var(--bg-2);text-align:center}
 .stu-kicker{font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
 .stu-collect-nav h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,3.2vw,2.5rem);color:var(--ink)}
 .stu-nav-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem;max-width:1180px;margin:2.6rem auto 0}
@@ -2240,18 +2240,18 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 /* ── CHOOSE HOW YOU WISH TO BEGIN — five doorway cards, museum-wing
    entrances rather than product tiles. Built on the same --card-border /
    --gold hover-glow language as .stu-nav-card for consistency. */
-.stu-begin{padding:min(12vh,7rem) 6vw min(14vh,8rem);background:var(--bg-2);text-align:center}
-.stu-begin-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;max-width:1440px;margin:2.8rem auto 0;text-align:left}
-.stu-begin-card{padding:2.6rem 1.6rem;border:1px solid var(--card-border);background:rgba(194,160,90,.02);transition:all .45s var(--ease);display:flex;flex-direction:column;min-height:300px}
-.stu-begin-card:hover{border-color:var(--gold);transform:translateY(-5px);background:rgba(194,160,90,.06);box-shadow:0 18px 40px rgba(0,0,0,.14),0 0 34px rgba(194,160,90,.08)}
-.stu-begin-num{font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;color:rgba(194,160,90,.5);margin-bottom:1.4rem}
-.stu-begin-card h3{font-family:var(--serif);font-weight:400;font-size:1.28rem;color:var(--ink);margin-bottom:.7rem;line-height:1.25}
-.stu-begin-card p{font-family:var(--sans);font-size:.78rem;color:rgba(var(--ink-rgb),var(--ia5));line-height:1.75;margin-bottom:1.3rem}
-.stu-begin-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
-.stu-begin-tag{font-family:var(--sans);font-size:.58rem;letter-spacing:.05em;color:rgba(var(--ink-rgb),var(--ia42));border:1px solid rgba(194,160,90,.18);padding:.28rem .6rem}
-.stu-begin-card .stu-link-btn{margin-top:auto}
-@media(max-width:1100px){.stu-begin-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.stu-begin-grid{grid-template-columns:1fr}}
+.stu-begin{padding:min(14vh,8.5rem) 6vw min(16vh,9.5rem);background:var(--bg-2);text-align:center}
+.stu-begin-grid{max-width:1180px;margin:3.4rem auto 0;text-align:left;display:flex;flex-direction:column;gap:1.3rem}
+.stu-begin-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.stu-begin-row-2{display:flex;justify-content:center;gap:1.3rem;width:100%}
+.stu-begin-row-2 .stu-begin-card{flex:0 0 calc((100% - 2.6rem)/3)}
+.stu-begin-card{display:flex;flex-direction:column;justify-content:center;min-height:220px;padding:2.8rem 2.2rem;border:1px solid var(--card-border);background:rgba(194,160,90,.02);transition:all .65s cubic-bezier(.16,1,.3,1);text-decoration:none;cursor:pointer}
+.stu-begin-card:hover{border-color:var(--gold);transform:translateY(-7px);background:rgba(194,160,90,.05);box-shadow:0 24px 48px rgba(0,0,0,.12),0 0 46px rgba(194,160,90,.15)}
+.stu-begin-card h3{font-family:var(--serif);font-weight:400;font-size:1.55rem;color:var(--ink);margin-bottom:.9rem;line-height:1.25;transition:color .6s var(--ease)}
+.stu-begin-card:hover h3{color:var(--gold)}
+.stu-begin-card p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:.95rem;color:rgba(var(--ink-rgb),var(--ia6));line-height:1.75;margin:0}
+@media(max-width:900px){.stu-begin-row-3{grid-template-columns:repeat(2,1fr)}.stu-begin-row-2{flex-wrap:wrap}.stu-begin-row-2 .stu-begin-card{flex:1 1 260px}}
+@media(max-width:560px){.stu-begin-row-3{grid-template-columns:1fr}}
 
 /* ── STUDIO SUB-PAGES (shared) — reuse .ev-* hero/body/label system
    for visual consistency; page-specific interactive pieces below. ── */
@@ -2297,10 +2297,14 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 .rc-plus{font-family:var(--serif);font-size:1.5rem;color:var(--gold);transition:transform .35s var(--ease);flex-shrink:0;line-height:1}
 .rc-item.open .rc-plus{transform:rotate(45deg)}
 .rc-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
-.rc-body-in{padding:.4rem 2rem 2.3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.8rem;border-top:1px solid rgba(194,160,90,.1);margin-top:.2rem;padding-top:1.8rem}
+.rc-body-in{padding:1.8rem 2rem 2.3rem;max-width:640px;border-top:1px solid rgba(194,160,90,.1);margin-top:.2rem}
 .rc-body-in h5{font-family:var(--sans);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
-.rc-body-in p{font-family:var(--sans);font-size:.78rem;color:rgba(var(--ink-rgb),var(--ia5));line-height:1.8;font-weight:300}
-@media(max-width:800px){.rc-body-in{grid-template-columns:1fr;gap:1.2rem}}
+.rc-body-in p{font-family:var(--serif);font-style:italic;font-size:1.02rem;font-weight:300;color:rgba(var(--ink-rgb),var(--ia6));line-height:1.9}
+
+/* Continue Your Journey */
+.rc-continue{margin-top:min(10vh,5.5rem);padding-top:min(8vh,4.5rem);border-top:1px solid rgba(194,160,90,.15)}
+.rc-continue-links{display:flex;flex-direction:column;gap:1rem;margin-top:1.8rem}
+@media(min-width:700px){.rc-continue-links{flex-direction:row;flex-wrap:wrap}}
 
 /* The Commons — free / pay-what-you-wish grid */
 .cm-intro{max-width:680px;margin:0 auto 3.6rem;text-align:center}
@@ -2314,7 +2318,37 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 @media(max-width:900px){.cm-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.cm-grid{grid-template-columns:1fr}}
 
-.stu-featured{padding:min(14vh,8rem) 6vw;background:var(--bg-1);display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;max-width:1180px;margin:0 auto}
+/* Ritual Boxes — horizontal-scroll teaser + detail panels */
+.stu-rbox-teaser{padding:min(16vh,9rem) 0 min(7vh,3.5rem);background:var(--bg-1);border-top:1px solid var(--card-border)}
+.stu-rbox-teaser-head{padding:0 6vw;margin-bottom:2.8rem;text-align:center}
+.stu-rbox-scroll{display:flex;gap:1.6rem;overflow-x:auto;padding:0 6vw 1.5rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.stu-rbox-scroll::-webkit-scrollbar{height:3px}
+.stu-rbox-scroll::-webkit-scrollbar-thumb{background:rgba(194,160,90,.3)}
+.stu-rbox-card{flex:0 0 min(560px,82vw);scroll-snap-align:start;border:1px solid var(--card-border);background:rgba(194,160,90,.02);overflow:hidden;transition:all .7s cubic-bezier(.16,1,.3,1);cursor:pointer}
+.stu-rbox-card:hover{transform:scale(1.015);border-color:var(--gold);box-shadow:0 26px 54px rgba(0,0,0,.16)}
+.stu-rbox-card img{width:100%;height:320px;object-fit:cover;display:block;filter:saturate(.75)}
+.stu-rbox-card-body{padding:2rem 2.2rem 2.4rem}
+.stu-rbox-kicker{font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.stu-rbox-card h3{font-family:var(--serif);font-weight:400;font-size:1.7rem;color:var(--ink);margin-bottom:.5rem}
+.stu-rbox-card .rbox-tag{font-family:var(--serif);font-style:italic;color:rgba(var(--ink-rgb),var(--ia6));font-size:.95rem}
+.stu-rbox-detail{padding:min(15vh,8.5rem) 6vw;background:var(--bg-0)}
+.stu-rbox-detail-intro{max-width:720px;margin:0 auto min(10vh,5.5rem);text-align:center}
+.stu-rbox-detail-intro p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.1rem,2vw,1.4rem);color:rgba(var(--ink-rgb),var(--ia7));line-height:1.9}
+.stu-rbox-panel{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start;max-width:1180px;margin:0 auto}
+.stu-rbox-panel+.stu-rbox-panel{margin-top:min(15vh,8.5rem);padding-top:min(15vh,8.5rem);border-top:1px solid rgba(194,160,90,.12)}
+.stu-rbox-panel img{width:100%;height:460px;object-fit:cover;border:1px solid var(--card-border)}
+.stu-rbox-panel h3{font-family:var(--serif);font-weight:400;font-size:2.1rem;color:var(--ink);margin-bottom:.5rem}
+.stu-rbox-panel-tag{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:1.7rem;display:block}
+.rbox-desc{font-family:var(--sans);font-size:.85rem;font-weight:300;color:rgba(var(--ink-rgb),var(--ia6));line-height:1.9;margin-bottom:1.9rem}
+.rbox-contents{list-style:none;margin-bottom:1.9rem}
+.rbox-contents li{font-family:var(--sans);font-size:.8rem;color:rgba(var(--ink-rgb),var(--ia5));padding:.65rem 0;border-bottom:1px solid rgba(194,160,90,.1)}
+.rbox-meta{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:2.2rem}
+.rbox-meta div{border-top:1px solid rgba(194,160,90,.15);padding-top:.6rem}
+.rbox-meta strong{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.rbox-meta span{font-family:var(--serif);font-size:.95rem;color:var(--ink)}
+@media(max-width:900px){.stu-rbox-panel{grid-template-columns:1fr;gap:2rem}.stu-rbox-panel img{height:340px}}
+
+.stu-featured{padding:min(17vh,9.5rem) 6vw;background:var(--bg-1);display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;max-width:1180px;margin:0 auto}
 .stu-featured-media{aspect-ratio:4/5;background:linear-gradient(135deg,var(--bg-2),var(--bg-4));border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .stu-featured-media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
 .stu-featured-media span{font-family:var(--serif);font-style:italic;color:rgba(var(--ink-rgb),var(--ia35));font-size:1.05rem;padding:2rem}
@@ -2323,7 +2357,7 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 .stu-featured p{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.95;color:rgba(var(--ink-rgb),var(--ia58));margin-bottom:1.9rem;max-width:440px}
 @media(max-width:840px){.stu-featured{grid-template-columns:1fr;gap:2.2rem}}
 
-.stu-sec{padding:min(13vh,7.5rem) 6vw;border-top:1px solid var(--card-border)}
+.stu-sec{padding:min(17vh,9.5rem) 6vw;border-top:1px solid var(--card-border)}
 .stu-sec--alt{background:var(--bg-2)}
 .stu-sec-row{display:grid;grid-template-columns:.9fr 1.15fr;gap:4.5rem;align-items:start;max-width:1180px;margin:0 auto}
 .stu-sec--rev .stu-sec-row{direction:rtl}
@@ -2362,7 +2396,7 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
 .stu-quote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.25rem,2.8vw,1.9rem);color:var(--ink);line-height:1.65;max-width:740px;margin:0 auto 1.4rem}
 .stu-quote-by{font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 
-.stu-newsletter{padding:min(13vh,7.5rem) 6vw;text-align:center;background:var(--bg-2);border-top:1px solid var(--card-border)}
+.stu-newsletter{padding:min(17vh,9.5rem) 6vw;text-align:center;background:var(--bg-2);border-top:1px solid var(--card-border)}
 .stu-newsletter h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,3vw,2.3rem);color:var(--ink);margin-bottom:1rem}
 .stu-newsletter p{font-family:var(--sans);font-size:.85rem;color:rgba(var(--ink-rgb),var(--ia55));max-width:480px;margin:0 auto 1rem}
 .stu-nl-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:1.2rem 0 2.2rem}
@@ -4632,50 +4666,29 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
     <p class="stu-kicker reveal">Begin</p>
     <h2 class="reveal">Choose how you wish to begin.</h2>
     <div class="stu-begin-grid">
-      <div class="stu-begin-card reveal">
-        <span class="stu-begin-num">01</span>
-        <h3>By Human Question</h3>
-        <p>Begin with the question you are carrying.</p>
-        <div class="stu-begin-tags">
-          <span class="stu-begin-tag">Purpose</span><span class="stu-begin-tag">Belonging</span><span class="stu-begin-tag">Love</span><span class="stu-begin-tag">Loss</span><span class="stu-begin-tag">Beginning Again</span><span class="stu-begin-tag">Courage</span>
-        </div>
-        <a href="#" class="stu-link-btn" onclick="return go('squestions')">Enter →</a>
+      <div class="stu-begin-row-3">
+        <a href="#" class="stu-begin-card reveal" onclick="return go('squestions')">
+          <h3>Human Questions</h3>
+          <p>What's the question that refuses to leave you?</p>
+        </a>
+        <a href="#" class="stu-begin-card reveal" style="transition-delay:.06s" onclick="return go('slives')">
+          <h3>Ancient Wisdom</h3>
+          <p>Artifacts inspired by ancient life.</p>
+        </a>
+        <a href="#" class="stu-begin-card reveal" style="transition-delay:.12s" onclick="return go('sritual')">
+          <h3>Ritual Cabinet</h3>
+          <p>Rituals for the season of life you are living.</p>
+        </a>
       </div>
-      <div class="stu-begin-card reveal" style="transition-delay:.06s">
-        <span class="stu-begin-num">02</span>
-        <h3>By Ancient Life</h3>
-        <p>Meet the character whose story continues to live today.</p>
-        <div class="stu-begin-tags">
-          <span class="stu-begin-tag">Arjuna</span><span class="stu-begin-tag">Karna</span><span class="stu-begin-tag">Eklavya</span><span class="stu-begin-tag">Draupadi</span><span class="stu-begin-tag">Ahalya</span><span class="stu-begin-tag">Hanuman</span>
-        </div>
-        <a href="#" class="stu-link-btn" onclick="return go('slives')">Enter →</a>
-      </div>
-      <div class="stu-begin-card reveal" style="transition-delay:.12s">
-        <span class="stu-begin-num">03</span>
-        <h3>The Ritual Cabinet</h3>
-        <p>Choose the experience you wish to continue living with.</p>
-        <div class="stu-begin-tags">
-          <span class="stu-begin-tag">Morning Reflection</span><span class="stu-begin-tag">Question Ritual</span><span class="stu-begin-tag">Beginning Again</span><span class="stu-begin-tag">Practice</span><span class="stu-begin-tag">Letting Go</span>
-        </div>
-        <a href="#" class="stu-link-btn" onclick="return go('sritual')">Enter →</a>
-      </div>
-      <div class="stu-begin-card reveal" style="transition-delay:.18s">
-        <span class="stu-begin-num">04</span>
-        <h3>The Collection</h3>
-        <p>Objects arranged by story — books, prints, notebooks and limited editions.</p>
-        <div class="stu-begin-tags">
-          <span class="stu-begin-tag">Books</span><span class="stu-begin-tag">Art Prints</span><span class="stu-begin-tag">Objects</span><span class="stu-begin-tag">Limited Editions</span>
-        </div>
-        <a href="#" class="stu-link-btn" onclick="document.getElementById('stuCollection').scrollIntoView({behavior:'smooth'});return false">Enter the Collection →</a>
-      </div>
-      <div class="stu-begin-card reveal" style="transition-delay:.24s">
-        <span class="stu-begin-num">05</span>
-        <h3>The Commons</h3>
-        <p>Stories that belong to everyone — free and Pay What You Wish works.</p>
-        <div class="stu-begin-tags">
-          <span class="stu-begin-tag">Question Cards</span><span class="stu-begin-tag">Wallpapers</span><span class="stu-begin-tag">Printables</span>
-        </div>
-        <a href="#" class="stu-link-btn" onclick="return go('scommons')">Enter →</a>
+      <div class="stu-begin-row-2">
+        <a href="#" class="stu-begin-card reveal" style="transition-delay:.18s" onclick="document.getElementById('stuCollection').scrollIntoView({behavior:'smooth'});return false">
+          <h3>Collections</h3>
+          <p>Objects gathered around one story.</p>
+        </a>
+        <a href="#" class="stu-begin-card reveal" style="transition-delay:.24s" onclick="return go('scommons')">
+          <h3>Community</h3>
+          <p>Stories carried together.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -4858,6 +4871,75 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
           <div class="stu-card"><div class="stu-card-media"><img src="about-audience.jpg" alt="Artist Collaborations"></div><div class="stu-card-body"><h4>Artist Collaborations</h4><p>Mythology reinterpreted by guest illustrators.</p><a href="#" class="stu-link-btn" id="notifyBtn-artist-collabs" onclick="return notifyMe('artist-collabs')">Notify Me →</a></div></div>
           <div class="stu-card"><div class="stu-card-media"><img src="about-library.jpg" alt="Museum Editions"></div><div class="stu-card-body"><h4>Museum Editions</h4><p>Archival-grade pieces, produced once.</p><a href="#" class="stu-link-btn" id="notifyBtn-museum-editions" onclick="return notifyMe('museum-editions')">Notify Me →</a></div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL BOXES — TEASER -->
+  <section class="stu-rbox-teaser">
+    <div class="stu-rbox-teaser-head">
+      <p class="stu-kicker reveal">Ritual Boxes</p>
+      <h2 class="reveal">Complete ritual experiences gathered into one box.</h2>
+    </div>
+    <div class="stu-rbox-scroll">
+      <div class="stu-rbox-card reveal" onclick="document.getElementById('ritualBoxes').scrollIntoView({behavior:'smooth'})">
+        <img src="workshop-02.jpg" alt="The Beginning Box">
+        <div class="stu-rbox-card-body">
+          <p class="stu-rbox-kicker">Kit 01 · Inspired by Arjuna</p>
+          <h3>The Beginning Box</h3>
+          <p class="rbox-tag">For uncertain mornings.</p>
+        </div>
+      </div>
+      <div class="stu-rbox-card reveal" style="transition-delay:.08s" onclick="document.getElementById('ritualBoxes').scrollIntoView({behavior:'smooth'})">
+        <img src="workshop-03.jpg" alt="The Letting Go Box">
+        <div class="stu-rbox-card-body">
+          <p class="stu-rbox-kicker">Kit 02 · Inspired by Shiva</p>
+          <h3>The Letting Go Box</h3>
+          <p class="rbox-tag">For endings that ask to become beginnings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL BOXES — DETAIL -->
+  <section class="stu-rbox-detail" id="ritualBoxes">
+    <div class="stu-rbox-detail-intro">
+      <p class="reveal">Some journeys are easier to begin when every object already knows its place.</p>
+    </div>
+    <div class="stu-rbox-panel">
+      <img class="reveal-l" src="workshop-02.jpg" alt="The Beginning Box">
+      <div class="reveal-r">
+        <h3>The Beginning Box</h3>
+        <span class="stu-rbox-panel-tag">Inspired by Arjuna</span>
+        <p class="rbox-desc">A morning ritual for the moment before certainty arrives — because it rarely arrives first. Every object inside exists to help you begin anyway.</p>
+        <ul class="rbox-contents">
+          <li>Morning Journal</li><li>Wooden Pencil</li><li>Courage Coin</li><li>Reflection Letter</li><li>Cloth Pouch</li><li>Begin Ritual Guide</li>
+        </ul>
+        <div class="rbox-meta">
+          <div><strong>Who It's For</strong><span>Uncertain beginnings</span></div>
+          <div><strong>Time Required</strong><span>10 minutes</span></div>
+          <div><strong>Best Time</strong><span>Morning</span></div>
+          <div><strong>Duration</strong><span>Ongoing practice</span></div>
+        </div>
+        <a href="#" class="stu-elegant-btn" id="notifyBtn-rbox-beginning" onclick="return notifyMe('rbox-beginning')"><span>Notify Me</span><span class="arw">→</span></a>
+      </div>
+    </div>
+    <div class="stu-rbox-panel">
+      <img class="reveal-l" src="workshop-03.jpg" alt="The Letting Go Box">
+      <div class="reveal-r">
+        <h3>The Letting Go Box</h3>
+        <span class="stu-rbox-panel-tag">Inspired by Shiva</span>
+        <p class="rbox-desc">A release ritual for endings that have already happened, quietly, and are only waiting to be acknowledged.</p>
+        <ul class="rbox-contents">
+          <li>Burn Cards</li><li>Incense</li><li>Ash Bowl</li><li>Reflection Journal</li><li>Cotton Cloth</li><li>Let Go Guide</li>
+        </ul>
+        <div class="rbox-meta">
+          <div><strong>Who It's For</strong><span>Endings & renewal</span></div>
+          <div><strong>Time Required</strong><span>15 minutes</span></div>
+          <div><strong>Best Time</strong><span>Evening</span></div>
+          <div><strong>Duration</strong><span>As needed</span></div>
+        </div>
+        <a href="#" class="stu-elegant-btn" id="notifyBtn-rbox-letgo" onclick="return notifyMe('rbox-letgo')"><span>Notify Me</span><span class="arw">→</span></a>
       </div>
     </div>
   </section>
@@ -5122,8 +5204,6 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
         </div>
         <div class="rc-body" id="rcBody-begin"><div class="rc-body-in">
           <div><h5>Story</h5><p>Every beginning asks for courage before it offers certainty. Arjuna's bow did not become lighter — his hands simply learned to lift it anyway.</p></div>
-          <div><h5>Practice</h5><p>Each morning, write one sentence naming the thing you're avoiding beginning. Read it once. Fold it. Begin anyway.</p></div>
-          <div><h5>Companion Object</h5><p>A Beginning Journal — one line a day, no pressure to fill the page.</p></div>
         </div></div>
       </div>
       <div class="rc-item" id="rc-practice">
@@ -5136,8 +5216,6 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
         </div>
         <div class="rc-body" id="rcBody-practice"><div class="rc-body-in">
           <div><h5>Story</h5><p>Eklavya practiced before a teacher made of clay until he surpassed the students who were chosen. Mastery never asked for an audience.</p></div>
-          <div><h5>Practice</h5><p>Choose one small skill. Practice it for ten unwitnessed minutes daily, for one week, without telling anyone.</p></div>
-          <div><h5>Companion Object</h5><p>A Practice Notebook with a simple habit tracker — one mark, no explanation needed.</p></div>
         </div></div>
       </div>
       <div class="rc-item" id="rc-letgo">
@@ -5150,8 +5228,6 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
         </div>
         <div class="rc-body" id="rcBody-letgo"><div class="rc-body-in">
           <div><h5>Story</h5><p>Shiva does not destroy from anger. He destroys from necessity — because some things must end before something true can begin.</p></div>
-          <div><h5>Practice</h5><p>Write down what you are holding that has finished its purpose. Read it aloud once. Then let the page go — recycle it, burn it, put it away.</p></div>
-          <div><h5>Companion Object</h5><p>A set of Reflection Cards, one for each thing you're ready to release.</p></div>
         </div></div>
       </div>
       <div class="rc-item" id="rc-voice">
@@ -5164,8 +5240,6 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
         </div>
         <div class="rc-body" id="rcBody-voice"><div class="rc-body-in">
           <div><h5>Story</h5><p>Draupadi's power began with a single unanswerable question, asked plainly, in a room built to silence her.</p></div>
-          <div><h5>Practice</h5><p>Name one question you have been too polite to ask. Write it exactly as you'd say it out loud. Keep it somewhere you'll see it.</p></div>
-          <div><h5>Companion Object</h5><p>A Conversation Deck of questions worth asking, even when your voice shakes.</p></div>
         </div></div>
       </div>
       <div class="rc-item" id="rc-again">
@@ -5178,8 +5252,6 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
         </div>
         <div class="rc-body" id="rcBody-again"><div class="rc-body-in">
           <div><h5>Story</h5><p>Ahalya's story does not end with the stone. It ends with the quiet, unhurried relief of being seen again as more than a warning.</p></div>
-          <div><h5>Practice</h5><p>Each new moon, write one line describing who you are becoming — not who you were. Keep the old lines. Don't erase them.</p></div>
-          <div><h5>Companion Object</h5><p>An Awakening Candle, lit only on the days you choose to start again.</p></div>
         </div></div>
       </div>
       <div class="rc-item" id="rc-worth">
@@ -5192,9 +5264,16 @@ html[data-theme="day"]{scrollbar-color:var(--bronze) var(--bg-0)}
         </div>
         <div class="rc-body" id="rcBody-worth"><div class="rc-body-in">
           <div><h5>Story</h5><p>Karna's worth was never decided by the court that denied him. His story asks what remains of a person once the applause is subtracted.</p></div>
-          <div><h5>Practice</h5><p>List three things you value about yourself that no one has ever praised. Read the list before you check your phone in the morning.</p></div>
-          <div><h5>Companion Object</h5><p>A Worth Journal, kept private, read only by you.</p></div>
         </div></div>
+      </div>
+    </div>
+
+    <div class="rc-continue">
+      <p class="stu-kicker reveal" style="text-align:left">Continue Your Journey</p>
+      <div class="rc-continue-links">
+        <a href="#" class="stu-elegant-btn reveal" onclick="go('studio');setTimeout(()=>document.getElementById('stuCollection')?.scrollIntoView({behavior:'smooth'}),350);return false"><span>Morning Journal — Go to Studio</span><span class="arw">→</span></a>
+        <a href="#" class="stu-elegant-btn reveal" style="transition-delay:.06s" onclick="go('studio');setTimeout(()=>document.getElementById('stuCollection')?.scrollIntoView({behavior:'smooth'}),350);return false"><span>Reflection Objects — Go to Collections</span><span class="arw">→</span></a>
+        <a href="#" class="stu-elegant-btn reveal" style="transition-delay:.12s" onclick="document.querySelector('.rc-list').scrollIntoView({behavior:'smooth',block:'start'});return false"><span>Explore More Rituals — Back to Ritual Cabinet</span><span class="arw">→</span></a>
       </div>
     </div>
   </section>
